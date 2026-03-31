@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:oc_api/oc_api.dart';
 import 'screens/auth/splash_screen.dart';
+import 'screens/auth/onboarding_screen.dart';
 import 'screens/auth/login_screen.dart';
 import 'screens/auth/otp_screen.dart';
 import 'screens/auth/profile_setup_screen.dart';
@@ -42,78 +43,120 @@ final routerProvider = Provider<GoRouter>((ref) {
     initialLocation: '/splash',
     routes: [
       GoRoute(path: '/splash', builder: (_, _) => const SplashScreen()),
-      GoRoute(path: '/force-update', builder: (_, _) => const ForceUpdateScreen()),
+      GoRoute(path: '/onboarding', builder: (_, _) => const OnboardingScreen()),
+      GoRoute(
+        path: '/force-update',
+        builder: (_, _) => const ForceUpdateScreen(),
+      ),
       GoRoute(path: '/about', builder: (_, _) => const AboutScreen()),
       GoRoute(
         path: '/payment/success',
-        builder: (_, state) => PaymentSuccessScreen(orderId: state.uri.queryParameters['order']),
+        builder: (_, state) =>
+            PaymentSuccessScreen(orderId: state.uri.queryParameters['order']),
       ),
       GoRoute(
         path: '/payment/failed',
-        builder: (_, state) => PaymentFailedScreen(orderId: state.uri.queryParameters['order']),
+        builder: (_, state) =>
+            PaymentFailedScreen(orderId: state.uri.queryParameters['order']),
       ),
       GoRoute(path: '/login', builder: (_, _) => const LoginScreen()),
       GoRoute(
         path: '/otp',
-        builder: (_, state) => OtpScreen(phone: state.uri.queryParameters['phone'] ?? ''),
+        builder: (_, state) =>
+            OtpScreen(phone: state.uri.queryParameters['phone'] ?? ''),
       ),
-      GoRoute(path: '/profile-setup', builder: (_, _) => const ProfileSetupScreen()),
+      GoRoute(
+        path: '/profile-setup',
+        builder: (_, _) => const ProfileSetupScreen(),
+      ),
       GoRoute(path: '/terms', builder: (_, _) => const TermsScreen()),
 
       // Detail screens (outside shell — no bottom nav)
       GoRoute(
         path: '/workshop/:id',
-        builder: (_, state) => WorkshopDetailScreen(workshopId: state.pathParameters['id']!),
+        builder: (_, state) =>
+            WorkshopDetailScreen(workshopId: state.pathParameters['id']!),
       ),
-      GoRoute(path: '/notifications', builder: (_, _) => const NotificationsScreen()),
+      GoRoute(
+        path: '/notifications',
+        builder: (_, _) => const NotificationsScreen(),
+      ),
       GoRoute(path: '/cart', builder: (_, _) => const CartScreen()),
       GoRoute(path: '/checkout', builder: (_, _) => const CheckoutScreen()),
-      GoRoute(path: '/vehicle/add', builder: (_, _) => const VehicleAddScreen()),
+      GoRoute(
+        path: '/vehicle/add',
+        builder: (_, _) => const VehicleAddScreen(),
+      ),
       GoRoute(
         path: '/order/:id',
-        builder: (_, state) => OrderTrackingScreen(orderId: state.pathParameters['id']!),
+        builder: (_, state) =>
+            OrderTrackingScreen(orderId: state.pathParameters['id']!),
       ),
       GoRoute(
         path: '/rate/:id',
-        builder: (_, state) => RateWorkshopScreen(orderId: state.pathParameters['id']!),
+        builder: (_, state) =>
+            RateWorkshopScreen(orderId: state.pathParameters['id']!),
       ),
       GoRoute(
         path: '/part/:id',
-        builder: (_, state) => PartDetailScreen(partId: state.pathParameters['id']!),
+        builder: (_, state) =>
+            PartDetailScreen(partId: state.pathParameters['id']!),
       ),
       GoRoute(
         path: '/shop/:id',
-        builder: (_, state) => ShopProfileScreen(shopId: state.pathParameters['id']!),
+        builder: (_, state) =>
+            ShopProfileScreen(shopId: state.pathParameters['id']!),
       ),
       GoRoute(
         path: '/bill/:id',
-        builder: (_, state) => WorkshopBillScreen(billId: state.pathParameters['id']!),
+        builder: (_, state) =>
+            WorkshopBillScreen(billId: state.pathParameters['id']!),
       ),
       GoRoute(
         path: '/diagnosis/:id',
-        builder: (_, state) => DiagnosisReportScreen(reportId: state.pathParameters['id']!),
+        builder: (_, state) =>
+            DiagnosisReportScreen(reportId: state.pathParameters['id']!),
       ),
       GoRoute(
         path: '/chat/:id',
-        builder: (_, state) => ChatDetailScreen(roomId: state.pathParameters['id']!),
+        builder: (_, state) =>
+            ChatDetailScreen(roomId: state.pathParameters['id']!),
       ),
 
       // New screens (outside shell)
-      GoRoute(path: '/profile/edit', builder: (_, _) => const EditProfileScreen()),
+      GoRoute(
+        path: '/profile/edit',
+        builder: (_, _) => const EditProfileScreen(),
+      ),
       GoRoute(path: '/addresses', builder: (_, _) => const AddressesScreen()),
       GoRoute(path: '/favorites', builder: (_, _) => const FavoritesScreen()),
-      GoRoute(path: '/maintenance-log', builder: (_, _) => const MaintenanceLogScreen()),
+      GoRoute(
+        path: '/maintenance-log',
+        builder: (_, _) => const MaintenanceLogScreen(),
+      ),
       GoRoute(path: '/my-reviews', builder: (_, _) => const MyReviewsScreen()),
-      GoRoute(path: '/notification-settings', builder: (_, _) => const NotificationSettingsScreen()),
-      GoRoute(path: '/settings/language', builder: (_, _) => const LanguageScreen()),
+      GoRoute(
+        path: '/notification-settings',
+        builder: (_, _) => const NotificationSettingsScreen(),
+      ),
+      GoRoute(
+        path: '/settings/language',
+        builder: (_, _) => const LanguageScreen(),
+      ),
 
       // Main shell (with bottom nav)
       ShellRoute(
         builder: (_, _, child) => HomeShell(child: child),
         routes: [
           GoRoute(path: '/home', builder: (_, _) => const HomeScreen()),
-          GoRoute(path: '/workshops', builder: (_, _) => const WorkshopListScreen()),
-          GoRoute(path: '/marketplace', builder: (_, _) => const MarketplaceScreen()),
+          GoRoute(
+            path: '/workshops',
+            builder: (_, _) => const WorkshopListScreen(),
+          ),
+          GoRoute(
+            path: '/marketplace',
+            builder: (_, _) => const MarketplaceScreen(),
+          ),
           GoRoute(path: '/orders', builder: (_, _) => const OrdersScreen()),
           GoRoute(path: '/chat', builder: (_, _) => const ChatListScreen()),
           GoRoute(path: '/profile', builder: (_, _) => const ProfileScreen()),
@@ -122,8 +165,21 @@ final routerProvider = Provider<GoRouter>((ref) {
     ],
     redirect: (context, state) {
       final isAuth = AuthService().isAuthenticated;
-      final publicRoutes = ['/login', '/otp', '/splash', '/profile-setup', '/terms', '/force-update', '/about', '/payment/success', '/payment/failed'];
-      if (!isAuth && !publicRoutes.contains(state.matchedLocation)) return '/login';
+      final publicRoutes = [
+        '/login',
+        '/otp',
+        '/splash',
+        '/onboarding',
+        '/profile-setup',
+        '/terms',
+        '/force-update',
+        '/about',
+        '/payment/success',
+        '/payment/failed',
+      ];
+      if (!isAuth && !publicRoutes.contains(state.matchedLocation)) {
+        return '/login';
+      }
       return null;
     },
   );

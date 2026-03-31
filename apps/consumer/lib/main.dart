@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:oc_api/oc_api.dart';
 import 'package:oc_ui/oc_ui.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'first_run.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'router.dart';
@@ -25,7 +27,16 @@ void main() async {
     ),
   );
 
-  runApp(const ProviderScope(child: OnlyCarsApp()));
+  final sharedPreferences = await SharedPreferences.getInstance();
+
+  runApp(
+    ProviderScope(
+      overrides: [
+        sharedPreferencesProvider.overrideWithValue(sharedPreferences),
+      ],
+      child: const OnlyCarsApp(),
+    ),
+  );
 }
 
 class OnlyCarsApp extends ConsumerWidget {
@@ -42,11 +53,8 @@ class OnlyCarsApp extends ConsumerWidget {
       darkTheme: OcTheme.dark,
       themeMode: ThemeMode.light,
       routerConfig: router,
-      locale: const Locale('ar'),
-      supportedLocales: const [
-        Locale('ar'),
-        Locale('en'),
-      ],
+      locale: ref.watch(appLocaleProvider),
+      supportedLocales: supportedFirstRunLocales,
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,

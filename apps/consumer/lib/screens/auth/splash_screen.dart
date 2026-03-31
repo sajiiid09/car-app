@@ -1,96 +1,62 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:oc_api/oc_api.dart';
+import 'package:consumer/first_run.dart';
 import 'package:oc_ui/oc_ui.dart';
 
-class SplashScreen extends StatefulWidget {
+class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  ConsumerState<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _fadeIn;
-  late Animation<double> _scale;
+class _SplashScreenState extends ConsumerState<SplashScreen> {
+  bool _visible = true;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      duration: const Duration(milliseconds: 1500),
-      vsync: this,
-    );
-    _fadeIn = Tween<double>(begin: 0, end: 1).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeIn),
-    );
-    _scale = Tween<double>(begin: 0.8, end: 1).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.elasticOut),
-    );
-    _controller.forward();
-    _checkAuth();
-  }
-
-  Future<void> _checkAuth() async {
-    await Future.delayed(const Duration(seconds: 2));
-    if (!mounted) return;
-
-    if (AuthService().isAuthenticated) {
-      final authService = AuthService();
-      final hasProfile = await authService.hasCompletedProfile();
-      if (!mounted) return;
-      if (hasProfile) {
-        context.go('/home');
-      } else {
-        context.go('/profile-setup');
-      }
-    } else {
-      context.go('/login');
-    }
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
+    _runSplashSequence();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: OcColors.background,
-      body: Center(
-        child: AnimatedBuilder(
-          animation: _controller,
-          builder: (context, child) {
-            return Opacity(
-              opacity: _fadeIn.value,
-              child: Transform.scale(
-                scale: _scale.value,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    // Real OnlyCars logo (vertical variant)
-                    const OcLogo(
-                      size: 140,
-                      assetPath: OcLogoAssets.vertical,
-                    ),
-                    const SizedBox(height: OcSpacing.lg),
-                    Text(
-                      'كل شي لسيارتك',
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: OcColors.textSecondary,
-                          ),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          },
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.dark.copyWith(
+        statusBarColor: Colors.transparent,
+        systemNavigationBarColor: Colors.white,
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: Center(
+          child: AnimatedOpacity(
+            duration: const Duration(milliseconds: 280),
+            curve: Curves.easeOutCubic,
+            opacity: _visible ? 1 : 0,
+            child: const OcWordmark(size: 52),
+          ),
         ),
       ),
     );
+  }
+
+  Future<void> _runSplashSequence() async {
+    await Future<void>.delayed(const Duration(milliseconds: 1100));
+    if (!mounted) {
+      return;
+    }
+
+    setState(() => _visible = false);
+    await Future<void>.delayed(const Duration(milliseconds: 180));
+    if (!mounted) {
+      return;
+    }
+
+    final hasCompletedOnboarding = ref
+        .read(firstRunControllerProvider)
+        .hasCompletedOnboarding;
+    context.go(hasCompletedOnboarding ? '/login' : '/onboarding');
   }
 }
