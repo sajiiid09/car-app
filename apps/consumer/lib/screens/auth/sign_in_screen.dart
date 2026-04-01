@@ -1,4 +1,5 @@
 import 'package:consumer/auth_flow.dart';
+import 'package:consumer/password_recovery.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,6 +21,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen>
   final _formKey = GlobalKey<FormState>();
   late final AnimationController _controller;
   bool _obscurePassword = true;
+  bool _queuedRecoverySuccess = false;
 
   @override
   void initState() {
@@ -57,6 +59,21 @@ class _SignInScreenState extends ConsumerState<SignInScreen>
   @override
   Widget build(BuildContext context) {
     final disableAnimations = MediaQuery.of(context).disableAnimations;
+    final recoveryDraft = ref.watch(passwordRecoveryProvider);
+
+    if (recoveryDraft.resetSucceeded && !_queuedRecoverySuccess) {
+      _queuedRecoverySuccess = true;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted) {
+          return;
+        }
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Password updated. Sign in to continue.')),
+        );
+        ref.read(passwordRecoveryProvider.notifier).consumeResetSuccess();
+        _queuedRecoverySuccess = false;
+      });
+    }
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.dark.copyWith(
@@ -163,7 +180,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen>
                       alignment: AlignmentDirectional.centerStart,
                       child: TextButton(
                         key: const Key('forgotPasswordButton'),
-                        onPressed: () {},
+                        onPressed: () => context.push('/auth/forgot-password'),
                         style: TextButton.styleFrom(
                           foregroundColor: const Color(0xFF163154),
                           padding: EdgeInsets.zero,

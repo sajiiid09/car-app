@@ -8,6 +8,9 @@ import 'screens/auth/onboarding_screen.dart';
 import 'screens/auth/login_screen.dart';
 import 'screens/auth/sign_in_screen.dart';
 import 'screens/auth/sign_up_screen.dart';
+import 'screens/auth/forgot_password_screen.dart';
+import 'screens/auth/verify_reset_code_screen.dart';
+import 'screens/auth/reset_password_screen.dart';
 import 'screens/auth/auth_complete_screen.dart';
 import 'screens/auth/otp_screen.dart';
 import 'screens/auth/profile_setup_screen.dart';
@@ -85,6 +88,27 @@ final routerProvider = Provider<GoRouter>((ref) {
         pageBuilder: (_, state) => _slidePage(
           state: state,
           child: const SignUpScreen(),
+        ),
+      ),
+      GoRoute(
+        path: '/auth/forgot-password',
+        pageBuilder: (_, state) => _slidePage(
+          state: state,
+          child: const ForgotPasswordScreen(),
+        ),
+      ),
+      GoRoute(
+        path: '/auth/verify-reset',
+        pageBuilder: (_, state) => _slidePage(
+          state: state,
+          child: const VerifyResetCodeScreen(),
+        ),
+      ),
+      GoRoute(
+        path: '/auth/reset-password',
+        pageBuilder: (_, state) => _slidePage(
+          state: state,
+          child: const ResetPasswordScreen(),
         ),
       ),
       GoRoute(
@@ -206,6 +230,9 @@ final routerProvider = Provider<GoRouter>((ref) {
         '/login',
         '/auth/sign-in',
         '/auth/sign-up',
+        '/auth/forgot-password',
+        '/auth/verify-reset',
+        '/auth/reset-password',
         '/auth/complete',
         '/otp',
         '/splash',

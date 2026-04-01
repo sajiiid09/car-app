@@ -227,6 +227,285 @@ class OcSocialAuthButton extends StatelessWidget {
   }
 }
 
+class OcOtpInputController extends ChangeNotifier {
+  int _resetTick = 0;
+
+  int get resetTick => _resetTick;
+
+  void clearAndFocusFirst() {
+    _resetTick++;
+    notifyListeners();
+  }
+}
+
+class OcOtpInputRow extends StatefulWidget {
+  const OcOtpInputRow({
+    super.key,
+    required this.onChanged,
+    this.length = 4,
+    this.initialValue = '',
+    this.controller,
+    this.cellWidth = 48,
+    this.cellHeight = 92,
+  });
+
+  final ValueChanged<String> onChanged;
+  final int length;
+  final String initialValue;
+  final OcOtpInputController? controller;
+  final double cellWidth;
+  final double cellHeight;
+
+  @override
+  State<OcOtpInputRow> createState() => _OcOtpInputRowState();
+}
+
+class _OcOtpInputRowState extends State<OcOtpInputRow> {
+  late final List<TextEditingController> _controllers;
+  late final List<FocusNode> _focusNodes;
+  bool _syncing = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _controllers = List.generate(
+      widget.length,
+      (_) => TextEditingController(),
+      growable: false,
+    );
+    _focusNodes = List.generate(
+      widget.length,
+      (_) => FocusNode(),
+      growable: false,
+    );
+    for (final node in _focusNodes) {
+      node.addListener(_handleFocusChanged);
+    }
+    widget.controller?.addListener(_handleExternalReset);
+    _populate(widget.initialValue);
+  }
+
+  @override
+  void didUpdateWidget(covariant OcOtpInputRow oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.controller != widget.controller) {
+      oldWidget.controller?.removeListener(_handleExternalReset);
+      widget.controller?.addListener(_handleExternalReset);
+    }
+
+    final currentValue = _joinedValue;
+    if (!_syncing && widget.initialValue != currentValue) {
+      _populate(widget.initialValue);
+    }
+  }
+
+  @override
+  void dispose() {
+    widget.controller?.removeListener(_handleExternalReset);
+    for (final controller in _controllers) {
+      controller.dispose();
+    }
+    for (final node in _focusNodes) {
+      node.removeListener(_handleFocusChanged);
+      node.dispose();
+    }
+    super.dispose();
+  }
+
+  String get _joinedValue => _controllers.map((controller) => controller.text).join();
+
+  void _handleFocusChanged() {
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  void _handleExternalReset() {
+    _clearAndFocusFirst();
+  }
+
+  void _populate(String value) {
+    _syncing = true;
+    final digits = value.replaceAll(RegExp(r'\D'), '');
+    for (var index = 0; index < widget.length; index++) {
+      final text = index < digits.length ? digits[index] : '';
+      _controllers[index].text = text;
+      _controllers[index].selection = TextSelection.collapsed(
+        offset: text.length,
+      );
+    }
+    _syncing = false;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        setState(() {});
+      }
+    });
+  }
+
+  void _clearAndFocusFirst() {
+    _syncing = true;
+    for (final controller in _controllers) {
+      controller.clear();
+    }
+    _syncing = false;
+    widget.onChanged('');
+    if (!mounted) {
+      return;
+    }
+    _focusNodes.first.requestFocus();
+    setState(() {});
+  }
+
+  void _handleChanged(int index, String rawValue) {
+    if (_syncing) {
+      return;
+    }
+
+    final digits = rawValue.replaceAll(RegExp(r'\D'), '');
+    if (digits.isEmpty) {
+      _setText(index, '');
+      widget.onChanged(_joinedValue);
+      setState(() {});
+      return;
+    }
+
+    if (digits.length > 1) {
+      _applyPastedDigits(startIndex: index, digits: digits);
+      return;
+    }
+
+    _setText(index, digits);
+    if (index < widget.length - 1) {
+      _focusNodes[index + 1].requestFocus();
+    } else {
+      _focusNodes[index].unfocus();
+    }
+    widget.onChanged(_joinedValue);
+    setState(() {});
+  }
+
+  void _applyPastedDigits({
+    required int startIndex,
+    required String digits,
+  }) {
+    _syncing = true;
+    var cursor = startIndex;
+    for (final digit in digits.split('')) {
+      if (cursor >= widget.length) {
+        break;
+      }
+      _controllers[cursor].text = digit;
+      _controllers[cursor].selection = const TextSelection.collapsed(offset: 1);
+      cursor++;
+    }
+    _syncing = false;
+
+    widget.onChanged(_joinedValue);
+    final nextFocusIndex = cursor >= widget.length ? widget.length - 1 : cursor;
+    if (cursor >= widget.length) {
+      _focusNodes.last.unfocus();
+    } else {
+      _focusNodes[nextFocusIndex].requestFocus();
+    }
+    setState(() {});
+  }
+
+  void _setText(int index, String value) {
+    _syncing = true;
+    _controllers[index].text = value;
+    _controllers[index].selection = TextSelection.collapsed(
+      offset: value.length,
+    );
+    _syncing = false;
+  }
+
+  KeyEventResult _handleKeyEvent(int index, KeyEvent event) {
+    if (event is! KeyDownEvent ||
+        event.logicalKey != LogicalKeyboardKey.backspace) {
+      return KeyEventResult.ignored;
+    }
+
+    if (_controllers[index].text.isEmpty && index > 0) {
+      _setText(index - 1, '');
+      _focusNodes[index - 1].requestFocus();
+      widget.onChanged(_joinedValue);
+      setState(() {});
+      return KeyEventResult.handled;
+    }
+
+    return KeyEventResult.ignored;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: List.generate(widget.length, (index) {
+        final hasValue = _controllers[index].text.isNotEmpty;
+        final isFocused = _focusNodes[index].hasFocus;
+        return Padding(
+          padding: EdgeInsetsDirectional.only(
+            end: index == widget.length - 1 ? 0 : 16,
+          ),
+          child: Focus(
+            onKeyEvent: (_, event) => _handleKeyEvent(index, event),
+            child: AnimatedContainer(
+              key: Key('otpDigitCell-$index'),
+              duration: const Duration(milliseconds: 180),
+              curve: Curves.easeOutCubic,
+              width: widget.cellWidth,
+              height: widget.cellHeight,
+              decoration: BoxDecoration(
+                color: hasValue ? const Color(0xFFEDEDED) : Colors.white,
+                borderRadius: BorderRadius.circular(22),
+                border: Border.all(
+                  color: isFocused ? OcColors.accent : const Color(0xFFDDE3EE),
+                  width: isFocused ? 2.2 : 1.4,
+                ),
+                boxShadow: isFocused
+                    ? [
+                        BoxShadow(
+                          color: OcColors.accent.withValues(alpha: 0.08),
+                          blurRadius: 18,
+                          offset: const Offset(0, 8),
+                        ),
+                      ]
+                    : const [],
+              ),
+              child: Center(
+                child: TextField(
+                  key: Key('otpDigitField-$index'),
+                  controller: _controllers[index],
+                  focusNode: _focusNodes[index],
+                  onChanged: (value) => _handleChanged(index, value),
+                  keyboardType: TextInputType.number,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.plusJakartaSans(
+                    color: const Color(0xFF17314F),
+                    fontSize: 22,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  cursorColor: OcColors.accent,
+                  cursorWidth: 2.2,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    counterText: '',
+                    contentPadding: EdgeInsets.zero,
+                  ),
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],
+                  maxLength: 4,
+                ),
+              ),
+            ),
+          ),
+        );
+      }),
+    );
+  }
+}
+
 class OcEngineTypeChips<T> extends StatelessWidget {
   const OcEngineTypeChips({
     super.key,
