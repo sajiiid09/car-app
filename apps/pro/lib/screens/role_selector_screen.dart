@@ -84,11 +84,12 @@ class RoleSelectorScreen extends StatelessWidget {
               const SizedBox(height: OcSpacing.lg),
 
               _RoleCard(
+                key: const Key('shopRoleCard'),
                 icon: Icons.store_rounded,
                 title: l10n.shopRoleTitle,
                 subtitle: l10n.shopRoleSubtitle,
                 color: OcColors.warning,
-                onTap: () => context.go('/shop'),
+                onTap: () => context.go('/shop/sign-up'),
               ),
 
               const Spacer(),

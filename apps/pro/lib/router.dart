@@ -11,6 +11,8 @@ import 'screens/driver/driver_dashboard.dart';
 import 'screens/driver/delivery_flow_screen.dart';
 import 'screens/shop/shop_dashboard.dart';
 import 'screens/shop/add_part_screen.dart';
+import 'screens/shop/shop_sign_up_complete_screen.dart';
+import 'screens/shop/shop_sign_up_screen.dart';
 import 'screens/onboarding/provider_onboarding_screen.dart';
 import 'screens/shared/earnings_screen.dart';
 import 'screens/shared/provider_profile_screen.dart';
@@ -60,6 +62,14 @@ final proRouterProvider = Provider<GoRouter>((ref) {
       ),
 
       // Shop routes
+      GoRoute(
+        path: '/shop/sign-up',
+        builder: (_, _) => const ShopSignUpScreen(),
+      ),
+      GoRoute(
+        path: '/shop/sign-up/complete',
+        builder: (_, _) => const ShopSignUpCompleteScreen(),
+      ),
       GoRoute(path: '/shop', builder: (_, _) => const ShopDashboard()),
       GoRoute(path: '/shop/add-part', builder: (_, _) => const AddPartScreen()),
 

@@ -102,6 +102,156 @@ class AppLocalizationsAr extends AppLocalizations {
   String get shopRoleSubtitle => 'بيع قطع الغيار وإدارة المخزون';
 
   @override
+  String get shopRegistrationStep => 'الخطوة 1 من 2';
+
+  @override
+  String get shopRegistrationTitle => 'تسجيل الشريك';
+
+  @override
+  String get shopRegistrationSubtitle =>
+      'أكمل النموذج أدناه لبدء بيع قطع الغيار على OnlyCars.';
+
+  @override
+  String get shopGeneralInformationTitle => 'المعلومات العامة';
+
+  @override
+  String get shopNameLabel => 'اسم المتجر';
+
+  @override
+  String get shopNameHint => 'مثال: أبيكس لقطع الأداء';
+
+  @override
+  String get shopNameValidation => 'أدخل اسم المتجر';
+
+  @override
+  String get shopContactNameLabel => 'اسم جهة الاتصال';
+
+  @override
+  String get shopContactNameHint => 'جون دو';
+
+  @override
+  String get shopContactNameValidation => 'أدخل اسم جهة الاتصال';
+
+  @override
+  String get shopPhoneLabel => 'رقم الهاتف';
+
+  @override
+  String get shopPhoneHint => '+974 5000 0000';
+
+  @override
+  String get shopPhoneValidation => 'أدخل رقم هاتف صحيح';
+
+  @override
+  String get shopLocationTitle => 'الموقع';
+
+  @override
+  String get shopLocationHint => 'ابحث عن عنوان المتجر...';
+
+  @override
+  String get shopLocationValidation => 'أدخل عنوان المتجر';
+
+  @override
+  String get shopCategoriesTitle => 'فئات المخزون';
+
+  @override
+  String get shopCategoryEngine => 'محرك';
+
+  @override
+  String get shopCategoryBrakes => 'فرامل';
+
+  @override
+  String get shopCategorySuspension => 'تعليق';
+
+  @override
+  String get shopCategoryBody => 'هيكل';
+
+  @override
+  String get shopCategoryElectrical => 'كهرباء';
+
+  @override
+  String get shopCategoriesValidation => 'اختر فئة واحدة على الأقل';
+
+  @override
+  String get shopVerificationTitle => 'التحقق';
+
+  @override
+  String get shopBusinessLicenseUploadTitle => 'رفع الرخصة التجارية';
+
+  @override
+  String get shopBusinessLicenseUploadHint => 'JPEG أو PNG، صور فقط';
+
+  @override
+  String get shopBusinessLicenseValidation => 'أضف صورة الرخصة التجارية';
+
+  @override
+  String get shopChooseImageSource => 'اختر مصدر الصورة';
+
+  @override
+  String get shopCamera => 'الكاميرا';
+
+  @override
+  String get shopGallery => 'المعرض';
+
+  @override
+  String get shopCompleteRegistration => 'إكمال التسجيل';
+
+  @override
+  String get shopSaveDraft => 'حفظ كمسودة';
+
+  @override
+  String get shopLegalLead => 'بالمتابعة، فأنت توافق على ';
+
+  @override
+  String get shopLegalTerms => 'شروط الشركاء';
+
+  @override
+  String get shopLegalBridge => ' و';
+
+  @override
+  String get shopLegalPrivacy => 'سياسة الخصوصية';
+
+  @override
+  String get shopLegalTail => '.';
+
+  @override
+  String get shopPrivacyTitle => 'الخصوصية وحماية البيانات';
+
+  @override
+  String get shopPrivacySummaryTitle => 'ملخص سريع:';
+
+  @override
+  String get shopPrivacyBulletEncryption => 'مستندات نشاطك مشفرة.';
+
+  @override
+  String get shopPrivacyBulletAccess =>
+      'فقط فريق OnlyCars المصرح له يمكنه مراجعة بيانات التحقق.';
+
+  @override
+  String get shopPrivacyBulletControl =>
+      'أنت تتحكم في المعلومات التي تظهر عن متجرك للمشترين.';
+
+  @override
+  String get shopPrivacyAgreementLead => 'أوافق على ';
+
+  @override
+  String get shopPrivacyAgreementTerms => 'شروط الشركاء';
+
+  @override
+  String get shopPrivacyAgreementBridge => ' و';
+
+  @override
+  String get shopPrivacyAgreementPolicy => 'سياسة الخصوصية';
+
+  @override
+  String get shopAgreeAndContinue => 'موافقة ومتابعة';
+
+  @override
+  String get shopCompleteTitle => 'أصبحت جاهزًا';
+
+  @override
+  String get shopStart => 'ابدأ';
+
+  @override
   String get workshopRegistrationEyebrow => 'تسجيل الورشة';
 
   @override

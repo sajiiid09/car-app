@@ -102,6 +102,157 @@ class AppLocalizationsEn extends AppLocalizations {
   String get shopRoleSubtitle => 'Sell parts and manage inventory';
 
   @override
+  String get shopRegistrationStep => 'Step 1 of 2';
+
+  @override
+  String get shopRegistrationTitle => 'Partner Registration';
+
+  @override
+  String get shopRegistrationSubtitle =>
+      'Complete the form below to start selling on OnlyCars.';
+
+  @override
+  String get shopGeneralInformationTitle => 'General Information';
+
+  @override
+  String get shopNameLabel => 'Shop Name';
+
+  @override
+  String get shopNameHint => 'e.g. Apex Performance Parts';
+
+  @override
+  String get shopNameValidation => 'Enter your shop name';
+
+  @override
+  String get shopContactNameLabel => 'Contact Name';
+
+  @override
+  String get shopContactNameHint => 'John Doe';
+
+  @override
+  String get shopContactNameValidation => 'Enter the contact name';
+
+  @override
+  String get shopPhoneLabel => 'Phone Number';
+
+  @override
+  String get shopPhoneHint => '+1 (555) 000-0000';
+
+  @override
+  String get shopPhoneValidation => 'Enter a valid phone number';
+
+  @override
+  String get shopLocationTitle => 'Location';
+
+  @override
+  String get shopLocationHint => 'Search shop address...';
+
+  @override
+  String get shopLocationValidation => 'Enter your shop address';
+
+  @override
+  String get shopCategoriesTitle => 'Inventory Categories';
+
+  @override
+  String get shopCategoryEngine => 'Engine';
+
+  @override
+  String get shopCategoryBrakes => 'Brakes';
+
+  @override
+  String get shopCategorySuspension => 'Suspension';
+
+  @override
+  String get shopCategoryBody => 'Body';
+
+  @override
+  String get shopCategoryElectrical => 'Electrical';
+
+  @override
+  String get shopCategoriesValidation => 'Select at least one category';
+
+  @override
+  String get shopVerificationTitle => 'Verification';
+
+  @override
+  String get shopBusinessLicenseUploadTitle => 'Upload Business License';
+
+  @override
+  String get shopBusinessLicenseUploadHint => 'JPEG or PNG, image only';
+
+  @override
+  String get shopBusinessLicenseValidation => 'Add your business license image';
+
+  @override
+  String get shopChooseImageSource => 'Choose image source';
+
+  @override
+  String get shopCamera => 'Camera';
+
+  @override
+  String get shopGallery => 'Gallery';
+
+  @override
+  String get shopCompleteRegistration => 'Complete Registration';
+
+  @override
+  String get shopSaveDraft => 'Save as Draft';
+
+  @override
+  String get shopLegalLead => 'By proceeding, you agree to the ';
+
+  @override
+  String get shopLegalTerms => 'Partner Terms';
+
+  @override
+  String get shopLegalBridge => ' and ';
+
+  @override
+  String get shopLegalPrivacy => 'Privacy Policy';
+
+  @override
+  String get shopLegalTail => '.';
+
+  @override
+  String get shopPrivacyTitle => 'Privacy & Data Protection';
+
+  @override
+  String get shopPrivacySummaryTitle => 'Summary bullets:';
+
+  @override
+  String get shopPrivacyBulletEncryption =>
+      'Your business documents are encrypted.';
+
+  @override
+  String get shopPrivacyBulletAccess =>
+      'Only authorized OnlyCars reviewers can access your verification records.';
+
+  @override
+  String get shopPrivacyBulletControl =>
+      'You control what shop information is shared with buyers.';
+
+  @override
+  String get shopPrivacyAgreementLead => 'I agree to the ';
+
+  @override
+  String get shopPrivacyAgreementTerms => 'Partner Terms';
+
+  @override
+  String get shopPrivacyAgreementBridge => ' and ';
+
+  @override
+  String get shopPrivacyAgreementPolicy => 'Privacy Policy';
+
+  @override
+  String get shopAgreeAndContinue => 'Agree & Continue';
+
+  @override
+  String get shopCompleteTitle => 'You’re All Set';
+
+  @override
+  String get shopStart => 'Start';
+
+  @override
   String get workshopRegistrationEyebrow => 'Workshop Registration';
 
   @override
