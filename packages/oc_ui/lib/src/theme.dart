@@ -40,17 +40,20 @@ class OcTheme {
       ),
     ),
 
-    // Cards — no border, subtle background
+    canvasColor: OcColors.background,
+
+    // Cards — neutral surfaces
     cardTheme: CardThemeData(
-      color: OcColors.background,
+      color: OcColors.surface,
       elevation: 0,
       margin: EdgeInsets.zero,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(OcRadius.card),
+        side: const BorderSide(color: OcColors.borderLight),
       ),
     ),
 
-    // Primary button — lime green pill
+    // Primary button — blue pill
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: OcColors.accent,
@@ -67,9 +70,9 @@ class OcTheme {
     // Outlined button
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        foregroundColor: OcColors.textPrimary,
+        foregroundColor: OcColors.accent,
         minimumSize: const Size(double.infinity, 52),
-        side: const BorderSide(color: OcColors.border),
+        side: const BorderSide(color: OcColors.accent),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(OcRadius.lg),
         ),
@@ -82,11 +85,11 @@ class OcTheme {
       fillColor: OcColors.surfaceLight,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(OcRadius.searchBar),
-        borderSide: BorderSide.none,
+        borderSide: const BorderSide(color: OcColors.borderLight),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(OcRadius.searchBar),
-        borderSide: BorderSide.none,
+        borderSide: const BorderSide(color: OcColors.borderLight),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(OcRadius.searchBar),
@@ -119,7 +122,9 @@ class OcTheme {
       backgroundColor: OcColors.navBar,
       contentTextStyle: const TextStyle(color: OcColors.textOnPrimary),
       behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(OcRadius.md)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(OcRadius.md),
+      ),
     ),
 
     // Bottom nav — we'll use a custom widget, but set defaults
@@ -146,7 +151,10 @@ class OcTheme {
       onSurface: Color(0xFFF5F5F5),
       onError: OcColors.textOnPrimary,
     ),
-    textTheme: _textTheme,
+    textTheme: _textTheme.apply(
+      bodyColor: const Color(0xFFF7F9FC),
+      displayColor: const Color(0xFFF7F9FC),
+    ),
     appBarTheme: const AppBarTheme(
       backgroundColor: Color(0xFF1A1A1A),
       foregroundColor: Color(0xFFF5F5F5),
@@ -192,23 +200,83 @@ class OcTheme {
   );
 
   // ── TYPOGRAPHY ───────────────────────────────────────
-  static TextTheme get _textTheme => GoogleFonts.tajawalTextTheme(
+  static TextTheme get _textTheme => GoogleFonts.notoSansTextTheme(
     const TextTheme(
-      displayLarge:  TextStyle(fontSize: 32, fontWeight: FontWeight.w700, color: OcColors.textPrimary),
-      displayMedium: TextStyle(fontSize: 28, fontWeight: FontWeight.w700, color: OcColors.textPrimary),
-      displaySmall:  TextStyle(fontSize: 24, fontWeight: FontWeight.w600, color: OcColors.textPrimary),
-      headlineLarge: TextStyle(fontSize: 22, fontWeight: FontWeight.w600, color: OcColors.textPrimary),
-      headlineMedium: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: OcColors.textPrimary),
-      headlineSmall: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: OcColors.textPrimary),
-      titleLarge:    TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: OcColors.textPrimary),
-      titleMedium:   TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: OcColors.textPrimary),
-      titleSmall:    TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: OcColors.textPrimary),
-      bodyLarge:     TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: OcColors.textPrimary),
-      bodyMedium:    TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: OcColors.textPrimary),
-      bodySmall:     TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: OcColors.textDarkSecondary),
-      labelLarge:    TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: OcColors.textPrimary),
-      labelMedium:   TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: OcColors.textDarkSecondary),
-      labelSmall:    TextStyle(fontSize: 10, fontWeight: FontWeight.w500, color: OcColors.textDarkSecondary),
+      displayLarge: TextStyle(
+        fontSize: 32,
+        fontWeight: FontWeight.w700,
+        color: OcColors.textPrimary,
+      ),
+      displayMedium: TextStyle(
+        fontSize: 28,
+        fontWeight: FontWeight.w700,
+        color: OcColors.textPrimary,
+      ),
+      displaySmall: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w600,
+        color: OcColors.textPrimary,
+      ),
+      headlineLarge: TextStyle(
+        fontSize: 22,
+        fontWeight: FontWeight.w600,
+        color: OcColors.textPrimary,
+      ),
+      headlineMedium: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+        color: OcColors.textPrimary,
+      ),
+      headlineSmall: TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
+        color: OcColors.textPrimary,
+      ),
+      titleLarge: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        color: OcColors.textPrimary,
+      ),
+      titleMedium: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+        color: OcColors.textPrimary,
+      ),
+      titleSmall: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w600,
+        color: OcColors.textPrimary,
+      ),
+      bodyLarge: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: OcColors.textPrimary,
+      ),
+      bodyMedium: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        color: OcColors.textPrimary,
+      ),
+      bodySmall: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        color: OcColors.textDarkSecondary,
+      ),
+      labelLarge: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        color: OcColors.textPrimary,
+      ),
+      labelMedium: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        color: OcColors.textDarkSecondary,
+      ),
+      labelSmall: TextStyle(
+        fontSize: 10,
+        fontWeight: FontWeight.w500,
+        color: OcColors.textDarkSecondary,
+      ),
     ),
   );
 }
