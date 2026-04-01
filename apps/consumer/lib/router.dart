@@ -1,9 +1,14 @@
+import 'package:consumer/auth_flow.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:oc_api/oc_api.dart';
 import 'screens/auth/splash_screen.dart';
 import 'screens/auth/onboarding_screen.dart';
 import 'screens/auth/login_screen.dart';
+import 'screens/auth/sign_in_screen.dart';
+import 'screens/auth/sign_up_screen.dart';
+import 'screens/auth/auth_complete_screen.dart';
 import 'screens/auth/otp_screen.dart';
 import 'screens/auth/profile_setup_screen.dart';
 import 'screens/auth/terms_screen.dart';
@@ -39,6 +44,8 @@ import 'screens/payment/payment_success_screen.dart';
 import 'screens/payment/payment_failed_screen.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
+  final hasPreviewSession = ref.watch(authPreviewSessionProvider);
+
   return GoRouter(
     initialLocation: '/splash',
     routes: [
@@ -59,7 +66,34 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (_, state) =>
             PaymentFailedScreen(orderId: state.uri.queryParameters['order']),
       ),
-      GoRoute(path: '/login', builder: (_, _) => const LoginScreen()),
+      GoRoute(
+        path: '/login',
+        pageBuilder: (_, state) => _fadePage(
+          state: state,
+          child: const LoginScreen(),
+        ),
+      ),
+      GoRoute(
+        path: '/auth/sign-in',
+        pageBuilder: (_, state) => _slidePage(
+          state: state,
+          child: const SignInScreen(),
+        ),
+      ),
+      GoRoute(
+        path: '/auth/sign-up',
+        pageBuilder: (_, state) => _slidePage(
+          state: state,
+          child: const SignUpScreen(),
+        ),
+      ),
+      GoRoute(
+        path: '/auth/complete',
+        pageBuilder: (_, state) => _fadePage(
+          state: state,
+          child: const AuthCompleteScreen(),
+        ),
+      ),
       GoRoute(
         path: '/otp',
         builder: (_, state) =>
@@ -85,7 +119,10 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(path: '/checkout', builder: (_, _) => const CheckoutScreen()),
       GoRoute(
         path: '/vehicle/add',
-        builder: (_, _) => const VehicleAddScreen(),
+        pageBuilder: (_, state) => _slidePage(
+          state: state,
+          child: const VehicleAddScreen(),
+        ),
       ),
       GoRoute(
         path: '/order/:id',
@@ -164,9 +201,12 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
     ],
     redirect: (context, state) {
-      final isAuth = AuthService().isAuthenticated;
+      final isAuth = AuthService().isAuthenticated || hasPreviewSession;
       final publicRoutes = [
         '/login',
+        '/auth/sign-in',
+        '/auth/sign-up',
+        '/auth/complete',
         '/otp',
         '/splash',
         '/onboarding',
@@ -176,6 +216,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         '/about',
         '/payment/success',
         '/payment/failed',
+        '/vehicle/add',
       ];
       if (!isAuth && !publicRoutes.contains(state.matchedLocation)) {
         return '/login';
@@ -184,3 +225,62 @@ final routerProvider = Provider<GoRouter>((ref) {
     },
   );
 });
+
+CustomTransitionPage<void> _slidePage({
+  required GoRouterState state,
+  required Widget child,
+}) {
+  return CustomTransitionPage<void>(
+    key: state.pageKey,
+    transitionDuration: const Duration(milliseconds: 300),
+    reverseTransitionDuration: const Duration(milliseconds: 220),
+    child: child,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      final reduceMotion = MediaQuery.maybeOf(context)?.disableAnimations ?? false;
+      if (reduceMotion) {
+        return FadeTransition(opacity: animation, child: child);
+      }
+
+      final curved = CurvedAnimation(
+        parent: animation,
+        curve: Curves.easeOutCubic,
+        reverseCurve: Curves.easeInCubic,
+      );
+      return FadeTransition(
+        opacity: curved,
+        child: SlideTransition(
+          position: Tween<Offset>(
+            begin: const Offset(0.08, 0),
+            end: Offset.zero,
+          ).animate(curved),
+          child: child,
+        ),
+      );
+    },
+  );
+}
+
+CustomTransitionPage<void> _fadePage({
+  required GoRouterState state,
+  required Widget child,
+}) {
+  return CustomTransitionPage<void>(
+    key: state.pageKey,
+    transitionDuration: const Duration(milliseconds: 280),
+    reverseTransitionDuration: const Duration(milliseconds: 180),
+    child: child,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      final reduceMotion = MediaQuery.maybeOf(context)?.disableAnimations ?? false;
+      if (reduceMotion) {
+        return child;
+      }
+
+      final curved = CurvedAnimation(
+        parent: animation,
+        curve: Curves.easeOutCubic,
+        reverseCurve: Curves.easeInCubic,
+      );
+      return FadeTransition(opacity: curved, child: child);
+    },
+  );
+}

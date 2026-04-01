@@ -15,6 +15,7 @@ class OcOnboardingPageData {
     required this.ctaLabel,
     required this.fallbackIcon,
     required this.fallbackColors,
+    this.heroTag,
   });
 
   final String imageAssetPath;
@@ -23,6 +24,7 @@ class OcOnboardingPageData {
   final String ctaLabel;
   final IconData fallbackIcon;
   final List<Color> fallbackColors;
+  final String? heroTag;
 }
 
 @immutable
@@ -170,10 +172,12 @@ class OcModalSheetShell extends StatelessWidget {
     super.key,
     required this.child,
     required this.onClose,
+    this.closeButtonKey,
   });
 
   final Widget child;
   final VoidCallback onClose;
+  final Key? closeButtonKey;
 
   @override
   Widget build(BuildContext context) {
@@ -213,7 +217,7 @@ class OcModalSheetShell extends StatelessWidget {
                   border: Border.all(color: OcColors.borderLight),
                 ),
                 child: IconButton(
-                  key: const Key('languageSheetCloseButton'),
+                  key: closeButtonKey ?? const Key('languageSheetCloseButton'),
                   onPressed: onClose,
                   icon: const Icon(Icons.close_rounded),
                   color: OcColors.textSecondary,
@@ -365,19 +369,29 @@ class _OcOnboardingBackgroundState extends State<_OcOnboardingBackground> {
     return FutureBuilder<bool>(
       future: _hasAsset,
       builder: (context, snapshot) {
+        Widget content;
         if (snapshot.data ?? false) {
-          return Image.asset(
+          content = Image.asset(
             widget.page.imageAssetPath,
             fit: BoxFit.cover,
             alignment: Alignment.center,
           );
+        } else {
+          content = _OcFallbackArtwork(
+            pageIndex: widget.pageIndex,
+            fallbackColors: widget.page.fallbackColors,
+            fallbackIcon: widget.page.fallbackIcon,
+          );
         }
 
-        return _OcFallbackArtwork(
-          pageIndex: widget.pageIndex,
-          fallbackColors: widget.page.fallbackColors,
-          fallbackIcon: widget.page.fallbackIcon,
-        );
+        if (widget.page.heroTag != null) {
+          content = Hero(
+            tag: widget.page.heroTag!,
+            child: Material(color: Colors.transparent, child: content),
+          );
+        }
+
+        return content;
       },
     );
   }

@@ -1,7 +1,7 @@
 # Agent
 
 ## Active Goal
-- Replace the old consumer mobile experience incrementally, starting with first-run UI.
+- Replace the old consumer mobile experience incrementally, starting with first-run, auth, and car setup.
 
 ## Current Constraints
 - Keep the monorepo and package boundaries.
@@ -10,6 +10,6 @@
 - Keep solutions simple and reversible.
 
 ## Next Logical Work
-- Add the exact onboarding image assets to `apps/consumer/assets/images/`.
-- Redesign the login/auth screens to match the new first-run visual system.
-- Replace the current app shell and home screen after auth.
+- Add the exact welcome and add-car hero assets for final visual parity.
+- Redesign the post-auth shell and home screen to match the new visual system.
+- Keep auth and vehicle flows frontend-only until backend contracts are intentionally replaced.

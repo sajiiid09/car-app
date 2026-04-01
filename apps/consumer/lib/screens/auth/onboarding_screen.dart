@@ -33,6 +33,7 @@ const _onboardingPages = <OcOnboardingPageData>[
     title: 'Track Your Orders',
     subtitle: 'Stay updated with your service and delivery status in real time',
     ctaLabel: 'Get Started',
+    heroTag: 'authWelcomeBackground',
     fallbackIcon: Icons.route_rounded,
     fallbackColors: [Color(0xFF0B1219), Color(0xFF162028), Color(0xFF24343E)],
   ),
@@ -110,7 +111,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     if (!mounted) {
       return;
     }
-    context.go('/login');
+    context.pushReplacement('/login');
   }
 
   Future<void> _skipForNow() async {
@@ -118,7 +119,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     if (!mounted) {
       return;
     }
-    context.go('/login');
+    context.pushReplacement('/login');
   }
 
   void _closeLanguageSheet() {
