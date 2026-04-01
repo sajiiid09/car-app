@@ -81,6 +81,162 @@ class AppLocalizationsEn extends AppLocalizations {
   String get save => 'Save';
 
   @override
+  String get selectRolePrompt => 'Choose your account type';
+
+  @override
+  String get workshopRoleTitle => 'Workshop';
+
+  @override
+  String get workshopRoleSubtitle => 'Inspect vehicles and manage service jobs';
+
+  @override
+  String get driverRoleTitle => 'Driver';
+
+  @override
+  String get driverRoleSubtitle => 'Deliver parts between shops and workshops';
+
+  @override
+  String get shopRoleTitle => 'Shop';
+
+  @override
+  String get shopRoleSubtitle => 'Sell parts and manage inventory';
+
+  @override
+  String get workshopRegistrationEyebrow => 'Workshop Registration';
+
+  @override
+  String get workshopRegistrationTitle => 'Set up your workshop';
+
+  @override
+  String get workshopRegistrationSubtitle =>
+      'Provide your basic details to start managing service jobs on the OnlyCars network.';
+
+  @override
+  String get workshopNameLabel => 'Workshop Name';
+
+  @override
+  String get workshopNameHint => 'e.g. Apex Performance Tuning';
+
+  @override
+  String get workshopNameValidation => 'Enter your workshop name';
+
+  @override
+  String get workshopOwnerLabel => 'Owner Full Name';
+
+  @override
+  String get workshopOwnerHint => 'Johnathan Sterling';
+
+  @override
+  String get workshopOwnerValidation => 'Enter the owner name';
+
+  @override
+  String get workshopPhoneLabel => 'Business Phone Number';
+
+  @override
+  String get workshopPhoneHint => '+1 (555) 000-0000';
+
+  @override
+  String get workshopPhoneValidation => 'Enter a valid phone number';
+
+  @override
+  String get workshopLocationLabel => 'Workshop Location';
+
+  @override
+  String get workshopLocationHint => '122 Industrial Way, Automotive District';
+
+  @override
+  String get workshopLocationValidation => 'Enter your workshop location';
+
+  @override
+  String get workshopSpecialtiesTitle => 'Service Specialties';
+
+  @override
+  String get workshopSpecialtyEngine => 'Engine';
+
+  @override
+  String get workshopSpecialtyElectrical => 'Electrical';
+
+  @override
+  String get workshopSpecialtyTires => 'Tires';
+
+  @override
+  String get workshopSpecialtyPaint => 'Paint';
+
+  @override
+  String get workshopSpecialtyOil => 'Oil';
+
+  @override
+  String get workshopSpecialtyOther => 'Other';
+
+  @override
+  String get workshopSpecialtyValidation => 'Select at least one specialty';
+
+  @override
+  String get workshopVerificationTitle => 'Verification';
+
+  @override
+  String get workshopTradeLicenseUploadTitle => 'Upload Trade License';
+
+  @override
+  String get workshopTradeLicenseUploadHint => 'JPEG or PNG, image only';
+
+  @override
+  String get workshopTradeLicenseValidation => 'Add your trade license image';
+
+  @override
+  String get workshopChooseImageSource => 'Choose image source';
+
+  @override
+  String get workshopCamera => 'Camera';
+
+  @override
+  String get workshopGallery => 'Gallery';
+
+  @override
+  String get workshopCompleteRegistration => 'Complete Registration';
+
+  @override
+  String get workshopSaveDraft => 'Save as Draft';
+
+  @override
+  String get workshopPrivacyTitle => 'Privacy & Data Protection';
+
+  @override
+  String get workshopPrivacySummaryTitle => 'Summary bullets:';
+
+  @override
+  String get workshopPrivacyBulletEncryption => 'Your data is encrypted.';
+
+  @override
+  String get workshopPrivacyBulletAccess =>
+      'Only authorized providers can access your records.';
+
+  @override
+  String get workshopPrivacyBulletControl =>
+      'You control who can view your information.';
+
+  @override
+  String get workshopPrivacyAgreementLead => 'I agree to the ';
+
+  @override
+  String get workshopPrivacyAgreementPolicy => 'Privacy Policy';
+
+  @override
+  String get workshopPrivacyAgreementBridge => ' and ';
+
+  @override
+  String get workshopPrivacyAgreementHipaa => 'HIPAA terms';
+
+  @override
+  String get workshopAgreeAndContinue => 'Agree & Continue';
+
+  @override
+  String get workshopCompleteTitle => 'You’re All Set';
+
+  @override
+  String get workshopStart => 'Start';
+
+  @override
   String get loading => 'Loading...';
 
   @override
