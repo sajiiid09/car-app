@@ -272,6 +272,294 @@ abstract class AppLocalizations {
   /// **'توصيل قطع الغيار بين المتاجر والورش'**
   String get driverRoleSubtitle;
 
+  /// No description provided for @driverRegistrationTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'جهّز حساب السائق'**
+  String get driverRegistrationTitle;
+
+  /// No description provided for @driverRegistrationEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'تسجيل السائق'**
+  String get driverRegistrationEyebrow;
+
+  /// No description provided for @driverRegistrationSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'املأ النموذج السريع أدناه لبدء التوصيل مع OnlyCars.'**
+  String get driverRegistrationSubtitle;
+
+  /// No description provided for @driverFullNameLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'الاسم الكامل'**
+  String get driverFullNameLabel;
+
+  /// No description provided for @driverFullNameHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'جون دو'**
+  String get driverFullNameHint;
+
+  /// No description provided for @driverFullNameValidation.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل الاسم الكامل'**
+  String get driverFullNameValidation;
+
+  /// No description provided for @driverPhoneLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'رقم الهاتف'**
+  String get driverPhoneLabel;
+
+  /// No description provided for @driverPhoneHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'+974 5000 0000'**
+  String get driverPhoneHint;
+
+  /// No description provided for @driverPhoneValidation.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل رقم هاتف صحيح'**
+  String get driverPhoneValidation;
+
+  /// No description provided for @driverVehicleTypeLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'نوع المركبة'**
+  String get driverVehicleTypeLabel;
+
+  /// No description provided for @driverVehicleTypeCar.
+  ///
+  /// In ar, this message translates to:
+  /// **'سيارة'**
+  String get driverVehicleTypeCar;
+
+  /// No description provided for @driverVehicleTypeMotorcycle.
+  ///
+  /// In ar, this message translates to:
+  /// **'دراجة نارية'**
+  String get driverVehicleTypeMotorcycle;
+
+  /// No description provided for @driverVehicleTypeVan.
+  ///
+  /// In ar, this message translates to:
+  /// **'فان'**
+  String get driverVehicleTypeVan;
+
+  /// No description provided for @driverVehicleTypeValidation.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختر نوع المركبة'**
+  String get driverVehicleTypeValidation;
+
+  /// No description provided for @driverServiceAreaLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'منطقة الخدمة'**
+  String get driverServiceAreaLabel;
+
+  /// No description provided for @driverServiceAreaHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختر منطقة الخدمة'**
+  String get driverServiceAreaHint;
+
+  /// No description provided for @driverServiceAreaValidation.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختر منطقة الخدمة'**
+  String get driverServiceAreaValidation;
+
+  /// No description provided for @driverServiceAreaDowntownDistrict.
+  ///
+  /// In ar, this message translates to:
+  /// **'وسط المدينة'**
+  String get driverServiceAreaDowntownDistrict;
+
+  /// No description provided for @driverServiceAreaIndustrialArea.
+  ///
+  /// In ar, this message translates to:
+  /// **'المنطقة الصناعية'**
+  String get driverServiceAreaIndustrialArea;
+
+  /// No description provided for @driverServiceAreaWestBay.
+  ///
+  /// In ar, this message translates to:
+  /// **'الخليج الغربي'**
+  String get driverServiceAreaWestBay;
+
+  /// No description provided for @driverServiceAreaAlSadd.
+  ///
+  /// In ar, this message translates to:
+  /// **'السد'**
+  String get driverServiceAreaAlSadd;
+
+  /// No description provided for @driverServiceAreaAirportZone.
+  ///
+  /// In ar, this message translates to:
+  /// **'منطقة المطار'**
+  String get driverServiceAreaAirportZone;
+
+  /// No description provided for @driverLicenseTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'رخصة القيادة'**
+  String get driverLicenseTitle;
+
+  /// No description provided for @driverLicenseUploadTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'رفع صورة الرخصة'**
+  String get driverLicenseUploadTitle;
+
+  /// No description provided for @driverLicenseUploadHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'JPEG أو PNG، صور فقط'**
+  String get driverLicenseUploadHint;
+
+  /// No description provided for @driverLicenseValidation.
+  ///
+  /// In ar, this message translates to:
+  /// **'أضف صورة رخصة القيادة'**
+  String get driverLicenseValidation;
+
+  /// No description provided for @driverChooseImageSource.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختر مصدر الصورة'**
+  String get driverChooseImageSource;
+
+  /// No description provided for @driverCamera.
+  ///
+  /// In ar, this message translates to:
+  /// **'الكاميرا'**
+  String get driverCamera;
+
+  /// No description provided for @driverGallery.
+  ///
+  /// In ar, this message translates to:
+  /// **'المعرض'**
+  String get driverGallery;
+
+  /// No description provided for @driverSubmitApplication.
+  ///
+  /// In ar, this message translates to:
+  /// **'إرسال الطلب'**
+  String get driverSubmitApplication;
+
+  /// No description provided for @driverSaveDraft.
+  ///
+  /// In ar, this message translates to:
+  /// **'حفظ كمسودة'**
+  String get driverSaveDraft;
+
+  /// No description provided for @driverLegalLead.
+  ///
+  /// In ar, this message translates to:
+  /// **'بإرسال الطلب، فأنت توافق على '**
+  String get driverLegalLead;
+
+  /// No description provided for @driverLegalTerms.
+  ///
+  /// In ar, this message translates to:
+  /// **'الشروط'**
+  String get driverLegalTerms;
+
+  /// No description provided for @driverLegalBridge.
+  ///
+  /// In ar, this message translates to:
+  /// **' و'**
+  String get driverLegalBridge;
+
+  /// No description provided for @driverLegalPrivacy.
+  ///
+  /// In ar, this message translates to:
+  /// **'سياسة الخصوصية'**
+  String get driverLegalPrivacy;
+
+  /// No description provided for @driverLegalTail.
+  ///
+  /// In ar, this message translates to:
+  /// **'.'**
+  String get driverLegalTail;
+
+  /// No description provided for @driverPrivacyTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'الخصوصية وحماية البيانات'**
+  String get driverPrivacyTitle;
+
+  /// No description provided for @driverPrivacySummaryTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملخص سريع:'**
+  String get driverPrivacySummaryTitle;
+
+  /// No description provided for @driverPrivacyBulletEncryption.
+  ///
+  /// In ar, this message translates to:
+  /// **'مستنداتك الشخصية مشفرة.'**
+  String get driverPrivacyBulletEncryption;
+
+  /// No description provided for @driverPrivacyBulletAccess.
+  ///
+  /// In ar, this message translates to:
+  /// **'فقط فريق OnlyCars المصرح له يمكنه مراجعة بيانات السائق.'**
+  String get driverPrivacyBulletAccess;
+
+  /// No description provided for @driverPrivacyBulletControl.
+  ///
+  /// In ar, this message translates to:
+  /// **'أنت تتحكم في تفاصيل التوصيل التي تتم مشاركتها أثناء المهام النشطة.'**
+  String get driverPrivacyBulletControl;
+
+  /// No description provided for @driverPrivacyAgreementLead.
+  ///
+  /// In ar, this message translates to:
+  /// **'أوافق على '**
+  String get driverPrivacyAgreementLead;
+
+  /// No description provided for @driverPrivacyAgreementTerms.
+  ///
+  /// In ar, this message translates to:
+  /// **'الشروط'**
+  String get driverPrivacyAgreementTerms;
+
+  /// No description provided for @driverPrivacyAgreementBridge.
+  ///
+  /// In ar, this message translates to:
+  /// **' و'**
+  String get driverPrivacyAgreementBridge;
+
+  /// No description provided for @driverPrivacyAgreementPolicy.
+  ///
+  /// In ar, this message translates to:
+  /// **'سياسة الخصوصية'**
+  String get driverPrivacyAgreementPolicy;
+
+  /// No description provided for @driverAgreeAndContinue.
+  ///
+  /// In ar, this message translates to:
+  /// **'موافقة ومتابعة'**
+  String get driverAgreeAndContinue;
+
+  /// No description provided for @driverCompleteTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'أصبحت جاهزًا'**
+  String get driverCompleteTitle;
+
+  /// No description provided for @driverStart.
+  ///
+  /// In ar, this message translates to:
+  /// **'ابدأ'**
+  String get driverStart;
+
   /// No description provided for @shopRoleTitle.
   ///
   /// In ar, this message translates to:

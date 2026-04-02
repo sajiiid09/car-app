@@ -96,6 +96,154 @@ class AppLocalizationsEn extends AppLocalizations {
   String get driverRoleSubtitle => 'Deliver parts between shops and workshops';
 
   @override
+  String get driverRegistrationTitle => 'Set up your Driver';
+
+  @override
+  String get driverRegistrationEyebrow => 'Driver Registration';
+
+  @override
+  String get driverRegistrationSubtitle =>
+      'Fill out the quick form below to start delivering with OnlyCars.';
+
+  @override
+  String get driverFullNameLabel => 'Full Name';
+
+  @override
+  String get driverFullNameHint => 'John Doe';
+
+  @override
+  String get driverFullNameValidation => 'Enter your full name';
+
+  @override
+  String get driverPhoneLabel => 'Phone Number';
+
+  @override
+  String get driverPhoneHint => '+1 (555) 000-0000';
+
+  @override
+  String get driverPhoneValidation => 'Enter a valid phone number';
+
+  @override
+  String get driverVehicleTypeLabel => 'Vehicle Type';
+
+  @override
+  String get driverVehicleTypeCar => 'Car';
+
+  @override
+  String get driverVehicleTypeMotorcycle => 'Motorcycle';
+
+  @override
+  String get driverVehicleTypeVan => 'Van';
+
+  @override
+  String get driverVehicleTypeValidation => 'Select a vehicle type';
+
+  @override
+  String get driverServiceAreaLabel => 'Service Area';
+
+  @override
+  String get driverServiceAreaHint => 'Select service area';
+
+  @override
+  String get driverServiceAreaValidation => 'Select a service area';
+
+  @override
+  String get driverServiceAreaDowntownDistrict => 'Downtown District';
+
+  @override
+  String get driverServiceAreaIndustrialArea => 'Industrial Area';
+
+  @override
+  String get driverServiceAreaWestBay => 'West Bay';
+
+  @override
+  String get driverServiceAreaAlSadd => 'Al Sadd';
+
+  @override
+  String get driverServiceAreaAirportZone => 'Airport Zone';
+
+  @override
+  String get driverLicenseTitle => 'Driver\'s License';
+
+  @override
+  String get driverLicenseUploadTitle => 'Upload License Photo';
+
+  @override
+  String get driverLicenseUploadHint => 'JPEG or PNG, image only';
+
+  @override
+  String get driverLicenseValidation => 'Add your driver\'s license image';
+
+  @override
+  String get driverChooseImageSource => 'Choose image source';
+
+  @override
+  String get driverCamera => 'Camera';
+
+  @override
+  String get driverGallery => 'Gallery';
+
+  @override
+  String get driverSubmitApplication => 'Submit Application';
+
+  @override
+  String get driverSaveDraft => 'Save as Draft';
+
+  @override
+  String get driverLegalLead => 'By submitting, you agree to our ';
+
+  @override
+  String get driverLegalTerms => 'Terms';
+
+  @override
+  String get driverLegalBridge => ' and ';
+
+  @override
+  String get driverLegalPrivacy => 'Privacy Policy';
+
+  @override
+  String get driverLegalTail => '.';
+
+  @override
+  String get driverPrivacyTitle => 'Privacy & Data Protection';
+
+  @override
+  String get driverPrivacySummaryTitle => 'Summary bullets:';
+
+  @override
+  String get driverPrivacyBulletEncryption =>
+      'Your personal documents are encrypted.';
+
+  @override
+  String get driverPrivacyBulletAccess =>
+      'Only authorized OnlyCars reviewers can access your driver records.';
+
+  @override
+  String get driverPrivacyBulletControl =>
+      'You control which delivery details are shared during active jobs.';
+
+  @override
+  String get driverPrivacyAgreementLead => 'I agree to the ';
+
+  @override
+  String get driverPrivacyAgreementTerms => 'Terms';
+
+  @override
+  String get driverPrivacyAgreementBridge => ' and ';
+
+  @override
+  String get driverPrivacyAgreementPolicy => 'Privacy Policy';
+
+  @override
+  String get driverAgreeAndContinue => 'Agree & Continue';
+
+  @override
+  String get driverCompleteTitle => 'You’re All Set';
+
+  @override
+  String get driverStart => 'Start';
+
+  @override
   String get shopRoleTitle => 'Shop';
 
   @override

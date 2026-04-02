@@ -75,11 +75,12 @@ class RoleSelectorScreen extends StatelessWidget {
               const SizedBox(height: OcSpacing.lg),
 
               _RoleCard(
+                key: const Key('driverRoleCard'),
                 icon: Icons.delivery_dining,
                 title: l10n.driverRoleTitle,
                 subtitle: l10n.driverRoleSubtitle,
                 color: OcColors.secondary,
-                onTap: () => context.go('/driver'),
+                onTap: () => context.go('/driver/sign-up'),
               ),
               const SizedBox(height: OcSpacing.lg),
 

@@ -96,6 +96,153 @@ class AppLocalizationsAr extends AppLocalizations {
   String get driverRoleSubtitle => 'توصيل قطع الغيار بين المتاجر والورش';
 
   @override
+  String get driverRegistrationTitle => 'جهّز حساب السائق';
+
+  @override
+  String get driverRegistrationEyebrow => 'تسجيل السائق';
+
+  @override
+  String get driverRegistrationSubtitle =>
+      'املأ النموذج السريع أدناه لبدء التوصيل مع OnlyCars.';
+
+  @override
+  String get driverFullNameLabel => 'الاسم الكامل';
+
+  @override
+  String get driverFullNameHint => 'جون دو';
+
+  @override
+  String get driverFullNameValidation => 'أدخل الاسم الكامل';
+
+  @override
+  String get driverPhoneLabel => 'رقم الهاتف';
+
+  @override
+  String get driverPhoneHint => '+974 5000 0000';
+
+  @override
+  String get driverPhoneValidation => 'أدخل رقم هاتف صحيح';
+
+  @override
+  String get driverVehicleTypeLabel => 'نوع المركبة';
+
+  @override
+  String get driverVehicleTypeCar => 'سيارة';
+
+  @override
+  String get driverVehicleTypeMotorcycle => 'دراجة نارية';
+
+  @override
+  String get driverVehicleTypeVan => 'فان';
+
+  @override
+  String get driverVehicleTypeValidation => 'اختر نوع المركبة';
+
+  @override
+  String get driverServiceAreaLabel => 'منطقة الخدمة';
+
+  @override
+  String get driverServiceAreaHint => 'اختر منطقة الخدمة';
+
+  @override
+  String get driverServiceAreaValidation => 'اختر منطقة الخدمة';
+
+  @override
+  String get driverServiceAreaDowntownDistrict => 'وسط المدينة';
+
+  @override
+  String get driverServiceAreaIndustrialArea => 'المنطقة الصناعية';
+
+  @override
+  String get driverServiceAreaWestBay => 'الخليج الغربي';
+
+  @override
+  String get driverServiceAreaAlSadd => 'السد';
+
+  @override
+  String get driverServiceAreaAirportZone => 'منطقة المطار';
+
+  @override
+  String get driverLicenseTitle => 'رخصة القيادة';
+
+  @override
+  String get driverLicenseUploadTitle => 'رفع صورة الرخصة';
+
+  @override
+  String get driverLicenseUploadHint => 'JPEG أو PNG، صور فقط';
+
+  @override
+  String get driverLicenseValidation => 'أضف صورة رخصة القيادة';
+
+  @override
+  String get driverChooseImageSource => 'اختر مصدر الصورة';
+
+  @override
+  String get driverCamera => 'الكاميرا';
+
+  @override
+  String get driverGallery => 'المعرض';
+
+  @override
+  String get driverSubmitApplication => 'إرسال الطلب';
+
+  @override
+  String get driverSaveDraft => 'حفظ كمسودة';
+
+  @override
+  String get driverLegalLead => 'بإرسال الطلب، فأنت توافق على ';
+
+  @override
+  String get driverLegalTerms => 'الشروط';
+
+  @override
+  String get driverLegalBridge => ' و';
+
+  @override
+  String get driverLegalPrivacy => 'سياسة الخصوصية';
+
+  @override
+  String get driverLegalTail => '.';
+
+  @override
+  String get driverPrivacyTitle => 'الخصوصية وحماية البيانات';
+
+  @override
+  String get driverPrivacySummaryTitle => 'ملخص سريع:';
+
+  @override
+  String get driverPrivacyBulletEncryption => 'مستنداتك الشخصية مشفرة.';
+
+  @override
+  String get driverPrivacyBulletAccess =>
+      'فقط فريق OnlyCars المصرح له يمكنه مراجعة بيانات السائق.';
+
+  @override
+  String get driverPrivacyBulletControl =>
+      'أنت تتحكم في تفاصيل التوصيل التي تتم مشاركتها أثناء المهام النشطة.';
+
+  @override
+  String get driverPrivacyAgreementLead => 'أوافق على ';
+
+  @override
+  String get driverPrivacyAgreementTerms => 'الشروط';
+
+  @override
+  String get driverPrivacyAgreementBridge => ' و';
+
+  @override
+  String get driverPrivacyAgreementPolicy => 'سياسة الخصوصية';
+
+  @override
+  String get driverAgreeAndContinue => 'موافقة ومتابعة';
+
+  @override
+  String get driverCompleteTitle => 'أصبحت جاهزًا';
+
+  @override
+  String get driverStart => 'ابدأ';
+
+  @override
   String get shopRoleTitle => 'متجر';
 
   @override
