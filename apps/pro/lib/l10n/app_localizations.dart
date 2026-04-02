@@ -242,6 +242,606 @@ abstract class AppLocalizations {
   /// **'حفظ'**
   String get save;
 
+  /// No description provided for @selectRolePrompt.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختر نوع حسابك'**
+  String get selectRolePrompt;
+
+  /// No description provided for @workshopRoleTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'ورشة'**
+  String get workshopRoleTitle;
+
+  /// No description provided for @workshopRoleSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'فحص السيارات وإدارة مهام الصيانة'**
+  String get workshopRoleSubtitle;
+
+  /// No description provided for @driverRoleTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'سائق'**
+  String get driverRoleTitle;
+
+  /// No description provided for @driverRoleSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'توصيل قطع الغيار بين المتاجر والورش'**
+  String get driverRoleSubtitle;
+
+  /// No description provided for @shopRoleTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'متجر'**
+  String get shopRoleTitle;
+
+  /// No description provided for @shopRoleSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'بيع قطع الغيار وإدارة المخزون'**
+  String get shopRoleSubtitle;
+
+  /// No description provided for @shopRegistrationStep.
+  ///
+  /// In ar, this message translates to:
+  /// **'الخطوة 1 من 2'**
+  String get shopRegistrationStep;
+
+  /// No description provided for @shopRegistrationTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تسجيل الشريك'**
+  String get shopRegistrationTitle;
+
+  /// No description provided for @shopRegistrationSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'أكمل النموذج أدناه لبدء بيع قطع الغيار على OnlyCars.'**
+  String get shopRegistrationSubtitle;
+
+  /// No description provided for @shopGeneralInformationTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'المعلومات العامة'**
+  String get shopGeneralInformationTitle;
+
+  /// No description provided for @shopNameLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'اسم المتجر'**
+  String get shopNameLabel;
+
+  /// No description provided for @shopNameHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'مثال: أبيكس لقطع الأداء'**
+  String get shopNameHint;
+
+  /// No description provided for @shopNameValidation.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل اسم المتجر'**
+  String get shopNameValidation;
+
+  /// No description provided for @shopContactNameLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'اسم جهة الاتصال'**
+  String get shopContactNameLabel;
+
+  /// No description provided for @shopContactNameHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'جون دو'**
+  String get shopContactNameHint;
+
+  /// No description provided for @shopContactNameValidation.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل اسم جهة الاتصال'**
+  String get shopContactNameValidation;
+
+  /// No description provided for @shopPhoneLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'رقم الهاتف'**
+  String get shopPhoneLabel;
+
+  /// No description provided for @shopPhoneHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'+974 5000 0000'**
+  String get shopPhoneHint;
+
+  /// No description provided for @shopPhoneValidation.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل رقم هاتف صحيح'**
+  String get shopPhoneValidation;
+
+  /// No description provided for @shopLocationTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'الموقع'**
+  String get shopLocationTitle;
+
+  /// No description provided for @shopLocationHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'ابحث عن عنوان المتجر...'**
+  String get shopLocationHint;
+
+  /// No description provided for @shopLocationValidation.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل عنوان المتجر'**
+  String get shopLocationValidation;
+
+  /// No description provided for @shopCategoriesTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'فئات المخزون'**
+  String get shopCategoriesTitle;
+
+  /// No description provided for @shopCategoryEngine.
+  ///
+  /// In ar, this message translates to:
+  /// **'محرك'**
+  String get shopCategoryEngine;
+
+  /// No description provided for @shopCategoryBrakes.
+  ///
+  /// In ar, this message translates to:
+  /// **'فرامل'**
+  String get shopCategoryBrakes;
+
+  /// No description provided for @shopCategorySuspension.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعليق'**
+  String get shopCategorySuspension;
+
+  /// No description provided for @shopCategoryBody.
+  ///
+  /// In ar, this message translates to:
+  /// **'هيكل'**
+  String get shopCategoryBody;
+
+  /// No description provided for @shopCategoryElectrical.
+  ///
+  /// In ar, this message translates to:
+  /// **'كهرباء'**
+  String get shopCategoryElectrical;
+
+  /// No description provided for @shopCategoriesValidation.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختر فئة واحدة على الأقل'**
+  String get shopCategoriesValidation;
+
+  /// No description provided for @shopVerificationTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'التحقق'**
+  String get shopVerificationTitle;
+
+  /// No description provided for @shopBusinessLicenseUploadTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'رفع الرخصة التجارية'**
+  String get shopBusinessLicenseUploadTitle;
+
+  /// No description provided for @shopBusinessLicenseUploadHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'JPEG أو PNG، صور فقط'**
+  String get shopBusinessLicenseUploadHint;
+
+  /// No description provided for @shopBusinessLicenseValidation.
+  ///
+  /// In ar, this message translates to:
+  /// **'أضف صورة الرخصة التجارية'**
+  String get shopBusinessLicenseValidation;
+
+  /// No description provided for @shopChooseImageSource.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختر مصدر الصورة'**
+  String get shopChooseImageSource;
+
+  /// No description provided for @shopCamera.
+  ///
+  /// In ar, this message translates to:
+  /// **'الكاميرا'**
+  String get shopCamera;
+
+  /// No description provided for @shopGallery.
+  ///
+  /// In ar, this message translates to:
+  /// **'المعرض'**
+  String get shopGallery;
+
+  /// No description provided for @shopCompleteRegistration.
+  ///
+  /// In ar, this message translates to:
+  /// **'إكمال التسجيل'**
+  String get shopCompleteRegistration;
+
+  /// No description provided for @shopSaveDraft.
+  ///
+  /// In ar, this message translates to:
+  /// **'حفظ كمسودة'**
+  String get shopSaveDraft;
+
+  /// No description provided for @shopLegalLead.
+  ///
+  /// In ar, this message translates to:
+  /// **'بالمتابعة، فأنت توافق على '**
+  String get shopLegalLead;
+
+  /// No description provided for @shopLegalTerms.
+  ///
+  /// In ar, this message translates to:
+  /// **'شروط الشركاء'**
+  String get shopLegalTerms;
+
+  /// No description provided for @shopLegalBridge.
+  ///
+  /// In ar, this message translates to:
+  /// **' و'**
+  String get shopLegalBridge;
+
+  /// No description provided for @shopLegalPrivacy.
+  ///
+  /// In ar, this message translates to:
+  /// **'سياسة الخصوصية'**
+  String get shopLegalPrivacy;
+
+  /// No description provided for @shopLegalTail.
+  ///
+  /// In ar, this message translates to:
+  /// **'.'**
+  String get shopLegalTail;
+
+  /// No description provided for @shopPrivacyTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'الخصوصية وحماية البيانات'**
+  String get shopPrivacyTitle;
+
+  /// No description provided for @shopPrivacySummaryTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملخص سريع:'**
+  String get shopPrivacySummaryTitle;
+
+  /// No description provided for @shopPrivacyBulletEncryption.
+  ///
+  /// In ar, this message translates to:
+  /// **'مستندات نشاطك مشفرة.'**
+  String get shopPrivacyBulletEncryption;
+
+  /// No description provided for @shopPrivacyBulletAccess.
+  ///
+  /// In ar, this message translates to:
+  /// **'فقط فريق OnlyCars المصرح له يمكنه مراجعة بيانات التحقق.'**
+  String get shopPrivacyBulletAccess;
+
+  /// No description provided for @shopPrivacyBulletControl.
+  ///
+  /// In ar, this message translates to:
+  /// **'أنت تتحكم في المعلومات التي تظهر عن متجرك للمشترين.'**
+  String get shopPrivacyBulletControl;
+
+  /// No description provided for @shopPrivacyAgreementLead.
+  ///
+  /// In ar, this message translates to:
+  /// **'أوافق على '**
+  String get shopPrivacyAgreementLead;
+
+  /// No description provided for @shopPrivacyAgreementTerms.
+  ///
+  /// In ar, this message translates to:
+  /// **'شروط الشركاء'**
+  String get shopPrivacyAgreementTerms;
+
+  /// No description provided for @shopPrivacyAgreementBridge.
+  ///
+  /// In ar, this message translates to:
+  /// **' و'**
+  String get shopPrivacyAgreementBridge;
+
+  /// No description provided for @shopPrivacyAgreementPolicy.
+  ///
+  /// In ar, this message translates to:
+  /// **'سياسة الخصوصية'**
+  String get shopPrivacyAgreementPolicy;
+
+  /// No description provided for @shopAgreeAndContinue.
+  ///
+  /// In ar, this message translates to:
+  /// **'موافقة ومتابعة'**
+  String get shopAgreeAndContinue;
+
+  /// No description provided for @shopCompleteTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'أصبحت جاهزًا'**
+  String get shopCompleteTitle;
+
+  /// No description provided for @shopStart.
+  ///
+  /// In ar, this message translates to:
+  /// **'ابدأ'**
+  String get shopStart;
+
+  /// No description provided for @workshopRegistrationEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'تسجيل الورشة'**
+  String get workshopRegistrationEyebrow;
+
+  /// No description provided for @workshopRegistrationTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'جهّز ورشتك'**
+  String get workshopRegistrationTitle;
+
+  /// No description provided for @workshopRegistrationSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل بياناتك الأساسية لبدء إدارة مهام الصيانة على شبكة OnlyCars.'**
+  String get workshopRegistrationSubtitle;
+
+  /// No description provided for @workshopNameLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'اسم الورشة'**
+  String get workshopNameLabel;
+
+  /// No description provided for @workshopNameHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'مثال: ورشة الأداء المتقدم'**
+  String get workshopNameHint;
+
+  /// No description provided for @workshopNameValidation.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل اسم الورشة'**
+  String get workshopNameValidation;
+
+  /// No description provided for @workshopOwnerLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'الاسم الكامل للمالك'**
+  String get workshopOwnerLabel;
+
+  /// No description provided for @workshopOwnerHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'جوناثان ستيرلينغ'**
+  String get workshopOwnerHint;
+
+  /// No description provided for @workshopOwnerValidation.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل اسم المالك'**
+  String get workshopOwnerValidation;
+
+  /// No description provided for @workshopPhoneLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'رقم هاتف النشاط'**
+  String get workshopPhoneLabel;
+
+  /// No description provided for @workshopPhoneHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'+974 5000 0000'**
+  String get workshopPhoneHint;
+
+  /// No description provided for @workshopPhoneValidation.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل رقم هاتف صحيح'**
+  String get workshopPhoneValidation;
+
+  /// No description provided for @workshopLocationLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'موقع الورشة'**
+  String get workshopLocationLabel;
+
+  /// No description provided for @workshopLocationHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'المنطقة الصناعية، الشارع 12'**
+  String get workshopLocationHint;
+
+  /// No description provided for @workshopLocationValidation.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل موقع الورشة'**
+  String get workshopLocationValidation;
+
+  /// No description provided for @workshopSpecialtiesTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'التخصصات'**
+  String get workshopSpecialtiesTitle;
+
+  /// No description provided for @workshopSpecialtyEngine.
+  ///
+  /// In ar, this message translates to:
+  /// **'محرك'**
+  String get workshopSpecialtyEngine;
+
+  /// No description provided for @workshopSpecialtyElectrical.
+  ///
+  /// In ar, this message translates to:
+  /// **'كهرباء'**
+  String get workshopSpecialtyElectrical;
+
+  /// No description provided for @workshopSpecialtyTires.
+  ///
+  /// In ar, this message translates to:
+  /// **'إطارات'**
+  String get workshopSpecialtyTires;
+
+  /// No description provided for @workshopSpecialtyPaint.
+  ///
+  /// In ar, this message translates to:
+  /// **'دهان'**
+  String get workshopSpecialtyPaint;
+
+  /// No description provided for @workshopSpecialtyOil.
+  ///
+  /// In ar, this message translates to:
+  /// **'زيوت'**
+  String get workshopSpecialtyOil;
+
+  /// No description provided for @workshopSpecialtyOther.
+  ///
+  /// In ar, this message translates to:
+  /// **'أخرى'**
+  String get workshopSpecialtyOther;
+
+  /// No description provided for @workshopSpecialtyValidation.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختر تخصصًا واحدًا على الأقل'**
+  String get workshopSpecialtyValidation;
+
+  /// No description provided for @workshopVerificationTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'التحقق'**
+  String get workshopVerificationTitle;
+
+  /// No description provided for @workshopTradeLicenseUploadTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'رفع السجل التجاري'**
+  String get workshopTradeLicenseUploadTitle;
+
+  /// No description provided for @workshopTradeLicenseUploadHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'صورة فقط بصيغة JPEG أو PNG'**
+  String get workshopTradeLicenseUploadHint;
+
+  /// No description provided for @workshopTradeLicenseValidation.
+  ///
+  /// In ar, this message translates to:
+  /// **'أضف صورة السجل التجاري'**
+  String get workshopTradeLicenseValidation;
+
+  /// No description provided for @workshopChooseImageSource.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختر مصدر الصورة'**
+  String get workshopChooseImageSource;
+
+  /// No description provided for @workshopCamera.
+  ///
+  /// In ar, this message translates to:
+  /// **'الكاميرا'**
+  String get workshopCamera;
+
+  /// No description provided for @workshopGallery.
+  ///
+  /// In ar, this message translates to:
+  /// **'المعرض'**
+  String get workshopGallery;
+
+  /// No description provided for @workshopCompleteRegistration.
+  ///
+  /// In ar, this message translates to:
+  /// **'إكمال التسجيل'**
+  String get workshopCompleteRegistration;
+
+  /// No description provided for @workshopSaveDraft.
+  ///
+  /// In ar, this message translates to:
+  /// **'حفظ كمسودة'**
+  String get workshopSaveDraft;
+
+  /// No description provided for @workshopPrivacyTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'الخصوصية وحماية البيانات'**
+  String get workshopPrivacyTitle;
+
+  /// No description provided for @workshopPrivacySummaryTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملخص سريع:'**
+  String get workshopPrivacySummaryTitle;
+
+  /// No description provided for @workshopPrivacyBulletEncryption.
+  ///
+  /// In ar, this message translates to:
+  /// **'بياناتك مشفرة.'**
+  String get workshopPrivacyBulletEncryption;
+
+  /// No description provided for @workshopPrivacyBulletAccess.
+  ///
+  /// In ar, this message translates to:
+  /// **'فقط مقدمو الخدمة المصرح لهم يمكنهم الوصول إلى سجلاتك.'**
+  String get workshopPrivacyBulletAccess;
+
+  /// No description provided for @workshopPrivacyBulletControl.
+  ///
+  /// In ar, this message translates to:
+  /// **'أنت تتحكم بمن يمكنه الاطلاع على معلوماتك.'**
+  String get workshopPrivacyBulletControl;
+
+  /// No description provided for @workshopPrivacyAgreementLead.
+  ///
+  /// In ar, this message translates to:
+  /// **'أوافق على '**
+  String get workshopPrivacyAgreementLead;
+
+  /// No description provided for @workshopPrivacyAgreementPolicy.
+  ///
+  /// In ar, this message translates to:
+  /// **'سياسة الخصوصية'**
+  String get workshopPrivacyAgreementPolicy;
+
+  /// No description provided for @workshopPrivacyAgreementBridge.
+  ///
+  /// In ar, this message translates to:
+  /// **' و'**
+  String get workshopPrivacyAgreementBridge;
+
+  /// No description provided for @workshopPrivacyAgreementHipaa.
+  ///
+  /// In ar, this message translates to:
+  /// **'شروط HIPAA'**
+  String get workshopPrivacyAgreementHipaa;
+
+  /// No description provided for @workshopAgreeAndContinue.
+  ///
+  /// In ar, this message translates to:
+  /// **'موافقة ومتابعة'**
+  String get workshopAgreeAndContinue;
+
+  /// No description provided for @workshopCompleteTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'أصبحت جاهزًا'**
+  String get workshopCompleteTitle;
+
+  /// No description provided for @workshopStart.
+  ///
+  /// In ar, this message translates to:
+  /// **'ابدأ'**
+  String get workshopStart;
+
   /// No description provided for @loading.
   ///
   /// In ar, this message translates to:

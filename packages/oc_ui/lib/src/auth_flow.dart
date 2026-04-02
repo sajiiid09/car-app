@@ -7,10 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'tokens.dart';
 
 class OcCircleBackButton extends StatelessWidget {
-  const OcCircleBackButton({
-    super.key,
-    required this.onPressed,
-  });
+  const OcCircleBackButton({super.key, required this.onPressed});
 
   final VoidCallback onPressed;
 
@@ -116,9 +113,7 @@ class _OcAnimatedAuthFieldState extends State<OcAnimatedAuthField> {
           duration: const Duration(milliseconds: 220),
           curve: Curves.easeOutCubic,
           decoration: BoxDecoration(
-            color: isActive
-                ? Colors.white
-                : const Color(0xFFEDEDED),
+            color: isActive ? Colors.white : const Color(0xFFEDEDED),
             borderRadius: BorderRadius.circular(22),
             border: Border.all(
               color: isActive ? OcColors.accent : Colors.transparent,
@@ -214,11 +209,7 @@ class OcSocialAuthButton extends StatelessWidget {
             leading,
             const SizedBox(width: 18),
             Flexible(
-              child: Text(
-                label,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
+              child: Text(label, maxLines: 1, overflow: TextOverflow.ellipsis),
             ),
           ],
         ),
@@ -312,7 +303,8 @@ class _OcOtpInputRowState extends State<OcOtpInputRow> {
     super.dispose();
   }
 
-  String get _joinedValue => _controllers.map((controller) => controller.text).join();
+  String get _joinedValue =>
+      _controllers.map((controller) => controller.text).join();
 
   void _handleFocusChanged() {
     if (mounted) {
@@ -384,10 +376,7 @@ class _OcOtpInputRowState extends State<OcOtpInputRow> {
     setState(() {});
   }
 
-  void _applyPastedDigits({
-    required int startIndex,
-    required String digits,
-  }) {
+  void _applyPastedDigits({required int startIndex, required String digits}) {
     _syncing = true;
     var cursor = startIndex;
     for (final digit in digits.split('')) {
@@ -492,9 +481,7 @@ class _OcOtpInputRowState extends State<OcOtpInputRow> {
                     counterText: '',
                     contentPadding: EdgeInsets.zero,
                   ),
-                  inputFormatters: [
-                    FilteringTextInputFormatter.digitsOnly,
-                  ],
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   maxLength: 4,
                 ),
               ),
@@ -525,36 +512,41 @@ class OcEngineTypeChips<T> extends StatelessWidget {
     return Wrap(
       spacing: 12,
       runSpacing: 12,
-      children: options.map((option) {
-        final isSelected = option == selected;
-        return GestureDetector(
-          onTap: () => onSelected(option),
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 220),
-            curve: Curves.easeOutCubic,
-            padding: const EdgeInsets.symmetric(horizontal: 34, vertical: 22),
-            decoration: BoxDecoration(
-              color: isSelected ? Colors.white : const Color(0xFFEDEDED),
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(
-                color: isSelected ? OcColors.accent : Colors.transparent,
-                width: 1.5,
+      children: options
+          .map((option) {
+            final isSelected = option == selected;
+            return GestureDetector(
+              onTap: () => onSelected(option),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 220),
+                curve: Curves.easeOutCubic,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 34,
+                  vertical: 22,
+                ),
+                decoration: BoxDecoration(
+                  color: isSelected ? Colors.white : const Color(0xFFEDEDED),
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                    color: isSelected ? OcColors.accent : Colors.transparent,
+                    width: 1.5,
+                  ),
+                ),
+                child: Text(
+                  labelBuilder(option),
+                  style: GoogleFonts.plusJakartaSans(
+                    color: isSelected
+                        ? const Color(0xFF163154)
+                        : const Color(0xFF5F5F5F),
+                    fontSize: 17,
+                    fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
+                    letterSpacing: -0.03,
+                  ),
+                ),
               ),
-            ),
-            child: Text(
-              labelBuilder(option),
-              style: GoogleFonts.plusJakartaSans(
-                color: isSelected
-                    ? const Color(0xFF163154)
-                    : const Color(0xFF5F5F5F),
-                fontSize: 17,
-                fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
-                letterSpacing: -0.03,
-              ),
-            ),
-          ),
-        );
-      }).toList(growable: false),
+            );
+          })
+          .toList(growable: false),
     );
   }
 }
@@ -563,9 +555,17 @@ class OcSuccessHalo extends StatelessWidget {
   const OcSuccessHalo({
     super.key,
     required this.animation,
+    this.iconColor = const Color(0xFFB6B6B6),
+    this.haloColor,
+    this.haloBorderColor,
+    this.shadowColor,
   });
 
   final Animation<double> animation;
+  final Color iconColor;
+  final Color? haloColor;
+  final Color? haloBorderColor;
+  final Color? shadowColor;
 
   @override
   Widget build(BuildContext context) {
@@ -598,14 +598,18 @@ class OcSuccessHalo extends StatelessWidget {
                     height: 180,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.white.withValues(alpha: 0.18),
+                      color: haloColor ?? Colors.white.withValues(alpha: 0.18),
                       border: Border.all(
-                        color: Colors.white.withValues(alpha: 0.55),
+                        color:
+                            haloBorderColor ??
+                            Colors.white.withValues(alpha: 0.55),
                         width: 1.5,
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.white.withValues(alpha: 0.2),
+                          color:
+                              shadowColor ??
+                              Colors.white.withValues(alpha: 0.2),
                           blurRadius: 38,
                           spreadRadius: 10,
                         ),
@@ -624,11 +628,7 @@ class OcSuccessHalo extends StatelessWidget {
                 scale: checkValue,
                 child: Opacity(
                   opacity: checkValue,
-                  child: Icon(
-                    Icons.check_rounded,
-                    size: 104,
-                    color: const Color(0xFFB6B6B6),
-                  ),
+                  child: Icon(Icons.check_rounded, size: 104, color: iconColor),
                 ),
               ),
             ],
@@ -730,9 +730,7 @@ class _OcImmersiveHeroBackgroundState extends State<OcImmersiveHeroBackground> {
             content,
             if (widget.overlayGradient != null)
               DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: widget.overlayGradient,
-                ),
+                decoration: BoxDecoration(gradient: widget.overlayGradient),
               ),
           ],
         ),
@@ -740,10 +738,7 @@ class _OcImmersiveHeroBackgroundState extends State<OcImmersiveHeroBackground> {
     );
 
     if (widget.borderRadius != null) {
-      content = ClipRRect(
-        borderRadius: widget.borderRadius!,
-        child: content,
-      );
+      content = ClipRRect(borderRadius: widget.borderRadius!, child: content);
     }
 
     if (widget.height != null) {

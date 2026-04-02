@@ -60,7 +60,7 @@ class _DriverDashboardState extends State<DriverDashboard> {
                   Switch(
                     value: _isAvailable,
                     onChanged: (v) => setState(() => _isAvailable = v),
-                    activeColor: Colors.white,
+                    activeThumbColor: Colors.white,
                     activeTrackColor: Colors.white24,
                   ),
                 ],
