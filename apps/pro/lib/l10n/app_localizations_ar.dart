@@ -922,6 +922,333 @@ class AppLocalizationsAr extends AppLocalizations {
   String get workshopStageCompleted => 'مكتملة';
 
   @override
+  String get shopShellDashboardTab => 'الرئيسية';
+
+  @override
+  String get shopShellOrdersTab => 'الطلبات';
+
+  @override
+  String get shopShellProductsTab => 'المنتجات';
+
+  @override
+  String get shopShellMessagesTab => 'الرسائل';
+
+  @override
+  String get shopShellProfileTab => 'الملف';
+
+  @override
+  String get shopDashboardEyebrow => 'تشغيل القطع';
+
+  @override
+  String get shopDashboardTitle => 'لوحة المتجر';
+
+  @override
+  String get shopDashboardSubtitle =>
+      'أدر تشغيل متجر القطع المميزة مع رؤية واضحة للتوصيل والمخزون وواجهة هادئة تعتمد تدرجات الأزرق الخاصة بالمشروع.';
+
+  @override
+  String get shopMetricPendingOrders => 'طلبات معلقة';
+
+  @override
+  String get shopMetricOutForDelivery => 'خارج للتوصيل';
+
+  @override
+  String get shopMetricLowStock => 'مخزون منخفض';
+
+  @override
+  String get shopMetricTodayRevenue => 'إيراد اليوم';
+
+  @override
+  String get shopQuickActionsTitle => 'إجراءات سريعة';
+
+  @override
+  String get shopQuickActionOrders => 'فتح الطلبات';
+
+  @override
+  String get shopQuickActionProducts => 'إدارة المنتجات';
+
+  @override
+  String get shopQuickActionProfile => 'عرض الملف';
+
+  @override
+  String get shopQuickActionDelivery => 'تتبع التوصيل';
+
+  @override
+  String get shopOperationalQueueTitle => 'قائمة التشغيل';
+
+  @override
+  String get shopFeaturedPartsTitle => 'مخزون مميز';
+
+  @override
+  String get shopSeeAll => 'عرض الكل';
+
+  @override
+  String get shopOrdersEyebrow => 'قائمة التنفيذ';
+
+  @override
+  String get shopOrdersTitle => 'قائمة الطلبات';
+
+  @override
+  String get shopOrdersSubtitle =>
+      'راجع الطلبات الجديدة وحركة السائقين والطلبات المكتملة من قائمة تشغيل واحدة.';
+
+  @override
+  String get shopOrdersFilterAll => 'الكل';
+
+  @override
+  String get shopOrdersFilterActive => 'نشطة';
+
+  @override
+  String get shopOrdersFilterCompleted => 'مكتملة';
+
+  @override
+  String get shopProductsEyebrow => 'التحكم بالمخزون';
+
+  @override
+  String get shopProductsTitle => 'المنتجات والمخزون';
+
+  @override
+  String get shopProductsSubtitle =>
+      'حافظ على وضوح مستويات المخزون وأظهر النقص مبكرًا وأضف القطع الجديدة مباشرة من شاشة المنتجات.';
+
+  @override
+  String get shopAddPart => 'إضافة قطعة';
+
+  @override
+  String get shopLowStock => 'مخزون منخفض';
+
+  @override
+  String get shopInStock => 'متوفر';
+
+  @override
+  String get shopInlineAddTitle => 'إضافة عنصر للمخزون';
+
+  @override
+  String get shopInlineAddSubtitle =>
+      'تتم إضافة المخزون السريع من شاشة المنتجات بدلًا من مسار منفصل.';
+
+  @override
+  String get shopFieldPartName => 'اسم القطعة';
+
+  @override
+  String get shopFieldPartSku => 'رمز SKU';
+
+  @override
+  String get shopFieldPartPrice => 'السعر';
+
+  @override
+  String get shopFieldPartStock => 'الكمية';
+
+  @override
+  String get shopSavePart => 'حفظ القطعة';
+
+  @override
+  String get shopMessagesEyebrow => 'صندوق المتجر';
+
+  @override
+  String get shopMessagesTitle => 'الرسائل';
+
+  @override
+  String get shopMessagesSubtitle =>
+      'الرسائل مبسطة عمدًا في هذه المرحلة. يبقى تشغيل الطلبات والتوصيل داخل قسم الطلبات.';
+
+  @override
+  String get shopMessagesEmptyTitle => 'الرسائل لاحقًا';
+
+  @override
+  String get shopMessagesEmptySubtitle =>
+      'هذا الموضع يحافظ على اكتمال الشريط السفلي بينما يتم تأجيل صندوق الرسائل المتصل بين العملاء والسائقين إلى مرحلة لاحقة.';
+
+  @override
+  String get shopProfileEyebrow => 'ملف البائع';
+
+  @override
+  String get shopProfileTitle => 'ملف المتجر';
+
+  @override
+  String get shopProfileSubtitle =>
+      'راجع وضع الدفعات والتفاصيل العامة للتاجر ونطاق التوصيل المميز الظاهر للعملاء.';
+
+  @override
+  String get shopProfileBalance => 'الرصيد المتاح';
+
+  @override
+  String get shopProfileOrders => 'طلبات هذا الأسبوع';
+
+  @override
+  String get shopProfileRating => 'تقييم المتجر';
+
+  @override
+  String get shopProfileResponseTime => 'زمن الاستجابة';
+
+  @override
+  String get shopProfileContactTitle => 'التواصل';
+
+  @override
+  String get shopProfileCoverageTitle => 'التغطية';
+
+  @override
+  String get shopProfileHoursTitle => 'ساعات العمل';
+
+  @override
+  String get shopOrderNotFound => 'لم يتم العثور على الطلب';
+
+  @override
+  String get shopOrderDetailEyebrow => 'استقبال الطلب';
+
+  @override
+  String get shopOrderDetailTitle => 'تفاصيل الطلب';
+
+  @override
+  String get shopOrderDetailSubtitle =>
+      'أكد بيانات العميل والعناصر ومعلومات التوصيل قبل نقل الطرد إلى التعبئة.';
+
+  @override
+  String get shopPackingEyebrow => 'منطقة التعبئة';
+
+  @override
+  String get shopPackingTitle => 'عرض التعبئة';
+
+  @override
+  String get shopPackingSubtitle =>
+      'ثبت قائمة الالتقاط وعبّئ العناصر وجهز الطلب لتسليمه إلى السائق.';
+
+  @override
+  String get shopDeliveryRequestEyebrow => 'طلب التوصيل';
+
+  @override
+  String get shopDeliveryRequestTitle => 'طلب التوصيل';
+
+  @override
+  String get shopDeliveryRequestSubtitle =>
+      'تحقق من الوجهة وأرسل طلب التوصيل بعد أن يصبح الطرد جاهزًا لمغادرة المتجر.';
+
+  @override
+  String get shopSearchingDriverEyebrow => 'مطابقة السائق';
+
+  @override
+  String get shopSearchingDriverTitle => 'البحث عن سائق';
+
+  @override
+  String get shopSearchingDriverSubtitle =>
+      'أبقِ الطلب في مرحلة المطابقة حتى يتم تأكيد سعة السائق.';
+
+  @override
+  String get shopCourierAssignedEyebrow => 'تأكيد السائق';
+
+  @override
+  String get shopCourierAssignedTitle => 'تم تعيين السائق';
+
+  @override
+  String get shopCourierAssignedSubtitle =>
+      'تم تثبيت هوية السائق ووقت الوصول. جهز الطرد لتسليم منظم.';
+
+  @override
+  String get shopHandoverEyebrow => 'تسليم الخروج';
+
+  @override
+  String get shopHandoverTitle => 'تسليم إلى السائق';
+
+  @override
+  String get shopHandoverSubtitle =>
+      'تحقق من الطرد وختم الإرسال وبيانات السائق قبل تسليم الشحنة.';
+
+  @override
+  String get shopTrackingEyebrow => 'المسار المباشر';
+
+  @override
+  String get shopTrackingTitle => 'تتبع التوصيل';
+
+  @override
+  String get shopTrackingSubtitle =>
+      'غادر الطرد المتجر. تابع المسار وأغلق الطلب عند تأكيد التسليم.';
+
+  @override
+  String get shopCompletedEyebrow => 'إثبات التسليم';
+
+  @override
+  String get shopCompletedTitle => 'اكتمل التوصيل';
+
+  @override
+  String get shopCompletedSubtitle =>
+      'تم تسجيل إثبات التسليم وأصبح الطلب في الحالة المغلقة.';
+
+  @override
+  String get shopOrderItemsTitle => 'عناصر الطلب';
+
+  @override
+  String get shopCourierCardTitle => 'السائق المعين';
+
+  @override
+  String get shopCustomerDetailsTitle => 'العميل والتوصيل';
+
+  @override
+  String get shopTrackingCodeLabel => 'رمز التتبع';
+
+  @override
+  String get shopOrderTimelineTitle => 'قائمة التشغيل';
+
+  @override
+  String get shopDeliveryWindowLabel => 'نافذة التوصيل';
+
+  @override
+  String get shopVehicleLabel => 'السيارة';
+
+  @override
+  String get shopPrimaryAddressLabel => 'العنوان';
+
+  @override
+  String get shopStartPacking => 'بدء التعبئة';
+
+  @override
+  String get shopRequestCourier => 'طلب سائق';
+
+  @override
+  String get shopSendDeliveryRequest => 'إرسال طلب التوصيل';
+
+  @override
+  String get shopSimulateDriverAssigned => 'محاكاة تعيين السائق';
+
+  @override
+  String get shopContinueToHandover => 'المتابعة إلى التسليم';
+
+  @override
+  String get shopConfirmHandover => 'تأكيد التسليم';
+
+  @override
+  String get shopMarkDelivered => 'تأكيد التسليم';
+
+  @override
+  String get shopBackToOrders => 'العودة إلى الطلبات';
+
+  @override
+  String get shopBackToDashboard => 'العودة إلى الرئيسية';
+
+  @override
+  String get shopStageNewOrder => 'طلب جديد';
+
+  @override
+  String get shopStagePacking => 'تعبئة';
+
+  @override
+  String get shopStageDeliveryRequest => 'طلب توصيل';
+
+  @override
+  String get shopStageSearchingDriver => 'بحث';
+
+  @override
+  String get shopStageCourierAssigned => 'معين';
+
+  @override
+  String get shopStageHandover => 'تسليم';
+
+  @override
+  String get shopStageTracking => 'تتبع';
+
+  @override
+  String get shopStageCompleted => 'مكتمل';
+
+  @override
   String get loading => 'جاري التحميل...';
 
   @override

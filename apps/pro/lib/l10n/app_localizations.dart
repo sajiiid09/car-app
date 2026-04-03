@@ -1868,6 +1868,630 @@ abstract class AppLocalizations {
   /// **'مكتملة'**
   String get workshopStageCompleted;
 
+  /// No description provided for @shopShellDashboardTab.
+  ///
+  /// In ar, this message translates to:
+  /// **'الرئيسية'**
+  String get shopShellDashboardTab;
+
+  /// No description provided for @shopShellOrdersTab.
+  ///
+  /// In ar, this message translates to:
+  /// **'الطلبات'**
+  String get shopShellOrdersTab;
+
+  /// No description provided for @shopShellProductsTab.
+  ///
+  /// In ar, this message translates to:
+  /// **'المنتجات'**
+  String get shopShellProductsTab;
+
+  /// No description provided for @shopShellMessagesTab.
+  ///
+  /// In ar, this message translates to:
+  /// **'الرسائل'**
+  String get shopShellMessagesTab;
+
+  /// No description provided for @shopShellProfileTab.
+  ///
+  /// In ar, this message translates to:
+  /// **'الملف'**
+  String get shopShellProfileTab;
+
+  /// No description provided for @shopDashboardEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'تشغيل القطع'**
+  String get shopDashboardEyebrow;
+
+  /// No description provided for @shopDashboardTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'لوحة المتجر'**
+  String get shopDashboardTitle;
+
+  /// No description provided for @shopDashboardSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدر تشغيل متجر القطع المميزة مع رؤية واضحة للتوصيل والمخزون وواجهة هادئة تعتمد تدرجات الأزرق الخاصة بالمشروع.'**
+  String get shopDashboardSubtitle;
+
+  /// No description provided for @shopMetricPendingOrders.
+  ///
+  /// In ar, this message translates to:
+  /// **'طلبات معلقة'**
+  String get shopMetricPendingOrders;
+
+  /// No description provided for @shopMetricOutForDelivery.
+  ///
+  /// In ar, this message translates to:
+  /// **'خارج للتوصيل'**
+  String get shopMetricOutForDelivery;
+
+  /// No description provided for @shopMetricLowStock.
+  ///
+  /// In ar, this message translates to:
+  /// **'مخزون منخفض'**
+  String get shopMetricLowStock;
+
+  /// No description provided for @shopMetricTodayRevenue.
+  ///
+  /// In ar, this message translates to:
+  /// **'إيراد اليوم'**
+  String get shopMetricTodayRevenue;
+
+  /// No description provided for @shopQuickActionsTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'إجراءات سريعة'**
+  String get shopQuickActionsTitle;
+
+  /// No description provided for @shopQuickActionOrders.
+  ///
+  /// In ar, this message translates to:
+  /// **'فتح الطلبات'**
+  String get shopQuickActionOrders;
+
+  /// No description provided for @shopQuickActionProducts.
+  ///
+  /// In ar, this message translates to:
+  /// **'إدارة المنتجات'**
+  String get shopQuickActionProducts;
+
+  /// No description provided for @shopQuickActionProfile.
+  ///
+  /// In ar, this message translates to:
+  /// **'عرض الملف'**
+  String get shopQuickActionProfile;
+
+  /// No description provided for @shopQuickActionDelivery.
+  ///
+  /// In ar, this message translates to:
+  /// **'تتبع التوصيل'**
+  String get shopQuickActionDelivery;
+
+  /// No description provided for @shopOperationalQueueTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'قائمة التشغيل'**
+  String get shopOperationalQueueTitle;
+
+  /// No description provided for @shopFeaturedPartsTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'مخزون مميز'**
+  String get shopFeaturedPartsTitle;
+
+  /// No description provided for @shopSeeAll.
+  ///
+  /// In ar, this message translates to:
+  /// **'عرض الكل'**
+  String get shopSeeAll;
+
+  /// No description provided for @shopOrdersEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'قائمة التنفيذ'**
+  String get shopOrdersEyebrow;
+
+  /// No description provided for @shopOrdersTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'قائمة الطلبات'**
+  String get shopOrdersTitle;
+
+  /// No description provided for @shopOrdersSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'راجع الطلبات الجديدة وحركة السائقين والطلبات المكتملة من قائمة تشغيل واحدة.'**
+  String get shopOrdersSubtitle;
+
+  /// No description provided for @shopOrdersFilterAll.
+  ///
+  /// In ar, this message translates to:
+  /// **'الكل'**
+  String get shopOrdersFilterAll;
+
+  /// No description provided for @shopOrdersFilterActive.
+  ///
+  /// In ar, this message translates to:
+  /// **'نشطة'**
+  String get shopOrdersFilterActive;
+
+  /// No description provided for @shopOrdersFilterCompleted.
+  ///
+  /// In ar, this message translates to:
+  /// **'مكتملة'**
+  String get shopOrdersFilterCompleted;
+
+  /// No description provided for @shopProductsEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'التحكم بالمخزون'**
+  String get shopProductsEyebrow;
+
+  /// No description provided for @shopProductsTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'المنتجات والمخزون'**
+  String get shopProductsTitle;
+
+  /// No description provided for @shopProductsSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'حافظ على وضوح مستويات المخزون وأظهر النقص مبكرًا وأضف القطع الجديدة مباشرة من شاشة المنتجات.'**
+  String get shopProductsSubtitle;
+
+  /// No description provided for @shopAddPart.
+  ///
+  /// In ar, this message translates to:
+  /// **'إضافة قطعة'**
+  String get shopAddPart;
+
+  /// No description provided for @shopLowStock.
+  ///
+  /// In ar, this message translates to:
+  /// **'مخزون منخفض'**
+  String get shopLowStock;
+
+  /// No description provided for @shopInStock.
+  ///
+  /// In ar, this message translates to:
+  /// **'متوفر'**
+  String get shopInStock;
+
+  /// No description provided for @shopInlineAddTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'إضافة عنصر للمخزون'**
+  String get shopInlineAddTitle;
+
+  /// No description provided for @shopInlineAddSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تتم إضافة المخزون السريع من شاشة المنتجات بدلًا من مسار منفصل.'**
+  String get shopInlineAddSubtitle;
+
+  /// No description provided for @shopFieldPartName.
+  ///
+  /// In ar, this message translates to:
+  /// **'اسم القطعة'**
+  String get shopFieldPartName;
+
+  /// No description provided for @shopFieldPartSku.
+  ///
+  /// In ar, this message translates to:
+  /// **'رمز SKU'**
+  String get shopFieldPartSku;
+
+  /// No description provided for @shopFieldPartPrice.
+  ///
+  /// In ar, this message translates to:
+  /// **'السعر'**
+  String get shopFieldPartPrice;
+
+  /// No description provided for @shopFieldPartStock.
+  ///
+  /// In ar, this message translates to:
+  /// **'الكمية'**
+  String get shopFieldPartStock;
+
+  /// No description provided for @shopSavePart.
+  ///
+  /// In ar, this message translates to:
+  /// **'حفظ القطعة'**
+  String get shopSavePart;
+
+  /// No description provided for @shopMessagesEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'صندوق المتجر'**
+  String get shopMessagesEyebrow;
+
+  /// No description provided for @shopMessagesTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'الرسائل'**
+  String get shopMessagesTitle;
+
+  /// No description provided for @shopMessagesSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'الرسائل مبسطة عمدًا في هذه المرحلة. يبقى تشغيل الطلبات والتوصيل داخل قسم الطلبات.'**
+  String get shopMessagesSubtitle;
+
+  /// No description provided for @shopMessagesEmptyTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'الرسائل لاحقًا'**
+  String get shopMessagesEmptyTitle;
+
+  /// No description provided for @shopMessagesEmptySubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'هذا الموضع يحافظ على اكتمال الشريط السفلي بينما يتم تأجيل صندوق الرسائل المتصل بين العملاء والسائقين إلى مرحلة لاحقة.'**
+  String get shopMessagesEmptySubtitle;
+
+  /// No description provided for @shopProfileEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملف البائع'**
+  String get shopProfileEyebrow;
+
+  /// No description provided for @shopProfileTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملف المتجر'**
+  String get shopProfileTitle;
+
+  /// No description provided for @shopProfileSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'راجع وضع الدفعات والتفاصيل العامة للتاجر ونطاق التوصيل المميز الظاهر للعملاء.'**
+  String get shopProfileSubtitle;
+
+  /// No description provided for @shopProfileBalance.
+  ///
+  /// In ar, this message translates to:
+  /// **'الرصيد المتاح'**
+  String get shopProfileBalance;
+
+  /// No description provided for @shopProfileOrders.
+  ///
+  /// In ar, this message translates to:
+  /// **'طلبات هذا الأسبوع'**
+  String get shopProfileOrders;
+
+  /// No description provided for @shopProfileRating.
+  ///
+  /// In ar, this message translates to:
+  /// **'تقييم المتجر'**
+  String get shopProfileRating;
+
+  /// No description provided for @shopProfileResponseTime.
+  ///
+  /// In ar, this message translates to:
+  /// **'زمن الاستجابة'**
+  String get shopProfileResponseTime;
+
+  /// No description provided for @shopProfileContactTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'التواصل'**
+  String get shopProfileContactTitle;
+
+  /// No description provided for @shopProfileCoverageTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'التغطية'**
+  String get shopProfileCoverageTitle;
+
+  /// No description provided for @shopProfileHoursTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'ساعات العمل'**
+  String get shopProfileHoursTitle;
+
+  /// No description provided for @shopOrderNotFound.
+  ///
+  /// In ar, this message translates to:
+  /// **'لم يتم العثور على الطلب'**
+  String get shopOrderNotFound;
+
+  /// No description provided for @shopOrderDetailEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'استقبال الطلب'**
+  String get shopOrderDetailEyebrow;
+
+  /// No description provided for @shopOrderDetailTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تفاصيل الطلب'**
+  String get shopOrderDetailTitle;
+
+  /// No description provided for @shopOrderDetailSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'أكد بيانات العميل والعناصر ومعلومات التوصيل قبل نقل الطرد إلى التعبئة.'**
+  String get shopOrderDetailSubtitle;
+
+  /// No description provided for @shopPackingEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'منطقة التعبئة'**
+  String get shopPackingEyebrow;
+
+  /// No description provided for @shopPackingTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'عرض التعبئة'**
+  String get shopPackingTitle;
+
+  /// No description provided for @shopPackingSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'ثبت قائمة الالتقاط وعبّئ العناصر وجهز الطلب لتسليمه إلى السائق.'**
+  String get shopPackingSubtitle;
+
+  /// No description provided for @shopDeliveryRequestEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'طلب التوصيل'**
+  String get shopDeliveryRequestEyebrow;
+
+  /// No description provided for @shopDeliveryRequestTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'طلب التوصيل'**
+  String get shopDeliveryRequestTitle;
+
+  /// No description provided for @shopDeliveryRequestSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تحقق من الوجهة وأرسل طلب التوصيل بعد أن يصبح الطرد جاهزًا لمغادرة المتجر.'**
+  String get shopDeliveryRequestSubtitle;
+
+  /// No description provided for @shopSearchingDriverEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'مطابقة السائق'**
+  String get shopSearchingDriverEyebrow;
+
+  /// No description provided for @shopSearchingDriverTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'البحث عن سائق'**
+  String get shopSearchingDriverTitle;
+
+  /// No description provided for @shopSearchingDriverSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'أبقِ الطلب في مرحلة المطابقة حتى يتم تأكيد سعة السائق.'**
+  String get shopSearchingDriverSubtitle;
+
+  /// No description provided for @shopCourierAssignedEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'تأكيد السائق'**
+  String get shopCourierAssignedEyebrow;
+
+  /// No description provided for @shopCourierAssignedTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم تعيين السائق'**
+  String get shopCourierAssignedTitle;
+
+  /// No description provided for @shopCourierAssignedSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم تثبيت هوية السائق ووقت الوصول. جهز الطرد لتسليم منظم.'**
+  String get shopCourierAssignedSubtitle;
+
+  /// No description provided for @shopHandoverEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'تسليم الخروج'**
+  String get shopHandoverEyebrow;
+
+  /// No description provided for @shopHandoverTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تسليم إلى السائق'**
+  String get shopHandoverTitle;
+
+  /// No description provided for @shopHandoverSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تحقق من الطرد وختم الإرسال وبيانات السائق قبل تسليم الشحنة.'**
+  String get shopHandoverSubtitle;
+
+  /// No description provided for @shopTrackingEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'المسار المباشر'**
+  String get shopTrackingEyebrow;
+
+  /// No description provided for @shopTrackingTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تتبع التوصيل'**
+  String get shopTrackingTitle;
+
+  /// No description provided for @shopTrackingSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'غادر الطرد المتجر. تابع المسار وأغلق الطلب عند تأكيد التسليم.'**
+  String get shopTrackingSubtitle;
+
+  /// No description provided for @shopCompletedEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'إثبات التسليم'**
+  String get shopCompletedEyebrow;
+
+  /// No description provided for @shopCompletedTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'اكتمل التوصيل'**
+  String get shopCompletedTitle;
+
+  /// No description provided for @shopCompletedSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم تسجيل إثبات التسليم وأصبح الطلب في الحالة المغلقة.'**
+  String get shopCompletedSubtitle;
+
+  /// No description provided for @shopOrderItemsTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'عناصر الطلب'**
+  String get shopOrderItemsTitle;
+
+  /// No description provided for @shopCourierCardTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'السائق المعين'**
+  String get shopCourierCardTitle;
+
+  /// No description provided for @shopCustomerDetailsTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'العميل والتوصيل'**
+  String get shopCustomerDetailsTitle;
+
+  /// No description provided for @shopTrackingCodeLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'رمز التتبع'**
+  String get shopTrackingCodeLabel;
+
+  /// No description provided for @shopOrderTimelineTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'قائمة التشغيل'**
+  String get shopOrderTimelineTitle;
+
+  /// No description provided for @shopDeliveryWindowLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'نافذة التوصيل'**
+  String get shopDeliveryWindowLabel;
+
+  /// No description provided for @shopVehicleLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'السيارة'**
+  String get shopVehicleLabel;
+
+  /// No description provided for @shopPrimaryAddressLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'العنوان'**
+  String get shopPrimaryAddressLabel;
+
+  /// No description provided for @shopStartPacking.
+  ///
+  /// In ar, this message translates to:
+  /// **'بدء التعبئة'**
+  String get shopStartPacking;
+
+  /// No description provided for @shopRequestCourier.
+  ///
+  /// In ar, this message translates to:
+  /// **'طلب سائق'**
+  String get shopRequestCourier;
+
+  /// No description provided for @shopSendDeliveryRequest.
+  ///
+  /// In ar, this message translates to:
+  /// **'إرسال طلب التوصيل'**
+  String get shopSendDeliveryRequest;
+
+  /// No description provided for @shopSimulateDriverAssigned.
+  ///
+  /// In ar, this message translates to:
+  /// **'محاكاة تعيين السائق'**
+  String get shopSimulateDriverAssigned;
+
+  /// No description provided for @shopContinueToHandover.
+  ///
+  /// In ar, this message translates to:
+  /// **'المتابعة إلى التسليم'**
+  String get shopContinueToHandover;
+
+  /// No description provided for @shopConfirmHandover.
+  ///
+  /// In ar, this message translates to:
+  /// **'تأكيد التسليم'**
+  String get shopConfirmHandover;
+
+  /// No description provided for @shopMarkDelivered.
+  ///
+  /// In ar, this message translates to:
+  /// **'تأكيد التسليم'**
+  String get shopMarkDelivered;
+
+  /// No description provided for @shopBackToOrders.
+  ///
+  /// In ar, this message translates to:
+  /// **'العودة إلى الطلبات'**
+  String get shopBackToOrders;
+
+  /// No description provided for @shopBackToDashboard.
+  ///
+  /// In ar, this message translates to:
+  /// **'العودة إلى الرئيسية'**
+  String get shopBackToDashboard;
+
+  /// No description provided for @shopStageNewOrder.
+  ///
+  /// In ar, this message translates to:
+  /// **'طلب جديد'**
+  String get shopStageNewOrder;
+
+  /// No description provided for @shopStagePacking.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعبئة'**
+  String get shopStagePacking;
+
+  /// No description provided for @shopStageDeliveryRequest.
+  ///
+  /// In ar, this message translates to:
+  /// **'طلب توصيل'**
+  String get shopStageDeliveryRequest;
+
+  /// No description provided for @shopStageSearchingDriver.
+  ///
+  /// In ar, this message translates to:
+  /// **'بحث'**
+  String get shopStageSearchingDriver;
+
+  /// No description provided for @shopStageCourierAssigned.
+  ///
+  /// In ar, this message translates to:
+  /// **'معين'**
+  String get shopStageCourierAssigned;
+
+  /// No description provided for @shopStageHandover.
+  ///
+  /// In ar, this message translates to:
+  /// **'تسليم'**
+  String get shopStageHandover;
+
+  /// No description provided for @shopStageTracking.
+  ///
+  /// In ar, this message translates to:
+  /// **'تتبع'**
+  String get shopStageTracking;
+
+  /// No description provided for @shopStageCompleted.
+  ///
+  /// In ar, this message translates to:
+  /// **'مكتمل'**
+  String get shopStageCompleted;
+
   /// No description provided for @loading.
   ///
   /// In ar, this message translates to:
