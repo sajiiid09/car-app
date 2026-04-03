@@ -1,156 +1,250 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:oc_ui/oc_ui.dart';
+import 'package:pro/l10n/app_localizations.dart';
 
-class CreateDiagnosisScreen extends StatefulWidget {
-  const CreateDiagnosisScreen({super.key});
+import '../shared/partner_flow_palette.dart';
+import 'workshop_job_flow_screens.dart';
+import 'workshop_shared.dart';
+import 'workshop_workflow_state.dart';
+
+class CreateDiagnosisScreen extends ConsumerStatefulWidget {
+  const CreateDiagnosisScreen({
+    super.key,
+    required this.jobId,
+  });
+
+  final String jobId;
 
   @override
-  State<CreateDiagnosisScreen> createState() => _CreateDiagnosisScreenState();
+  ConsumerState<CreateDiagnosisScreen> createState() =>
+      _CreateDiagnosisScreenState();
 }
 
-class _CreateDiagnosisScreenState extends State<CreateDiagnosisScreen> {
-  final _issueCtrl = TextEditingController();
-  final _laborCtrl = TextEditingController();
-  final List<Map<String, String>> _parts = [];
-  bool _isLoading = false;
-  int _photoCount = 0;
+class _CreateDiagnosisScreenState extends ConsumerState<CreateDiagnosisScreen> {
+  late final TextEditingController _summaryController;
+  late final TextEditingController _notesController;
+  late final TextEditingController _laborController;
+  late final TextEditingController _partsController;
 
-  void _addPart() {
-    setState(() {
-      _parts.add({'name': '', 'qty': '1'});
-    });
-  }
-
-  Future<void> _submit() async {
-    if (_issueCtrl.text.trim().isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('يرجى وصف المشكلة')));
-      return;
-    }
-    setState(() => _isLoading = true);
-    await Future.delayed(const Duration(seconds: 1));
-    if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('تم إرسال التقرير للعميل ✓')));
-    context.pop();
-    context.pop(); // Back to dashboard
+  @override
+  void initState() {
+    super.initState();
+    final job = ref.read(workshopJobProvider(widget.jobId));
+    final draft = job?.diagnosisDraft ?? const WorkshopDiagnosisDraft();
+    _summaryController = TextEditingController(text: draft.summary);
+    _notesController = TextEditingController(text: draft.notes);
+    _laborController = TextEditingController(
+      text: draft.laborCost == 0 ? '' : draft.laborCost.toStringAsFixed(0),
+    );
+    _partsController = TextEditingController(
+      text: draft.partsCost == 0 ? '' : draft.partsCost.toStringAsFixed(0),
+    );
   }
 
   @override
   void dispose() {
-    _issueCtrl.dispose();
-    _laborCtrl.dispose();
+    _summaryController.dispose();
+    _notesController.dispose();
+    _laborController.dispose();
+    _partsController.dispose();
     super.dispose();
   }
 
+  WorkshopDiagnosisDraft get _draft {
+    return WorkshopDiagnosisDraft(
+      summary: _summaryController.text.trim(),
+      notes: _notesController.text.trim(),
+      laborCost: double.tryParse(_laborController.text.trim()) ?? 0,
+      partsCost: double.tryParse(_partsController.text.trim()) ?? 0,
+      photoUrls: const [
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuBEvq3oYHSS13-p5ZHKvehsYV0fMbt6QVfU0GXu2ElVBi2vu_TOLseOKIkGrYF0CjqukX-5-1-C9aDGeAJlLJ8D4os3qDCG44j-MREOYJ1f2Ayvx3S8LRdHkOs2YfJMHOce4kMdlwy_MN_CLdWSXOpH5yNnsSpUAChwRfxRgeIqUvUOOgeZJqXsr-1yVAkf5br3Sv_Y9Q5v-wHfJVeWH1x1j2MovFS2dbQPkC-8u_oZm_a4QCu_DtIip8et0OcqsrsGQXU5-sNBnwev',
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuD65jkGK6Lc_nxRI6Qjt_2HqHrSPT_VHwrn5GZDCcNCKW4pF8H-PVk5MANFKh9T-iBquA8SzxfcmTSEO7Et9zRuuUBnlrwjPRVAdG1m98MYwuy0XoPrrksTX6gY56uX2WSCgWBXJf0mwRa-hgdVUjjBdrqlPb9oAEJa8xysuRRkir_H0b6bsTs5KzE319kpUxbq_fHTeupBVbB-e5ibvAYgZk0rbcBxaYnJIRzMdM4YL_5zedNQOfqH_ZpRuOgXVvgCOTBimAbyvHhG',
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuD2Eh624ztnH2oj-dsWPjMrNImNtJXfjbc-xzXoyg_V47Bq5_vp6aQRhKdoanBR1EQ2MB2IFI60P68uiYK39PNPL3E72ywsGmOWVGqknow1nHBUCcvO3omlULJcwleem5b_d1jGCKIKyXLFXxFbc7qFXe5Jtg9HsBc91Bb7DKj8NhpTujgpDzw4z1bd1YRm5j5uShOHCaW99C5G625dKA3OboRNabjGVCWA6U3qARn-vdE3AkgrsV4QyH3nR5po9r3s1ADE13ZOE7xT',
+      ],
+    );
+  }
+
+  bool get _canSubmit =>
+      _summaryController.text.trim().isNotEmpty &&
+      _laborController.text.trim().isNotEmpty &&
+      _partsController.text.trim().isNotEmpty;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: OcColors.background,
-      appBar: AppBar(
-        title: const Text('تقرير الفحص'),
-        leading: IconButton(icon: const Icon(Icons.arrow_back_ios_rounded), onPressed: () => context.pop()),
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(OcSpacing.xl),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // Vehicle info
-            Container(
-              padding: const EdgeInsets.all(OcSpacing.lg),
-              decoration: BoxDecoration(color: OcColors.surfaceCard, borderRadius: BorderRadius.circular(OcRadius.lg), border: Border.all(color: OcColors.border)),
-              child: Row(
-                children: [
-                  const Icon(Icons.directions_car_rounded, color: OcColors.primary),
-                  const SizedBox(width: OcSpacing.md),
-                  Text('تويوتا كامري 2022', style: Theme.of(context).textTheme.titleSmall),
-                  const Spacer(),
-                  Text('أحمد محمد', style: Theme.of(context).textTheme.bodySmall?.copyWith(color: OcColors.textSecondary)),
-                ],
-              ),
-            ),
+    final l10n = AppLocalizations.of(context)!;
+    final job = ref.watch(workshopJobProvider(widget.jobId));
+    if (job == null) {
+      return WorkshopMissingJobView(title: l10n.workshopJobNotFound);
+    }
 
-            const SizedBox(height: OcSpacing.xxl),
-
-            // Issue description
-            Text('وصف المشكلة', style: Theme.of(context).textTheme.titleMedium),
-            const SizedBox(height: OcSpacing.md),
-            TextField(
-              controller: _issueCtrl,
-              maxLines: 4,
-              decoration: const InputDecoration(hintText: 'اوصف المشكلة بالتفصيل...'),
-            ),
-
-            const SizedBox(height: OcSpacing.xxl),
-
-            // Photos
-            Text('صور الفحص', style: Theme.of(context).textTheme.titleMedium),
-            const SizedBox(height: OcSpacing.md),
-            Row(
+    return WorkshopScrollView(
+      children: [
+        WorkshopReveal(
+          child: WorkshopHeader(
+            showBack: true,
+            eyebrow: l10n.workshopDiagnosisEyebrow,
+            title: l10n.workshopCreateDiagnosisTitle,
+            subtitle: l10n.workshopCreateDiagnosisSubtitle,
+          ),
+        ),
+        const SizedBox(height: 24),
+        WorkshopReveal(
+          delay: 40,
+          child: WorkshopSurfaceCard(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                GestureDetector(
-                  onTap: () => setState(() => _photoCount++),
-                  child: Container(
-                    width: 80, height: 80,
-                    decoration: BoxDecoration(
-                      color: OcColors.surfaceLight,
-                      borderRadius: BorderRadius.circular(OcRadius.md),
-                      border: Border.all(color: OcColors.border, style: BorderStyle.solid),
-                    ),
-                    child: const Icon(Icons.add_a_photo_rounded, color: OcColors.primary),
+                WorkshopRemoteImage(
+                  url: job.imageUrl,
+                  height: 210,
+                ),
+                const SizedBox(height: 18),
+                Text(
+                  job.vehicleName,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineSmall
+                      ?.copyWith(fontWeight: FontWeight.w900),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  job.issueSummary,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    color: PartnerFlowPalette.textSecondary,
+                    height: 1.45,
                   ),
                 ),
-                const SizedBox(width: OcSpacing.md),
-                ...List.generate(_photoCount.clamp(0, 4), (_) => Container(
-                  width: 80, height: 80,
-                  margin: const EdgeInsets.only(left: OcSpacing.sm),
-                  decoration: BoxDecoration(
-                    color: OcColors.primary.withValues(alpha: 0.1),
-                    borderRadius: BorderRadius.circular(OcRadius.md),
+                const SizedBox(height: 24),
+                _DiagnosisField(
+                  key: const Key('workshopDiagnosisSummaryField'),
+                  controller: _summaryController,
+                  label: l10n.workshopDiagnosisSummaryLabel,
+                  maxLines: 3,
+                  onChanged: (_) => setState(() {}),
+                ),
+                const SizedBox(height: 16),
+                Row(
+                  children: [
+                    Expanded(
+                      child: _DiagnosisField(
+                        key: const Key('workshopDiagnosisLaborField'),
+                        controller: _laborController,
+                        label: l10n.workshopLaborEstimateLabel,
+                        keyboardType: TextInputType.number,
+                        onChanged: (_) => setState(() {}),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: _DiagnosisField(
+                        key: const Key('workshopDiagnosisPartsField'),
+                        controller: _partsController,
+                        label: l10n.workshopPartsEstimateLabel,
+                        keyboardType: TextInputType.number,
+                        onChanged: (_) => setState(() {}),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                _DiagnosisField(
+                  key: const Key('workshopDiagnosisNotesField'),
+                  controller: _notesController,
+                  label: l10n.workshopDiagnosisNotesLabel,
+                  maxLines: 4,
+                  onChanged: (_) => setState(() {}),
+                ),
+                const SizedBox(height: 18),
+                Text(
+                  l10n.workshopDiagnosisPhotosLabel,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w800,
                   ),
-                  child: const Icon(Icons.image, color: OcColors.primary),
-                )),
+                ),
+                const SizedBox(height: 12),
+                SizedBox(
+                  height: 90,
+                  child: ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return SizedBox(
+                        width: 110,
+                        child: WorkshopRemoteImage(
+                          url: _draft.photoUrls[index],
+                          height: 90,
+                          borderRadius: const BorderRadius.all(Radius.circular(18)),
+                        ),
+                      );
+                    },
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(width: 12),
+                    itemCount: _draft.photoUrls.length,
+                  ),
+                ),
+                const SizedBox(height: 24),
+                WorkshopPrimaryButton(
+                  key: const Key('workshopSubmitDiagnosisButton'),
+                  label: l10n.workshopSubmitForApproval,
+                  onPressed: _canSubmit
+                      ? () {
+                          ref
+                              .read(workshopWorkflowProvider.notifier)
+                              .submitDiagnosis(job.id, _draft);
+                          context.go('/workshop/jobs/job/${job.id}/approval-pending');
+                        }
+                      : null,
+                ),
               ],
             ),
+          ),
+        ),
+      ],
+    );
+  }
+}
 
-            const SizedBox(height: OcSpacing.xxl),
+class _DiagnosisField extends StatelessWidget {
+  const _DiagnosisField({
+    super.key,
+    required this.controller,
+    required this.label,
+    this.maxLines = 1,
+    this.keyboardType,
+    this.onChanged,
+  });
 
-            // Required parts
-            Row(
-              children: [
-                Text('القطع المطلوبة', style: Theme.of(context).textTheme.titleMedium),
-                const Spacer(),
-                TextButton.icon(icon: const Icon(Icons.add, size: 18), label: const Text('إضافة'), onPressed: _addPart),
-              ],
-            ),
-            const SizedBox(height: OcSpacing.sm),
-            ...List.generate(_parts.length, (i) => Padding(
-              padding: const EdgeInsets.only(bottom: OcSpacing.sm),
-              child: Row(
-                children: [
-                  Expanded(flex: 3, child: TextField(decoration: InputDecoration(hintText: 'اسم القطعة ${i + 1}'))),
-                  const SizedBox(width: OcSpacing.sm),
-                  Expanded(child: TextField(decoration: const InputDecoration(hintText: 'الكمية'), keyboardType: TextInputType.number)),
-                  IconButton(icon: const Icon(Icons.close, size: 18, color: OcColors.error), onPressed: () => setState(() => _parts.removeAt(i))),
-                ],
-              ),
-            )),
+  final TextEditingController controller;
+  final String label;
+  final int maxLines;
+  final TextInputType? keyboardType;
+  final ValueChanged<String>? onChanged;
 
-            const SizedBox(height: OcSpacing.xxl),
-
-            // Labor quote
-            Text('تكلفة العمالة', style: Theme.of(context).textTheme.titleMedium),
-            const SizedBox(height: OcSpacing.md),
-            TextField(
-              controller: _laborCtrl,
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(hintText: 'المبلغ بالريال القطري', suffixText: 'ر.ق'),
-            ),
-
-            const SizedBox(height: OcSpacing.xxxl),
-
-            OcButton(label: 'إرسال التقرير للعميل', onPressed: _submit, isLoading: _isLoading, icon: Icons.send_rounded),
-          ],
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: controller,
+      maxLines: maxLines,
+      keyboardType: keyboardType,
+      onChanged: onChanged,
+      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+        fontWeight: FontWeight.w700,
+      ),
+      decoration: InputDecoration(
+        labelText: label,
+        labelStyle: Theme.of(context).textTheme.labelLarge?.copyWith(
+          color: PartnerFlowPalette.textSecondary,
+          fontWeight: FontWeight.w800,
+        ),
+        filled: true,
+        fillColor: PartnerFlowPalette.surfaceSoft,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+          borderSide: BorderSide.none,
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+          borderSide: BorderSide.none,
         ),
       ),
     );

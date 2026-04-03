@@ -1130,6 +1130,744 @@ abstract class AppLocalizations {
   /// **'ابدأ'**
   String get workshopStart;
 
+  /// No description provided for @workshopShellDashboardTab.
+  ///
+  /// In ar, this message translates to:
+  /// **'الرئيسية'**
+  String get workshopShellDashboardTab;
+
+  /// No description provided for @workshopShellJobsTab.
+  ///
+  /// In ar, this message translates to:
+  /// **'الوظائف'**
+  String get workshopShellJobsTab;
+
+  /// No description provided for @workshopShellMessagesTab.
+  ///
+  /// In ar, this message translates to:
+  /// **'الرسائل'**
+  String get workshopShellMessagesTab;
+
+  /// No description provided for @workshopShellProfileTab.
+  ///
+  /// In ar, this message translates to:
+  /// **'الملف'**
+  String get workshopShellProfileTab;
+
+  /// No description provided for @workshopOverviewEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'نظرة عامة على الورشة'**
+  String get workshopOverviewEyebrow;
+
+  /// No description provided for @workshopWelcomeBackChief.
+  ///
+  /// In ar, this message translates to:
+  /// **'مرحبًا بعودتك'**
+  String get workshopWelcomeBackChief;
+
+  /// No description provided for @workshopDashboardSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملخص تشغيلي واضح للطلبات الجديدة والموافقات والوظائف الجاهزة للتسليم.'**
+  String get workshopDashboardSubtitle;
+
+  /// No description provided for @workshopCreateJob.
+  ///
+  /// In ar, this message translates to:
+  /// **'إنشاء وظيفة'**
+  String get workshopCreateJob;
+
+  /// No description provided for @workshopMetricNewRequests.
+  ///
+  /// In ar, this message translates to:
+  /// **'طلبات جديدة'**
+  String get workshopMetricNewRequests;
+
+  /// No description provided for @workshopMetricActiveJobs.
+  ///
+  /// In ar, this message translates to:
+  /// **'وظائف نشطة'**
+  String get workshopMetricActiveJobs;
+
+  /// No description provided for @workshopMetricWaitingApproval.
+  ///
+  /// In ar, this message translates to:
+  /// **'بانتظار الموافقة'**
+  String get workshopMetricWaitingApproval;
+
+  /// No description provided for @workshopMetricReadyPickup.
+  ///
+  /// In ar, this message translates to:
+  /// **'جاهز للاستلام'**
+  String get workshopMetricReadyPickup;
+
+  /// No description provided for @workshopRecentServiceJobs.
+  ///
+  /// In ar, this message translates to:
+  /// **'أحدث وظائف الخدمة'**
+  String get workshopRecentServiceJobs;
+
+  /// No description provided for @workshopViewAll.
+  ///
+  /// In ar, this message translates to:
+  /// **'عرض الكل'**
+  String get workshopViewAll;
+
+  /// No description provided for @workshopOperationsEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'تشغيل الورشة'**
+  String get workshopOperationsEyebrow;
+
+  /// No description provided for @workshopServiceRequestsTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'طلبات الخدمة'**
+  String get workshopServiceRequestsTitle;
+
+  /// No description provided for @workshopJobsSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تابع طلبات الطريق الجديدة وموافقات التشخيص والوظائف الجاهزة للتسليم في قائمة واحدة.'**
+  String get workshopJobsSubtitle;
+
+  /// No description provided for @workshopMetricPending.
+  ///
+  /// In ar, this message translates to:
+  /// **'معلق'**
+  String get workshopMetricPending;
+
+  /// No description provided for @workshopMetricApprovalShort.
+  ///
+  /// In ar, this message translates to:
+  /// **'موافقة'**
+  String get workshopMetricApprovalShort;
+
+  /// No description provided for @workshopMetricHandoverShort.
+  ///
+  /// In ar, this message translates to:
+  /// **'تسليم'**
+  String get workshopMetricHandoverShort;
+
+  /// No description provided for @workshopJobsFilterAll.
+  ///
+  /// In ar, this message translates to:
+  /// **'الكل'**
+  String get workshopJobsFilterAll;
+
+  /// No description provided for @workshopJobsFilterNew.
+  ///
+  /// In ar, this message translates to:
+  /// **'جديد'**
+  String get workshopJobsFilterNew;
+
+  /// No description provided for @workshopJobsFilterApproval.
+  ///
+  /// In ar, this message translates to:
+  /// **'الموافقة'**
+  String get workshopJobsFilterApproval;
+
+  /// No description provided for @workshopJobsFilterHandover.
+  ///
+  /// In ar, this message translates to:
+  /// **'التسليم'**
+  String get workshopJobsFilterHandover;
+
+  /// No description provided for @workshopNoJobsForFilter.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد وظائف في هذه القائمة الآن.'**
+  String get workshopNoJobsForFilter;
+
+  /// No description provided for @workshopRequestNotFound.
+  ///
+  /// In ar, this message translates to:
+  /// **'لم يتم العثور على الطلب'**
+  String get workshopRequestNotFound;
+
+  /// No description provided for @workshopRoadsideRequestEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'شبكة خدمة مميزة'**
+  String get workshopRoadsideRequestEyebrow;
+
+  /// No description provided for @workshopRequestDetailTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'مطلوب سحب على الطريق'**
+  String get workshopRequestDetailTitle;
+
+  /// No description provided for @workshopRequestDetailSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'راجع السيارة والمشكلة وتفاصيل التسليم قبل قبول الطلب.'**
+  String get workshopRequestDetailSubtitle;
+
+  /// No description provided for @workshopRequestIssueLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'المشكلة المبلغ عنها'**
+  String get workshopRequestIssueLabel;
+
+  /// No description provided for @workshopRequestLocationLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'موقع الاستلام'**
+  String get workshopRequestLocationLabel;
+
+  /// No description provided for @workshopRequestVehicleLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'السيارة'**
+  String get workshopRequestVehicleLabel;
+
+  /// No description provided for @workshopRejectRequest.
+  ///
+  /// In ar, this message translates to:
+  /// **'رفض الطلب'**
+  String get workshopRejectRequest;
+
+  /// No description provided for @workshopAcceptRequest.
+  ///
+  /// In ar, this message translates to:
+  /// **'قبول الطلب'**
+  String get workshopAcceptRequest;
+
+  /// No description provided for @workshopPickupAcceptedEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم قبول الاستلام'**
+  String get workshopPickupAcceptedEyebrow;
+
+  /// No description provided for @workshopAssignDriverTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعيين سائق'**
+  String get workshopAssignDriverTitle;
+
+  /// No description provided for @workshopAssignDriverSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'أرسل ناقلة الورشة وشارك سياق الاستلام مع السائق المعين.'**
+  String get workshopAssignDriverSubtitle;
+
+  /// No description provided for @workshopRequestWorkshopDriver.
+  ///
+  /// In ar, this message translates to:
+  /// **'طلب سائق الورشة'**
+  String get workshopRequestWorkshopDriver;
+
+  /// No description provided for @workshopIncomingEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'تتبع السيارة القادمة'**
+  String get workshopIncomingEyebrow;
+
+  /// No description provided for @workshopIncomingVehicleTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'السيارة القادمة'**
+  String get workshopIncomingVehicleTitle;
+
+  /// No description provided for @workshopIncomingVehicleSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تابع السائق المعين وحرّك الوظيفة عند وصول السيارة إلى الورشة.'**
+  String get workshopIncomingVehicleSubtitle;
+
+  /// No description provided for @workshopEtaToWorkshop.
+  ///
+  /// In ar, this message translates to:
+  /// **'الوقت حتى الورشة'**
+  String get workshopEtaToWorkshop;
+
+  /// No description provided for @workshopMarkVehicleArrived.
+  ///
+  /// In ar, this message translates to:
+  /// **'تأكيد وصول السيارة'**
+  String get workshopMarkVehicleArrived;
+
+  /// No description provided for @workshopDriverUnavailable.
+  ///
+  /// In ar, this message translates to:
+  /// **'تفاصيل السائق غير متاحة'**
+  String get workshopDriverUnavailable;
+
+  /// No description provided for @workshopJobNotFound.
+  ///
+  /// In ar, this message translates to:
+  /// **'لم يتم العثور على الوظيفة'**
+  String get workshopJobNotFound;
+
+  /// No description provided for @workshopActiveJobEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'خليج خدمة نشط'**
+  String get workshopActiveJobEyebrow;
+
+  /// No description provided for @workshopActiveJobTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تفاصيل الوظيفة النشطة'**
+  String get workshopActiveJobTitle;
+
+  /// No description provided for @workshopActiveJobSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'أكد حالة السيارة داخل الورشة وابدأ تقرير التشخيص فور بدء الفحص.'**
+  String get workshopActiveJobSubtitle;
+
+  /// No description provided for @workshopPickupEstimateShort.
+  ///
+  /// In ar, this message translates to:
+  /// **'تقدير الاستلام'**
+  String get workshopPickupEstimateShort;
+
+  /// No description provided for @workshopSpecialtyLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'التخصص'**
+  String get workshopSpecialtyLabel;
+
+  /// No description provided for @workshopStartDiagnosis.
+  ///
+  /// In ar, this message translates to:
+  /// **'بدء التشخيص'**
+  String get workshopStartDiagnosis;
+
+  /// No description provided for @workshopDiagnosisEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'تقرير التشخيص'**
+  String get workshopDiagnosisEyebrow;
+
+  /// No description provided for @workshopCreateDiagnosisTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'إنشاء التشخيص'**
+  String get workshopCreateDiagnosisTitle;
+
+  /// No description provided for @workshopCreateDiagnosisSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'ابنِ ملخص الإصلاح وقدر تكلفة العمالة والقطع ثم أرسل التقرير للموافقة.'**
+  String get workshopCreateDiagnosisSubtitle;
+
+  /// No description provided for @workshopDiagnosisSummaryLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملخص التشخيص'**
+  String get workshopDiagnosisSummaryLabel;
+
+  /// No description provided for @workshopLaborEstimateLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'تقدير العمالة'**
+  String get workshopLaborEstimateLabel;
+
+  /// No description provided for @workshopPartsEstimateLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'تقدير القطع'**
+  String get workshopPartsEstimateLabel;
+
+  /// No description provided for @workshopDiagnosisNotesLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملاحظات الفني'**
+  String get workshopDiagnosisNotesLabel;
+
+  /// No description provided for @workshopDiagnosisPhotosLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'الصور المرفقة'**
+  String get workshopDiagnosisPhotosLabel;
+
+  /// No description provided for @workshopSubmitForApproval.
+  ///
+  /// In ar, this message translates to:
+  /// **'إرسال للموافقة'**
+  String get workshopSubmitForApproval;
+
+  /// No description provided for @workshopApprovalEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'موافقة التشخيص'**
+  String get workshopApprovalEyebrow;
+
+  /// No description provided for @workshopApprovalPendingTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'بانتظار الموافقة'**
+  String get workshopApprovalPendingTitle;
+
+  /// No description provided for @workshopApprovalPendingSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم إرسال التقرير إلى العميل. أبقِ الوظيفة في هذه المرحلة حتى وصول الموافقة.'**
+  String get workshopApprovalPendingSubtitle;
+
+  /// No description provided for @workshopWaitingForCustomer.
+  ///
+  /// In ar, this message translates to:
+  /// **'بانتظار العميل'**
+  String get workshopWaitingForCustomer;
+
+  /// No description provided for @workshopEditReport.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعديل التقرير'**
+  String get workshopEditReport;
+
+  /// No description provided for @workshopMarkApproved.
+  ///
+  /// In ar, this message translates to:
+  /// **'تأكيد الموافقة'**
+  String get workshopMarkApproved;
+
+  /// No description provided for @workshopServiceEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'الخدمة قيد التنفيذ'**
+  String get workshopServiceEyebrow;
+
+  /// No description provided for @workshopServiceInProgressTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'بدأت الخدمة'**
+  String get workshopServiceInProgressTitle;
+
+  /// No description provided for @workshopServiceInProgressSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تابع قائمة التنفيذ وانتقل إلى التسليم بعد اكتمال فحص الجودة.'**
+  String get workshopServiceInProgressSubtitle;
+
+  /// No description provided for @workshopServiceChecklistTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'قائمة تنفيذ الخدمة'**
+  String get workshopServiceChecklistTitle;
+
+  /// No description provided for @workshopMarkServiceComplete.
+  ///
+  /// In ar, this message translates to:
+  /// **'تأكيد اكتمال الخدمة'**
+  String get workshopMarkServiceComplete;
+
+  /// No description provided for @workshopHandoverEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'تهيئة التسليم'**
+  String get workshopHandoverEyebrow;
+
+  /// No description provided for @workshopHandoverTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختيار التسليم'**
+  String get workshopHandoverTitle;
+
+  /// No description provided for @workshopHandoverSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختر ما إذا كان العميل سيستلم السيارة من الورشة أو ستعيدها الورشة إليه.'**
+  String get workshopHandoverSubtitle;
+
+  /// No description provided for @workshopReturnViaDriver.
+  ///
+  /// In ar, this message translates to:
+  /// **'إرجاع عبر سائق الورشة'**
+  String get workshopReturnViaDriver;
+
+  /// No description provided for @workshopReturnViaDriverSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'أرسل السيارة مرة أخرى مع سائق الورشة وأبقِ العميل مطلعًا.'**
+  String get workshopReturnViaDriverSubtitle;
+
+  /// No description provided for @workshopCustomerPickup.
+  ///
+  /// In ar, this message translates to:
+  /// **'استلام العميل من الورشة'**
+  String get workshopCustomerPickup;
+
+  /// No description provided for @workshopCustomerPickupSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'سيقوم العميل باستلام السيارة مباشرة من الورشة.'**
+  String get workshopCustomerPickupSubtitle;
+
+  /// No description provided for @workshopRequestReturnDelivery.
+  ///
+  /// In ar, this message translates to:
+  /// **'طلب توصيل الإرجاع'**
+  String get workshopRequestReturnDelivery;
+
+  /// No description provided for @workshopCompleteHandover.
+  ///
+  /// In ar, this message translates to:
+  /// **'إكمال التسليم'**
+  String get workshopCompleteHandover;
+
+  /// No description provided for @workshopReturnEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'توصيل الإرجاع'**
+  String get workshopReturnEyebrow;
+
+  /// No description provided for @workshopRequestReturnTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'طلب توصيل الإرجاع'**
+  String get workshopRequestReturnTitle;
+
+  /// No description provided for @workshopRequestReturnSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'حضّر مرحلة الإرجاع الأخيرة وأكد طلب السائق للخروج من الورشة.'**
+  String get workshopRequestReturnSubtitle;
+
+  /// No description provided for @workshopReturnDriverNote.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملاحظة للسائق'**
+  String get workshopReturnDriverNote;
+
+  /// No description provided for @workshopReturnDriverNoteBody.
+  ///
+  /// In ar, this message translates to:
+  /// **'العميل يحتاج اتصالًا قبل الوصول ويتطلب تحميلًا منخفض الارتفاع عند التسليم.'**
+  String get workshopReturnDriverNoteBody;
+
+  /// No description provided for @workshopRequestDriverForReturn.
+  ///
+  /// In ar, this message translates to:
+  /// **'طلب سائق الورشة للإرجاع'**
+  String get workshopRequestDriverForReturn;
+
+  /// No description provided for @workshopReturnTrackingEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'تتبع الإرجاع'**
+  String get workshopReturnTrackingEyebrow;
+
+  /// No description provided for @workshopReturnTrackingTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تتبع توصيل الإرجاع'**
+  String get workshopReturnTrackingTitle;
+
+  /// No description provided for @workshopReturnTrackingSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تابع رحلة الإرجاع وأكد التسليم بعد استلام العميل للسيارة.'**
+  String get workshopReturnTrackingSubtitle;
+
+  /// No description provided for @workshopVehicleOutbound.
+  ///
+  /// In ar, this message translates to:
+  /// **'السيارة في الطريق'**
+  String get workshopVehicleOutbound;
+
+  /// No description provided for @workshopMarkDelivered.
+  ///
+  /// In ar, this message translates to:
+  /// **'تأكيد التسليم'**
+  String get workshopMarkDelivered;
+
+  /// No description provided for @workshopCompletedEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'اكتملت الوظيفة'**
+  String get workshopCompletedEyebrow;
+
+  /// No description provided for @workshopCompletedTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'اكتملت الوظيفة بنجاح'**
+  String get workshopCompletedTitle;
+
+  /// No description provided for @workshopCompletedSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم إغلاق الوظيفة وأصبح سجل الخدمة جاهزًا لتقارير الورشة.'**
+  String get workshopCompletedSubtitle;
+
+  /// No description provided for @workshopRevenueBreakdown.
+  ///
+  /// In ar, this message translates to:
+  /// **'الإيراد'**
+  String get workshopRevenueBreakdown;
+
+  /// No description provided for @workshopCompletionTime.
+  ///
+  /// In ar, this message translates to:
+  /// **'مدة التنفيذ'**
+  String get workshopCompletionTime;
+
+  /// No description provided for @workshopBackToDashboard.
+  ///
+  /// In ar, this message translates to:
+  /// **'العودة إلى الرئيسية'**
+  String get workshopBackToDashboard;
+
+  /// No description provided for @workshopMessagesEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'صندوق وارد الورشة'**
+  String get workshopMessagesEyebrow;
+
+  /// No description provided for @workshopMessagesTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'الرسائل'**
+  String get workshopMessagesTitle;
+
+  /// No description provided for @workshopMessagesSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'الرسائل مبسطة عمدًا في هذه المرحلة. يظل التدفق التشغيلي الأساسي داخل قسم الوظائف.'**
+  String get workshopMessagesSubtitle;
+
+  /// No description provided for @workshopMessagesEmptyTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد محادثات مباشرة'**
+  String get workshopMessagesEmptyTitle;
+
+  /// No description provided for @workshopMessagesEmptySubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'عند ربط الرسائل لاحقًا ستظهر تحديثات العملاء والسائقين هنا دون تغيير هيكل الورشة.'**
+  String get workshopMessagesEmptySubtitle;
+
+  /// No description provided for @workshopProfileEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملف الورشة'**
+  String get workshopProfileEyebrow;
+
+  /// No description provided for @workshopProfileTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملف الورشة'**
+  String get workshopProfileTitle;
+
+  /// No description provided for @workshopProfileSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'اعرض حالة الحساب والرؤية المالية والتفاصيل العامة المعروضة عبر OnlyCars.'**
+  String get workshopProfileSubtitle;
+
+  /// No description provided for @workshopProfileCurrentBalance.
+  ///
+  /// In ar, this message translates to:
+  /// **'الرصيد الحالي'**
+  String get workshopProfileCurrentBalance;
+
+  /// No description provided for @workshopProfilePendingPayout.
+  ///
+  /// In ar, this message translates to:
+  /// **'دفعة معلقة'**
+  String get workshopProfilePendingPayout;
+
+  /// No description provided for @workshopProfileMonthlyRevenue.
+  ///
+  /// In ar, this message translates to:
+  /// **'إيراد شهري'**
+  String get workshopProfileMonthlyRevenue;
+
+  /// No description provided for @workshopProfileCompletionRate.
+  ///
+  /// In ar, this message translates to:
+  /// **'معدل الإكمال'**
+  String get workshopProfileCompletionRate;
+
+  /// No description provided for @workshopProfileContactTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'التواصل'**
+  String get workshopProfileContactTitle;
+
+  /// No description provided for @workshopProfileSpecialtiesTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'التخصصات'**
+  String get workshopProfileSpecialtiesTitle;
+
+  /// No description provided for @workshopProfilePayoutTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'الدفعات'**
+  String get workshopProfilePayoutTitle;
+
+  /// No description provided for @workshopProfileResponseTime.
+  ///
+  /// In ar, this message translates to:
+  /// **'زمن الاستجابة'**
+  String get workshopProfileResponseTime;
+
+  /// No description provided for @workshopStageNewRequest.
+  ///
+  /// In ar, this message translates to:
+  /// **'طلب جديد'**
+  String get workshopStageNewRequest;
+
+  /// No description provided for @workshopStageDriverAssignment.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعيين سائق'**
+  String get workshopStageDriverAssignment;
+
+  /// No description provided for @workshopStageIncomingTracking.
+  ///
+  /// In ar, this message translates to:
+  /// **'قادمة'**
+  String get workshopStageIncomingTracking;
+
+  /// No description provided for @workshopStageActive.
+  ///
+  /// In ar, this message translates to:
+  /// **'نشطة'**
+  String get workshopStageActive;
+
+  /// No description provided for @workshopStageApprovalPending.
+  ///
+  /// In ar, this message translates to:
+  /// **'بانتظار الموافقة'**
+  String get workshopStageApprovalPending;
+
+  /// No description provided for @workshopStageServiceInProgress.
+  ///
+  /// In ar, this message translates to:
+  /// **'قيد التنفيذ'**
+  String get workshopStageServiceInProgress;
+
+  /// No description provided for @workshopStageHandover.
+  ///
+  /// In ar, this message translates to:
+  /// **'تسليم'**
+  String get workshopStageHandover;
+
+  /// No description provided for @workshopStageReturnRequested.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم طلب الإرجاع'**
+  String get workshopStageReturnRequested;
+
+  /// No description provided for @workshopStageReturnTracking.
+  ///
+  /// In ar, this message translates to:
+  /// **'تتبع الإرجاع'**
+  String get workshopStageReturnTracking;
+
+  /// No description provided for @workshopStageCompleted.
+  ///
+  /// In ar, this message translates to:
+  /// **'مكتملة'**
+  String get workshopStageCompleted;
+
   /// No description provided for @loading.
   ///
   /// In ar, this message translates to:
