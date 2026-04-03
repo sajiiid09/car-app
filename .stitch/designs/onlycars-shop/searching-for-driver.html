@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Searching for Courier | OnlyCars Parts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-variant": "#e5e2e1",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed": "#001e2e",
+              "surface-container-highest": "#e5e2e1",
+              "primary-container": "#ff8c00",
+              "inverse-primary": "#ffb77d",
+              "on-surface-variant": "#564334",
+              "tertiary": "#00658f",
+              "background": "#fcf9f8",
+              "on-tertiary": "#ffffff",
+              "on-surface": "#1c1b1b",
+              "tertiary-container": "#00b5fc",
+              "surface-container": "#f0eded",
+              "on-secondary-fixed": "#2f1500",
+              "primary": "#904d00",
+              "on-primary-container": "#623200",
+              "inverse-surface": "#313030",
+              "secondary": "#865224",
+              "error-container": "#ffdad6",
+              "tertiary-fixed-dim": "#85cfff",
+              "on-secondary-container": "#78471a",
+              "on-primary": "#ffffff",
+              "on-primary-fixed": "#2f1500",
+              "on-error-container": "#93000a",
+              "surface-tint": "#904d00",
+              "secondary-fixed-dim": "#fdb881",
+              "on-secondary": "#ffffff",
+              "on-tertiary-container": "#004360",
+              "error": "#ba1a1a",
+              "on-error": "#ffffff",
+              "on-primary-fixed-variant": "#6e3900",
+              "surface-dim": "#dcd9d9",
+              "surface-container-high": "#eae7e7",
+              "on-tertiary-fixed-variant": "#004c6c",
+              "on-secondary-fixed-variant": "#6a3b0f",
+              "secondary-container": "#fdb881",
+              "primary-fixed-dim": "#ffb77d",
+              "surface-bright": "#fcf9f8",
+              "tertiary-fixed": "#c7e7ff",
+              "surface": "#fcf9f8",
+              "primary-fixed": "#ffdcc3",
+              "surface-container-low": "#f6f3f2",
+              "secondary-fixed": "#ffdcc3",
+              "outline-variant": "#ddc1ae",
+              "outline": "#897362",
+              "inverse-on-surface": "#f3f0ef",
+              "on-background": "#1c1b1b"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      @keyframes radar-pulse {
+        0% { transform: scale(1); opacity: 0.5; }
+        100% { transform: scale(2.5); opacity: 0; }
+      }
+      .pulse-ring {
+        position: absolute;
+        border-radius: 9999px;
+        background-color: #ff8c00;
+        animation: radar-pulse 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+      }
+      .blur-overlay {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#FCF9F8]/80 dark:bg-zinc-900/80 backdrop-blur-xl shadow-[0_8px_24px_rgba(28,27,27,0.04)]">
+<div class="flex items-center justify-between px-6 h-16 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#FF8C00] text-2xl">warehouse</span>
+<h1 class="font-manrope font-black text-xl tracking-tighter text-[#1C1B1B] dark:text-white">OnlyCars Parts</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-[#F6F3F2] transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-[#564334]">notifications</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-lg mx-auto min-h-screen flex flex-col">
+<!-- Status Branding Section -->
+<section class="mb-12 text-center">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-primary-fixed rounded-full mb-6">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-on-primary-fixed-variant font-label text-xs font-bold uppercase tracking-widest">Priority Dispatch</span>
+</div>
+<h2 class="font-headline font-extrabold text-4xl text-on-surface tracking-tight leading-tight mb-3">Searching for Courier</h2>
+<p class="text-on-surface-variant font-body">We're matching your request with the nearest specialized auto-parts courier.</p>
+</section>
+<!-- Dynamic Visualization (The Radar) -->
+<section class="relative h-64 mb-16 flex items-center justify-center">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="pulse-ring w-20 h-20" style="animation-delay: 0s;"></div>
+<div class="pulse-ring w-20 h-20" style="animation-delay: 0.8s;"></div>
+<div class="pulse-ring w-20 h-20" style="animation-delay: 1.6s;"></div>
+</div>
+<div class="relative z-10 w-32 h-32 bg-surface-container-lowest rounded-full shadow-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-5xl" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+</div>
+<!-- Floating Decorative Specs -->
+<div class="absolute top-0 right-4 p-3 bg-surface-container-low rounded-xl shadow-sm border border-outline-variant/20">
+<span class="material-symbols-outlined text-primary text-sm block mb-1">distance</span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">Scanning 2.5mi</span>
+</div>
+<div class="absolute bottom-4 left-4 p-3 bg-surface-container-low rounded-xl shadow-sm border border-outline-variant/20">
+<span class="material-symbols-outlined text-primary text-sm block mb-1">speed</span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">Expedited Flow</span>
+</div>
+</section>
+<!-- Details Bento Card -->
+<section class="grid grid-cols-2 gap-4 mb-12">
+<div class="col-span-2 bg-surface-container-lowest p-6 rounded-xl shadow-sm flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center overflow-hidden">
+<img alt="Brake pad component" class="w-full h-full object-cover" data-alt="Close up of high performance ceramic brake pads" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9LEm8cGhX-9XvYcb6S00aa2xoHxK7_G2PgshU2ekrVlt3OSC9gOHhndhlcJtg4D-vOFH4MfOpKhM8tlLj-paFx7BZdknQQ3FJUwY1kkfT-6kdxd_Anaety-SdOw1fMqWpvNIvKjn1lyz3iefV0Ckp9iEWA1-xQDTM1lLqdDLmtLEvg6S1rNppLrhoP2Fxfpeu2TtadA6oNLkIL3mRLNzxk8Ws36XQvd7xXsZ45Pbc36_GLkH7npW1WDlhdmKfj2zMr-GCgrAeN-oX"/>
+</div>
+<div>
+<h4 class="font-headline font-bold text-on-surface">Order #OC-99281</h4>
+<p class="text-on-surface-variant text-sm font-label">2x Ceramic Brake Pads • GT-R Series</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-5 rounded-xl flex flex-col justify-between h-32">
+<span class="material-symbols-outlined text-primary">pin_drop</span>
+<div>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Destination</p>
+<p class="font-headline font-bold text-on-surface leading-tight">Apex Garage, Block B</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-5 rounded-xl flex flex-col justify-between h-32">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<div>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Estimated Arrival</p>
+<p class="font-headline font-bold text-on-surface leading-tight">15 - 25 Minutes</p>
+</div>
+</div>
+</section>
+<!-- Actions -->
+<div class="mt-auto space-y-4">
+<button class="w-full h-14 bg-surface-container-lowest text-on-surface-variant font-headline font-bold rounded-lg border border-outline-variant/30 flex items-center justify-center gap-2 hover:bg-surface-container-low transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined">support_agent</span>
+                Contact Support
+            </button>
+<button class="w-full h-14 bg-transparent text-error font-headline font-bold rounded-lg flex items-center justify-center gap-2 hover:bg-error-container/20 transition-colors active:scale-95 duration-200">
+                Cancel Request
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-[2rem] bg-white/90 dark:bg-black/90 backdrop-blur-2xl shadow-[0_-8px_24px_rgba(28,27,27,0.06)]">
+<div class="flex justify-around items-center h-20 px-4 pb-4 w-full">
+<div class="flex flex-col items-center justify-center text-[#564334] dark:text-zinc-500 opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-150">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest mt-1">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#FF8C00] scale-110 transition-transform active:scale-90 duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest mt-1">Orders</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#564334] dark:text-zinc-500 opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-150">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest mt-1">Products</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#564334] dark:text-zinc-500 opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-150">
+<span class="material-symbols-outlined">person</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest mt-1">Profile</span>
+</div>
+</div>
+</nav>
+<!-- Subtle Background Overlay -->
+<div class="fixed inset-0 pointer-events-none -z-10 bg-[radial-gradient(circle_at_top_right,_#ffdcc3_0%,_transparent_40%)] opacity-30"></div>
+</body></html>

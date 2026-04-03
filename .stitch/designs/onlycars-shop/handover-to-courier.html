@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Handover to Delivery - OnlyCars Parts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-variant": "#e5e2e1",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed": "#001e2e",
+              "surface-container-highest": "#e5e2e1",
+              "primary-container": "#ff8c00",
+              "inverse-primary": "#ffb77d",
+              "on-surface-variant": "#564334",
+              "tertiary": "#00658f",
+              "background": "#fcf9f8",
+              "on-tertiary": "#ffffff",
+              "on-surface": "#1c1b1b",
+              "tertiary-container": "#00b5fc",
+              "surface-container": "#f0eded",
+              "on-secondary-fixed": "#2f1500",
+              "primary": "#904d00",
+              "on-primary-container": "#623200",
+              "inverse-surface": "#313030",
+              "secondary": "#865224",
+              "error-container": "#ffdad6",
+              "tertiary-fixed-dim": "#85cfff",
+              "on-secondary-container": "#78471a",
+              "on-primary": "#ffffff",
+              "on-primary-fixed": "#2f1500",
+              "on-error-container": "#93000a",
+              "surface-tint": "#904d00",
+              "secondary-fixed-dim": "#fdb881",
+              "on-secondary": "#ffffff",
+              "on-tertiary-container": "#004360",
+              "error": "#ba1a1a",
+              "on-error": "#ffffff",
+              "on-primary-fixed-variant": "#6e3900",
+              "surface-dim": "#dcd9d9",
+              "surface-container-high": "#eae7e7",
+              "on-tertiary-fixed-variant": "#004c6c",
+              "on-secondary-fixed-variant": "#6a3b0f",
+              "secondary-container": "#fdb881",
+              "primary-fixed-dim": "#ffb77d",
+              "surface-bright": "#fcf9f8",
+              "tertiary-fixed": "#c7e7ff",
+              "surface": "#fcf9f8",
+              "primary-fixed": "#ffdcc3",
+              "surface-container-low": "#f6f3f2",
+              "secondary-fixed": "#ffdcc3",
+              "outline-variant": "#ddc1ae",
+              "outline": "#897362",
+              "inverse-on-surface": "#f3f0ef",
+              "on-background": "#1c1b1b"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .atelier-gradient {
+        background: linear-gradient(135deg, #ff8c00 0%, #904d00 100%);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#FCF9F8]/80 backdrop-blur-xl shadow-[0_8px_24px_rgba(28,27,27,0.04)]">
+<div class="flex items-center justify-between px-6 h-16 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#FF8C00]">arrow_back</span>
+<span class="font-manrope font-black text-xl tracking-tighter text-[#1C1B1B]">OnlyCars Parts</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#564334]">notifications</span>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-lg mx-auto">
+<!-- Status Indicator -->
+<div class="mb-8 flex items-center justify-center">
+<div class="flex flex-col items-center">
+<div class="w-20 h-20 rounded-full bg-primary-container/10 flex items-center justify-center mb-4 relative">
+<span class="material-symbols-outlined text-primary-container text-4xl" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+<div class="absolute -top-1 -right-1 w-6 h-6 bg-green-500 border-4 border-surface rounded-full"></div>
+</div>
+<h2 class="font-headline font-extrabold text-2xl text-on-surface tracking-tight">Courier Arrived</h2>
+<p class="font-label text-sm text-on-surface-variant mt-1">Order #29104 is ready for handover</p>
+</div>
+</div>
+<!-- Verification Bento Card -->
+<section class="bg-surface-container-lowest rounded-xl shadow-[0_4px_20px_rgba(28,27,27,0.04)] overflow-hidden mb-6">
+<div class="p-6">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="font-label text-[10px] font-semibold uppercase tracking-widest text-on-surface-variant block mb-1">Handover Verification Code</span>
+<div class="flex items-center gap-2">
+<span class="font-headline font-black text-4xl text-on-surface tracking-tighter">H-291</span>
+<span class="material-symbols-outlined text-primary text-xl">content_copy</span>
+</div>
+</div>
+<div class="bg-surface-container-low px-3 py-1 rounded-full">
+<span class="font-label text-[10px] font-bold text-primary uppercase tracking-wider">Awaiting Scan</span>
+</div>
+</div>
+<!-- Courier Details -->
+<div class="flex items-center gap-4 p-4 bg-surface-container-low rounded-lg">
+<img alt="Courier Profile" class="w-12 h-12 rounded-full object-cover grayscale" data-alt="Professional courier driver headshot photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1VGoqr-9BDMHqzYp30iqwEEhUYOfqqg1UnHe6Qx1_B7KIwWHhQ9B0cL8PRbocIQLwVGkb5XohhSOJqSFj9nopoVTFABNlU3Bb5hJD4ZQqKRAA5oNGpFuW2KT_PuzIYVS1q6igBobh_hSj5CCJuGNqNiJywsavBl-y3A13XkOyGmvsI3ZcKTxZBlwwPGTu9cCnLeJHxm23fbvrBbKI2BZLFy049mqdozjXSRSigYjyzAWlm4CbxLEK-n1P1NyQL6HLkjf4Z6a2aNMA"/>
+<div class="flex-1">
+<span class="font-headline font-bold text-on-surface block leading-none mb-1">Ahmed Al-Farsi</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-on-surface-variant">star</span>
+<span class="font-label text-xs text-on-surface-variant">4.9 • Super Courier</span>
+</div>
+</div>
+<div class="flex gap-2">
+<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined">call</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Package Details Grid -->
+<section class="grid grid-cols-2 gap-4 mb-8">
+<div class="bg-surface-container-low p-4 rounded-xl">
+<span class="material-symbols-outlined text-on-surface-variant mb-2">package_2</span>
+<span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant block">Items</span>
+<span class="font-headline font-bold text-on-surface">3 Parts</span>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl">
+<span class="material-symbols-outlined text-on-surface-variant mb-2">weight</span>
+<span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant block">Weight</span>
+<span class="font-headline font-bold text-on-surface">12.5 kg</span>
+</div>
+</section>
+<!-- Confirmation Action -->
+<div class="space-y-4">
+<button class="w-full atelier-gradient text-on-primary py-4 rounded-xl font-headline font-extrabold text-lg tracking-tight shadow-lg active:scale-95 duration-200">
+                Confirm Handover
+            </button>
+<button class="w-full bg-surface-container-high text-on-surface-variant py-4 rounded-xl font-headline font-bold text-base active:scale-95 duration-200">
+                Report Issue
+            </button>
+</div>
+<!-- Live Tracking Snippet (Minimalist) -->
+<div class="mt-8 p-4 border border-outline-variant/20 rounded-xl flex items-center gap-4">
+<div class="w-10 h-10 bg-tertiary-fixed rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">near_me</span>
+</div>
+<div class="flex-1">
+<p class="font-label text-xs text-on-surface-variant leading-tight">Current Location</p>
+<p class="font-headline font-bold text-sm">Industrial Area, Hub 42</p>
+</div>
+<div class="text-right">
+<p class="font-label text-[10px] uppercase text-on-surface-variant">Next State</p>
+<p class="font-headline font-bold text-primary text-sm">Out for Delivery</p>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-white/90 backdrop-blur-2xl rounded-t-[2rem] shadow-[0_-8px_24px_rgba(28,27,27,0.06)] md:hidden">
+<div class="flex justify-around items-center h-20 px-4 pb-4 w-full">
+<div class="flex flex-col items-center justify-center text-[#564334] opacity-70">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest mt-1">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#FF8C00] scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest mt-1">Orders</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#564334] opacity-70">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest mt-1">Products</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#564334] opacity-70">
+<span class="material-symbols-outlined">person</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest mt-1">Profile</span>
+</div>
+</div>
+</nav>
+</body></html>

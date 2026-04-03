@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OnlyCars Parts - Delivery Tracking</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-variant": "#e5e2e1",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed": "#001e2e",
+              "surface-container-highest": "#e5e2e1",
+              "primary-container": "#ff8c00",
+              "inverse-primary": "#ffb77d",
+              "on-surface-variant": "#564334",
+              "tertiary": "#00658f",
+              "background": "#fcf9f8",
+              "on-tertiary": "#ffffff",
+              "on-surface": "#1c1b1b",
+              "tertiary-container": "#00b5fc",
+              "surface-container": "#f0eded",
+              "on-secondary-fixed": "#2f1500",
+              "primary": "#904d00",
+              "on-primary-container": "#623200",
+              "inverse-surface": "#313030",
+              "secondary": "#865224",
+              "error-container": "#ffdad6",
+              "tertiary-fixed-dim": "#85cfff",
+              "on-secondary-container": "#78471a",
+              "on-primary": "#ffffff",
+              "on-primary-fixed": "#2f1500",
+              "on-error-container": "#93000a",
+              "surface-tint": "#904d00",
+              "secondary-fixed-dim": "#fdb881",
+              "on-secondary": "#ffffff",
+              "on-tertiary-container": "#004360",
+              "error": "#ba1a1a",
+              "on-error": "#ffffff",
+              "on-primary-fixed-variant": "#6e3900",
+              "surface-dim": "#dcd9d9",
+              "surface-container-high": "#eae7e7",
+              "on-tertiary-fixed-variant": "#004c6c",
+              "on-secondary-fixed-variant": "#6a3b0f",
+              "secondary-container": "#fdb881",
+              "primary-fixed-dim": "#ffb77d",
+              "surface-bright": "#fcf9f8",
+              "tertiary-fixed": "#c7e7ff",
+              "surface": "#fcf9f8",
+              "primary-fixed": "#ffdcc3",
+              "surface-container-low": "#f6f3f2",
+              "secondary-fixed": "#ffdcc3",
+              "outline-variant": "#ddc1ae",
+              "outline": "#897362",
+              "inverse-on-surface": "#f3f0ef",
+              "on-background": "#1c1b1b"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .atelier-gradient {
+            background: linear-gradient(135deg, #ff8c00 0%, #904d00 100%);
+        }
+        .glass-header {
+            background: rgba(252, 249, 248, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body text-on-surface antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#FCF9F8]/80 backdrop-blur-xl shadow-[0_8px_24px_rgba(28,27,27,0.04)]">
+<div class="flex items-center justify-between px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 duration-200 p-2 rounded-full hover:bg-[#F6F3F2]">
+<span class="material-symbols-outlined text-[#564334]">arrow_back</span>
+</button>
+<span class="font-manrope font-black text-xl tracking-tighter text-[#1C1B1B]">OnlyCars Parts</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#FF8C00]">warehouse</span>
+<span class="material-symbols-outlined text-[#564334]">notifications</span>
+</div>
+</div>
+</header>
+<main class="pt-16 pb-24 min-h-screen">
+<!-- Map View Section (Asymmetric Bleed) -->
+<section class="relative w-full h-[397px] md:h-[442px] overflow-hidden">
+<div class="absolute inset-0 bg-surface-container" data-location="Dubai, United Arab Emirates" style="">
+<img alt="Real-time map showing courier delivery route" class="w-full h-full object-cover opacity-80" data-alt="Modern high contrast minimalist map of city streets" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXuwMkJfdWSHtEEPJcDnl7-kBJ9fACNtwtcvnGdri7kkjIsOeAM-BmM5HcrY4SppiCbVZ2zghVS9Lf_vlJS0Uy3JoMxsVM3iyHdibw1qbyu_KTDlBUyh7awF57bdwSTUbbvpizEOPfwfYx1Hhah77BxK-f7ZTRiJgiWkWO432zjUjqUqUljq_4WPNt6bGsBVonf_MPs9dlJVM5Ef1YbxUewCnMAYHr8T85rWCwR57O5yZVBCXXOzA0A9T5oXAn_8GRloyFrOHXz0Eu"/>
+<!-- Map UI Elements -->
+<div class="absolute inset-0 flex items-center justify-center">
+<!-- Courier Marker -->
+<div class="relative">
+<div class="atelier-gradient p-1.5 rounded-full shadow-lg scale-125">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+</div>
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 bg-surface-container-lowest px-3 py-1 rounded-full shadow-sm whitespace-nowrap border border-outline-variant/20">
+<span class="text-xs font-bold text-primary italic">2 mins away</span>
+</div>
+</div>
+</div>
+<!-- Destination Pin -->
+<div class="absolute top-1/4 right-1/4">
+<span class="material-symbols-outlined text-on-surface text-3xl" style="font-variation-settings: 'FILL' 1;">home_pin</span>
+</div>
+</div>
+<!-- Floating Navigation Overlay -->
+<div class="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+<div class="bg-surface-container-lowest/90 backdrop-blur-md p-4 rounded-xl shadow-lg border border-outline-variant/10">
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-1">Estimated Arrival</p>
+<h2 class="text-3xl font-headline font-extrabold text-on-surface leading-none">14:45</h2>
+</div>
+<button class="bg-surface-container-lowest p-3 rounded-full shadow-lg active:scale-95 duration-200">
+<span class="material-symbols-outlined text-on-surface">my_location</span>
+</button>
+</div>
+</section>
+<!-- Tracking Content -->
+<div class="px-6 -mt-6 relative z-10">
+<!-- Status Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_8px_24px_rgba(28,27,27,0.04)] border border-outline-variant/10">
+<div class="flex items-center justify-between mb-6">
+<div>
+<span class="inline-block px-3 py-1 bg-primary-container/10 text-primary-container text-[10px] font-bold uppercase tracking-tighter rounded-full mb-2">Out For Delivery</span>
+<h3 class="text-xl font-headline font-bold text-on-surface">Precision Turbo Kit V2</h3>
+<p class="text-sm text-on-surface-variant">Order #OC-99281-RT</p>
+</div>
+<div class="h-16 w-16 bg-surface-container-low rounded-lg overflow-hidden flex items-center justify-center p-2">
+<img alt="Car turbocharger part" class="w-full h-full object-contain" data-alt="Mechanical car performance engine part close up" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPk5qWO24f2ofgGOqzBQmRsZdWw-ja0x8BCoqmzx8uaGf2Gq2KC52bIADwE3r3aMf4Tz7xSE-HojOrEjTYdbzXWTZbLptrltjN1dBYVd3ip19T8qFaypsjbt39aCCojsDgePtgQrD3TvhsGP4gsLGazYpvGAS3V31GvVBqJI85NNyM04LSh1Vrc9Io59E8kvcGKFG1dPySruvRi3v4r6eHnskxL7kaoTiV4zoqOHhgN2r5Sc97cp1jg8_jUeXoT_Vm9eSVcsBb3Jsl"/>
+</div>
+</div>
+<!-- Courier Profile -->
+<div class="flex items-center gap-4 p-4 bg-surface-container-low rounded-xl mb-6">
+<img alt="Delivery Courier Portrait" class="w-12 h-12 rounded-full object-cover" data-alt="Professional delivery driver profile photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxLpycB4aLBjOC9u8AxuCy49csIAkH4Wzk3rKMA2jDOypIeuGwP7oNZF0YrKD2Pzm8VJhgVxGeEV44MKfHkH9veElAaxpCvZwBzSoMU0zQ133FdKPvzdGzPJnzo19hJtu1ZN_t-x1xKWg1GQdDnJyBLa1rqgdtc4AS5iEPi5mLmPZ5GdB6t5A-h6Y3oyAXKHV4gL-UM4tUNgMnQmwFj5AXx6vig1_E_czS3-Gw7nGwSczkB5hN00nLBCSKC51VpLPOuKc_mxsVCbfB"/>
+<div class="flex-1">
+<p class="text-xs font-semibold text-on-surface-variant">Your Courier</p>
+<h4 class="font-headline font-bold text-on-surface">Marco Verratti</h4>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[#FF8C00] text-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-on-surface">4.9</span>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-lowest text-on-surface shadow-sm border border-outline-variant/10 active:scale-90 duration-150">
+<span class="material-symbols-outlined text-sm">chat_bubble</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full atelier-gradient text-white shadow-md active:scale-90 duration-150">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">call</span>
+</button>
+</div>
+</div>
+<!-- Status Timeline -->
+<div class="space-y-6 pt-2">
+<div class="relative flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-2.5 h-2.5 rounded-full bg-primary-container ring-4 ring-primary-container/20"></div>
+<div class="w-0.5 h-full bg-surface-container-highest mt-1"></div>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Arriving soon</p>
+<p class="text-xs text-on-surface-variant">The courier is 1.2km away from your garage.</p>
+<p class="text-[10px] font-medium text-outline mt-1">14:41</p>
+</div>
+</div>
+<div class="relative flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-2.5 h-2.5 rounded-full bg-on-surface-variant/30"></div>
+<div class="w-0.5 h-full bg-surface-container-highest mt-1"></div>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface-variant">Out for delivery</p>
+<p class="text-xs text-on-surface-variant">Package left the Al Quoz distribution hub.</p>
+<p class="text-[10px] font-medium text-outline mt-1">14:15</p>
+</div>
+</div>
+<div class="relative flex gap-4 opacity-50">
+<div class="flex flex-col items-center">
+<div class="w-2.5 h-2.5 rounded-full bg-on-surface-variant/30"></div>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface-variant">Order Processed</p>
+<p class="text-xs text-on-surface-variant">Inventory check and quality assurance complete.</p>
+<p class="text-[10px] font-medium text-outline mt-1">09:30</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Specifications Bento (Optional Detail) -->
+<div class="grid grid-cols-2 gap-4 mt-6">
+<div class="bg-surface-container-low p-4 rounded-xl">
+<span class="material-symbols-outlined text-primary mb-2">package_2</span>
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Package Weight</p>
+<p class="text-xl font-headline font-extrabold text-on-surface">12.4 kg</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl">
+<span class="material-symbols-outlined text-primary mb-2">shield</span>
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Insurance</p>
+<p class="text-xl font-headline font-extrabold text-on-surface">Covered</p>
+</div>
+</div>
+<!-- Action Button -->
+<div class="mt-8 mb-4">
+<button class="w-full atelier-gradient text-white font-manrope font-bold py-4 rounded-xl shadow-lg active:scale-95 transition-all">
+                    View Full Order Details
+                </button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-[2rem] bg-white/90 dark:bg-black/90 backdrop-blur-2xl shadow-[0_-8px_24px_rgba(28,27,27,0.06)]">
+<div class="flex justify-around items-center h-20 px-4 pb-4 w-full">
+<a class="flex flex-col items-center justify-center text-[#564334] dark:text-zinc-500 opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#FF8C00] scale-110 transition-transform active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#564334] dark:text-zinc-500 opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest">Products</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#564334] dark:text-zinc-500 opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest">Profile</span>
+</a>
+</div>
+</nav>
+</body></html>

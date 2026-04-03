@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Delivery Tracking - OnlyCars Parts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-variant": "#e5e2e1",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed": "#001e2e",
+              "surface-container-highest": "#e5e2e1",
+              "primary-container": "#ff8c00",
+              "inverse-primary": "#ffb77d",
+              "on-surface-variant": "#564334",
+              "tertiary": "#00658f",
+              "background": "#fcf9f8",
+              "on-tertiary": "#ffffff",
+              "on-surface": "#1c1b1b",
+              "tertiary-container": "#00b5fc",
+              "surface-container": "#f0eded",
+              "on-secondary-fixed": "#2f1500",
+              "primary": "#904d00",
+              "on-primary-container": "#623200",
+              "inverse-surface": "#313030",
+              "secondary": "#865224",
+              "error-container": "#ffdad6",
+              "tertiary-fixed-dim": "#85cfff",
+              "on-secondary-container": "#78471a",
+              "on-primary": "#ffffff",
+              "on-primary-fixed": "#2f1500",
+              "on-error-container": "#93000a",
+              "surface-tint": "#904d00",
+              "secondary-fixed-dim": "#fdb881",
+              "on-secondary": "#ffffff",
+              "on-tertiary-container": "#004360",
+              "error": "#ba1a1a",
+              "on-error": "#ffffff",
+              "on-primary-fixed-variant": "#6e3900",
+              "surface-dim": "#dcd9d9",
+              "surface-container-high": "#eae7e7",
+              "on-tertiary-fixed-variant": "#004c6c",
+              "on-secondary-fixed-variant": "#6a3b0f",
+              "secondary-container": "#fdb881",
+              "primary-fixed-dim": "#ffb77d",
+              "surface-bright": "#fcf9f8",
+              "tertiary-fixed": "#c7e7ff",
+              "surface": "#fcf9f8",
+              "primary-fixed": "#ffdcc3",
+              "surface-container-low": "#f6f3f2",
+              "secondary-fixed": "#ffdcc3",
+              "outline-variant": "#ddc1ae",
+              "outline": "#897362",
+              "inverse-on-surface": "#f3f0ef",
+              "on-background": "#1c1b1b"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .atelier-gradient {
+            background: linear-gradient(135deg, #ff8c00 0%, #904d00 100%);
+        }
+        .glass-panel {
+            backdrop-filter: blur(20px);
+            background: rgba(252, 249, 248, 0.8);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface">
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 w-full z-50 bg-[#FCF9F8]/80 backdrop-blur-xl shadow-[0_8px_24px_rgba(28,27,27,0.04)] h-16 flex items-center justify-between px-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 atelier-gradient rounded-lg flex items-center justify-center text-white active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="warehouse">warehouse</span>
+</div>
+<h1 class="font-headline font-black text-xl tracking-tighter text-[#1C1B1B]">OnlyCars Parts</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-[#564334] hover:bg-[#F6F3F2] transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant/20 mx-2"></div>
+<div class="flex items-center gap-2">
+<span class="font-headline font-bold tracking-tight text-lg text-[#FF8C00]">Orders</span>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 max-w-5xl mx-auto space-y-8">
+<!-- Hero Tracking View (Bento Layout) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Map View (Large Bento Cell) -->
+<div class="md:col-span-8 h-[400px] md:h-auto rounded-xl overflow-hidden relative shadow-[0_4px_20px_rgba(0,0,0,0.05)] bg-surface-container-low group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Modern interactive street map with route navigation" data-location="Berlin" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYIjKO2VYbkq6kc14RTausg7TXbywKUw6JqFcFt60odI8qPuDELTSGNi-EqGnRWm3a1gUoXRovBCZPJzToCYw72KesyGAXn_mO4ubYboovq5sTS6k2Fs593RsRCgjfbaH5QsnuUogM0UnQxXdk6HYXFqmwIAjvwq8sxLbI6PPORUWwoyIsKWPck7SUuVS7hQXY4oFf5F7oSJPrsLTC9-DBfQu5Rg1BIfSjVinxLMh6SjweUWnF1gGtlquYjS4ohlKfO2yJRuWrFqSX"/>
+<!-- Floating Info Overlay -->
+<div class="absolute bottom-6 left-6 right-6 flex items-center justify-between glass-panel p-4 rounded-xl border border-white/20">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-white">
+<span class="material-symbols-outlined" data-icon="local_shipping" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+</div>
+<div>
+<p class="font-label text-xs uppercase tracking-widest text-on-surface-variant font-semibold">Live Status</p>
+<h3 class="font-headline font-bold text-lg leading-tight">En route to Workshop</h3>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label text-xs uppercase tracking-widest text-on-surface-variant font-semibold">ETA</p>
+<h3 class="font-headline font-black text-2xl text-primary-container">14 MIN</h3>
+</div>
+</div>
+</div>
+<!-- Courier Details (Side Bento Cell) -->
+<div class="md:col-span-4 flex flex-col gap-6">
+<!-- Delivery Man Card -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10 flex flex-col items-center text-center">
+<div class="relative mb-4">
+<img class="w-24 h-24 rounded-full object-cover ring-4 ring-primary-container/20" data-alt="Professional courier driver profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_-L42T32udvVc9k3KuKN63mcpjHP0doTJtbgVUI_piqNSMqiV8D2hUeA4K4M2BcEr7-8Kx-kMftB7PFzf_YbyVqHaNU9R2c7OI7yO9WrBMcDAXy7WrSmq8oZMYjtmJmabyrFPXpJZG_5LpnTYbyoAHenPadn8fqsZPA_hdyxBAMe70AEzXVPHZz9X_EBxmj8ZPlq3qyQg46ATm95XeLR__HEGdelJBHLEyWcNR6cEM_ghVlYtUjkrLzjIWItYVDPWwNYZhoVonQXy"/>
+<div class="absolute -bottom-1 -right-1 bg-green-500 w-6 h-6 rounded-full border-4 border-white flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-white"></div>
+</div>
+</div>
+<h2 class="font-headline font-bold text-xl text-on-surface">Marcus Vance</h2>
+<div class="flex items-center gap-1 mt-1 text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-headline font-bold">4.9</span>
+<span class="text-on-surface-variant font-label text-sm ml-1">(1,240 Deliveries)</span>
+</div>
+<div class="w-full grid grid-cols-2 gap-3 mt-8">
+<button class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-surface-container-low text-on-surface font-semibold hover:bg-surface-container-high transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[20px]" data-icon="chat">chat</span>
+                            Chat
+                        </button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-surface-container-low text-on-surface font-semibold hover:bg-surface-container-high transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[20px]" data-icon="call">call</span>
+                            Call
+                        </button>
+</div>
+</div>
+<!-- Logistics Meta Card -->
+<div class="bg-surface-container-low p-6 rounded-xl space-y-4">
+<div class="flex justify-between items-center pb-4 border-b border-outline-variant/10">
+<span class="text-on-surface-variant text-sm font-medium">Vehicle</span>
+<span class="font-bold text-on-surface">Mercedes Sprinter</span>
+</div>
+<div class="flex justify-between items-center pb-4 border-b border-outline-variant/10">
+<span class="text-on-surface-variant text-sm font-medium">Plate</span>
+<span class="bg-on-surface text-white px-2 py-1 rounded font-mono text-xs font-bold">CAR-99-PARTS</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant text-sm font-medium">Carrier</span>
+<span class="font-bold text-on-surface">SwiftLogistics Premium</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Progress Timeline (Organic Section) -->
+<div class="bg-surface-container-low rounded-2xl p-8">
+<div class="flex flex-col md:flex-row items-center justify-between gap-8 relative">
+<!-- Progress Line Background -->
+<div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-outline-variant/20 -translate-y-1/2 z-0"></div>
+<div class="hidden md:block absolute top-1/2 left-0 w-2/3 h-1 atelier-gradient -translate-y-1/2 z-0"></div>
+<!-- Steps -->
+<div class="relative z-10 flex flex-col items-center gap-3 group text-center md:text-left">
+<div class="w-12 h-12 rounded-full atelier-gradient text-white flex items-center justify-center shadow-lg ring-4 ring-white">
+<span class="material-symbols-outlined" data-icon="order_approve">order_approve</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-headline font-bold text-on-surface">Requested</span>
+<span class="text-xs text-on-surface-variant font-label">11:20 AM</span>
+</div>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-3 group text-center md:text-left">
+<div class="w-12 h-12 rounded-full atelier-gradient text-white flex items-center justify-center shadow-lg ring-4 ring-white">
+<span class="material-symbols-outlined" data-icon="person_pin">person_pin</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-headline font-bold text-on-surface">Assigned</span>
+<span class="text-xs text-on-surface-variant font-label">11:25 AM</span>
+</div>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-3 group text-center md:text-left">
+<div class="w-12 h-12 rounded-full atelier-gradient text-white flex items-center justify-center shadow-lg ring-4 ring-white">
+<span class="material-symbols-outlined" data-icon="directions_car" style="font-variation-settings: 'FILL' 1;">directions_car</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-headline font-bold text-on-surface">On the way</span>
+<span class="text-xs text-on-surface-variant font-label font-bold text-primary">In Transit</span>
+</div>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-3 group opacity-40 text-center md:text-left">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center ring-4 ring-white">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-headline font-bold text-on-surface-variant">Delivered</span>
+<span class="text-xs text-on-surface-variant font-label">Est. 12:15 PM</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Order Summary & Tech Specs -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-6">
+<h3 class="font-headline font-bold text-2xl px-2">Order Summary</h3>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="p-6 flex gap-4 border-b border-surface-container-low">
+<div class="w-20 h-20 rounded-lg bg-surface-container overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Performance car engine component parts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFMiihd_FUjmEE2ORxk0Fko_XAVX0i5Lt8sKhgWKEh2IbHMiGKaoP4M8NdlQ1H6KHB3y0BkRVEf2eOD-z316AK08ph0lUU5Y_yv3fPVI4K5eL707njtVaxwi2jPaIg2UMK990yT_BU5wmKVXEq4dUJbSVriD12MSws85-zceVma9J0oInZ8U84q7L-pZP_Khpowelpbx8FEoZ-txgZ_p7ITf-XOwv8tyAPU47M3bGtmRy8Kej2AjmTMwuy2pX4JY13n13UJHBjy5cP"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between">
+<h4 class="font-headline font-bold text-on-surface">V8 Turbo Manifold Kit</h4>
+<span class="font-bold text-primary">$1,240.00</span>
+</div>
+<p class="text-on-surface-variant text-sm mt-1">OEM Grade • Titanium Finish</p>
+<div class="flex items-center gap-4 mt-2">
+<span class="text-xs bg-surface-container-high px-2 py-1 rounded text-on-surface-variant font-semibold">SKU: OCP-882-V8</span>
+<span class="text-xs bg-surface-container-high px-2 py-1 rounded text-on-surface-variant font-semibold">Qty: 1</span>
+</div>
+</div>
+</div>
+<div class="p-6 space-y-3">
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Subtotal</span>
+<span class="font-medium">$1,240.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Express Delivery</span>
+<span class="font-medium">$45.00</span>
+</div>
+<div class="flex justify-between items-center pt-3 border-t border-outline-variant/10">
+<span class="font-headline font-bold">Total (incl. VAT)</span>
+<span class="font-headline font-black text-xl">$1,285.00</span>
+</div>
+</div>
+</div>
+</div>
+<div class="space-y-6">
+<h3 class="font-headline font-bold text-2xl px-2">Delivery Details</h3>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-6 space-y-6">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-on-surface">Destination</h4>
+<p class="text-on-surface-variant text-sm mt-1">High-Performance Motors Workshop<br/>42 Industrial Way, Docklands, London E14</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-on-surface">Instructions</h4>
+<p class="text-on-surface-variant text-sm mt-1">Leave at Bay 4. Ask for Sam. High-value cargo, signature required.</p>
+</div>
+</div>
+<div class="pt-4">
+<button class="w-full atelier-gradient text-white py-4 rounded-xl font-headline font-bold text-lg shadow-[0_8px_24px_rgba(255,140,0,0.25)] hover:opacity-90 active:scale-95 duration-200 transition-all">
+                            Contact Support Team
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-[2rem] bg-white/90 backdrop-blur-2xl shadow-[0_-8px_24px_rgba(28,27,27,0.06)] h-20 px-4 pb-4 flex justify-around items-center">
+<a class="flex flex-col items-center justify-center text-[#564334] opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#FF8C00] scale-110 transition-transform active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_cart" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest mt-1">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#564334] opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest mt-1">Products</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#564334] opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

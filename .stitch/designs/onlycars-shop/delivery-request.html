@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-variant": "#e5e2e1",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed": "#001e2e",
+              "surface-container-highest": "#e5e2e1",
+              "primary-container": "#ff8c00",
+              "inverse-primary": "#ffb77d",
+              "on-surface-variant": "#564334",
+              "tertiary": "#00658f",
+              "background": "#fcf9f8",
+              "on-tertiary": "#ffffff",
+              "on-surface": "#1c1b1b",
+              "tertiary-container": "#00b5fc",
+              "surface-container": "#f0eded",
+              "on-secondary-fixed": "#2f1500",
+              "primary": "#904d00",
+              "on-primary-container": "#623200",
+              "inverse-surface": "#313030",
+              "secondary": "#865224",
+              "error-container": "#ffdad6",
+              "tertiary-fixed-dim": "#85cfff",
+              "on-secondary-container": "#78471a",
+              "on-primary": "#ffffff",
+              "on-primary-fixed": "#2f1500",
+              "on-error-container": "#93000a",
+              "surface-tint": "#904d00",
+              "secondary-fixed-dim": "#fdb881",
+              "on-secondary": "#ffffff",
+              "on-tertiary-container": "#004360",
+              "error": "#ba1a1a",
+              "on-error": "#ffffff",
+              "on-primary-fixed-variant": "#6e3900",
+              "surface-dim": "#dcd9d9",
+              "surface-container-high": "#eae7e7",
+              "on-tertiary-fixed-variant": "#004c6c",
+              "on-secondary-fixed-variant": "#6a3b0f",
+              "secondary-container": "#fdb881",
+              "primary-fixed-dim": "#ffb77d",
+              "surface-bright": "#fcf9f8",
+              "tertiary-fixed": "#c7e7ff",
+              "surface": "#fcf9f8",
+              "primary-fixed": "#ffdcc3",
+              "surface-container-low": "#f6f3f2",
+              "secondary-fixed": "#ffdcc3",
+              "outline-variant": "#ddc1ae",
+              "outline": "#897362",
+              "inverse-on-surface": "#f3f0ef",
+              "on-background": "#1c1b1b"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .atelier-gradient {
+        background: linear-gradient(135deg, #ff8c00 0%, #904d00 100%);
+      }
+      body {
+        background-color: #fcf9f8;
+        color: #1c1b1b;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body selection:bg-primary-container/30">
+<!-- Top Navigation -->
+<header class="fixed top-0 w-full z-50 bg-[#FCF9F8]/80 dark:bg-zinc-900/80 backdrop-blur-xl shadow-[0_8px_24px_rgba(28,27,27,0.04)] h-16 flex items-center justify-between px-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#FF8C00]" data-icon="warehouse">warehouse</span>
+<span class="font-manrope font-black text-xl tracking-tighter text-[#1C1B1B] dark:text-white">OnlyCars Parts</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-[#F6F3F2] transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-[#564334]" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 max-w-xl mx-auto">
+<!-- Delivery Request Title -->
+<div class="mb-8">
+<h1 class="font-headline font-extrabold text-3xl tracking-tight text-on-surface mb-2">Request Delivery</h1>
+<p class="font-label text-on-surface-variant text-sm">Dispatch parts to your customers or partner workshops instantly.</p>
+</div>
+<!-- Package Summary Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 mb-6 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-headline font-bold text-lg text-on-surface">Package Summary</h2>
+<span class="bg-primary-container/10 text-primary font-label text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">New Order #4829</span>
+</div>
+<div class="flex gap-4 items-start">
+<div class="w-16 h-16 bg-surface-container rounded-lg flex items-center justify-center overflow-hidden">
+<img alt="Brake Pad" class="w-full h-full object-cover" data-alt="Close up of high performance ceramic brake pads" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0IWrlIvSgRxzjKOSwh3lWUz0_LdI96rjHG3qd3_q9zvWPJP7A3wy9jMFtpKX9d8z7dX-HgsQukfCLL8fOmHNuNdQYIaLd5ybuhJeU57EW_n0HrbSZ1hyIouPYqVrLGZGAnvJX40aG1WcRnk7pG6SD0jkBOmQrPPLFWeWJXppCDCP7RXDv7zQ8AsXUahrObU-I1ETxBKi14YanocZ7U86Se_bTSTLkhj7iTu8GTB3ue6Goe313RzvNekZPsljAFzsTRgS76BtpoSd4"/>
+</div>
+<div class="flex-1">
+<h3 class="font-headline font-bold text-on-surface">V8 Performance Brake Pads</h3>
+<p class="text-sm text-on-surface-variant font-medium">Qty: 2 Sets • SKU: BP-V8-001</p>
+</div>
+</div>
+</div>
+<!-- Logistics Bento Grid -->
+<div class="grid grid-cols-1 gap-4 mb-6">
+<!-- Pickup Location -->
+<div class="bg-surface-container-low rounded-xl p-5 flex items-center gap-4">
+<div class="bg-white p-3 rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-primary" data-icon="store">store</span>
+</div>
+<div>
+<span class="font-label text-[10px] font-bold uppercase tracking-widest text-on-surface-variant block mb-0.5">Pickup From Shop</span>
+<p class="font-headline font-bold text-on-surface">OnlyCars Hub - West Downtown</p>
+</div>
+</div>
+<!-- Destination Selection -->
+<div class="bg-surface-container-lowest rounded-xl p-5 border-2 border-primary-container/20">
+<div class="flex items-center gap-4 mb-4">
+<div class="bg-primary-container/10 p-3 rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="near_me">near_me</span>
+</div>
+<div>
+<span class="font-label text-[10px] font-bold uppercase tracking-widest text-on-surface-variant block mb-0.5">Destination</span>
+<p class="font-headline font-bold text-on-surface">AutoTech Workshop #4</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-2 px-4 bg-surface-container rounded-lg text-xs font-bold text-on-surface-variant hover:bg-surface-variant transition-colors">Change Destination</button>
+<button class="p-2 bg-surface-container rounded-lg">
+<span class="material-symbols-outlined text-sm" data-icon="map">map</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Size & Pricing Glass Card -->
+<div class="bg-surface-container-low rounded-xl p-6 mb-8">
+<h3 class="font-headline font-bold text-on-surface mb-4">Package Details</h3>
+<!-- Size Selection -->
+<div class="flex gap-3 mb-6">
+<div class="flex-1 p-3 rounded-lg border-2 border-primary bg-white flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="package_2">package_2</span>
+<span class="text-[11px] font-bold text-on-surface uppercase tracking-tighter">Medium</span>
+</div>
+<div class="flex-1 p-3 rounded-lg border-2 border-transparent bg-surface-container flex flex-col items-center gap-2 opacity-60">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="inventory_2">inventory_2</span>
+<span class="text-[11px] font-bold text-on-surface-variant uppercase tracking-tighter">Large</span>
+</div>
+<div class="flex-1 p-3 rounded-lg border-2 border-transparent bg-surface-container flex flex-col items-center gap-2 opacity-60">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="local_shipping">local_shipping</span>
+<span class="text-[11px] font-bold text-on-surface-variant uppercase tracking-tighter">Bulk</span>
+</div>
+</div>
+<!-- Estimated Fee -->
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/30">
+<div>
+<span class="text-xs font-medium text-on-surface-variant block">Estimated Delivery Fee</span>
+<span class="font-headline font-extrabold text-2xl text-on-surface">$14.50</span>
+</div>
+<div class="text-right">
+<span class="text-xs font-medium text-on-surface-variant block">ETA</span>
+<span class="font-headline font-bold text-on-surface text-lg">25 - 35 mins</span>
+</div>
+</div>
+</div>
+<!-- Action Area -->
+<button class="atelier-gradient w-full h-16 rounded-xl flex items-center justify-center gap-3 shadow-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-white" data-icon="delivery_dining" style="font-variation-settings: 'FILL' 1;">delivery_dining</span>
+<span class="text-white font-headline font-extrabold text-lg">Request Delivery Man</span>
+</button>
+</main>
+<!-- Bottom Navigation Bar (Active: Dashboard) -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-[2rem] bg-white/90 dark:bg-black/90 backdrop-blur-2xl shadow-[0_-8px_24px_rgba(28,27,27,0.06)] flex justify-around items-center h-20 px-4 pb-4">
+<a class="flex flex-col items-center justify-center text-[#FF8C00] scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#564334] dark:text-zinc-500 opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#564334] dark:text-zinc-500 opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest">Products</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#564334] dark:text-zinc-500 opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest">Profile</span>
+</a>
+</nav>
+</body></html>

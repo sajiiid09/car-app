@@ -62,18 +62,18 @@ void main() {
       router.go('/workshop');
       await tester.pumpAndSettle();
 
-      final dashboardX = tester.getTopLeft(
-        find.byKey(const Key('workshopFooterItem-dashboard')),
-      ).dx;
-      final jobsX = tester.getTopLeft(
-        find.byKey(const Key('workshopFooterItem-jobs')),
-      ).dx;
-      final messagesX = tester.getTopLeft(
-        find.byKey(const Key('workshopFooterItem-messages')),
-      ).dx;
-      final profileX = tester.getTopLeft(
-        find.byKey(const Key('workshopFooterItem-profile')),
-      ).dx;
+      final dashboardX = tester
+          .getTopLeft(find.byKey(const Key('workshopFooterItem-dashboard')))
+          .dx;
+      final jobsX = tester
+          .getTopLeft(find.byKey(const Key('workshopFooterItem-jobs')))
+          .dx;
+      final messagesX = tester
+          .getTopLeft(find.byKey(const Key('workshopFooterItem-messages')))
+          .dx;
+      final profileX = tester
+          .getTopLeft(find.byKey(const Key('workshopFooterItem-profile')))
+          .dx;
 
       expect(dashboardX, lessThan(jobsX));
       expect(jobsX, lessThan(messagesX));
@@ -152,22 +152,32 @@ void main() {
       router.go('/workshop/jobs/request/request-911');
       await tester.pumpAndSettle();
 
-      await tester.ensureVisible(find.byKey(const Key('workshopAcceptRequestButton')));
+      await tester.ensureVisible(
+        find.byKey(const Key('workshopAcceptRequestButton')),
+      );
       await tester.tap(find.byKey(const Key('workshopAcceptRequestButton')));
       await tester.pumpAndSettle();
       expect(find.text('Assign a Driver'), findsOneWidget);
 
-      await tester.ensureVisible(find.byKey(const Key('workshopRequestDriverButton')));
+      await tester.ensureVisible(
+        find.byKey(const Key('workshopRequestDriverButton')),
+      );
       await tester.tap(find.byKey(const Key('workshopRequestDriverButton')));
       await tester.pumpAndSettle();
       expect(find.text('Incoming Vehicle'), findsOneWidget);
 
-      await tester.ensureVisible(find.byKey(const Key('workshopMarkIncomingArrivedButton')));
-      await tester.tap(find.byKey(const Key('workshopMarkIncomingArrivedButton')));
+      await tester.ensureVisible(
+        find.byKey(const Key('workshopMarkIncomingArrivedButton')),
+      );
+      await tester.tap(
+        find.byKey(const Key('workshopMarkIncomingArrivedButton')),
+      );
       await tester.pumpAndSettle();
       expect(find.text('Active Job Detail'), findsOneWidget);
 
-      await tester.ensureVisible(find.byKey(const Key('workshopStartDiagnosisButton')));
+      await tester.ensureVisible(
+        find.byKey(const Key('workshopStartDiagnosisButton')),
+      );
       await tester.tap(find.byKey(const Key('workshopStartDiagnosisButton')));
       await tester.pumpAndSettle();
       expect(find.text('Create Diagnosis'), findsOneWidget);
@@ -188,37 +198,57 @@ void main() {
         find.byKey(const Key('workshopDiagnosisNotesField')),
         'Replace tie rod assembly, recalibrate steering angle sensor.',
       );
-      await tester.ensureVisible(find.byKey(const Key('workshopSubmitDiagnosisButton')));
+      await tester.ensureVisible(
+        find.byKey(const Key('workshopSubmitDiagnosisButton')),
+      );
       await tester.tap(find.byKey(const Key('workshopSubmitDiagnosisButton')));
       await tester.pumpAndSettle();
       expect(find.text('Approval Pending'), findsOneWidget);
 
-      await tester.ensureVisible(find.byKey(const Key('workshopMarkApprovedButton')));
+      await tester.ensureVisible(
+        find.byKey(const Key('workshopMarkApprovedButton')),
+      );
       await tester.tap(find.byKey(const Key('workshopMarkApprovedButton')));
       await tester.pumpAndSettle();
       expect(find.text('Service Started'), findsOneWidget);
 
-      await tester.ensureVisible(find.byKey(const Key('workshopMarkServiceCompleteButton')));
-      await tester.tap(find.byKey(const Key('workshopMarkServiceCompleteButton')));
+      await tester.ensureVisible(
+        find.byKey(const Key('workshopMarkServiceCompleteButton')),
+      );
+      await tester.tap(
+        find.byKey(const Key('workshopMarkServiceCompleteButton')),
+      );
       await tester.pumpAndSettle();
       expect(find.text('Handover Selection'), findsOneWidget);
 
-      await tester.ensureVisible(find.byKey(const Key('workshopHandoverContinueButton')));
+      await tester.ensureVisible(
+        find.byKey(const Key('workshopHandoverContinueButton')),
+      );
       await tester.tap(find.byKey(const Key('workshopHandoverContinueButton')));
       await tester.pumpAndSettle();
       expect(find.text('Request Return Delivery'), findsOneWidget);
 
-      await tester.ensureVisible(find.byKey(const Key('workshopRequestReturnDriverButton')));
-      await tester.tap(find.byKey(const Key('workshopRequestReturnDriverButton')));
+      await tester.ensureVisible(
+        find.byKey(const Key('workshopRequestReturnDriverButton')),
+      );
+      await tester.tap(
+        find.byKey(const Key('workshopRequestReturnDriverButton')),
+      );
       await tester.pumpAndSettle();
       expect(find.text('Return Delivery Tracking'), findsOneWidget);
 
-      await tester.ensureVisible(find.byKey(const Key('workshopMarkReturnDeliveredButton')));
-      await tester.tap(find.byKey(const Key('workshopMarkReturnDeliveredButton')));
+      await tester.ensureVisible(
+        find.byKey(const Key('workshopMarkReturnDeliveredButton')),
+      );
+      await tester.tap(
+        find.byKey(const Key('workshopMarkReturnDeliveredButton')),
+      );
       await tester.pumpAndSettle();
       expect(find.text('Job Successfully Completed'), findsOneWidget);
 
-      final job = container.read(workshopWorkflowProvider).jobById('request-911');
+      final job = container
+          .read(workshopWorkflowProvider)
+          .jobById('request-911');
       expect(job?.stage, WorkshopJobStage.completed);
     });
 
@@ -230,15 +260,21 @@ void main() {
       router.go('/workshop/jobs/job/request-audi/handover');
       await tester.pumpAndSettle();
 
-      await tester.ensureVisible(find.byKey(const Key('workshopHandoverMode-customer')));
+      await tester.ensureVisible(
+        find.byKey(const Key('workshopHandoverMode-customer')),
+      );
       await tester.tap(find.byKey(const Key('workshopHandoverMode-customer')));
       await tester.pumpAndSettle();
-      await tester.ensureVisible(find.byKey(const Key('workshopHandoverContinueButton')));
+      await tester.ensureVisible(
+        find.byKey(const Key('workshopHandoverContinueButton')),
+      );
       await tester.tap(find.byKey(const Key('workshopHandoverContinueButton')));
       await tester.pumpAndSettle();
 
       expect(find.text('Job Successfully Completed'), findsOneWidget);
-      final job = container.read(workshopWorkflowProvider).jobById('request-audi');
+      final job = container
+          .read(workshopWorkflowProvider)
+          .jobById('request-audi');
       expect(job?.handoverMode, WorkshopHandoverMode.customerPickup);
       expect(job?.stage, WorkshopJobStage.completed);
     });
@@ -267,7 +303,9 @@ void main() {
 
     testWidgets('request detail', (tester) async {
       final container = await pumpWorkshopApp(tester, disableAnimations: true);
-      container.read(proRouterProvider).go('/workshop/jobs/request/request-911');
+      container
+          .read(proRouterProvider)
+          .go('/workshop/jobs/request/request-911');
       await tester.pumpAndSettle();
       await expectLater(
         find.byType(MaterialApp),
@@ -277,8 +315,12 @@ void main() {
 
     testWidgets('request driver', (tester) async {
       final container = await pumpWorkshopApp(tester, disableAnimations: true);
-      container.read(workshopWorkflowProvider.notifier).acceptRequest('request-911');
-      container.read(proRouterProvider).go('/workshop/jobs/request/request-911/driver');
+      container
+          .read(workshopWorkflowProvider.notifier)
+          .acceptRequest('request-911');
+      container
+          .read(proRouterProvider)
+          .go('/workshop/jobs/request/request-911/driver');
       await tester.pumpAndSettle();
       await expectLater(
         find.byType(MaterialApp),
@@ -288,9 +330,15 @@ void main() {
 
     testWidgets('incoming tracking', (tester) async {
       final container = await pumpWorkshopApp(tester, disableAnimations: true);
-      container.read(workshopWorkflowProvider.notifier).acceptRequest('request-911');
-      container.read(workshopWorkflowProvider.notifier).assignDriver('request-911');
-      container.read(proRouterProvider).go('/workshop/jobs/request/request-911/incoming');
+      container
+          .read(workshopWorkflowProvider.notifier)
+          .acceptRequest('request-911');
+      container
+          .read(workshopWorkflowProvider.notifier)
+          .assignDriver('request-911');
+      container
+          .read(proRouterProvider)
+          .go('/workshop/jobs/request/request-911/incoming');
       await tester.pumpAndSettle();
       await expectLater(
         find.byType(MaterialApp),
@@ -300,10 +348,18 @@ void main() {
 
     testWidgets('create diagnosis', (tester) async {
       final container = await pumpWorkshopApp(tester, disableAnimations: true);
-      container.read(workshopWorkflowProvider.notifier).acceptRequest('request-911');
-      container.read(workshopWorkflowProvider.notifier).assignDriver('request-911');
-      container.read(workshopWorkflowProvider.notifier).markIncomingArrived('request-911');
-      container.read(proRouterProvider).go('/workshop/jobs/job/request-911/diagnosis');
+      container
+          .read(workshopWorkflowProvider.notifier)
+          .acceptRequest('request-911');
+      container
+          .read(workshopWorkflowProvider.notifier)
+          .assignDriver('request-911');
+      container
+          .read(workshopWorkflowProvider.notifier)
+          .markIncomingArrived('request-911');
+      container
+          .read(proRouterProvider)
+          .go('/workshop/jobs/job/request-911/diagnosis');
       await tester.pumpAndSettle();
       await expectLater(
         find.byType(MaterialApp),
@@ -313,7 +369,9 @@ void main() {
 
     testWidgets('approval pending', (tester) async {
       final container = await pumpWorkshopApp(tester, disableAnimations: true);
-      container.read(proRouterProvider).go('/workshop/jobs/job/request-bmw/approval-pending');
+      container
+          .read(proRouterProvider)
+          .go('/workshop/jobs/job/request-bmw/approval-pending');
       await tester.pumpAndSettle();
       await expectLater(
         find.byType(MaterialApp),
@@ -323,7 +381,9 @@ void main() {
 
     testWidgets('service in progress', (tester) async {
       final container = await pumpWorkshopApp(tester, disableAnimations: true);
-      container.read(proRouterProvider).go('/workshop/jobs/job/request-gt3/in-progress');
+      container
+          .read(proRouterProvider)
+          .go('/workshop/jobs/job/request-gt3/in-progress');
       await tester.pumpAndSettle();
       await expectLater(
         find.byType(MaterialApp),
@@ -333,7 +393,9 @@ void main() {
 
     testWidgets('handover prep', (tester) async {
       final container = await pumpWorkshopApp(tester, disableAnimations: true);
-      container.read(proRouterProvider).go('/workshop/jobs/job/request-audi/handover');
+      container
+          .read(proRouterProvider)
+          .go('/workshop/jobs/job/request-audi/handover');
       await tester.pumpAndSettle();
       await expectLater(
         find.byType(MaterialApp),
@@ -343,8 +405,12 @@ void main() {
 
     testWidgets('request return delivery', (tester) async {
       final container = await pumpWorkshopApp(tester, disableAnimations: true);
-      container.read(workshopWorkflowProvider.notifier).requestReturnDelivery('request-audi');
-      container.read(proRouterProvider).go('/workshop/jobs/job/request-audi/request-return');
+      container
+          .read(workshopWorkflowProvider.notifier)
+          .requestReturnDelivery('request-audi');
+      container
+          .read(proRouterProvider)
+          .go('/workshop/jobs/job/request-audi/request-return');
       await tester.pumpAndSettle();
       await expectLater(
         find.byType(MaterialApp),
@@ -354,9 +420,15 @@ void main() {
 
     testWidgets('return tracking', (tester) async {
       final container = await pumpWorkshopApp(tester, disableAnimations: true);
-      container.read(workshopWorkflowProvider.notifier).requestReturnDelivery('request-audi');
-      container.read(workshopWorkflowProvider.notifier).startReturnTracking('request-audi');
-      container.read(proRouterProvider).go('/workshop/jobs/job/request-audi/return-tracking');
+      container
+          .read(workshopWorkflowProvider.notifier)
+          .requestReturnDelivery('request-audi');
+      container
+          .read(workshopWorkflowProvider.notifier)
+          .startReturnTracking('request-audi');
+      container
+          .read(proRouterProvider)
+          .go('/workshop/jobs/job/request-audi/return-tracking');
       await tester.pumpAndSettle();
       await expectLater(
         find.byType(MaterialApp),
@@ -366,8 +438,12 @@ void main() {
 
     testWidgets('job completed', (tester) async {
       final container = await pumpWorkshopApp(tester, disableAnimations: true);
-      container.read(workshopWorkflowProvider.notifier).markCustomerPickupComplete('request-audi');
-      container.read(proRouterProvider).go('/workshop/jobs/job/request-audi/completed');
+      container
+          .read(workshopWorkflowProvider.notifier)
+          .markCustomerPickupComplete('request-audi');
+      container
+          .read(proRouterProvider)
+          .go('/workshop/jobs/job/request-audi/completed');
       await tester.pumpAndSettle();
       await expectLater(
         find.byType(MaterialApp),

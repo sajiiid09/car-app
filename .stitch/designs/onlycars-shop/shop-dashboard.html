@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OnlyCars Parts | Shop Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-variant": "#e5e2e1",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed": "#001e2e",
+              "surface-container-highest": "#e5e2e1",
+              "primary-container": "#ff8c00",
+              "inverse-primary": "#ffb77d",
+              "on-surface-variant": "#564334",
+              "tertiary": "#00658f",
+              "background": "#fcf9f8",
+              "on-tertiary": "#ffffff",
+              "on-surface": "#1c1b1b",
+              "tertiary-container": "#00b5fc",
+              "surface-container": "#f0eded",
+              "on-secondary-fixed": "#2f1500",
+              "primary": "#904d00",
+              "on-primary-container": "#623200",
+              "inverse-surface": "#313030",
+              "secondary": "#865224",
+              "error-container": "#ffdad6",
+              "tertiary-fixed-dim": "#85cfff",
+              "on-secondary-container": "#78471a",
+              "on-primary": "#ffffff",
+              "on-primary-fixed": "#2f1500",
+              "on-error-container": "#93000a",
+              "surface-tint": "#904d00",
+              "secondary-fixed-dim": "#fdb881",
+              "on-secondary": "#ffffff",
+              "on-tertiary-container": "#004360",
+              "error": "#ba1a1a",
+              "on-error": "#ffffff",
+              "on-primary-fixed-variant": "#6e3900",
+              "surface-dim": "#dcd9d9",
+              "surface-container-high": "#eae7e7",
+              "on-tertiary-fixed-variant": "#004c6c",
+              "on-secondary-fixed-variant": "#6a3b0f",
+              "secondary-container": "#fdb881",
+              "primary-fixed-dim": "#ffb77d",
+              "surface-bright": "#fcf9f8",
+              "tertiary-fixed": "#c7e7ff",
+              "surface": "#fcf9f8",
+              "primary-fixed": "#ffdcc3",
+              "surface-container-low": "#f6f3f2",
+              "secondary-fixed": "#ffdcc3",
+              "outline-variant": "#ddc1ae",
+              "outline": "#897362",
+              "inverse-on-surface": "#f3f0ef",
+              "on-background": "#1c1b1b"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .atelier-gradient {
+            background: linear-gradient(135deg, #ff8c00 0%, #904d00 100%);
+        }
+        body {
+            background-color: #fcf9f8;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#FCF9F8]/80 backdrop-blur-xl shadow-[0_8px_24px_rgba(28,27,27,0.04)]">
+<div class="flex items-center justify-between px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#FF8C00] text-2xl" data-icon="warehouse">warehouse</span>
+<span class="font-manrope font-black text-xl tracking-tighter text-[#1C1B1B]">OnlyCars Parts</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-[#F6F3F2] transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-[#564334]" data-icon="notifications">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-surface-container overflow-hidden">
+<img alt="User Profile" data-alt="Portrait of the shop owner avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJSJAxqavYPEBWJTR4tgMGh-DfcHA_A-mSTHWqjxHhX6yztdL6vAnQAA0XwA7pjtUtyZkw487lsFxa-drfvCJIdZaVmNC7jTGHjGlzbR43dZl6gyrMcIqKXxJOxp2GLoD-8TfVu6G59wHIhsbsIzF-RuFkUQtgc3cil5BbJ7j2w3HhQHZ3DuFWRaX-mdPd5EMO3Vd4NBlIc90egA1nEx1bh2qEflUOst25Qi6LuEUrZ8jSbFR25fHXBxUXrOn7wGsRHcNI1DrzW94i"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<section class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<p class="font-label text-sm uppercase tracking-widest text-on-surface-variant font-semibold mb-1">Morning, Chief</p>
+<h1 class="font-headline font-extrabold text-4xl tracking-tight text-on-surface">Shop Dashboard</h1>
+</div>
+<div class="flex gap-3">
+<button class="atelier-gradient text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-2 shadow-lg shadow-primary-container/20 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="add" style="font-variation-settings: 'FILL' 0;">add</span>
+                        New Inventory
+                    </button>
+</div>
+</div>
+</section>
+<!-- Stats Grid (Bento Style) -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12">
+<!-- New Orders -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_8px_24px_rgba(28,27,27,0.04)] flex flex-col justify-between h-40">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary-container" data-icon="shopping_cart">shopping_cart</span>
+<span class="text-xs font-bold bg-primary-container/10 text-primary-container px-2 py-1 rounded-full">+4 New</span>
+</div>
+<div>
+<p class="text-3xl font-manrope font-extrabold">12</p>
+<p class="text-sm font-semibold text-on-surface-variant">New Orders</p>
+</div>
+</div>
+<!-- Packing -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_8px_24px_rgba(28,27,27,0.04)] flex flex-col justify-between h-40">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="inventory_2">inventory_2</span>
+</div>
+<div>
+<p class="text-3xl font-manrope font-extrabold">5</p>
+<p class="text-sm font-semibold text-on-surface-variant">Packing</p>
+</div>
+</div>
+<!-- Ready for Pickup -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_8px_24px_rgba(28,27,27,0.04)] flex flex-col justify-between h-40">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="hail">hail</span>
+</div>
+<div>
+<p class="text-3xl font-manrope font-extrabold">3</p>
+<p class="text-sm font-semibold text-on-surface-variant">Ready for Pickup</p>
+</div>
+</div>
+<!-- Out for Delivery -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_8px_24px_rgba(28,27,27,0.04)] flex flex-col justify-between h-40 border-b-2 border-primary-container">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary-container" data-icon="local_shipping">local_shipping</span>
+</div>
+<div>
+<p class="text-3xl font-manrope font-extrabold">8</p>
+<p class="text-sm font-semibold text-on-surface-variant">Out for Delivery</p>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Recent Orders List -->
+<div class="lg:col-span-2">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-manrope font-bold text-xl">Recent Orders</h2>
+<button class="text-sm font-semibold text-primary">View All</button>
+</div>
+<div class="space-y-4">
+<!-- Order 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between group hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Ahmed Al-Sayed</h4>
+<p class="text-xs text-on-surface-variant font-medium">Turbocharger Kit • 2 Items</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="hidden md:block text-xs font-bold uppercase tracking-widest text-[#FF8C00]">New Order</span>
+<button class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center group-hover:bg-primary-container group-hover:text-white transition-all">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Order 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between group hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Sarah J. Williams</h4>
+<p class="text-xs text-on-surface-variant font-medium">Brake Pads XL • 1 Item</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="hidden md:block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Packing</span>
+<button class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center group-hover:bg-primary-container group-hover:text-white transition-all">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Order 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between group hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Khalid Omar</h4>
+<p class="text-xs text-on-surface-variant font-medium">Carbon Spoiler • 1 Item</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="hidden md:block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Out for Delivery</span>
+<button class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center group-hover:bg-primary-container group-hover:text-white transition-all">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Actions -->
+<div>
+<h2 class="font-manrope font-bold text-xl mb-6">Quick Actions</h2>
+<div class="grid grid-cols-1 gap-4">
+<button class="flex items-center gap-4 p-4 bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-colors text-left group">
+<div class="p-3 bg-white rounded-lg shadow-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary-container" data-icon="list_alt">list_alt</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Process Orders</p>
+<p class="text-xs text-on-surface-variant">Review 12 pending shipments</p>
+</div>
+</button>
+<button class="flex items-center gap-4 p-4 bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-colors text-left group">
+<div class="p-3 bg-white rounded-lg shadow-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary-container" data-icon="category">category</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Manage Products</p>
+<p class="text-xs text-on-surface-variant">Update prices &amp; descriptions</p>
+</div>
+</button>
+<button class="flex items-center gap-4 p-4 bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-colors text-left group">
+<div class="p-3 bg-white rounded-lg shadow-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary-container" data-icon="inventory">inventory</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Stock Inventory</p>
+<p class="text-xs text-on-surface-variant">Check low stock alerts</p>
+</div>
+</button>
+<button class="flex items-center gap-4 p-4 bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-colors text-left group">
+<div class="p-3 bg-white rounded-lg shadow-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary-container" data-icon="add_road">add_road</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Delivery Requests</p>
+<p class="text-xs text-on-surface-variant">Assign drivers for 8 routes</p>
+</div>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-[2rem] bg-white/90 dark:bg-black/90 backdrop-blur-2xl shadow-[0_-8px_24px_rgba(28,27,27,0.06)] md:hidden">
+<div class="flex justify-around items-center h-20 px-4 pb-4 w-full">
+<a class="flex flex-col items-center justify-center text-[#FF8C00] scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#564334] opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#564334] opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest">Products</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#564334] opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest">Profile</span>
+</a>
+</div>
+</nav>
+<!-- Desktop Sidebar/Nav Placeholder for context (though not explicitly in JSON, implied by "Hidden on Mobile" logic) -->
+<div class="hidden md:flex fixed left-0 top-16 bottom-0 w-20 bg-surface-container-low flex-col items-center py-8 gap-8 border-r border-outline-variant/10">
+<button class="p-3 rounded-xl bg-primary-container text-white shadow-lg">
+<span class="material-symbols-outlined" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+</button>
+<button class="p-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="p-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+</button>
+<button class="p-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+</button>
+<div class="mt-auto">
+<button class="p-3 rounded-xl text-on-surface-variant hover:bg-error-container hover:text-error transition-colors">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+</button>
+</div>
+</div>
+</body></html>

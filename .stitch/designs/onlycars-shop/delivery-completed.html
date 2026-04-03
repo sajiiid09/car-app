@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Delivery Success - OnlyCars Parts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-variant": "#e5e2e1",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed": "#001e2e",
+              "surface-container-highest": "#e5e2e1",
+              "primary-container": "#ff8c00",
+              "inverse-primary": "#ffb77d",
+              "on-surface-variant": "#564334",
+              "tertiary": "#00658f",
+              "background": "#fcf9f8",
+              "on-tertiary": "#ffffff",
+              "on-surface": "#1c1b1b",
+              "tertiary-container": "#00b5fc",
+              "surface-container": "#f0eded",
+              "on-secondary-fixed": "#2f1500",
+              "primary": "#904d00",
+              "on-primary-container": "#623200",
+              "inverse-surface": "#313030",
+              "secondary": "#865224",
+              "error-container": "#ffdad6",
+              "tertiary-fixed-dim": "#85cfff",
+              "on-secondary-container": "#78471a",
+              "on-primary": "#ffffff",
+              "on-primary-fixed": "#2f1500",
+              "on-error-container": "#93000a",
+              "surface-tint": "#904d00",
+              "secondary-fixed-dim": "#fdb881",
+              "on-secondary": "#ffffff",
+              "on-tertiary-container": "#004360",
+              "error": "#ba1a1a",
+              "on-error": "#ffffff",
+              "on-primary-fixed-variant": "#6e3900",
+              "surface-dim": "#dcd9d9",
+              "surface-container-high": "#eae7e7",
+              "on-tertiary-fixed-variant": "#004c6c",
+              "on-secondary-fixed-variant": "#6a3b0f",
+              "secondary-container": "#fdb881",
+              "primary-fixed-dim": "#ffb77d",
+              "surface-bright": "#fcf9f8",
+              "tertiary-fixed": "#c7e7ff",
+              "surface": "#fcf9f8",
+              "primary-fixed": "#ffdcc3",
+              "surface-container-low": "#f6f3f2",
+              "secondary-fixed": "#ffdcc3",
+              "outline-variant": "#ddc1ae",
+              "outline": "#897362",
+              "inverse-on-surface": "#f3f0ef",
+              "on-background": "#1c1b1b"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .atelier-gradient {
+        background: linear-gradient(135deg, #ff8c00 0%, #904d00 100%);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body text-on-surface antialiased">
+<!-- Top Navigation (Shell Suppressed/Simplified for Transactional Success) -->
+<header class="fixed top-0 w-full z-50 bg-[#FCF9F8]/80 backdrop-blur-xl shadow-[0_8px_24px_rgba(28,27,27,0.04)] h-16 flex items-center justify-center px-6">
+<div class="font-headline font-black text-xl tracking-tighter text-[#1C1B1B]">OnlyCars Parts</div>
+</header>
+<main class="pt-24 pb-12 px-6 max-w-2xl mx-auto min-h-screen flex flex-col items-center">
+<!-- Success State Hero -->
+<section class="w-full text-center mb-12">
+<div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-primary-container/10 mb-6 relative">
+<div class="absolute inset-0 rounded-full border-4 border-primary-container animate-pulse opacity-20"></div>
+<span class="material-symbols-outlined text-primary-container text-5xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h1 class="font-headline font-extrabold text-4xl tracking-tight text-on-surface mb-2">Package Delivered</h1>
+<p class="font-label text-on-surface-variant font-medium uppercase tracking-widest text-sm">Order #OC-8829-XL</p>
+</section>
+<!-- Bento Grid Proof of Delivery -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+<!-- Delivery Photo Card -->
+<div class="md:col-span-2 rounded-xl bg-surface-container-lowest shadow-[0_8px_24px_rgba(28,27,27,0.04)] overflow-hidden transition-transform active:scale-[0.98]">
+<div class="relative aspect-video bg-surface-container-high group">
+<img alt="Proof of delivery photo showing the package at the front door" class="w-full h-full object-crop object-center" data-alt="Package delivered safely at residential front door" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8qCRBDxjLsk9n4knSJ8WIREqwftypIsUwYByDWSlSVHORuEl1UodLW04bNk9E_m6laMdxxMSgG8fOBanoZhmpsNTFVLRSgnbebnBpOLe1yLg5EO5AiSQZsaGcAF-b1GEvX-HFfQZFDQR4mokxDjOX-zBudrawFz1z99WXh6AJRn58ImkNe4zltGttMCJcNtcfdwnz7Frr1W60R6jXQp1qcwfZGwmyQBuZ6EEOI3CO1w4s4NMwMerokgMy7H9llEWiR0D-g1zQyEpb"/>
+<div class="absolute top-4 left-4 bg-black/40 backdrop-blur-md text-white px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">photo_camera</span>
+                        Proof of Delivery Photo
+                    </div>
+</div>
+<div class="p-6">
+<div class="flex items-center justify-between">
+<div>
+<p class="font-label text-on-surface-variant text-xs uppercase tracking-wider mb-1">Delivered to</p>
+<p class="font-headline font-bold text-lg">Front Porch / Gate</p>
+</div>
+<div class="text-right">
+<p class="font-label text-on-surface-variant text-xs uppercase tracking-wider mb-1">Time</p>
+<p class="font-headline font-bold text-lg">14:24 PM</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Signature Placeholder Card -->
+<div class="rounded-xl bg-surface-container-low p-6 flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-on-surface-variant mb-4" style="font-variation-settings: 'FILL' 0;">draw</span>
+<p class="font-label text-on-surface-variant text-xs uppercase tracking-wider mb-1">Signed by</p>
+<p class="font-headline font-bold text-xl">K. Henderson</p>
+</div>
+<div class="mt-6 border-b border-outline-variant/30 pb-2">
+<p class="font-label text-on-surface-variant/50 text-xs italic">Digital signature captured via handheld</p>
+</div>
+</div>
+<!-- Package Details Card -->
+<div class="rounded-xl bg-surface-container-low p-6">
+<span class="material-symbols-outlined text-on-surface-variant mb-4" style="font-variation-settings: 'FILL' 0;">inventory_2</span>
+<p class="font-label text-on-surface-variant text-xs uppercase tracking-wider mb-1">Contents</p>
+<p class="font-headline font-bold text-lg leading-tight mb-2">Brembo GT-S Big Brake Kit</p>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="text-xs font-semibold text-on-surface-variant">Secure Packaging Verified</span>
+</div>
+</div>
+</div>
+<!-- Driver Feedback Section -->
+<section class="w-full mt-12 bg-surface-container rounded-xl p-8 text-center border border-white/50">
+<h3 class="font-headline font-bold text-xl mb-4 text-on-surface">How was your delivery?</h3>
+<div class="flex justify-center gap-4 mb-6">
+<button class="w-12 h-12 rounded-full bg-surface-container-lowest flex items-center justify-center text-on-surface-variant hover:text-primary-container transition-colors shadow-sm active:scale-90">
+<span class="material-symbols-outlined">sentiment_very_dissatisfied</span>
+</button>
+<button class="w-12 h-12 rounded-full bg-surface-container-lowest flex items-center justify-center text-on-surface-variant hover:text-primary-container transition-colors shadow-sm active:scale-90">
+<span class="material-symbols-outlined">sentiment_neutral</span>
+</button>
+<button class="w-12 h-12 rounded-full bg-surface-container-lowest flex items-center justify-center text-on-surface-variant hover:text-primary-container transition-colors shadow-sm active:scale-90">
+<span class="material-symbols-outlined">sentiment_very_satisfied</span>
+</button>
+</div>
+<p class="text-xs text-on-surface-variant font-medium">Your feedback helps us improve the atelier experience.</p>
+</section>
+<!-- CTA Action -->
+<div class="mt-12 w-full flex flex-col gap-4">
+<button class="atelier-gradient text-on-primary py-4 px-10 rounded-lg font-headline font-bold text-lg shadow-[0_12px_32px_rgba(255,140,0,0.25)] hover:opacity-90 active:scale-95 transition-all w-full flex items-center justify-center gap-3">
+<span class="material-symbols-outlined">receipt_long</span>
+                Back to Orders
+            </button>
+<button class="bg-surface-container-lowest text-on-surface border border-outline-variant/20 py-4 px-10 rounded-lg font-headline font-bold text-lg hover:bg-surface-container-low active:scale-95 transition-all w-full flex items-center justify-center gap-3">
+<span class="material-symbols-outlined">support_agent</span>
+                Report an Issue
+            </button>
+</div>
+</main>
+<!-- Bottom Nav (Suppressed for transactional focus) -->
+<footer class="mt-auto py-8 text-center px-6">
+<p class="text-on-surface-variant/40 text-[10px] font-semibold uppercase tracking-[0.2em]">Automotive Atelier Precision © 2024</p>
+</footer>
+</body></html>

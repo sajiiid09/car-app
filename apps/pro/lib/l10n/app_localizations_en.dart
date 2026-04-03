@@ -925,6 +925,333 @@ class AppLocalizationsEn extends AppLocalizations {
   String get workshopStageCompleted => 'Completed';
 
   @override
+  String get shopShellDashboardTab => 'DASHBOARD';
+
+  @override
+  String get shopShellOrdersTab => 'ORDERS';
+
+  @override
+  String get shopShellProductsTab => 'PRODUCTS';
+
+  @override
+  String get shopShellMessagesTab => 'MESSAGES';
+
+  @override
+  String get shopShellProfileTab => 'PROFILE';
+
+  @override
+  String get shopDashboardEyebrow => 'Parts Commerce';
+
+  @override
+  String get shopDashboardTitle => 'Shop Dashboard';
+
+  @override
+  String get shopDashboardSubtitle =>
+      'Run the operational side of premium parts fulfillment with clear delivery progress, inventory visibility, and a restrained blue commerce system.';
+
+  @override
+  String get shopMetricPendingOrders => 'Pending Orders';
+
+  @override
+  String get shopMetricOutForDelivery => 'Out for Delivery';
+
+  @override
+  String get shopMetricLowStock => 'Low Stock';
+
+  @override
+  String get shopMetricTodayRevenue => 'Today Revenue';
+
+  @override
+  String get shopQuickActionsTitle => 'Quick Actions';
+
+  @override
+  String get shopQuickActionOrders => 'Open Orders';
+
+  @override
+  String get shopQuickActionProducts => 'Manage Products';
+
+  @override
+  String get shopQuickActionProfile => 'View Profile';
+
+  @override
+  String get shopQuickActionDelivery => 'Track Delivery';
+
+  @override
+  String get shopOperationalQueueTitle => 'Operational Queue';
+
+  @override
+  String get shopFeaturedPartsTitle => 'Featured Inventory';
+
+  @override
+  String get shopSeeAll => 'See All';
+
+  @override
+  String get shopOrdersEyebrow => 'Fulfillment Queue';
+
+  @override
+  String get shopOrdersTitle => 'Orders List';
+
+  @override
+  String get shopOrdersSubtitle =>
+      'Review new checkout activity, active courier movements, and completed deliveries from a single operational list.';
+
+  @override
+  String get shopOrdersFilterAll => 'All';
+
+  @override
+  String get shopOrdersFilterActive => 'Active';
+
+  @override
+  String get shopOrdersFilterCompleted => 'Completed';
+
+  @override
+  String get shopProductsEyebrow => 'Inventory Control';
+
+  @override
+  String get shopProductsTitle => 'Products & Inventory';
+
+  @override
+  String get shopProductsSubtitle =>
+      'Keep stock levels clean, surface low inventory early, and add new parts directly from the operational products view.';
+
+  @override
+  String get shopAddPart => 'Add Part';
+
+  @override
+  String get shopLowStock => 'Low Stock';
+
+  @override
+  String get shopInStock => 'In Stock';
+
+  @override
+  String get shopInlineAddTitle => 'Add Inventory Item';
+
+  @override
+  String get shopInlineAddSubtitle =>
+      'Use the products screen for quick stock additions instead of a separate route.';
+
+  @override
+  String get shopFieldPartName => 'Part Name';
+
+  @override
+  String get shopFieldPartSku => 'SKU';
+
+  @override
+  String get shopFieldPartPrice => 'Price';
+
+  @override
+  String get shopFieldPartStock => 'Stock';
+
+  @override
+  String get shopSavePart => 'Save Part';
+
+  @override
+  String get shopMessagesEyebrow => 'Shop Inbox';
+
+  @override
+  String get shopMessagesTitle => 'Messages';
+
+  @override
+  String get shopMessagesSubtitle =>
+      'Messages are intentionally lightweight in this pass. Order orchestration remains under Orders and delivery stages.';
+
+  @override
+  String get shopMessagesEmptyTitle => 'Messaging comes next';
+
+  @override
+  String get shopMessagesEmptySubtitle =>
+      'This placeholder keeps the footer complete while the connected customer and courier inbox is deferred to a later backend pass.';
+
+  @override
+  String get shopProfileEyebrow => 'Seller Profile';
+
+  @override
+  String get shopProfileTitle => 'Shop Profile';
+
+  @override
+  String get shopProfileSubtitle =>
+      'Review payout posture, public seller details, and the premium delivery coverage shown to customers.';
+
+  @override
+  String get shopProfileBalance => 'Available Balance';
+
+  @override
+  String get shopProfileOrders => 'Orders This Week';
+
+  @override
+  String get shopProfileRating => 'Shop Rating';
+
+  @override
+  String get shopProfileResponseTime => 'Response Time';
+
+  @override
+  String get shopProfileContactTitle => 'Contact';
+
+  @override
+  String get shopProfileCoverageTitle => 'Coverage';
+
+  @override
+  String get shopProfileHoursTitle => 'Operating Hours';
+
+  @override
+  String get shopOrderNotFound => 'Order not found';
+
+  @override
+  String get shopOrderDetailEyebrow => 'New Order Intake';
+
+  @override
+  String get shopOrderDetailTitle => 'Order Detail';
+
+  @override
+  String get shopOrderDetailSubtitle =>
+      'Confirm the customer, items, and dispatch data before moving the parcel into packing.';
+
+  @override
+  String get shopPackingEyebrow => 'Packing Bay';
+
+  @override
+  String get shopPackingTitle => 'Packing View';
+
+  @override
+  String get shopPackingSubtitle =>
+      'Lock the pick list, package the items, and prepare the order for courier dispatch.';
+
+  @override
+  String get shopDeliveryRequestEyebrow => 'Dispatch Request';
+
+  @override
+  String get shopDeliveryRequestTitle => 'Delivery Request';
+
+  @override
+  String get shopDeliveryRequestSubtitle =>
+      'Validate the destination and send the delivery request once the parcel is ready to leave the shop.';
+
+  @override
+  String get shopSearchingDriverEyebrow => 'Dispatch Matching';
+
+  @override
+  String get shopSearchingDriverTitle => 'Searching for Driver';
+
+  @override
+  String get shopSearchingDriverSubtitle =>
+      'Keep the order in dispatch matching until courier capacity has been confirmed.';
+
+  @override
+  String get shopCourierAssignedEyebrow => 'Courier Confirmed';
+
+  @override
+  String get shopCourierAssignedTitle => 'Courier Assigned';
+
+  @override
+  String get shopCourierAssignedSubtitle =>
+      'Courier identity and ETA are now locked. Prepare the parcel for a clean handover.';
+
+  @override
+  String get shopHandoverEyebrow => 'Release Handover';
+
+  @override
+  String get shopHandoverTitle => 'Handover to Courier';
+
+  @override
+  String get shopHandoverSubtitle =>
+      'Verify the parcel, dispatch seal, and courier details before releasing the shipment.';
+
+  @override
+  String get shopTrackingEyebrow => 'Live Route';
+
+  @override
+  String get shopTrackingTitle => 'Delivery Tracking';
+
+  @override
+  String get shopTrackingSubtitle =>
+      'The parcel is out of the shop. Follow the route and close the order once delivery is confirmed.';
+
+  @override
+  String get shopCompletedEyebrow => 'Proof of Delivery';
+
+  @override
+  String get shopCompletedTitle => 'Delivery Completed';
+
+  @override
+  String get shopCompletedSubtitle =>
+      'Proof-of-delivery has landed and the order has moved into the closed state.';
+
+  @override
+  String get shopOrderItemsTitle => 'Order Items';
+
+  @override
+  String get shopCourierCardTitle => 'Assigned Courier';
+
+  @override
+  String get shopCustomerDetailsTitle => 'Customer & Delivery';
+
+  @override
+  String get shopTrackingCodeLabel => 'Tracking Code';
+
+  @override
+  String get shopOrderTimelineTitle => 'Operational Checklist';
+
+  @override
+  String get shopDeliveryWindowLabel => 'Delivery Window';
+
+  @override
+  String get shopVehicleLabel => 'Vehicle';
+
+  @override
+  String get shopPrimaryAddressLabel => 'Address';
+
+  @override
+  String get shopStartPacking => 'Start Packing';
+
+  @override
+  String get shopRequestCourier => 'Request Courier';
+
+  @override
+  String get shopSendDeliveryRequest => 'Send Delivery Request';
+
+  @override
+  String get shopSimulateDriverAssigned => 'Simulate Driver Assigned';
+
+  @override
+  String get shopContinueToHandover => 'Continue to Handover';
+
+  @override
+  String get shopConfirmHandover => 'Confirm Handover';
+
+  @override
+  String get shopMarkDelivered => 'Mark Delivered';
+
+  @override
+  String get shopBackToOrders => 'Back to Orders';
+
+  @override
+  String get shopBackToDashboard => 'Back to Dashboard';
+
+  @override
+  String get shopStageNewOrder => 'New Order';
+
+  @override
+  String get shopStagePacking => 'Packing';
+
+  @override
+  String get shopStageDeliveryRequest => 'Delivery Request';
+
+  @override
+  String get shopStageSearchingDriver => 'Searching';
+
+  @override
+  String get shopStageCourierAssigned => 'Assigned';
+
+  @override
+  String get shopStageHandover => 'Handover';
+
+  @override
+  String get shopStageTracking => 'Tracking';
+
+  @override
+  String get shopStageCompleted => 'Completed';
+
+  @override
   String get loading => 'Loading...';
 
   @override

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Packing - OnlyCars Parts</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-variant": "#e5e2e1",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed": "#001e2e",
+              "surface-container-highest": "#e5e2e1",
+              "primary-container": "#ff8c00",
+              "inverse-primary": "#ffb77d",
+              "on-surface-variant": "#564334",
+              "tertiary": "#00658f",
+              "background": "#fcf9f8",
+              "on-tertiary": "#ffffff",
+              "on-surface": "#1c1b1b",
+              "tertiary-container": "#00b5fc",
+              "surface-container": "#f0eded",
+              "on-secondary-fixed": "#2f1500",
+              "primary": "#904d00",
+              "on-primary-container": "#623200",
+              "inverse-surface": "#313030",
+              "secondary": "#865224",
+              "error-container": "#ffdad6",
+              "tertiary-fixed-dim": "#85cfff",
+              "on-secondary-container": "#78471a",
+              "on-primary": "#ffffff",
+              "on-primary-fixed": "#2f1500",
+              "on-error-container": "#93000a",
+              "surface-tint": "#904d00",
+              "secondary-fixed-dim": "#fdb881",
+              "on-secondary": "#ffffff",
+              "on-tertiary-container": "#004360",
+              "error": "#ba1a1a",
+              "on-error": "#ffffff",
+              "on-primary-fixed-variant": "#6e3900",
+              "surface-dim": "#dcd9d9",
+              "surface-container-high": "#eae7e7",
+              "on-tertiary-fixed-variant": "#004c6c",
+              "on-secondary-fixed-variant": "#6a3b0f",
+              "secondary-container": "#fdb881",
+              "primary-fixed-dim": "#ffb77d",
+              "surface-bright": "#fcf9f8",
+              "tertiary-fixed": "#c7e7ff",
+              "surface": "#fcf9f8",
+              "primary-fixed": "#ffdcc3",
+              "surface-container-low": "#f6f3f2",
+              "secondary-fixed": "#ffdcc3",
+              "outline-variant": "#ddc1ae",
+              "outline": "#897362",
+              "inverse-on-surface": "#f3f0ef",
+              "on-background": "#1c1b1b"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .atelier-gradient {
+        background: linear-gradient(135deg, #ff8c00 0%, #904d00 100%);
+      }
+      .custom-checkbox:checked {
+        background-color: #ff8c00;
+        border-color: #ff8c00;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#FCF9F8]/80 backdrop-blur-xl shadow-[0_8px_24px_rgba(28,27,27,0.04)]">
+<div class="flex items-center justify-between px-6 h-16 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#FF8C00]">warehouse</span>
+<span class="font-manrope font-black text-xl tracking-tighter text-[#1C1B1B]">OnlyCars Parts</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-[#F6F3F2] transition-colors rounded-full text-[#564334] active:scale-95 duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 md:px-8 max-w-4xl mx-auto">
+<!-- Order Header Section -->
+<section class="mb-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<span class="font-label text-xs font-semibold uppercase tracking-widest text-primary mb-2 block">Order Fulfillment</span>
+<h1 class="font-headline font-extrabold text-3xl md:text-4xl tracking-tight text-on-surface">Order #OC-8829</h1>
+<p class="text-on-surface-variant mt-1">Customer: Ahmad Al-Farsi • Priority Shipping</p>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-4 py-2 rounded-xl">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">schedule</span>
+<span class="font-label text-sm font-semibold">Started: 14:20</span>
+</div>
+</div>
+</section>
+<!-- Checklist Canvas -->
+<div class="grid gap-6">
+<!-- Item Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm border-l-4 border-primary transition-all hover:shadow-md">
+<div class="flex items-start justify-between gap-4">
+<div class="flex gap-4">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Close up of a car engine cylinder head" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1y5Kbv-TgYny2wT9uQ-2S8UqNhhl9eDIfRZk-HaNcDUT9uX-PWLiaAvcsukl5mni93ttUnDaxQ8PtMOLi-L41DRPQeZIi3mO2NU8-HhsNXYBKET-F1gvdza3MRsOTr-PYp2hZ-2mjFdDy6R3vDuVf1FNuSYjOhgfxKvQj9dC3_yXwutGojDOIYO2JIlz5iPR1cD4d8XodnOX1RxOTou3BLR1J2oRGJ1k909XhFJiaOwm5N0ppS8zHtyFlaLkkChIdnGttjK4H_9C_"/>
+</div>
+<div>
+<h3 class="font-headline font-bold text-lg text-on-surface leading-tight">Forged Pistons Set (V8)</h3>
+<p class="text-on-surface-variant text-sm mt-1">SKU: CP-V8-7721</p>
+<div class="mt-3 flex items-center gap-4">
+<div class="bg-surface-container px-3 py-1 rounded-full">
+<span class="text-xs font-bold text-on-surface">QTY: 1</span>
+</div>
+<div class="flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span class="text-xs font-medium">Aisle 4, Shelf B</span>
+</div>
+</div>
+</div>
+</div>
+<label class="relative flex items-center cursor-pointer">
+<input class="w-8 h-8 rounded-lg border-2 border-outline-variant text-primary-container focus:ring-primary-container transition-all cursor-pointer" type="checkbox"/>
+</label>
+</div>
+</div>
+<!-- Item Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm border-l-4 border-primary transition-all hover:shadow-md">
+<div class="flex items-start justify-between gap-4">
+<div class="flex gap-4">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Synthetic oil bottle for high performance cars" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHRR4UbDsgRGS8zEbC1FY2UvzmpG22vsEzM-JLzMG76017f51q1K4fgvRM6SxgCuT-hD0YuzSqN8-VfZ_IvTkwJnBJbHJIS-qcB8nJkG_FqOBkaT_HmMuAEh4DBbhkhRFLul1qpX79gUfwKd_IdBcDFCVh4VKESyv8aKRpFptoxzzfTkgFFREneJvrqbHCPOUdHe5GAgVICnntFDMGWc8gFsZwq6uJVW3P29krdAfizMSqJKKD6H6n0TeFPj3xsjoLcNq1ta7EL7wO"/>
+</div>
+<div>
+<h3 class="font-headline font-bold text-lg text-on-surface leading-tight">Ultra-Flow Synthetic Oil 5W-40</h3>
+<p class="text-on-surface-variant text-sm mt-1">SKU: LUB-SY-009</p>
+<div class="mt-3 flex items-center gap-4">
+<div class="bg-surface-container px-3 py-1 rounded-full">
+<span class="text-xs font-bold text-on-surface">QTY: 4</span>
+</div>
+<div class="flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span class="text-xs font-medium">Aisle 12, Fluids Section</span>
+</div>
+</div>
+</div>
+</div>
+<label class="relative flex items-center cursor-pointer">
+<input class="w-8 h-8 rounded-lg border-2 border-outline-variant text-primary-container focus:ring-primary-container transition-all cursor-pointer" type="checkbox"/>
+</label>
+</div>
+</div>
+<!-- Item Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm border-l-4 border-primary transition-all hover:shadow-md opacity-60">
+<div class="flex items-start justify-between gap-4">
+<div class="flex gap-4">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover grayscale" data-alt="Performance brake pad kit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-r1aSpYQWV7ibs04PxmQeeXcyRMN2LWvFAsiDQsUWQ4ReGVRDwmTqV9Z9D1bIqzu_BmGKknwYHsZKpnomSMhPO0ginHT-xmkuLaek3sLiXUuu6pvMwYOkNdnOUzY8dULxSdEudn0B6RezR6uoI7F__NcX2wGU88_83sSmTPlHgbjbTYUKvRzqTM1LkgfTOEHnP8JGdCxiVhPRqtykhmFLwFarwsTI9-Pw2hWZfDS3Abiz3UysL_3aYU0YKdcwiA4b0GAsEKSIOSWE"/>
+</div>
+<div>
+<h3 class="font-headline font-bold text-lg text-on-surface leading-tight line-through">Ceramic Brake Pads (Front)</h3>
+<p class="text-on-surface-variant text-sm mt-1">SKU: BRK-C-991</p>
+<div class="mt-3 flex items-center gap-4">
+<div class="bg-surface-container px-3 py-1 rounded-full">
+<span class="text-xs font-bold text-on-surface">QTY: 1</span>
+</div>
+<div class="flex items-center gap-1 text-success">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-xs font-medium">Confirmed</span>
+</div>
+</div>
+</div>
+</div>
+<label class="relative flex items-center cursor-pointer">
+<input checked="" class="w-8 h-8 rounded-lg border-2 border-primary text-primary-container focus:ring-primary-container transition-all cursor-pointer bg-primary-container" type="checkbox"/>
+</label>
+</div>
+</div>
+</div>
+<!-- Packaging Notes -->
+<section class="mt-12 bg-surface-container-low p-6 rounded-2xl">
+<h2 class="font-headline font-bold text-xl text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined">description</span>
+                Packaging Notes
+            </h2>
+<div class="relative group">
+<textarea class="w-full min-h-[120px] bg-surface-container-lowest border-none rounded-xl p-4 font-body text-on-surface-variant focus:ring-2 focus:ring-primary-container transition-all resize-none shadow-sm" placeholder="Enter handling instructions or packaging details..."></textarea>
+<div class="absolute bottom-3 right-3 flex gap-2">
+<span class="bg-surface-container px-2 py-1 rounded text-[10px] font-bold text-on-surface-variant uppercase">Fragile</span>
+<span class="bg-surface-container px-2 py-1 rounded text-[10px] font-bold text-on-surface-variant uppercase">Heavy</span>
+</div>
+</div>
+</section>
+<!-- Final Action -->
+<div class="mt-10 flex flex-col gap-4">
+<button class="atelier-gradient w-full py-5 rounded-xl text-white font-headline font-bold text-lg flex items-center justify-center gap-3 shadow-xl active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined">inventory</span>
+                Mark Packed &amp; Generate Label
+            </button>
+<button class="w-full py-4 rounded-xl text-on-surface-variant font-body font-semibold flex items-center justify-center gap-2 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">report_problem</span>
+                Report Issue with Order
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-[2rem] bg-white/90 backdrop-blur-2xl shadow-[0_-8px_24px_rgba(28,27,27,0.06)]">
+<div class="flex justify-around items-center h-20 px-4 pb-4 w-full">
+<a class="flex flex-col items-center justify-center text-[#564334] opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#FF8C00] scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest mt-1">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#564334] opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest mt-1">Products</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#564334] opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest mt-1">Profile</span>
+</a>
+</div>
+</nav>
+</body></html>

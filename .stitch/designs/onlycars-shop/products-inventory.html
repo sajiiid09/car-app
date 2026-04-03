@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Inventory Management | OnlyCars Parts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-variant": "#e5e2e1",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed": "#001e2e",
+              "surface-container-highest": "#e5e2e1",
+              "primary-container": "#ff8c00",
+              "inverse-primary": "#ffb77d",
+              "on-surface-variant": "#564334",
+              "tertiary": "#00658f",
+              "background": "#fcf9f8",
+              "on-tertiary": "#ffffff",
+              "on-surface": "#1c1b1b",
+              "tertiary-container": "#00b5fc",
+              "surface-container": "#f0eded",
+              "on-secondary-fixed": "#2f1500",
+              "primary": "#904d00",
+              "on-primary-container": "#623200",
+              "inverse-surface": "#313030",
+              "secondary": "#865224",
+              "error-container": "#ffdad6",
+              "tertiary-fixed-dim": "#85cfff",
+              "on-secondary-container": "#78471a",
+              "on-primary": "#ffffff",
+              "on-primary-fixed": "#2f1500",
+              "on-error-container": "#93000a",
+              "surface-tint": "#904d00",
+              "secondary-fixed-dim": "#fdb881",
+              "on-secondary": "#ffffff",
+              "on-tertiary-container": "#004360",
+              "error": "#ba1a1a",
+              "on-error": "#ffffff",
+              "on-primary-fixed-variant": "#6e3900",
+              "surface-dim": "#dcd9d9",
+              "surface-container-high": "#eae7e7",
+              "on-tertiary-fixed-variant": "#004c6c",
+              "on-secondary-fixed-variant": "#6a3b0f",
+              "secondary-container": "#fdb881",
+              "primary-fixed-dim": "#ffb77d",
+              "surface-bright": "#fcf9f8",
+              "tertiary-fixed": "#c7e7ff",
+              "surface": "#fcf9f8",
+              "primary-fixed": "#ffdcc3",
+              "surface-container-low": "#f6f3f2",
+              "secondary-fixed": "#ffdcc3",
+              "outline-variant": "#ddc1ae",
+              "outline": "#897362",
+              "inverse-on-surface": "#f3f0ef",
+              "on-background": "#1c1b1b"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .atelier-gradient {
+        background: linear-gradient(135deg, #ff8c00 0%, #904d00 100%);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface antialiased pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#FCF9F8]/80 dark:bg-zinc-900/80 backdrop-blur-xl shadow-[0_8px_24px_rgba(28,27,27,0.04)] h-16 flex items-center justify-between px-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#FF8C00]" data-icon="warehouse">warehouse</span>
+<span class="font-manrope font-black text-xl tracking-tighter text-[#1C1B1B] dark:text-white">OnlyCars Parts</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-[#F6F3F2] dark:hover:bg-zinc-800 transition-colors active:scale-95 duration-200 text-[#564334] dark:text-zinc-400">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-fixed overflow-hidden border border-outline-variant/20">
+<img alt="Owner Avatar" data-alt="Close up of a professional store owner portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmvTUscwZ6hIxvxLoRdyJNZpxosKG-upl7fm3IkgHQTlbrTSfz8tx3HAxXHw5WuJK_805NK7u6Ne7Jjw2-aGMSEcEJ3IMlwWHEkMmBv9MAZgo7MyBAcZyZvo1dlBqBbZKkZbUx6mfbxGNeY4l-3Xqn9gHpk6fPMNmduG-U3soOMmd-rVyLXF2ERgTl9N3Ul16hDtA7_DXFF9pbcbbPoeWMGH2d9__TAzm09cAQw-SxXL-bcCk3l5Q3d8xU9aqA4ekz9-H5e-wnrNQQ"/>
+</div>
+</div>
+</header>
+<main class="pt-24 px-4 md:px-8 max-w-7xl mx-auto">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div class="space-y-1">
+<span class="font-label text-xs font-semibold uppercase tracking-[0.2em] text-on-surface-variant">Inventory Control</span>
+<h1 class="font-headline font-extrabold text-4xl md:text-5xl tracking-tight text-on-surface">Products</h1>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50" data-icon="search">search</span>
+<input class="bg-surface-container-high border-none focus:ring-2 focus:ring-primary rounded-lg pl-12 pr-6 py-3 w-full md:w-64 font-body transition-all" placeholder="Search parts by name or SKU..." type="text"/>
+</div>
+<button class="atelier-gradient text-on-primary px-6 py-3 rounded-lg font-headline font-bold flex items-center gap-2 shadow-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                    Add Product
+                </button>
+</div>
+</div>
+<!-- Inventory Stats Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12">
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+</div>
+<div>
+<p class="text-xs font-label text-on-surface-variant font-medium">Total SKUs</p>
+<p class="text-2xl font-headline font-bold">1,482</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-error/10 flex items-center justify-center text-error">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+</div>
+<div>
+<p class="text-xs font-label text-on-surface-variant font-medium">Low Stock</p>
+<p class="text-2xl font-headline font-bold">24</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="local_shipping">local_shipping</span>
+</div>
+<div>
+<p class="text-xs font-label text-on-surface-variant font-medium">In Transit</p>
+<p class="text-2xl font-headline font-bold">156</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-on-surface-variant/10 flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+</div>
+<div>
+<p class="text-xs font-label text-on-surface-variant font-medium">Stock Value</p>
+<p class="text-2xl font-headline font-bold">$428K</p>
+</div>
+</div>
+</div>
+<!-- Product Grid (Asymmetric & Tonal Depth) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Product Card 1 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-outline-variant/5">
+<div class="aspect-[16/9] relative overflow-hidden bg-surface-container-high">
+<img alt="V8 Engine Block" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="High performance V8 engine block on a workshop stand" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWdhTaKvOheM3vpgLzcwxPcZWHPxteM4EYS74rY4wzKjMq-yA5nqCBb8SF_s3D4hjS8NjnPin3EaRkNMaslRUgr6RkCT272prSvm-afYWB5URLt3JEhXUs0-vzQdssTNLd4GqqXbceYD1I3U1lhWhNFdfFO6kjX373TvucrUXGysCNP0XscloBjy5it0MFgmVlmw9Cg9sPPUDwCHwDbEVjWTr-Y9WKj8VqSnBpMAa3Sy9DlTeQaDk1INkUEXIoTXTffqmnL77GVCVp"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-primary">In Stock</div>
+<div class="absolute bottom-4 right-4 flex gap-2">
+<button class="w-10 h-10 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<div>
+<p class="text-[10px] font-label font-bold text-on-surface-variant/60 uppercase">PowerTrain • SKU: ENG-V8-001</p>
+<h3 class="font-headline font-bold text-lg text-on-surface leading-tight">V8 Performance Engine Block</h3>
+</div>
+<p class="font-headline font-extrabold text-xl text-primary">$4,850</p>
+</div>
+<div class="mt-6 flex items-center justify-between">
+<div class="flex-1 mr-4">
+<div class="flex justify-between text-[10px] font-bold text-on-surface-variant mb-1">
+<span>STOCK LEVEL</span>
+<span>85%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[85%]"></div>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold text-on-surface">12 Units</p>
+<p class="text-[10px] text-on-surface-variant/60">Available</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Card 2 (Low Stock) -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-outline-variant/5">
+<div class="aspect-[16/9] relative overflow-hidden bg-surface-container-high">
+<img alt="Alloy Wheel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Silver multi-spoke alloy wheel for sports car" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPrJu_NrMqR8KIU7CkE9cz6z20pBhl_XrH_nQQBASgm7TjeLn-8vQYhW_RGLIRy29sEbMUqwawH9oYtFywXVrTDAt50USLGPmsAEvUQCiDr1KmEf1lrpY3kfpPyUECipZi3Z539m84d5rRd_W65GC0Y29tJ_BWU8VgrELyRYN3pE3WZxjhtnYUemZz-uwKECphzM57v7I-tJbAvlPw9t6rF5EuJ5RxCFzIxLG84_9yLe4vfQHrO74MtC7jq_s4Ir4rgnLnCYTvWYgx"/>
+<div class="absolute top-4 left-4 bg-error/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-white">Low Stock</div>
+<div class="absolute bottom-4 right-4 flex gap-2">
+<button class="w-10 h-10 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<div>
+<p class="text-[10px] font-label font-bold text-on-surface-variant/60 uppercase">Exterior • SKU: WHL-AL-19</p>
+<h3 class="font-headline font-bold text-lg text-on-surface leading-tight">19" Forged Alloy Wheel Set</h3>
+</div>
+<p class="font-headline font-extrabold text-xl text-primary">$1,200</p>
+</div>
+<div class="mt-6 flex items-center justify-between">
+<div class="flex-1 mr-4">
+<div class="flex justify-between text-[10px] font-bold text-on-surface-variant mb-1">
+<span>STOCK LEVEL</span>
+<span class="text-error">15%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-error w-[15%]"></div>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold text-error">2 Units</p>
+<p class="text-[10px] text-on-surface-variant/60">Available</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-outline-variant/5">
+<div class="aspect-[16/9] relative overflow-hidden bg-surface-container-high">
+<img alt="Brake System" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="High performance ceramic brake disc and caliper" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0gKJIOtjnAI7WsMX_9Ki3NR0QIrJ0B_SU9kGTi5x_r_NVrvQM0cT1lj2GsxmLwnvfU7-rvLLy9JRn5NEK706eQ6pfpi-6r_yDJHdH2HmHFbMWRnBj8VpZDyZ1aJA0UDbyjZyeUuwGzNlbl46hQL2hlBwf3qrh5amMEPvhWB5D-In-o7RnjicS4qyQ544hXQrNUXMGam8sI4SyyabFG2c6rYwi9PLEWB8F6eb7cobVvc0yWCSJZlz3h_291T0sjFlfg5whqZOiGtwI"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-primary">In Stock</div>
+<div class="absolute bottom-4 right-4 flex gap-2">
+<button class="w-10 h-10 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<div>
+<p class="text-[10px] font-label font-bold text-on-surface-variant/60 uppercase">Chassis • SKU: BRK-CER-04</p>
+<h3 class="font-headline font-bold text-lg text-on-surface leading-tight">Ceramic Carbon Brake Kit</h3>
+</div>
+<p class="font-headline font-extrabold text-xl text-primary">$3,150</p>
+</div>
+<div class="mt-6 flex items-center justify-between">
+<div class="flex-1 mr-4">
+<div class="flex justify-between text-[10px] font-bold text-on-surface-variant mb-1">
+<span>STOCK LEVEL</span>
+<span>42%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[42%]"></div>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold text-on-surface">18 Units</p>
+<p class="text-[10px] text-on-surface-variant/60">Available</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-outline-variant/5">
+<div class="aspect-[16/9] relative overflow-hidden bg-surface-container-high">
+<img alt="Turbocharger" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Precision machined turbocharger unit for automotive use" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgoIvTXAN3CbG1u2RLGcSIh0Pns3hDO424L38pWk2jIDOafvmZWl0NDkdhsH6Tccb7KObxK6jdkZodJ5ZbrRgQ8lq46Kc7iY07M11Atsw_yGidc78ms6NKBzGNwtnt9z34Y0cKiDdRX9FlBv0vVQMG850j4M89mI0HoyBvazoKPL88Oy_f_FgaQbl1coEQK30e0Itijv_KGDqw2z4yAn0Uoyfl2Y13nhZO1xqWzRb76gQ4TwkTtcZhw933r0Ss97GCZHtc2revNgXw"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-primary">In Stock</div>
+<div class="absolute bottom-4 right-4 flex gap-2">
+<button class="w-10 h-10 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<div>
+<p class="text-[10px] font-label font-bold text-on-surface-variant/60 uppercase">PowerTrain • SKU: TRB-MAX-2</p>
+<h3 class="font-headline font-bold text-lg text-on-surface leading-tight">Twin-Scroll Turbocharger</h3>
+</div>
+<p class="font-headline font-extrabold text-xl text-primary">$945</p>
+</div>
+<div class="mt-6 flex items-center justify-between">
+<div class="flex-1 mr-4">
+<div class="flex justify-between text-[10px] font-bold text-on-surface-variant mb-1">
+<span>STOCK LEVEL</span>
+<span>64%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[64%]"></div>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold text-on-surface">31 Units</p>
+<p class="text-[10px] text-on-surface-variant/60">Available</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-outline-variant/5">
+<div class="aspect-[16/9] relative overflow-hidden bg-surface-container-high">
+<img alt="Headlight Assembly" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Modern LED matrix headlight module for luxury car" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLG6IhTKND3BtKnOYCGI3MfCDdMgwJbw54Ss8G3R1EtEQ1K4NIXW7VXuTH6g78bvV2Z4T3nwE6bOSaRNlMbUnzTiPv0XbMIg1N-1AC1ji1opX4DyM5dYhCKctGg1i1RcWU4OR2I9vdCjN8xqGcoc9MKXFTUFhzt_AAOohm6Yjh1bfFZjD4NcibN7OPwqH9kFWmdGvCkDqzBGbL6MA7D8yBEFFmV-78hQf_830nyfGO3iwegHambvY0NxN9jBE-VVoKTuRt3vtPlEEq"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-primary">In Stock</div>
+<div class="absolute bottom-4 right-4 flex gap-2">
+<button class="w-10 h-10 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<div>
+<p class="text-[10px] font-label font-bold text-on-surface-variant/60 uppercase">Electrical • SKU: LIT-LED-RX</p>
+<h3 class="font-headline font-bold text-lg text-on-surface leading-tight">Matrix LED Headlight Assembly</h3>
+</div>
+<p class="font-headline font-extrabold text-xl text-primary">$1,890</p>
+</div>
+<div class="mt-6 flex items-center justify-between">
+<div class="flex-1 mr-4">
+<div class="flex justify-between text-[10px] font-bold text-on-surface-variant mb-1">
+<span>STOCK LEVEL</span>
+<span>25%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[25%]"></div>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold text-on-surface">8 Units</p>
+<p class="text-[10px] text-on-surface-variant/60">Available</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Card 6 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-outline-variant/5">
+<div class="aspect-[16/9] relative overflow-hidden bg-surface-container-high">
+<img alt="Racing Seat" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Racing bucket seat upholstered in alcantara leather" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB74m-5Qq1VrwnXQHemAozHFktsDnUwzqVna77oAU87uKKNZj5dBLpJYkAoKMxJg68vA-BuC0YM3eHslVlYetwKg1DdKq2JvUnB5Gc6G6fksltRvJMCxt0Oq7kYf8QaGcAD-p7HFf_DHY2a2efdpTs-b7IQjDAJ9aAT_c0cREU2-XXlDMIdX6YIicOedVOJdNJpxRqzuHkUl-40z7ZinYxm9rCpoQ92ajj54wDLoi7CYjGQzksDE-GP_kT6DxKwG2txntzyym-gYW-F"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-primary">In Stock</div>
+<div class="absolute bottom-4 right-4 flex gap-2">
+<button class="w-10 h-10 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<div>
+<p class="text-[10px] font-label font-bold text-on-surface-variant/60 uppercase">Interior • SKU: INT-RAC-02</p>
+<h3 class="font-headline font-bold text-lg text-on-surface leading-tight">Alcantara Racing Bucket Seat</h3>
+</div>
+<p class="font-headline font-extrabold text-xl text-primary">$1,450</p>
+</div>
+<div class="mt-6 flex items-center justify-between">
+<div class="flex-1 mr-4">
+<div class="flex justify-between text-[10px] font-bold text-on-surface-variant mb-1">
+<span>STOCK LEVEL</span>
+<span>92%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[92%]"></div>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold text-on-surface">14 Units</p>
+<p class="text-[10px] text-on-surface-variant/60">Available</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-[2rem] bg-white/90 dark:bg-black/90 backdrop-blur-2xl shadow-[0_-8px_24px_rgba(28,27,27,0.06)] h-20 px-4 pb-4 flex justify-around items-center">
+<a class="flex flex-col items-center justify-center text-[#564334] dark:text-zinc-500 opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#564334] dark:text-zinc-500 opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="shopping_cart">shopping_cart</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#FF8C00] scale-110 transition-transform active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="inventory_2" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest">Products</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#564334] dark:text-zinc-500 opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-widest">Profile</span>
+</a>
+</nav>
+</body></html>
