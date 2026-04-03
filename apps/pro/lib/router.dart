@@ -9,6 +9,8 @@ import 'screens/workshop/workshop_sign_up_complete_screen.dart';
 import 'screens/workshop/workshop_sign_up_screen.dart';
 import 'screens/driver/driver_dashboard.dart';
 import 'screens/driver/delivery_flow_screen.dart';
+import 'screens/driver/driver_sign_up_complete_screen.dart';
+import 'screens/driver/driver_sign_up_screen.dart';
 import 'screens/shop/shop_dashboard.dart';
 import 'screens/shop/add_part_screen.dart';
 import 'screens/shop/shop_sign_up_complete_screen.dart';
@@ -54,6 +56,14 @@ final proRouterProvider = Provider<GoRouter>((ref) {
       ),
 
       // Driver routes
+      GoRoute(
+        path: '/driver/sign-up',
+        builder: (_, _) => const DriverSignUpScreen(),
+      ),
+      GoRoute(
+        path: '/driver/sign-up/complete',
+        builder: (_, _) => const DriverSignUpCompleteScreen(),
+      ),
       GoRoute(path: '/driver', builder: (_, _) => const DriverDashboard()),
       GoRoute(
         path: '/driver/delivery/:id',
