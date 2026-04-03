@@ -45,5 +45,189 @@
   "errorGeneric": "Something went wrong. Try again",
   "noData": "No data",
   "retry": "Retry",
-  "noInternet": "No internet connection"
+  "noInternet": "No internet connection",
+  "discoveryNavProfile": "Profile",
+  "discoveryNavChat": "Chat",
+  "discoveryNavOrders": "Orders",
+  "discoveryNavMap": "Map",
+  "discoveryNavHome": "Home",
+  "discoveryWelcomeBack": "Welcome Back, {name}",
+  "@discoveryWelcomeBack": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "discoverySearchHint": "Search Workshops, Parts...",
+  "discoveryMapLabel": "Map",
+  "discoveryListLabel": "List",
+  "discoveryServicesLabel": "Services",
+  "discoveryPartsLabel": "Parts",
+  "discoverySummerEssentials": "SUMMER ESSENTIALS",
+  "discoveryHeroTitle": "Upgrade Your Ride with 25% Off Parts",
+  "discoveryShopCollection": "Shop Collection",
+  "discoveryPremiumCare": "PREMIUM CARE",
+  "discoveryHeroSecondaryTitle": "Certified garages ready for your next service booking",
+  "discoveryBookNow": "Book Now",
+  "discoveryOrderInTransitTitle": "In Transit: {itemName}",
+  "@discoveryOrderInTransitTitle": {
+    "placeholders": {
+      "itemName": {
+        "type": "String"
+      }
+    }
+  },
+  "discoveryDiagnosticTitle": "Diagnostic Scan Tool",
+  "discoveryDiagnosticSubtitle": "Connect your vehicle and get instant health reports, error code clearing, and performance metrics.",
+  "discoveryLearnMore": "Learn More",
+  "discoveryUploadImage": "Upload your image",
+  "discoveryRecommended": "Recommended",
+  "discoveryRatingFilter": "Rating 4.5+",
+  "discoveryDistanceFilter": "Distance",
+  "discoveryTopRatedWorkshop": "Top Rated Workshop",
+  "discoveryViewAll": "View All",
+  "discoveryPopularParts": "Popular Parts",
+  "discoveryExploreStore": "Explore Store",
+  "discoveryPopularServices": "Popular Services",
+  "discoveryNearbyWorkshops": "Nearby Workshops",
+  "discoverySeeAll": "See All",
+  "discoveryBookService": "Book Service",
+  "discoveryWorkshopFallbackLocation": "Doha",
+  "discoveryLuxuryExpert": "Luxury Expert",
+  "discoveryAuthorizedDealer": "Authorized Dealer",
+  "discoveryOilChange": "Oil Change",
+  "discoveryBrakeService": "Brake Service",
+  "discoveryAcRepair": "AC Repair",
+  "discoveryRegularCheckup": "Regular Checkup",
+  "discoveryPrecisionParts": "Precision Parts",
+  "discoveryPartsSearchHint": "Search Genuine Parts, Serial Numbers...",
+  "discoveryFilters": "Filters",
+  "discoveryBrandToyota": "Brand: Toyota",
+  "discoveryPriceRange": "Price Range",
+  "discoveryInStock": "In Stock",
+  "discoveryEngine": "Engine",
+  "discoveryExterior": "Exterior",
+  "discoveryLighting": "Lighting",
+  "discoveryTires": "Tires",
+  "discoveryElectrical": "Electrical",
+  "discoveryGenuine": "Genuine",
+  "discoveryPopular": "Popular",
+  "discoveryFindNearbyWorkshops": "Find Nearby Workshops",
+  "discoveryMapSector": "Sector 22",
+  "discoverySearchWorkshopsAndParts": "Search workshops, PartsShops",
+  "discoveryYourNearbyWorkshops": "Your Nearby Workshops",
+  "discoveryRoadside": "Roadside",
+  "discoveryHomeContext": "Home",
+  "discoveryWorkshopContext": "Workshop",
+  "discoveryOfficeContext": "Office",
+  "discoveryPremiumService": "Premium Service",
+  "discoveryServiceNetwork": "Service Network",
+  "discoveryChooseWorkshop": "Choose Workshop",
+  "discoveryChooseWorkshopSubtitle": "Select a destination for your vehicle pickup. These locations are authorized for your specific roadside assistance plan.",
+  "discoverySelectWorkshop": "Select Workshop",
+  "discoveryPickupEstimateLabel": "Pickup Est.",
+  "discoveryCapacityLabel": "Capacity",
+  "discoverySpecialtyLabel": "Specialty",
+  "discoveryViewMap": "View Map",
+  "discoveryAvailableNow": "Available Now",
+  "discoverySlotsOpen": "{count} Slots Open",
+  "@discoverySlotsOpen": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "discoverySameDayReady": "Same Day Ready",
+  "discoveryGermanEngineering": "German Engineering",
+  "discoveryGeneralService": "General Service",
+  "discoveryDiagnostics": "Diagnostics",
+  "discoveryMinutesValue": "{minutes} mins",
+  "@discoveryMinutesValue": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "discoveryServiceRequest": "Service Request",
+  "discoveryPickupDetails": "Pickup Details",
+  "discoveryBreakdownLocation": "Breakdown Location",
+  "discoveryPreferredWorkshop": "Preferred Workshop",
+  "discoveryIssueNote": "Issue Note",
+  "discoveryEnterLocation": "Enter location",
+  "discoveryIssueNoteHint": "Steering issue, car won't start.",
+  "discoveryPickupReturnTitle": "Pickup + Return Drop-off",
+  "discoveryPickupReturnSubtitle": "We'll bring it back after service",
+  "discoveryEstimatedTowingFee": "Estimated Towing Fee",
+  "discoveryGuaranteedWithinDoha": "Guaranteed within 5km of Doha City",
+  "discoveryProceed": "Proceed",
+  "discoveryReadyForService": "Ready for Service",
+  "discoveryNoVehicleTitle": "No vehicle selected",
+  "discoveryAddVehicleToContinue": "Add or choose a vehicle before continuing.",
+  "discoverySelectVehicle": "Select Vehicle",
+  "discoveryPlatePrefix": "Plate:",
+  "discoveryDefaultBreakdownLocation": "The Pearl, Tower 4",
+  "discoveryActiveLabel": "Active",
+  "discoveryCompletedLabel": "Completed",
+  "discoveryCancelledLabel": "Cancelled",
+  "discoveryActiveTrackings": "Active Trackings",
+  "discoveryRecentHistory": "Recent History",
+  "discoveryItemsCount": "{count} items",
+  "@discoveryItemsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "discoveryInProgress": "In Progress",
+  "discoveryWorkshopService": "Workshop Service",
+  "discoveryServiceBookingAt": "Service Booking at {workshopName}",
+  "@discoveryServiceBookingAt": {
+    "placeholders": {
+      "workshopName": {
+        "type": "String"
+      }
+    }
+  },
+  "discoveryScheduledFor": "Scheduled for {value}",
+  "@discoveryScheduledFor": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "discoveryDropOff": "Drop Off",
+  "discoveryServicing": "Servicing",
+  "discoveryQualityCheck": "Quality Check",
+  "discoveryReadyLabel": "Ready",
+  "discoveryTrackPackage": "Track Package",
+  "discoveryDetails": "Details",
+  "discoveryEstimatedDateLabel": "Estimated",
+  "discoveryPartsOrderTitle": "Parts Order: {title}",
+  "@discoveryPartsOrderTitle": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "discoveryDispatchedVia": "Dispatched via {method}",
+  "@discoveryDispatchedVia": {
+    "placeholders": {
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "discoveryOrderFallbackTitle": "OnlyCars Order",
+  "discoveryReorderService": "Reorder Service",
+  "discoveryDownloadReceipt": "Download Receipt",
+  "discoveryNoActiveOrders": "No active requests or orders yet.",
+  "discoveryNoCompletedOrders": "No completed orders yet.",
+  "discoveryNoCancelledOrders": "No cancelled orders.",
+  "discoveryProfileTitle": "Profile"
 }

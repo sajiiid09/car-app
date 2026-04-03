@@ -15,6 +15,7 @@ import 'screens/auth/auth_complete_screen.dart';
 import 'screens/auth/otp_screen.dart';
 import 'screens/auth/profile_setup_screen.dart';
 import 'screens/auth/terms_screen.dart';
+import 'screens/discovery/discovery_content.dart';
 import 'screens/home/home_shell.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/workshops/workshop_list_screen.dart';
@@ -22,6 +23,8 @@ import 'screens/workshops/workshop_detail_screen.dart';
 import 'screens/orders/orders_screen.dart';
 import 'screens/orders/order_tracking_screen.dart';
 import 'screens/orders/rate_workshop_screen.dart';
+import 'screens/orders/pickup_details_screen.dart';
+import 'screens/orders/workshop_selection_screen.dart';
 import 'screens/marketplace/marketplace_screen.dart';
 import 'screens/marketplace/cart_screen.dart';
 import 'screens/marketplace/checkout_screen.dart';
@@ -204,23 +207,43 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/settings/language',
         builder: (_, _) => const LanguageScreen(),
       ),
+      GoRoute(
+        path: '/workshops',
+        redirect: (_, state) {
+          final query = state.uri.queryParameters;
+          return Uri(path: '/map', queryParameters: query.isEmpty ? null : query)
+              .toString();
+        },
+      ),
 
       // Main shell (with bottom nav)
       ShellRoute(
         builder: (_, _, child) => HomeShell(child: child),
         routes: [
-          GoRoute(path: '/home', builder: (_, _) => const HomeScreen()),
+          GoRoute(path: '/profile', builder: (_, _) => const ProfileScreen()),
+          GoRoute(path: '/chat', builder: (_, _) => const ChatListScreen()),
           GoRoute(
-            path: '/workshops',
-            builder: (_, _) => const WorkshopListScreen(),
+            path: '/orders',
+            builder: (_, state) => OrdersScreen(
+              initialTab: OrdersHistoryTabX.fromQuery(
+                state.uri.queryParameters['tab'],
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/orders/request/workshops',
+            builder: (_, _) => const WorkshopSelectionScreen(),
+          ),
+          GoRoute(
+            path: '/orders/request/pickup',
+            builder: (_, _) => const PickupDetailsScreen(),
           ),
           GoRoute(
             path: '/marketplace',
             builder: (_, _) => const MarketplaceScreen(),
           ),
-          GoRoute(path: '/orders', builder: (_, _) => const OrdersScreen()),
-          GoRoute(path: '/chat', builder: (_, _) => const ChatListScreen()),
-          GoRoute(path: '/profile', builder: (_, _) => const ProfileScreen()),
+          GoRoute(path: '/map', builder: (_, _) => const WorkshopListScreen()),
+          GoRoute(path: '/home', builder: (_, _) => const HomeScreen()),
         ],
       ),
     ],

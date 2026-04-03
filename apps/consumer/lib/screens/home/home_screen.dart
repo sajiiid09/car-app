@@ -1,218 +1,386 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:oc_ui/oc_ui.dart';
+import 'package:oc_models/oc_models.dart';
+
+import '../../l10n/app_localizations.dart';
 import '../../providers.dart';
+import '../discovery/discovery_content.dart';
+import '../discovery/discovery_palette.dart';
+import '../discovery/discovery_widgets.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final profileAsync = ref.watch(userProfileProvider);
-    final vehiclesAsync = ref.watch(vehiclesProvider);
-    final unreadAsync = ref.watch(unreadNotifCountProvider);
+    final l10n = AppLocalizations.of(context)!;
+    final shortcuts = discoveryShortcutItems(l10n);
+    final userAsync = ref.watch(userProfileProvider);
+    final workshopsAsync = ref.watch(workshopsProvider);
+    final partsAsync = ref.watch(partsProvider(null));
+    final ordersAsync = ref.watch(myOrdersProvider);
+    final unreadCount = ref.watch(unreadNotifCountProvider).valueOrNull ?? 0;
 
     return Scaffold(
-      backgroundColor: OcColors.background,
-      body: SafeArea(
-        bottom: false,
-        child: RefreshIndicator(
-          color: OcColors.accent,
-          onRefresh: () async {
-            ref.invalidate(userProfileProvider);
-            ref.invalidate(vehiclesProvider);
-            ref.invalidate(unreadNotifCountProvider);
-          },
-          child: CustomScrollView(
-            slivers: [
-              // ── Header ──────────────────────────────
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    OcSpacing.page, OcSpacing.lg, OcSpacing.page, OcSpacing.md,
-                  ),
-                  child: profileAsync.when(
-                    data: (user) => _Header(
-                      name: user?.name ?? 'مرحباً',
-                      unreadCount: unreadAsync.valueOrNull ?? 0,
+      backgroundColor: DiscoveryPalette.background,
+      body: DiscoveryScreenBody(
+        onRefresh: () async {
+          ref.invalidate(userProfileProvider);
+          ref.invalidate(workshopsProvider);
+          ref.invalidate(partsProvider(null));
+          ref.invalidate(myOrdersProvider);
+          ref.invalidate(unreadNotifCountProvider);
+        },
+        child: Column(
+          key: const ValueKey('customerHomePage'),
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            DiscoveryTopBar(
+              avatarUrl: userAsync.valueOrNull?.avatarUrl,
+              notificationCount: unreadCount,
+              onAvatarTap: () => context.go('/profile'),
+              onCartTap: () => context.push('/cart'),
+              onNotificationTap: () => context.push('/notifications'),
+            ),
+            const SizedBox(height: 18),
+            DiscoveryTitleBlock(
+              title: l10n.discoveryWelcomeBack(
+                userAsync.valueOrNull?.name?.trim().isNotEmpty == true
+                    ? userAsync.valueOrNull!.name!.trim()
+                    : 'OnlyCars',
+              ),
+            ),
+            const SizedBox(height: 18),
+            DiscoveryHeroCarousel(
+              items: discoveryHeroItems(l10n),
+              onPrimaryActionTap: () => context.go('/marketplace'),
+            ),
+            const SizedBox(height: 18),
+            DiscoverySearchBar(
+              searchKey: const ValueKey('customerHomeSearchBar'),
+              hint: l10n.discoverySearchHint,
+              onTap: () => context.go('/map'),
+            ),
+            const SizedBox(height: 16),
+            DiscoveryViewToggle(
+              currentView: WorkshopExploreView.map,
+              mapLabel: l10n.discoveryMapLabel,
+              listLabel: l10n.discoveryListLabel,
+              onMapTap: () => context.go('/map'),
+              onListTap: () => context.go('/map'),
+            ),
+            const SizedBox(height: 14),
+            DiscoveryRouteTabs(
+              activeTab: DiscoveryRouteTab.services,
+              servicesLabel: l10n.discoveryServicesLabel,
+              partsLabel: l10n.discoveryPartsLabel,
+              onServicesTap: () => context.go('/map'),
+              onPartsTap: () => context.go('/marketplace'),
+            ),
+            const SizedBox(height: 12),
+            ordersAsync.when(
+              data: (orders) {
+                final activeOrder = _firstTrackableOrder(orders);
+                if (activeOrder == null) {
+                  return const SizedBox.shrink();
+                }
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 14),
+                  child: _InTransitCard(
+                    label: _activeOrderLabel(activeOrder),
+                    title: l10n.discoveryOrderInTransitTitle(
+                      _activeOrderTitle(activeOrder),
                     ),
-                    loading: () => const _Header(name: '...', unreadCount: 0),
-                    error: (_, __) => const _Header(name: 'مرحباً', unreadCount: 0),
+                    onTap: () => context.push('/order/${activeOrder.id}'),
+                  ),
+                );
+              },
+              loading: () => const SizedBox.shrink(),
+              error: (error, stackTrace) => const SizedBox.shrink(),
+            ),
+            const _FeaturedPromoCard(),
+            const SizedBox(height: 14),
+            Row(
+              children: shortcuts.asMap().entries.map((entry) {
+                final index = entry.key;
+                final item = entry.value;
+                return Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      right: index == shortcuts.length - 1 ? 0 : 12,
+                    ),
+                    child: DiscoveryShortcutTile(
+                      icon: item.icon,
+                      label: item.label,
+                      onTap: () => context.go(item.route),
+                    ),
+                  ),
+                );
+              }).toList(),
+            ),
+            const SizedBox(height: 14),
+            DiscoveryUploadCard(label: l10n.discoveryUploadImage),
+            const SizedBox(height: 18),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  DiscoveryFilterPill(
+                    label: l10n.discoveryRecommended,
+                    selected: true,
+                  ),
+                  const SizedBox(width: 10),
+                  DiscoveryFilterPill(
+                    label: l10n.discoveryRatingFilter,
+                    trailingIcon: Icons.keyboard_arrow_down_rounded,
+                  ),
+                  const SizedBox(width: 10),
+                  DiscoveryFilterPill(
+                    label: l10n.discoveryDistanceFilter,
+                    trailingIcon: Icons.keyboard_arrow_down_rounded,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 18),
+            DiscoverySectionHeader(
+              title: l10n.discoveryTopRatedWorkshop,
+              actionLabel: l10n.discoveryViewAll,
+              onActionTap: () => context.go('/orders/request/workshops'),
+            ),
+            const SizedBox(height: 14),
+            workshopsAsync.when(
+              data: (workshops) {
+                if (workshops.isEmpty) {
+                  return const SizedBox.shrink();
+                }
+
+                final sorted = [...workshops]
+                  ..sort((a, b) => b.avgRating.compareTo(a.avgRating));
+                final workshop = sorted.first;
+
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: DiscoveryWorkshopCard(
+                    name: workshop.nameAr,
+                    location: workshop.zone ?? l10n.discoveryWorkshopFallbackLocation,
+                    distance: _workshopDistanceLabel(0),
+                    priceLabel: _workshopPriceLabel(0),
+                    rating: workshop.avgRating == 0
+                        ? '4.9'
+                        : workshop.avgRating.toStringAsFixed(1),
+                    tags: _workshopTags(workshop, l10n),
+                    ctaLabel: l10n.discoveryBookService,
+                    imageUrl: workshop.coverPhotoUrl,
+                    onTap: () => context.push('/workshop/${workshop.id}'),
+                    onCtaTap: () => context.push('/workshop/${workshop.id}'),
+                  ),
+                );
+              },
+              loading: () => const _BlockPlaceholder(height: 350),
+              error: (error, stackTrace) => const SizedBox.shrink(),
+            ),
+            DiscoverySectionHeader(
+              title: l10n.discoveryPopularParts,
+              actionLabel: l10n.discoveryExploreStore,
+              onActionTap: () => context.go('/marketplace'),
+            ),
+            const SizedBox(height: 14),
+            partsAsync.when(
+              data: (parts) {
+                final featured = parts.take(4).toList();
+                if (featured.isEmpty) {
+                  return const SizedBox.shrink();
+                }
+
+                return GridView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: featured.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 14,
+                    mainAxisSpacing: 14,
+                    childAspectRatio: 0.69,
+                  ),
+                  itemBuilder: (context, index) {
+                    final part = featured[index];
+                    return DiscoveryPartsGridCard(
+                      title: part.nameEn?.trim().isNotEmpty == true
+                          ? part.nameEn!
+                          : part.nameAr,
+                      subtitle: _partSubtitle(part),
+                      price: _currencyLabel(part.price),
+                      imageUrl: part.imageUrls.isNotEmpty ? part.imageUrls.first : null,
+                      assetPath: _partFallbackAsset(index),
+                      onTap: () => context.push('/part/${part.id}'),
+                      onAddTap: () => _addToCart(context, ref, part),
+                    );
+                  },
+                );
+              },
+              loading: () => const _BlockPlaceholder(height: 360),
+              error: (error, stackTrace) => const SizedBox.shrink(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Order? _firstTrackableOrder(List<Order> orders) {
+    for (final order in orders) {
+      if (order.status == 'in_transit' ||
+          order.status == 'confirmed' ||
+          order.status == 'pending') {
+        return order;
+      }
+    }
+    return null;
+  }
+
+  String _activeOrderLabel(Order order) {
+    return 'Order #${order.id.substring(0, 7).toUpperCase()}';
+  }
+
+  String _activeOrderTitle(Order order) {
+    final item = order.items?.firstOrNull;
+    if (item == null) {
+      return 'OnlyCars Order';
+    }
+    final name = item.part?['name_en'] ?? item.part?['name_ar'];
+    if (name is String && name.trim().isNotEmpty) {
+      return name.trim();
+    }
+    return 'OnlyCars Order';
+  }
+
+  List<String> _workshopTags(WorkshopProfile workshop, AppLocalizations l10n) {
+    if (workshop.specialties.isNotEmpty) {
+      return workshop.specialties.take(2).map((tag) => tag.toUpperCase()).toList();
+    }
+
+    return [
+      l10n.discoveryLuxuryExpert.toUpperCase(),
+      l10n.discoveryAuthorizedDealer.toUpperCase(),
+    ];
+  }
+
+  String _workshopDistanceLabel(int index) {
+    final distances = ['1.2 miles away', '2.8 miles away', '3.5 miles away'];
+    return distances[index % distances.length];
+  }
+
+  String _workshopPriceLabel(int index) {
+    final prices = ['\$80/hr', '\$65/hr', '\$110/hr'];
+    return prices[index % prices.length];
+  }
+
+  String _partSubtitle(Part part) {
+    final category = part.category?['name_en'] ?? part.category?['name_ar'];
+    if (category is String && category.trim().isNotEmpty) {
+      return category.trim();
+    }
+    return part.condition;
+  }
+
+  String _currencyLabel(double price) {
+    if (price == price.roundToDouble()) {
+      return '\$${price.toStringAsFixed(2)}';
+    }
+    return '\$${price.toStringAsFixed(2)}';
+  }
+
+  String _partFallbackAsset(int index) {
+    const assets = [
+      'assets/images/part_brakes.png',
+      'assets/images/part_battery.png',
+      'assets/images/part_filter.png',
+      'assets/images/part_oil.png',
+    ];
+    return assets[index % assets.length];
+  }
+
+  void _addToCart(BuildContext context, WidgetRef ref, Part part) {
+    ref.read(cartProvider.notifier).add(part);
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Added to cart')),
+    );
+  }
+}
+
+class _InTransitCard extends StatelessWidget {
+  const _InTransitCard({
+    required this.label,
+    required this.title,
+    required this.onTap,
+  });
+
+  final String label;
+  final String title;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.transparent,
+      child: Ink(
+        decoration: BoxDecoration(
+          gradient: DiscoveryPalette.secondaryGradient,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: DiscoveryPalette.cardShadow,
+        ),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(20),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+            child: Row(
+              children: [
+                Container(
+                  width: 42,
+                  height: 42,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.18),
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: const Icon(
+                    Icons.local_shipping_outlined,
+                    color: Colors.white,
                   ),
                 ),
-              ),
-
-              // ── Hero Banner ─────────────────────────
-              SliverToBoxAdapter(
-                child: OcHeroBanner(
-                  items: const [
-                    OcBannerItem(
-                      title: 'خصم 50% على تغيير الزيت',
-                      subtitle: 'زيت موبيل 5W-30 أصلي + فلتر مجاناً — لفترة محدودة',
-                      buttonLabel: 'احجز الآن',
-                      assetPath: 'assets/images/ad_banner_1.png',
-                    ),
-                    OcBannerItem(
-                      title: 'كفرات ميشلان بأقل الأسعار',
-                      subtitle: 'اشترِ 3 واحصل على الرابعة مجاناً — توصيل مجاني',
-                      buttonLabel: 'تسوق الآن',
-                      assetPath: 'assets/images/ad_banner_1.png',
-                    ),
-                    OcBannerItem(
-                      title: 'فحص شامل لسيارتك',
-                      subtitle: 'تشخيص كمبيوتر + فحص 52 نقطة ابتداءً من 99 ر.ق',
-                      buttonLabel: 'احجز فحص',
-                      assetPath: 'assets/images/ad_banner_1.png',
-                    ),
-                  ],
-                ),
-              ),
-              const SliverToBoxAdapter(child: SizedBox(height: OcSpacing.lg)),
-
-              // ── Search Bar ──────────────────────────
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: OcSpacing.page),
-                  child: OcSearchBar(
-                    hint: 'ابحث عن ورشة أو قطعة...',
-                    readOnly: true,
-                    onTap: () => context.push('/marketplace'),
-                  ),
-                ),
-              ),
-              const SliverToBoxAdapter(child: SizedBox(height: OcSpacing.lg)),
-
-              // ── Quick Action Chips ─────────────────
-              SliverToBoxAdapter(
-                child: SizedBox(
-                  height: 40,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    padding: const EdgeInsets.symmetric(horizontal: OcSpacing.page),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _ActionChip(
-                        icon: Icons.build_rounded,
-                        label: 'الورش',
-                        color: const Color(0xFF1976D2),
-                        onTap: () => context.push('/workshops'),
+                      Text(
+                        label,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: Colors.white70,
+                        ),
                       ),
-                      const SizedBox(width: 10),
-                      _ActionChip(
-                        icon: Icons.shopping_bag_rounded,
-                        label: 'قطع الغيار',
-                        color: const Color(0xFFE65100),
-                        onTap: () => context.push('/marketplace'),
-                      ),
-                      const SizedBox(width: 10),
-                      _ActionChip(
-                        icon: Icons.directions_car_rounded,
-                        label: 'التشخيص',
-                        color: const Color(0xFF2E7D32),
-                        onTap: () => context.push('/profile'),
+                      const SizedBox(height: 4),
+                      Text(
+                        title,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.white,
+                        ),
                       ),
                     ],
                   ),
                 ),
-              ),
-              const SliverToBoxAdapter(child: SizedBox(height: OcSpacing.section)),
-
-              // ── My Vehicles ─────────────────────────
-              SliverToBoxAdapter(
-                child: OcSectionHeader(
-                  title: 'سياراتي',
-                  actionLabel: 'إضافة',
-                  onAction: () => context.push('/vehicle/add'),
+                const Icon(
+                  Icons.chevron_right_rounded,
+                  color: Colors.white,
+                  size: 26,
                 ),
-              ),
-              const SliverToBoxAdapter(child: SizedBox(height: OcSpacing.md)),
-              SliverToBoxAdapter(
-                child: vehiclesAsync.when(
-                  data: (vehicles) => vehicles.isEmpty
-                      ? Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: OcSpacing.page),
-                          child: _EmptyVehicleCard(),
-                        )
-                      : SizedBox(
-                          height: 110,
-                          child: ListView.separated(
-                            scrollDirection: Axis.horizontal,
-                            padding: const EdgeInsets.symmetric(horizontal: OcSpacing.page),
-                            itemCount: vehicles.length,
-                            separatorBuilder: (_, __) => const SizedBox(width: OcSpacing.cardGap),
-                            itemBuilder: (_, i) => _VehicleCard(vehicle: vehicles[i]),
-                          ),
-                        ),
-                  loading: () => const SizedBox(
-                    height: 110,
-                    child: Center(child: CircularProgressIndicator(color: OcColors.accent)),
-                  ),
-                  error: (e, _) => OcErrorState(
-                    message: 'تعذر تحميل السيارات',
-                    onRetry: () => ref.invalidate(vehiclesProvider),
-                  ),
-                ),
-              ),
-              const SliverToBoxAdapter(child: SizedBox(height: OcSpacing.section)),
-
-              // ── Car Parts For Sale ──────────────────
-              SliverToBoxAdapter(
-                child: OcSectionHeader(
-                  title: 'قطع غيار مميزة',
-                  actionLabel: 'عرض الكل',
-                  onAction: () => context.push('/marketplace'),
-                ),
-              ),
-              const SliverToBoxAdapter(child: SizedBox(height: OcSpacing.md)),
-              SliverToBoxAdapter(
-                child: ref.watch(partsProvider(null)).when(
-                  data: (parts) {
-                    final featured = parts.take(4).toList();
-                    if (featured.isEmpty) {
-                      return const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: OcSpacing.page),
-                        child: OcEmptyState(icon: Icons.inventory_2_outlined, message: 'لا توجد قطع حالياً'),
-                      );
-                    }
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: OcSpacing.page),
-                      child: GridView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          mainAxisSpacing: 12,
-                          crossAxisSpacing: 12,
-                          childAspectRatio: 0.58,
-                        ),
-                        itemCount: featured.length,
-                        itemBuilder: (_, i) {
-                          final part = featured[i];
-                          return OcProductCard(
-                            name: part.nameAr,
-                            price: '${part.price.toStringAsFixed(0)} ر.ق',
-                            category: part.category?['name_ar'] ?? '',
-                            stockLeft: part.stockQty,
-                            imageUrl: part.imageUrls.isNotEmpty ? part.imageUrls.first : null,
-                            onTap: () => context.push('/part/${part.id}'),
-                          );
-                        },
-                      ),
-                    );
-                  },
-                  loading: () => const Padding(
-                    padding: EdgeInsets.all(OcSpacing.xl),
-                    child: Center(child: CircularProgressIndicator()),
-                  ),
-                  error: (_, __) => const SizedBox.shrink(),
-                ),
-              ),
-
-              // Bottom padding for floating nav
-              SliverToBoxAdapter(
-                child: SizedBox(height: OcSizes.navBarHeight + OcSizes.navBarBottomMargin + OcSpacing.xl),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -220,192 +388,79 @@ class HomeScreen extends ConsumerWidget {
   }
 }
 
-// ═══════════════════════════════════════════════════════
-// HEADER
-// ═══════════════════════════════════════════════════════
-
-class _Header extends StatelessWidget {
-  final String name;
-  final int unreadCount;
-  const _Header({required this.name, required this.unreadCount});
+class _FeaturedPromoCard extends StatelessWidget {
+  const _FeaturedPromoCard();
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          children: [
-            // Brand logo
-            const OcLogo(size: 81, assetPath: OcLogoAssets.horizontal),
-            const Spacer(),
-            OcBadge(
-              count: 0,
-              child: IconButton(
-                onPressed: () => context.push('/cart'),
-                icon: const Icon(Icons.shopping_cart_outlined, color: OcColors.textPrimary),
-              ),
-            ),
-            OcBadge(
-              count: unreadCount,
-              child: IconButton(
-                onPressed: () => context.push('/notifications'),
-                icon: const Icon(Icons.notifications_outlined, color: OcColors.textPrimary),
-              ),
-            ),
-            GestureDetector(
-              onTap: () => context.push('/profile'),
-              child: Container(
-                width: 34, height: 34,
-                decoration: BoxDecoration(
-                  color: OcColors.surfaceCard,
-                  shape: BoxShape.circle,
-                  border: Border.all(color: OcColors.border),
-                ),
-                child: const Icon(Icons.person_outlined, size: 20, color: OcColors.textSecondary),
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 4),
-        Text(
-          'مرحباً 👋 $name',
-          style: const TextStyle(
-            fontSize: 15,
-            color: OcColors.textSecondary,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ],
-    );
-  }
-}
+    final l10n = AppLocalizations.of(context)!;
 
-// ═══════════════════════════════════════════════════════
-// ACTION CHIP — Inline icon+text pill
-// ═══════════════════════════════════════════════════════
-
-class _ActionChip extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final Color color;
-  final VoidCallback? onTap;
-
-  const _ActionChip({
-    required this.icon,
-    required this.label,
-    required this.color,
-    this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-        decoration: BoxDecoration(
-          color: OcColors.surfaceCard,
-          borderRadius: BorderRadius.circular(OcRadius.pill),
-          border: Border.all(color: OcColors.border),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              width: 26, height: 26,
-              decoration: BoxDecoration(
-                color: color.withValues(alpha: 0.12),
-                shape: BoxShape.circle,
-              ),
-              child: Icon(icon, color: color, size: 14),
-            ),
-            const SizedBox(width: 8),
-            Text(
-              label,
-              style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: OcColors.textPrimary),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-// ═══════════════════════════════════════════════════════
-// VEHICLE CARD
-// ═══════════════════════════════════════════════════════
-
-class _VehicleCard extends StatelessWidget {
-  final dynamic vehicle;
-  const _VehicleCard({required this.vehicle});
-
-  @override
-  Widget build(BuildContext context) {
     return Container(
-      width: 180,
-      padding: const EdgeInsets.all(OcSpacing.md),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: OcColors.surfaceCard,
-        borderRadius: BorderRadius.circular(OcRadius.card),
+        gradient: DiscoveryPalette.secondaryGradient,
+        borderRadius: BorderRadius.circular(24),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(6),
-                decoration: BoxDecoration(
-                  color: OcColors.accent.withValues(alpha: 0.15),
-                  borderRadius: BorderRadius.circular(OcRadius.sm),
-                ),
-                child: const Icon(Icons.directions_car_rounded, color: OcColors.accent, size: 20),
-              ),
-              const SizedBox(width: OcSpacing.sm),
-              Expanded(
-                child: Text(
-                  '${vehicle.make} ${vehicle.model}',
-                  style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: OcColors.textPrimary),
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            ],
+          Text(
+            l10n.discoveryDiagnosticTitle,
+            style: const TextStyle(
+              fontSize: 17,
+              fontWeight: FontWeight.w800,
+              color: Colors.white,
+            ),
           ),
-          const SizedBox(height: 6),
-          Text('${vehicle.year}', style: const TextStyle(color: OcColors.textSecondary, fontSize: 11)),
-          if (vehicle.plateNumber != null)
-            Text(vehicle.plateNumber, style: const TextStyle(color: OcColors.accent, fontWeight: FontWeight.w600, fontSize: 11)),
+          const SizedBox(height: 10),
+          Text(
+            l10n.discoveryDiagnosticSubtitle,
+            style: const TextStyle(
+              fontSize: 14,
+              height: 1.45,
+              color: Colors.white,
+            ),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            l10n.discoveryLearnMore,
+            style: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w700,
+              color: Colors.white,
+            ),
+          ),
+          const SizedBox(height: 14),
+          Align(
+            alignment: Alignment.center,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(18),
+              child: Image.asset(
+                'assets/images/part_filter.png',
+                height: 120,
+                width: 120,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
 }
 
-class _EmptyVehicleCard extends StatelessWidget {
+class _BlockPlaceholder extends StatelessWidget {
+  const _BlockPlaceholder({required this.height});
+
+  final double height;
+
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => context.push('/vehicle/add'),
-      child: Container(
-        height: 110,
-        padding: const EdgeInsets.all(OcSpacing.lg),
-        decoration: BoxDecoration(
-          color: OcColors.surfaceCard,
-          borderRadius: BorderRadius.circular(OcRadius.card),
-          border: Border.all(color: OcColors.border),
-        ),
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(Icons.add_circle_outline_rounded, color: OcColors.textMuted, size: 28),
-              const SizedBox(height: 6),
-              Text('أضف سيارتك الأولى', style: TextStyle(color: OcColors.textSecondary, fontSize: 13)),
-            ],
-          ),
-        ),
+    return Container(
+      height: height,
+      decoration: BoxDecoration(
+        color: DiscoveryPalette.surface,
+        borderRadius: BorderRadius.circular(22),
       ),
     );
   }

@@ -45,5 +45,189 @@
   "errorGeneric": "حدث خطأ. حاول مرة أخرى",
   "noData": "لا توجد بيانات",
   "retry": "إعادة المحاولة",
-  "noInternet": "لا يوجد اتصال بالإنترنت"
+  "noInternet": "لا يوجد اتصال بالإنترنت",
+  "discoveryNavProfile": "الملف الشخصي",
+  "discoveryNavChat": "المحادثة",
+  "discoveryNavOrders": "الطلبات",
+  "discoveryNavMap": "الخريطة",
+  "discoveryNavHome": "الرئيسية",
+  "discoveryWelcomeBack": "مرحباً بعودتك، {name}",
+  "@discoveryWelcomeBack": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "discoverySearchHint": "ابحث عن ورش وقطع...",
+  "discoveryMapLabel": "الخريطة",
+  "discoveryListLabel": "القائمة",
+  "discoveryServicesLabel": "الخدمات",
+  "discoveryPartsLabel": "القطع",
+  "discoverySummerEssentials": "أساسيات الصيف",
+  "discoveryHeroTitle": "قم بترقية سيارتك بخصم 25٪ على القطع",
+  "discoveryShopCollection": "تسوّق المجموعة",
+  "discoveryPremiumCare": "عناية مميزة",
+  "discoveryHeroSecondaryTitle": "ورش معتمدة جاهزة لخدمة حجزك القادم",
+  "discoveryBookNow": "احجز الآن",
+  "discoveryOrderInTransitTitle": "في الطريق: {itemName}",
+  "@discoveryOrderInTransitTitle": {
+    "placeholders": {
+      "itemName": {
+        "type": "String"
+      }
+    }
+  },
+  "discoveryDiagnosticTitle": "أداة الفحص التشخيصي",
+  "discoveryDiagnosticSubtitle": "اربط مركبتك واحصل على تقارير فورية عن الحالة ومسح للأخطاء وبيانات الأداء.",
+  "discoveryLearnMore": "اعرف المزيد",
+  "discoveryUploadImage": "ارفع صورتك",
+  "discoveryRecommended": "موصى به",
+  "discoveryRatingFilter": "تقييم 4.5+",
+  "discoveryDistanceFilter": "المسافة",
+  "discoveryTopRatedWorkshop": "أفضل ورشة",
+  "discoveryViewAll": "عرض الكل",
+  "discoveryPopularParts": "قطع رائجة",
+  "discoveryExploreStore": "استكشف المتجر",
+  "discoveryPopularServices": "الخدمات الشائعة",
+  "discoveryNearbyWorkshops": "ورش قريبة",
+  "discoverySeeAll": "عرض الكل",
+  "discoveryBookService": "احجز الخدمة",
+  "discoveryWorkshopFallbackLocation": "الدوحة",
+  "discoveryLuxuryExpert": "خبير فاخر",
+  "discoveryAuthorizedDealer": "وكيل معتمد",
+  "discoveryOilChange": "تغيير الزيت",
+  "discoveryBrakeService": "خدمة الفرامل",
+  "discoveryAcRepair": "إصلاح التكييف",
+  "discoveryRegularCheckup": "فحص دوري",
+  "discoveryPrecisionParts": "قطع دقيقة",
+  "discoveryPartsSearchHint": "ابحث عن قطع أصلية أو أرقام تسلسلية...",
+  "discoveryFilters": "فلاتر",
+  "discoveryBrandToyota": "العلامة: تويوتا",
+  "discoveryPriceRange": "نطاق السعر",
+  "discoveryInStock": "متوفر",
+  "discoveryEngine": "المحرك",
+  "discoveryExterior": "الخارجي",
+  "discoveryLighting": "الإضاءة",
+  "discoveryTires": "الإطارات",
+  "discoveryElectrical": "الكهرباء",
+  "discoveryGenuine": "أصلي",
+  "discoveryPopular": "رائج",
+  "discoveryFindNearbyWorkshops": "اعثر على ورش قريبة",
+  "discoveryMapSector": "القطاع 22",
+  "discoverySearchWorkshopsAndParts": "ابحث عن ورش وقطع ومتاجر قطع",
+  "discoveryYourNearbyWorkshops": "ورش قريبة منك",
+  "discoveryRoadside": "طريق",
+  "discoveryHomeContext": "المنزل",
+  "discoveryWorkshopContext": "الورشة",
+  "discoveryOfficeContext": "المكتب",
+  "discoveryPremiumService": "خدمة مميزة",
+  "discoveryServiceNetwork": "شبكة الخدمة",
+  "discoveryChooseWorkshop": "اختر الورشة",
+  "discoveryChooseWorkshopSubtitle": "حدد وجهة سحب مركبتك. هذه المواقع معتمدة لخطة المساعدة على الطريق الخاصة بك.",
+  "discoverySelectWorkshop": "اختر الورشة",
+  "discoveryPickupEstimateLabel": "زمن السحب",
+  "discoveryCapacityLabel": "السعة",
+  "discoverySpecialtyLabel": "التخصص",
+  "discoveryViewMap": "عرض الخريطة",
+  "discoveryAvailableNow": "متاح الآن",
+  "discoverySlotsOpen": "{count} خانات متاحة",
+  "@discoverySlotsOpen": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "discoverySameDayReady": "جاهز اليوم نفسه",
+  "discoveryGermanEngineering": "هندسة ألمانية",
+  "discoveryGeneralService": "خدمة عامة",
+  "discoveryDiagnostics": "تشخيص",
+  "discoveryMinutesValue": "{minutes} دقيقة",
+  "@discoveryMinutesValue": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "discoveryServiceRequest": "طلب خدمة",
+  "discoveryPickupDetails": "تفاصيل السحب",
+  "discoveryBreakdownLocation": "موقع العطل",
+  "discoveryPreferredWorkshop": "الورشة المفضلة",
+  "discoveryIssueNote": "ملاحظة العطل",
+  "discoveryEnterLocation": "أدخل الموقع",
+  "discoveryIssueNoteHint": "مشكلة في المقود، السيارة لا تعمل.",
+  "discoveryPickupReturnTitle": "سحب + إرجاع بعد الخدمة",
+  "discoveryPickupReturnSubtitle": "سنعيدها إليك بعد انتهاء الخدمة",
+  "discoveryEstimatedTowingFee": "رسوم السحب التقديرية",
+  "discoveryGuaranteedWithinDoha": "مضمون ضمن 5 كم من مدينة الدوحة",
+  "discoveryProceed": "متابعة",
+  "discoveryReadyForService": "جاهزة للخدمة",
+  "discoveryNoVehicleTitle": "لا توجد مركبة محددة",
+  "discoveryAddVehicleToContinue": "أضف أو اختر مركبة قبل المتابعة.",
+  "discoverySelectVehicle": "اختر المركبة",
+  "discoveryPlatePrefix": "اللوحة:",
+  "discoveryDefaultBreakdownLocation": "اللؤلؤة، البرج 4",
+  "discoveryActiveLabel": "نشطة",
+  "discoveryCompletedLabel": "مكتملة",
+  "discoveryCancelledLabel": "ملغاة",
+  "discoveryActiveTrackings": "التتبعات النشطة",
+  "discoveryRecentHistory": "السجل الحديث",
+  "discoveryItemsCount": "{count} عنصر",
+  "@discoveryItemsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "discoveryInProgress": "قيد التنفيذ",
+  "discoveryWorkshopService": "خدمة ورشة",
+  "discoveryServiceBookingAt": "حجز خدمة لدى {workshopName}",
+  "@discoveryServiceBookingAt": {
+    "placeholders": {
+      "workshopName": {
+        "type": "String"
+      }
+    }
+  },
+  "discoveryScheduledFor": "مجدول في {value}",
+  "@discoveryScheduledFor": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "discoveryDropOff": "التسليم",
+  "discoveryServicing": "الخدمة",
+  "discoveryQualityCheck": "فحص الجودة",
+  "discoveryReadyLabel": "جاهز",
+  "discoveryTrackPackage": "تتبع الشحنة",
+  "discoveryDetails": "التفاصيل",
+  "discoveryEstimatedDateLabel": "التاريخ المتوقع",
+  "discoveryPartsOrderTitle": "طلب قطع: {title}",
+  "@discoveryPartsOrderTitle": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "discoveryDispatchedVia": "تم الإرسال عبر {method}",
+  "@discoveryDispatchedVia": {
+    "placeholders": {
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "discoveryOrderFallbackTitle": "طلب OnlyCars",
+  "discoveryReorderService": "إعادة طلب الخدمة",
+  "discoveryDownloadReceipt": "تنزيل الإيصال",
+  "discoveryNoActiveOrders": "لا توجد طلبات أو طلبات سحب نشطة حالياً.",
+  "discoveryNoCompletedOrders": "لا توجد طلبات مكتملة بعد.",
+  "discoveryNoCancelledOrders": "لا توجد طلبات ملغاة.",
+  "discoveryProfileTitle": "الملف الشخصي"
 }
