@@ -1,184 +1,264 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:oc_ui/oc_ui.dart';
+import 'package:pro/l10n/app_localizations.dart';
 
-class WorkshopDashboard extends StatelessWidget {
+import '../shared/partner_flow_palette.dart';
+import 'workshop_shared.dart';
+import 'workshop_workflow_state.dart';
+
+class WorkshopDashboard extends ConsumerWidget {
   const WorkshopDashboard({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: OcColors.background,
-      appBar: AppBar(
-        title: const Text('لوحة الورشة'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_rounded),
-          onPressed: () => context.go('/roles'),
-        ),
-        actions: [
-          IconButton(icon: const Icon(Icons.notifications_outlined), onPressed: () {}),
-          IconButton(icon: const Icon(Icons.person_outline), onPressed: () {}),
-        ],
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(OcSpacing.lg),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Welcome
-            Text('مرحباً 👋', style: Theme.of(context).textTheme.headlineSmall),
-            const SizedBox(height: OcSpacing.sm),
-            Text('ورشة الاصالة', style: Theme.of(context).textTheme.titleLarge?.copyWith(
-              color: OcColors.primary, fontWeight: FontWeight.w700,
-            )),
-            const SizedBox(height: OcSpacing.xl),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
+    final workflow = ref.watch(workshopWorkflowProvider);
+    final jobs = [...workflow.jobs]..sort((a, b) => a.stage.index.compareTo(b.stage.index));
+    final newRequests = workflow.jobs
+        .where((job) => job.stage == WorkshopJobStage.newRequest)
+        .length;
+    final activeJobs = workflow.jobs
+        .where(
+          (job) =>
+              job.stage == WorkshopJobStage.driverAssignment ||
+              job.stage == WorkshopJobStage.incomingTracking ||
+              job.stage == WorkshopJobStage.activeJob ||
+              job.stage == WorkshopJobStage.serviceInProgress ||
+              job.stage == WorkshopJobStage.requestReturnDelivery ||
+              job.stage == WorkshopJobStage.returnTracking,
+        )
+        .length;
+    final waitingApproval = workflow.jobs
+        .where((job) => job.stage == WorkshopJobStage.approvalPending)
+        .length;
+    final handoverPending = workflow.jobs
+        .where((job) => job.stage == WorkshopJobStage.handoverPrep)
+        .length;
 
-            // Stats row
-            Row(
-              children: [
-                Expanded(child: _StatCard(title: 'طلبات نشطة', value: '3', icon: Icons.pending_actions, color: OcColors.primary)),
-                const SizedBox(width: OcSpacing.md),
-                Expanded(child: _StatCard(title: 'مكتملة اليوم', value: '7', icon: Icons.check_circle_outline, color: OcColors.success)),
-              ],
-            ),
-            const SizedBox(height: OcSpacing.md),
-            Row(
-              children: [
-                Expanded(child: _StatCard(title: 'أرباح الأسبوع', value: '1,250 ر.ق', icon: Icons.account_balance_wallet_outlined, color: OcColors.secondary)),
-                const SizedBox(width: OcSpacing.md),
-                Expanded(child: _StatCard(title: 'التقييم', value: '4.8 ⭐', icon: Icons.star_outline, color: OcColors.warning)),
-              ],
-            ),
-
-            const SizedBox(height: OcSpacing.xxl),
-
-            // Quick actions
-            Text('إجراءات سريعة', style: Theme.of(context).textTheme.titleMedium),
-            const SizedBox(height: OcSpacing.md),
-
-            _ActionTile(icon: Icons.person_search_rounded, title: 'بحث عن عميل', subtitle: 'ابحث برقم الهاتف وأنشئ تقرير فحص', color: OcColors.primary, onTap: () {}),
-            const SizedBox(height: OcSpacing.sm),
-            _ActionTile(icon: Icons.receipt_long_rounded, title: 'إنشاء فاتورة', subtitle: 'أنشئ فاتورة عمل بعد إكمال طلب', color: OcColors.secondary, onTap: () {}),
-            const SizedBox(height: OcSpacing.sm),
-            _ActionTile(icon: Icons.history_rounded, title: 'سجل الطلبات', subtitle: 'عرض جميع الطلبات السابقة', color: OcColors.warning, onTap: () {}),
-
-            const SizedBox(height: OcSpacing.xxl),
-
-            // Active jobs
-            Text('الطلبات النشطة', style: Theme.of(context).textTheme.titleMedium),
-            const SizedBox(height: OcSpacing.md),
-
-            _JobCard(customerName: 'أحمد محمد', vehicle: 'تويوتا كامري 2022', status: 'بانتظار القطع', time: 'منذ ساعتين'),
-            const SizedBox(height: OcSpacing.sm),
-            _JobCard(customerName: 'خالد علي', vehicle: 'نيسان باترول 2023', status: 'جاري العمل', time: 'منذ 45 دقيقة'),
-            const SizedBox(height: OcSpacing.sm),
-            _JobCard(customerName: 'محمد سعيد', vehicle: 'هوندا أكورد 2021', status: 'جاهز للتسليم', time: 'منذ 15 دقيقة'),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _StatCard extends StatelessWidget {
-  final String title, value;
-  final IconData icon;
-  final Color color;
-  const _StatCard({required this.title, required this.value, required this.icon, required this.color});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(OcSpacing.lg),
-      decoration: BoxDecoration(
-        color: OcColors.surfaceCard,
-        borderRadius: BorderRadius.circular(OcRadius.lg),
-        border: Border.all(color: OcColors.border),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Icon(icon, color: color, size: 22),
-          const SizedBox(height: OcSpacing.sm),
-          Text(value, style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800)),
-          const SizedBox(height: 2),
-          Text(title, style: Theme.of(context).textTheme.labelSmall?.copyWith(color: OcColors.textSecondary)),
-        ],
-      ),
-    );
-  }
-}
-
-class _ActionTile extends StatelessWidget {
-  final IconData icon;
-  final String title, subtitle;
-  final Color color;
-  final VoidCallback onTap;
-  const _ActionTile({required this.icon, required this.title, required this.subtitle, required this.color, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.all(OcSpacing.lg),
-        decoration: BoxDecoration(
-          color: OcColors.surfaceCard,
-          borderRadius: BorderRadius.circular(OcRadius.lg),
-          border: Border.all(color: OcColors.border),
-        ),
-        child: Row(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(color: color.withValues(alpha: 0.15), borderRadius: BorderRadius.circular(OcRadius.md)),
-              child: Icon(icon, color: color, size: 22),
-            ),
-            const SizedBox(width: OcSpacing.md),
-            Expanded(child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(title, style: Theme.of(context).textTheme.titleSmall),
-                const SizedBox(height: 2),
-                Text(subtitle, style: Theme.of(context).textTheme.bodySmall?.copyWith(color: OcColors.textSecondary)),
-              ],
-            )),
-            const Icon(Icons.chevron_left_rounded, color: OcColors.textSecondary),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _JobCard extends StatelessWidget {
-  final String customerName, vehicle, status, time;
-  const _JobCard({required this.customerName, required this.vehicle, required this.status, required this.time});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(OcSpacing.lg),
-      decoration: BoxDecoration(
-        color: OcColors.surfaceCard,
-        borderRadius: BorderRadius.circular(OcRadius.lg),
-        border: Border.all(color: OcColors.border),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
+    return WorkshopScrollView(
+      children: [
+        const WorkshopReveal(child: WorkshopTopChrome()),
+        const SizedBox(height: 24),
+        WorkshopReveal(
+          delay: 40,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Expanded(child: Text(customerName, style: Theme.of(context).textTheme.titleSmall)),
-              OcStatusBadge(label: status),
+              Expanded(
+                child: WorkshopHeader(
+                  eyebrow: l10n.workshopOverviewEyebrow,
+                  title: l10n.workshopWelcomeBackChief,
+                  subtitle: l10n.workshopDashboardSubtitle,
+                ),
+              ),
+              const SizedBox(width: 16),
+              Flexible(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 190),
+                  child: WorkshopPrimaryButton(
+                    label: l10n.workshopCreateJob,
+                    icon: Icons.add_rounded,
+                    compact: true,
+                    onPressed: () => context.go('/workshop/jobs?filter=new'),
+                  ),
+                ),
+              ),
             ],
           ),
-          const SizedBox(height: 4),
-          Text(vehicle, style: Theme.of(context).textTheme.bodySmall?.copyWith(color: OcColors.textSecondary)),
-          const SizedBox(height: 4),
-          Text(time, style: Theme.of(context).textTheme.labelSmall?.copyWith(color: OcColors.textSecondary)),
+        ),
+        const SizedBox(height: 28),
+        WorkshopReveal(
+          delay: 80,
+          child: GridView.count(
+            crossAxisCount: 2,
+            crossAxisSpacing: 16,
+            mainAxisSpacing: 16,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            childAspectRatio: 1.18,
+            children: [
+              WorkshopMetricTile(
+                key: const Key('workshopMetricTile-new'),
+                title: l10n.workshopMetricNewRequests,
+                value: '$newRequests',
+                icon: Icons.pending_actions_rounded,
+                accentColor: PartnerFlowPalette.primaryEnd,
+                onTap: () => context.go('/workshop/jobs?filter=new'),
+              ),
+              WorkshopMetricTile(
+                key: const Key('workshopMetricTile-active'),
+                title: l10n.workshopMetricActiveJobs,
+                value: '$activeJobs',
+                icon: Icons.build_circle_outlined,
+                accentColor: const Color(0xFF4F7DF7),
+                onTap: () => context.go('/workshop/jobs?filter=all'),
+              ),
+              WorkshopMetricTile(
+                key: const Key('workshopMetricTile-approval'),
+                title: l10n.workshopMetricWaitingApproval,
+                value: '$waitingApproval',
+                icon: Icons.rule_rounded,
+                accentColor: PartnerFlowPalette.warning,
+                onTap: () => context.go('/workshop/jobs?filter=approval'),
+              ),
+              WorkshopMetricTile(
+                key: const Key('workshopMetricTile-handover'),
+                title: l10n.workshopMetricReadyPickup,
+                value: '$handoverPending',
+                icon: Icons.key_rounded,
+                accentColor: PartnerFlowPalette.success,
+                onTap: () => context.go('/workshop/jobs?filter=handover'),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 32),
+        WorkshopReveal(
+          delay: 120,
+          child: WorkshopSectionTitle(
+            title: l10n.workshopRecentServiceJobs,
+            actionLabel: l10n.workshopViewAll,
+            onActionTap: () => context.go('/workshop/jobs?filter=all'),
+          ),
+        ),
+        const SizedBox(height: 16),
+        ...[
+          for (final (index, job) in jobs.take(3).indexed)
+            Padding(
+              padding: EdgeInsets.only(bottom: index == 2 ? 0 : 14),
+              child: WorkshopReveal(
+                delay: 150 + (index * 35),
+                child: _DashboardJobCard(job: job),
+              ),
+            ),
         ],
+      ],
+    );
+  }
+}
+
+class _DashboardJobCard extends StatelessWidget {
+  const _DashboardJobCard({required this.job});
+
+  final WorkshopJobRecord job;
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        key: Key('workshopDashboardJob-${job.id}'),
+        borderRadius: BorderRadius.circular(26),
+        onTap: () {
+          switch (job.stage) {
+            case WorkshopJobStage.newRequest:
+              context.go('/workshop/jobs/request/${job.id}');
+            case WorkshopJobStage.driverAssignment:
+              context.go('/workshop/jobs/request/${job.id}/driver');
+            case WorkshopJobStage.incomingTracking:
+              context.go('/workshop/jobs/request/${job.id}/incoming');
+            case WorkshopJobStage.activeJob:
+              context.go('/workshop/jobs/job/${job.id}');
+            case WorkshopJobStage.approvalPending:
+              context.go('/workshop/jobs/job/${job.id}/approval-pending');
+            case WorkshopJobStage.serviceInProgress:
+              context.go('/workshop/jobs/job/${job.id}/in-progress');
+            case WorkshopJobStage.handoverPrep:
+              context.go('/workshop/jobs/job/${job.id}/handover');
+            case WorkshopJobStage.requestReturnDelivery:
+              context.go('/workshop/jobs/job/${job.id}/request-return');
+            case WorkshopJobStage.returnTracking:
+              context.go('/workshop/jobs/job/${job.id}/return-tracking');
+            case WorkshopJobStage.completed:
+              context.go('/workshop/jobs/job/${job.id}/completed');
+          }
+        },
+        child: WorkshopSurfaceCard(
+          child: Row(
+            children: [
+              SizedBox(
+                width: 88,
+                height: 88,
+                child: WorkshopRemoteImage(
+                  url: job.imageUrl,
+                  height: 88,
+                  borderRadius: const BorderRadius.all(Radius.circular(18)),
+                ),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          job.customerName,
+                          style: Theme.of(context).textTheme.titleMedium
+                              ?.copyWith(fontWeight: FontWeight.w800),
+                        ),
+                        const SizedBox(height: 8),
+                        WorkshopStatusChip(
+                          label: _statusLabelForStage(context, job.stage),
+                          color: _statusColor(job.stage),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      job.vehicleName,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        color: PartnerFlowPalette.textSecondary,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      '${job.requestedAtLabel} • ${job.licensePlate}',
+                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        color: PartnerFlowPalette.textSecondary,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
+}
+
+String _statusLabelForStage(BuildContext context, WorkshopJobStage stage) {
+  final l10n = AppLocalizations.of(context)!;
+  return switch (stage) {
+    WorkshopJobStage.newRequest => l10n.workshopStageNewRequest,
+    WorkshopJobStage.driverAssignment => l10n.workshopStageDriverAssignment,
+    WorkshopJobStage.incomingTracking => l10n.workshopStageIncomingTracking,
+    WorkshopJobStage.activeJob => l10n.workshopStageActive,
+    WorkshopJobStage.approvalPending => l10n.workshopStageApprovalPending,
+    WorkshopJobStage.serviceInProgress => l10n.workshopStageServiceInProgress,
+    WorkshopJobStage.handoverPrep => l10n.workshopStageHandover,
+    WorkshopJobStage.requestReturnDelivery => l10n.workshopStageReturnRequested,
+    WorkshopJobStage.returnTracking => l10n.workshopStageReturnTracking,
+    WorkshopJobStage.completed => l10n.workshopStageCompleted,
+  };
+}
+
+Color _statusColor(WorkshopJobStage stage) {
+  return switch (stage) {
+    WorkshopJobStage.newRequest => PartnerFlowPalette.primaryEnd,
+    WorkshopJobStage.driverAssignment => const Color(0xFF5B7CF0),
+    WorkshopJobStage.incomingTracking => const Color(0xFF4D8FE8),
+    WorkshopJobStage.activeJob => PartnerFlowPalette.primaryEnd,
+    WorkshopJobStage.approvalPending => PartnerFlowPalette.warning,
+    WorkshopJobStage.serviceInProgress => const Color(0xFF4F7DF7),
+    WorkshopJobStage.handoverPrep => PartnerFlowPalette.success,
+    WorkshopJobStage.requestReturnDelivery => const Color(0xFF4D8FE8),
+    WorkshopJobStage.returnTracking => const Color(0xFF4D8FE8),
+    WorkshopJobStage.completed => PartnerFlowPalette.textSecondary,
+  };
 }

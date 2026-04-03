@@ -536,6 +536,395 @@ class AppLocalizationsEn extends AppLocalizations {
   String get workshopStart => 'Start';
 
   @override
+  String get workshopShellDashboardTab => 'DASHBOARD';
+
+  @override
+  String get workshopShellJobsTab => 'JOBS';
+
+  @override
+  String get workshopShellMessagesTab => 'MESSAGES';
+
+  @override
+  String get workshopShellProfileTab => 'PROFILE';
+
+  @override
+  String get workshopOverviewEyebrow => 'Workshop Overview';
+
+  @override
+  String get workshopWelcomeBackChief => 'Welcome back, Chief';
+
+  @override
+  String get workshopDashboardSubtitle =>
+      'A clear operational snapshot of new requests, approvals, and ready-to-handover jobs.';
+
+  @override
+  String get workshopCreateJob => 'Create Job';
+
+  @override
+  String get workshopMetricNewRequests => 'New Requests';
+
+  @override
+  String get workshopMetricActiveJobs => 'Active Jobs';
+
+  @override
+  String get workshopMetricWaitingApproval => 'Waiting Approval';
+
+  @override
+  String get workshopMetricReadyPickup => 'Ready Pickup';
+
+  @override
+  String get workshopRecentServiceJobs => 'Recent Service Jobs';
+
+  @override
+  String get workshopViewAll => 'View All';
+
+  @override
+  String get workshopOperationsEyebrow => 'Workshop Operations';
+
+  @override
+  String get workshopServiceRequestsTitle => 'Service Requests';
+
+  @override
+  String get workshopJobsSubtitle =>
+      'Track fresh roadside requests, approval bottlenecks, and handover-ready jobs in one queue.';
+
+  @override
+  String get workshopMetricPending => 'Pending';
+
+  @override
+  String get workshopMetricApprovalShort => 'Approval';
+
+  @override
+  String get workshopMetricHandoverShort => 'Handover';
+
+  @override
+  String get workshopJobsFilterAll => 'All';
+
+  @override
+  String get workshopJobsFilterNew => 'New';
+
+  @override
+  String get workshopJobsFilterApproval => 'Approval';
+
+  @override
+  String get workshopJobsFilterHandover => 'Handover';
+
+  @override
+  String get workshopNoJobsForFilter => 'No jobs in this queue right now.';
+
+  @override
+  String get workshopRequestNotFound => 'Request not found';
+
+  @override
+  String get workshopRoadsideRequestEyebrow => 'Premium Service Network';
+
+  @override
+  String get workshopRequestDetailTitle => 'Roadside Pickup Needed';
+
+  @override
+  String get workshopRequestDetailSubtitle =>
+      'Review the vehicle, issue, and customer handover details before accepting the request.';
+
+  @override
+  String get workshopRequestIssueLabel => 'Reported Issue';
+
+  @override
+  String get workshopRequestLocationLabel => 'Pickup Location';
+
+  @override
+  String get workshopRequestVehicleLabel => 'Vehicle';
+
+  @override
+  String get workshopRejectRequest => 'Reject Request';
+
+  @override
+  String get workshopAcceptRequest => 'Accept Request';
+
+  @override
+  String get workshopPickupAcceptedEyebrow => 'Pickup Accepted';
+
+  @override
+  String get workshopAssignDriverTitle => 'Assign a Driver';
+
+  @override
+  String get workshopAssignDriverSubtitle =>
+      'Dispatch the workshop carrier and share pickup context with the assigned driver.';
+
+  @override
+  String get workshopRequestWorkshopDriver => 'Request Workshop Driver';
+
+  @override
+  String get workshopIncomingEyebrow => 'Incoming Vehicle Tracking';
+
+  @override
+  String get workshopIncomingVehicleTitle => 'Incoming Vehicle';
+
+  @override
+  String get workshopIncomingVehicleSubtitle =>
+      'Monitor the assigned driver and move the job forward once the vehicle reaches the workshop.';
+
+  @override
+  String get workshopEtaToWorkshop => 'ETA to workshop';
+
+  @override
+  String get workshopMarkVehicleArrived => 'Mark Vehicle Arrived';
+
+  @override
+  String get workshopDriverUnavailable => 'Driver details unavailable';
+
+  @override
+  String get workshopJobNotFound => 'Job not found';
+
+  @override
+  String get workshopActiveJobEyebrow => 'Active Service Bay';
+
+  @override
+  String get workshopActiveJobTitle => 'Active Job Detail';
+
+  @override
+  String get workshopActiveJobSubtitle =>
+      'Confirm the on-site status and start the diagnosis report as soon as inspection begins.';
+
+  @override
+  String get workshopPickupEstimateShort => 'Pickup Est.';
+
+  @override
+  String get workshopSpecialtyLabel => 'Specialty';
+
+  @override
+  String get workshopStartDiagnosis => 'Start Diagnosis';
+
+  @override
+  String get workshopDiagnosisEyebrow => 'Diagnosis Report';
+
+  @override
+  String get workshopCreateDiagnosisTitle => 'Create Diagnosis';
+
+  @override
+  String get workshopCreateDiagnosisSubtitle =>
+      'Build the repair summary, estimate labor and parts, and send the report for approval.';
+
+  @override
+  String get workshopDiagnosisSummaryLabel => 'Diagnosis Summary';
+
+  @override
+  String get workshopLaborEstimateLabel => 'Labor Estimate';
+
+  @override
+  String get workshopPartsEstimateLabel => 'Parts Estimate';
+
+  @override
+  String get workshopDiagnosisNotesLabel => 'Technician Notes';
+
+  @override
+  String get workshopDiagnosisPhotosLabel => 'Attached Photos';
+
+  @override
+  String get workshopSubmitForApproval => 'Submit for Approval';
+
+  @override
+  String get workshopApprovalEyebrow => 'Diagnosis Approval';
+
+  @override
+  String get workshopApprovalPendingTitle => 'Approval Pending';
+
+  @override
+  String get workshopApprovalPendingSubtitle =>
+      'The customer has received the report. Keep the job in this state until approval lands.';
+
+  @override
+  String get workshopWaitingForCustomer => 'Waiting for Customer';
+
+  @override
+  String get workshopEditReport => 'Edit Report';
+
+  @override
+  String get workshopMarkApproved => 'Mark Approved';
+
+  @override
+  String get workshopServiceEyebrow => 'Service In Progress';
+
+  @override
+  String get workshopServiceInProgressTitle => 'Service Started';
+
+  @override
+  String get workshopServiceInProgressSubtitle =>
+      'Track the repair checklist and move to handover once all quality checks are complete.';
+
+  @override
+  String get workshopServiceChecklistTitle => 'Service Checklist';
+
+  @override
+  String get workshopMarkServiceComplete => 'Mark Service Complete';
+
+  @override
+  String get workshopHandoverEyebrow => 'Handover Prep';
+
+  @override
+  String get workshopHandoverTitle => 'Handover Selection';
+
+  @override
+  String get workshopHandoverSubtitle =>
+      'Choose whether the customer will collect the vehicle or the workshop will return it.';
+
+  @override
+  String get workshopReturnViaDriver => 'Return via Workshop Driver';
+
+  @override
+  String get workshopReturnViaDriverSubtitle =>
+      'Send the vehicle back with a workshop driver and keep the customer informed.';
+
+  @override
+  String get workshopCustomerPickup => 'Customer Pickup from Workshop';
+
+  @override
+  String get workshopCustomerPickupSubtitle =>
+      'The customer will collect the vehicle directly from the workshop front desk.';
+
+  @override
+  String get workshopRequestReturnDelivery => 'Request Return Delivery';
+
+  @override
+  String get workshopCompleteHandover => 'Complete Handover';
+
+  @override
+  String get workshopReturnEyebrow => 'Return Delivery';
+
+  @override
+  String get workshopRequestReturnTitle => 'Request Return Delivery';
+
+  @override
+  String get workshopRequestReturnSubtitle =>
+      'Prepare the final return leg and confirm the outbound workshop delivery request.';
+
+  @override
+  String get workshopReturnDriverNote => 'Driver Note';
+
+  @override
+  String get workshopReturnDriverNoteBody =>
+      'Customer requires a pre-arrival phone call and a low-clearance loading angle on drop-off.';
+
+  @override
+  String get workshopRequestDriverForReturn =>
+      'Request Workshop Driver for Return';
+
+  @override
+  String get workshopReturnTrackingEyebrow => 'Return Tracking';
+
+  @override
+  String get workshopReturnTrackingTitle => 'Return Delivery Tracking';
+
+  @override
+  String get workshopReturnTrackingSubtitle =>
+      'Follow the outbound return trip and confirm delivery once the customer receives the vehicle.';
+
+  @override
+  String get workshopVehicleOutbound => 'Vehicle Outbound';
+
+  @override
+  String get workshopMarkDelivered => 'Mark Delivered';
+
+  @override
+  String get workshopCompletedEyebrow => 'Job Completed';
+
+  @override
+  String get workshopCompletedTitle => 'Job Successfully Completed';
+
+  @override
+  String get workshopCompletedSubtitle =>
+      'The job has been closed and the service record is ready for workshop reporting.';
+
+  @override
+  String get workshopRevenueBreakdown => 'Revenue';
+
+  @override
+  String get workshopCompletionTime => 'Completion';
+
+  @override
+  String get workshopBackToDashboard => 'Back to Dashboard';
+
+  @override
+  String get workshopMessagesEyebrow => 'Workshop Inbox';
+
+  @override
+  String get workshopMessagesTitle => 'Messages';
+
+  @override
+  String get workshopMessagesSubtitle =>
+      'Messages are intentionally lightweight in this pass. Operational job flow stays under Jobs.';
+
+  @override
+  String get workshopMessagesEmptyTitle => 'No live conversations';
+
+  @override
+  String get workshopMessagesEmptySubtitle =>
+      'Once messaging is connected, customer and driver updates will appear here without changing the workshop shell.';
+
+  @override
+  String get workshopProfileEyebrow => 'Workshop Profile';
+
+  @override
+  String get workshopProfileTitle => 'Workshop Profile';
+
+  @override
+  String get workshopProfileSubtitle =>
+      'View account status, payout visibility, and the public workshop details shown across OnlyCars.';
+
+  @override
+  String get workshopProfileCurrentBalance => 'Current Balance';
+
+  @override
+  String get workshopProfilePendingPayout => 'Pending Payout';
+
+  @override
+  String get workshopProfileMonthlyRevenue => 'Monthly Revenue';
+
+  @override
+  String get workshopProfileCompletionRate => 'Completion Rate';
+
+  @override
+  String get workshopProfileContactTitle => 'Contact';
+
+  @override
+  String get workshopProfileSpecialtiesTitle => 'Specialties';
+
+  @override
+  String get workshopProfilePayoutTitle => 'Payout';
+
+  @override
+  String get workshopProfileResponseTime => 'Response Time';
+
+  @override
+  String get workshopStageNewRequest => 'New Request';
+
+  @override
+  String get workshopStageDriverAssignment => 'Driver Assignment';
+
+  @override
+  String get workshopStageIncomingTracking => 'Incoming';
+
+  @override
+  String get workshopStageActive => 'Active';
+
+  @override
+  String get workshopStageApprovalPending => 'Approval Pending';
+
+  @override
+  String get workshopStageServiceInProgress => 'In Progress';
+
+  @override
+  String get workshopStageHandover => 'Handover';
+
+  @override
+  String get workshopStageReturnRequested => 'Return Requested';
+
+  @override
+  String get workshopStageReturnTracking => 'Return Tracking';
+
+  @override
+  String get workshopStageCompleted => 'Completed';
+
+  @override
   String get loading => 'Loading...';
 
   @override

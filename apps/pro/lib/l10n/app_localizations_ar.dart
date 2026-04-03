@@ -534,6 +534,394 @@ class AppLocalizationsAr extends AppLocalizations {
   String get workshopStart => 'ابدأ';
 
   @override
+  String get workshopShellDashboardTab => 'الرئيسية';
+
+  @override
+  String get workshopShellJobsTab => 'الوظائف';
+
+  @override
+  String get workshopShellMessagesTab => 'الرسائل';
+
+  @override
+  String get workshopShellProfileTab => 'الملف';
+
+  @override
+  String get workshopOverviewEyebrow => 'نظرة عامة على الورشة';
+
+  @override
+  String get workshopWelcomeBackChief => 'مرحبًا بعودتك';
+
+  @override
+  String get workshopDashboardSubtitle =>
+      'ملخص تشغيلي واضح للطلبات الجديدة والموافقات والوظائف الجاهزة للتسليم.';
+
+  @override
+  String get workshopCreateJob => 'إنشاء وظيفة';
+
+  @override
+  String get workshopMetricNewRequests => 'طلبات جديدة';
+
+  @override
+  String get workshopMetricActiveJobs => 'وظائف نشطة';
+
+  @override
+  String get workshopMetricWaitingApproval => 'بانتظار الموافقة';
+
+  @override
+  String get workshopMetricReadyPickup => 'جاهز للاستلام';
+
+  @override
+  String get workshopRecentServiceJobs => 'أحدث وظائف الخدمة';
+
+  @override
+  String get workshopViewAll => 'عرض الكل';
+
+  @override
+  String get workshopOperationsEyebrow => 'تشغيل الورشة';
+
+  @override
+  String get workshopServiceRequestsTitle => 'طلبات الخدمة';
+
+  @override
+  String get workshopJobsSubtitle =>
+      'تابع طلبات الطريق الجديدة وموافقات التشخيص والوظائف الجاهزة للتسليم في قائمة واحدة.';
+
+  @override
+  String get workshopMetricPending => 'معلق';
+
+  @override
+  String get workshopMetricApprovalShort => 'موافقة';
+
+  @override
+  String get workshopMetricHandoverShort => 'تسليم';
+
+  @override
+  String get workshopJobsFilterAll => 'الكل';
+
+  @override
+  String get workshopJobsFilterNew => 'جديد';
+
+  @override
+  String get workshopJobsFilterApproval => 'الموافقة';
+
+  @override
+  String get workshopJobsFilterHandover => 'التسليم';
+
+  @override
+  String get workshopNoJobsForFilter => 'لا توجد وظائف في هذه القائمة الآن.';
+
+  @override
+  String get workshopRequestNotFound => 'لم يتم العثور على الطلب';
+
+  @override
+  String get workshopRoadsideRequestEyebrow => 'شبكة خدمة مميزة';
+
+  @override
+  String get workshopRequestDetailTitle => 'مطلوب سحب على الطريق';
+
+  @override
+  String get workshopRequestDetailSubtitle =>
+      'راجع السيارة والمشكلة وتفاصيل التسليم قبل قبول الطلب.';
+
+  @override
+  String get workshopRequestIssueLabel => 'المشكلة المبلغ عنها';
+
+  @override
+  String get workshopRequestLocationLabel => 'موقع الاستلام';
+
+  @override
+  String get workshopRequestVehicleLabel => 'السيارة';
+
+  @override
+  String get workshopRejectRequest => 'رفض الطلب';
+
+  @override
+  String get workshopAcceptRequest => 'قبول الطلب';
+
+  @override
+  String get workshopPickupAcceptedEyebrow => 'تم قبول الاستلام';
+
+  @override
+  String get workshopAssignDriverTitle => 'تعيين سائق';
+
+  @override
+  String get workshopAssignDriverSubtitle =>
+      'أرسل ناقلة الورشة وشارك سياق الاستلام مع السائق المعين.';
+
+  @override
+  String get workshopRequestWorkshopDriver => 'طلب سائق الورشة';
+
+  @override
+  String get workshopIncomingEyebrow => 'تتبع السيارة القادمة';
+
+  @override
+  String get workshopIncomingVehicleTitle => 'السيارة القادمة';
+
+  @override
+  String get workshopIncomingVehicleSubtitle =>
+      'تابع السائق المعين وحرّك الوظيفة عند وصول السيارة إلى الورشة.';
+
+  @override
+  String get workshopEtaToWorkshop => 'الوقت حتى الورشة';
+
+  @override
+  String get workshopMarkVehicleArrived => 'تأكيد وصول السيارة';
+
+  @override
+  String get workshopDriverUnavailable => 'تفاصيل السائق غير متاحة';
+
+  @override
+  String get workshopJobNotFound => 'لم يتم العثور على الوظيفة';
+
+  @override
+  String get workshopActiveJobEyebrow => 'خليج خدمة نشط';
+
+  @override
+  String get workshopActiveJobTitle => 'تفاصيل الوظيفة النشطة';
+
+  @override
+  String get workshopActiveJobSubtitle =>
+      'أكد حالة السيارة داخل الورشة وابدأ تقرير التشخيص فور بدء الفحص.';
+
+  @override
+  String get workshopPickupEstimateShort => 'تقدير الاستلام';
+
+  @override
+  String get workshopSpecialtyLabel => 'التخصص';
+
+  @override
+  String get workshopStartDiagnosis => 'بدء التشخيص';
+
+  @override
+  String get workshopDiagnosisEyebrow => 'تقرير التشخيص';
+
+  @override
+  String get workshopCreateDiagnosisTitle => 'إنشاء التشخيص';
+
+  @override
+  String get workshopCreateDiagnosisSubtitle =>
+      'ابنِ ملخص الإصلاح وقدر تكلفة العمالة والقطع ثم أرسل التقرير للموافقة.';
+
+  @override
+  String get workshopDiagnosisSummaryLabel => 'ملخص التشخيص';
+
+  @override
+  String get workshopLaborEstimateLabel => 'تقدير العمالة';
+
+  @override
+  String get workshopPartsEstimateLabel => 'تقدير القطع';
+
+  @override
+  String get workshopDiagnosisNotesLabel => 'ملاحظات الفني';
+
+  @override
+  String get workshopDiagnosisPhotosLabel => 'الصور المرفقة';
+
+  @override
+  String get workshopSubmitForApproval => 'إرسال للموافقة';
+
+  @override
+  String get workshopApprovalEyebrow => 'موافقة التشخيص';
+
+  @override
+  String get workshopApprovalPendingTitle => 'بانتظار الموافقة';
+
+  @override
+  String get workshopApprovalPendingSubtitle =>
+      'تم إرسال التقرير إلى العميل. أبقِ الوظيفة في هذه المرحلة حتى وصول الموافقة.';
+
+  @override
+  String get workshopWaitingForCustomer => 'بانتظار العميل';
+
+  @override
+  String get workshopEditReport => 'تعديل التقرير';
+
+  @override
+  String get workshopMarkApproved => 'تأكيد الموافقة';
+
+  @override
+  String get workshopServiceEyebrow => 'الخدمة قيد التنفيذ';
+
+  @override
+  String get workshopServiceInProgressTitle => 'بدأت الخدمة';
+
+  @override
+  String get workshopServiceInProgressSubtitle =>
+      'تابع قائمة التنفيذ وانتقل إلى التسليم بعد اكتمال فحص الجودة.';
+
+  @override
+  String get workshopServiceChecklistTitle => 'قائمة تنفيذ الخدمة';
+
+  @override
+  String get workshopMarkServiceComplete => 'تأكيد اكتمال الخدمة';
+
+  @override
+  String get workshopHandoverEyebrow => 'تهيئة التسليم';
+
+  @override
+  String get workshopHandoverTitle => 'اختيار التسليم';
+
+  @override
+  String get workshopHandoverSubtitle =>
+      'اختر ما إذا كان العميل سيستلم السيارة من الورشة أو ستعيدها الورشة إليه.';
+
+  @override
+  String get workshopReturnViaDriver => 'إرجاع عبر سائق الورشة';
+
+  @override
+  String get workshopReturnViaDriverSubtitle =>
+      'أرسل السيارة مرة أخرى مع سائق الورشة وأبقِ العميل مطلعًا.';
+
+  @override
+  String get workshopCustomerPickup => 'استلام العميل من الورشة';
+
+  @override
+  String get workshopCustomerPickupSubtitle =>
+      'سيقوم العميل باستلام السيارة مباشرة من الورشة.';
+
+  @override
+  String get workshopRequestReturnDelivery => 'طلب توصيل الإرجاع';
+
+  @override
+  String get workshopCompleteHandover => 'إكمال التسليم';
+
+  @override
+  String get workshopReturnEyebrow => 'توصيل الإرجاع';
+
+  @override
+  String get workshopRequestReturnTitle => 'طلب توصيل الإرجاع';
+
+  @override
+  String get workshopRequestReturnSubtitle =>
+      'حضّر مرحلة الإرجاع الأخيرة وأكد طلب السائق للخروج من الورشة.';
+
+  @override
+  String get workshopReturnDriverNote => 'ملاحظة للسائق';
+
+  @override
+  String get workshopReturnDriverNoteBody =>
+      'العميل يحتاج اتصالًا قبل الوصول ويتطلب تحميلًا منخفض الارتفاع عند التسليم.';
+
+  @override
+  String get workshopRequestDriverForReturn => 'طلب سائق الورشة للإرجاع';
+
+  @override
+  String get workshopReturnTrackingEyebrow => 'تتبع الإرجاع';
+
+  @override
+  String get workshopReturnTrackingTitle => 'تتبع توصيل الإرجاع';
+
+  @override
+  String get workshopReturnTrackingSubtitle =>
+      'تابع رحلة الإرجاع وأكد التسليم بعد استلام العميل للسيارة.';
+
+  @override
+  String get workshopVehicleOutbound => 'السيارة في الطريق';
+
+  @override
+  String get workshopMarkDelivered => 'تأكيد التسليم';
+
+  @override
+  String get workshopCompletedEyebrow => 'اكتملت الوظيفة';
+
+  @override
+  String get workshopCompletedTitle => 'اكتملت الوظيفة بنجاح';
+
+  @override
+  String get workshopCompletedSubtitle =>
+      'تم إغلاق الوظيفة وأصبح سجل الخدمة جاهزًا لتقارير الورشة.';
+
+  @override
+  String get workshopRevenueBreakdown => 'الإيراد';
+
+  @override
+  String get workshopCompletionTime => 'مدة التنفيذ';
+
+  @override
+  String get workshopBackToDashboard => 'العودة إلى الرئيسية';
+
+  @override
+  String get workshopMessagesEyebrow => 'صندوق وارد الورشة';
+
+  @override
+  String get workshopMessagesTitle => 'الرسائل';
+
+  @override
+  String get workshopMessagesSubtitle =>
+      'الرسائل مبسطة عمدًا في هذه المرحلة. يظل التدفق التشغيلي الأساسي داخل قسم الوظائف.';
+
+  @override
+  String get workshopMessagesEmptyTitle => 'لا توجد محادثات مباشرة';
+
+  @override
+  String get workshopMessagesEmptySubtitle =>
+      'عند ربط الرسائل لاحقًا ستظهر تحديثات العملاء والسائقين هنا دون تغيير هيكل الورشة.';
+
+  @override
+  String get workshopProfileEyebrow => 'ملف الورشة';
+
+  @override
+  String get workshopProfileTitle => 'ملف الورشة';
+
+  @override
+  String get workshopProfileSubtitle =>
+      'اعرض حالة الحساب والرؤية المالية والتفاصيل العامة المعروضة عبر OnlyCars.';
+
+  @override
+  String get workshopProfileCurrentBalance => 'الرصيد الحالي';
+
+  @override
+  String get workshopProfilePendingPayout => 'دفعة معلقة';
+
+  @override
+  String get workshopProfileMonthlyRevenue => 'إيراد شهري';
+
+  @override
+  String get workshopProfileCompletionRate => 'معدل الإكمال';
+
+  @override
+  String get workshopProfileContactTitle => 'التواصل';
+
+  @override
+  String get workshopProfileSpecialtiesTitle => 'التخصصات';
+
+  @override
+  String get workshopProfilePayoutTitle => 'الدفعات';
+
+  @override
+  String get workshopProfileResponseTime => 'زمن الاستجابة';
+
+  @override
+  String get workshopStageNewRequest => 'طلب جديد';
+
+  @override
+  String get workshopStageDriverAssignment => 'تعيين سائق';
+
+  @override
+  String get workshopStageIncomingTracking => 'قادمة';
+
+  @override
+  String get workshopStageActive => 'نشطة';
+
+  @override
+  String get workshopStageApprovalPending => 'بانتظار الموافقة';
+
+  @override
+  String get workshopStageServiceInProgress => 'قيد التنفيذ';
+
+  @override
+  String get workshopStageHandover => 'تسليم';
+
+  @override
+  String get workshopStageReturnRequested => 'تم طلب الإرجاع';
+
+  @override
+  String get workshopStageReturnTracking => 'تتبع الإرجاع';
+
+  @override
+  String get workshopStageCompleted => 'مكتملة';
+
+  @override
   String get loading => 'جاري التحميل...';
 
   @override

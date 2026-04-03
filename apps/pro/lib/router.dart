@@ -1,38 +1,37 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'screens/role_selector_screen.dart';
-import 'screens/workshop/workshop_dashboard.dart';
-import 'screens/workshop/find_customer_screen.dart';
-import 'screens/workshop/create_diagnosis_screen.dart';
-import 'screens/workshop/submit_bill_screen.dart';
-import 'screens/workshop/workshop_sign_up_complete_screen.dart';
-import 'screens/workshop/workshop_sign_up_screen.dart';
-import 'screens/driver/driver_dashboard.dart';
+
 import 'screens/driver/delivery_flow_screen.dart';
+import 'screens/driver/driver_dashboard.dart';
 import 'screens/driver/driver_sign_up_complete_screen.dart';
 import 'screens/driver/driver_sign_up_screen.dart';
-import 'screens/shop/shop_dashboard.dart';
+import 'screens/onboarding/provider_onboarding_screen.dart';
+import 'screens/role_selector_screen.dart';
 import 'screens/shop/add_part_screen.dart';
+import 'screens/shop/shop_dashboard.dart';
 import 'screens/shop/shop_sign_up_complete_screen.dart';
 import 'screens/shop/shop_sign_up_screen.dart';
-import 'screens/onboarding/provider_onboarding_screen.dart';
-import 'screens/shared/earnings_screen.dart';
-import 'screens/shared/provider_profile_screen.dart';
+import 'screens/workshop/create_diagnosis_screen.dart';
+import 'screens/workshop/workshop_dashboard.dart';
+import 'screens/workshop/workshop_job_flow_screens.dart';
+import 'screens/workshop/workshop_secondary_screens.dart';
+import 'screens/workshop/workshop_shared.dart';
+import 'screens/workshop/workshop_sign_up_complete_screen.dart';
+import 'screens/workshop/workshop_sign_up_screen.dart';
+import 'screens/workshop/workshop_workflow_state.dart';
 
 final proRouterProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     initialLocation: '/roles',
     routes: [
       GoRoute(path: '/roles', builder: (_, _) => const RoleSelectorScreen()),
-
-      // Onboarding
       GoRoute(
         path: '/onboarding/:role',
         builder: (_, state) =>
             ProviderOnboardingScreen(role: state.pathParameters['role']!),
       ),
 
-      // Workshop routes
       GoRoute(
         path: '/workshop/sign-up',
         builder: (_, _) => const WorkshopSignUpScreen(),
@@ -41,21 +40,162 @@ final proRouterProvider = Provider<GoRouter>((ref) {
         path: '/workshop/sign-up/complete',
         builder: (_, _) => const WorkshopSignUpCompleteScreen(),
       ),
-      GoRoute(path: '/workshop', builder: (_, _) => const WorkshopDashboard()),
+
+      ShellRoute(
+        builder: (context, state, child) => WorkshopShellScaffold(
+          location: state.uri.path,
+          child: child,
+        ),
+        routes: [
+          GoRoute(
+            path: '/workshop',
+            pageBuilder: (_, state) => _workshopPage(
+              state: state,
+              child: const WorkshopDashboard(),
+            ),
+          ),
+          GoRoute(
+            path: '/workshop/jobs',
+            pageBuilder: (_, state) => _workshopPage(
+              state: state,
+              child: WorkshopJobsScreen(
+                filter: WorkshopJobsFilter.fromQuery(
+                  state.uri.queryParameters['filter'],
+                ),
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/workshop/messages',
+            pageBuilder: (_, state) => _workshopPage(
+              state: state,
+              child: const WorkshopMessagesScreen(),
+            ),
+          ),
+          GoRoute(
+            path: '/workshop/profile',
+            pageBuilder: (_, state) => _workshopPage(
+              state: state,
+              child: const WorkshopProfileScreen(),
+            ),
+          ),
+          GoRoute(
+            path: '/workshop/jobs/request/:requestId',
+            pageBuilder: (_, state) => _workshopPage(
+              state: state,
+              child: WorkshopRequestDetailScreen(
+                requestId: state.pathParameters['requestId']!,
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/workshop/jobs/request/:requestId/driver',
+            pageBuilder: (_, state) => _workshopPage(
+              state: state,
+              child: WorkshopRequestDriverScreen(
+                requestId: state.pathParameters['requestId']!,
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/workshop/jobs/request/:requestId/incoming',
+            pageBuilder: (_, state) => _workshopPage(
+              state: state,
+              child: WorkshopIncomingTrackingScreen(
+                requestId: state.pathParameters['requestId']!,
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/workshop/jobs/job/:jobId',
+            pageBuilder: (_, state) => _workshopPage(
+              state: state,
+              child: WorkshopActiveJobDetailScreen(
+                jobId: state.pathParameters['jobId']!,
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/workshop/jobs/job/:jobId/diagnosis',
+            pageBuilder: (_, state) => _workshopPage(
+              state: state,
+              child: CreateDiagnosisScreen(
+                jobId: state.pathParameters['jobId']!,
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/workshop/jobs/job/:jobId/approval-pending',
+            pageBuilder: (_, state) => _workshopPage(
+              state: state,
+              child: WorkshopDiagnosisApprovalPendingScreen(
+                jobId: state.pathParameters['jobId']!,
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/workshop/jobs/job/:jobId/in-progress',
+            pageBuilder: (_, state) => _workshopPage(
+              state: state,
+              child: WorkshopServiceInProgressScreen(
+                jobId: state.pathParameters['jobId']!,
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/workshop/jobs/job/:jobId/handover',
+            pageBuilder: (_, state) => _workshopPage(
+              state: state,
+              child: WorkshopHandoverPrepScreen(
+                jobId: state.pathParameters['jobId']!,
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/workshop/jobs/job/:jobId/request-return',
+            pageBuilder: (_, state) => _workshopPage(
+              state: state,
+              child: WorkshopRequestReturnDeliveryScreen(
+                jobId: state.pathParameters['jobId']!,
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/workshop/jobs/job/:jobId/return-tracking',
+            pageBuilder: (_, state) => _workshopPage(
+              state: state,
+              child: WorkshopReturnDeliveryTrackingScreen(
+                jobId: state.pathParameters['jobId']!,
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/workshop/jobs/job/:jobId/completed',
+            pageBuilder: (_, state) => _workshopPage(
+              state: state,
+              child: WorkshopJobCompletedScreen(
+                jobId: state.pathParameters['jobId']!,
+              ),
+            ),
+          ),
+        ],
+      ),
+
       GoRoute(
         path: '/workshop/find-customer',
-        builder: (_, _) => const FindCustomerScreen(),
+        redirect: (_, _) => '/workshop/jobs?filter=all',
       ),
       GoRoute(
         path: '/workshop/diagnosis',
-        builder: (_, _) => const CreateDiagnosisScreen(),
+        redirect: (_, _) => '/workshop/jobs?filter=all',
       ),
       GoRoute(
         path: '/workshop/bill',
-        builder: (_, _) => const SubmitBillScreen(),
+        redirect: (_, _) => '/workshop/jobs?filter=all',
       ),
+      GoRoute(path: '/provider-profile', redirect: (_, _) => '/workshop/profile'),
+      GoRoute(path: '/earnings', redirect: (_, _) => '/workshop/profile'),
 
-      // Driver routes
       GoRoute(
         path: '/driver/sign-up',
         builder: (_, _) => const DriverSignUpScreen(),
@@ -71,24 +211,43 @@ final proRouterProvider = Provider<GoRouter>((ref) {
             DeliveryFlowScreen(deliveryId: state.pathParameters['id']!),
       ),
 
-      // Shop routes
-      GoRoute(
-        path: '/shop/sign-up',
-        builder: (_, _) => const ShopSignUpScreen(),
-      ),
+      GoRoute(path: '/shop/sign-up', builder: (_, _) => const ShopSignUpScreen()),
       GoRoute(
         path: '/shop/sign-up/complete',
         builder: (_, _) => const ShopSignUpCompleteScreen(),
       ),
       GoRoute(path: '/shop', builder: (_, _) => const ShopDashboard()),
       GoRoute(path: '/shop/add-part', builder: (_, _) => const AddPartScreen()),
-
-      // Shared routes
-      GoRoute(path: '/earnings', builder: (_, _) => const EarningsScreen()),
-      GoRoute(
-        path: '/provider-profile',
-        builder: (_, _) => const ProviderProfileScreen(),
-      ),
     ],
   );
 });
+
+CustomTransitionPage<void> _workshopPage({
+  required GoRouterState state,
+  required Widget child,
+}) {
+  return CustomTransitionPage<void>(
+    key: state.pageKey,
+    child: child,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      final reducedMotion = MediaQuery.maybeOf(context)?.disableAnimations ?? false;
+      if (reducedMotion) {
+        return child;
+      }
+      final curved = CurvedAnimation(
+        parent: animation,
+        curve: Curves.easeOutCubic,
+      );
+      return FadeTransition(
+        opacity: curved,
+        child: SlideTransition(
+          position: Tween<Offset>(
+            begin: const Offset(0.03, 0.02),
+            end: Offset.zero,
+          ).animate(curved),
+          child: child,
+        ),
+      );
+    },
+  );
+}
