@@ -1,104 +1,296 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:oc_ui/oc_ui.dart';
+import 'package:pro/l10n/app_localizations.dart';
 
-class DriverDashboard extends StatefulWidget {
+import '../shared/partner_flow_palette.dart';
+import 'courier_flow_helpers.dart';
+import 'courier_shared.dart';
+import 'courier_workflow_state.dart';
+
+class DriverDashboard extends ConsumerWidget {
   const DriverDashboard({super.key});
 
   @override
-  State<DriverDashboard> createState() => _DriverDashboardState();
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
+    final workflow = ref.watch(courierWorkflowProvider);
+    final newRequests = workflow.deliveries
+        .where((delivery) => delivery.stage == CourierDeliveryStage.newRequest)
+        .take(2)
+        .toList();
+    final activeDelivery = workflow.activeDelivery;
+
+    return CourierScrollView(
+      children: [
+        const KeyedSubtree(
+          key: Key('driverDashboardScreen'),
+          child: SizedBox.shrink(),
+        ),
+        const CourierReveal(child: CourierTopChrome()),
+        const SizedBox(height: 24),
+        CourierReveal(
+          delay: 30,
+          child: CourierHeader(
+            eyebrow: l10n.driverDashboardEyebrow,
+            title: l10n.driverDashboardTitle,
+            subtitle: l10n.driverDashboardSubtitle,
+          ),
+        ),
+        const SizedBox(height: 24),
+        CourierReveal(
+          delay: 60,
+          child: _AvailabilityHeroCard(
+            isAvailable: workflow.isAvailable,
+            onToggle: () =>
+                ref.read(courierWorkflowProvider.notifier).toggleAvailability(),
+          ),
+        ),
+        const SizedBox(height: 24),
+        CourierReveal(
+          delay: 90,
+          child: GridView.count(
+            crossAxisCount: 2,
+            crossAxisSpacing: 16,
+            mainAxisSpacing: 16,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            childAspectRatio: 1.18,
+            children: [
+              CourierMetricTile(
+                key: const Key('driverMetricTile-todayTrips'),
+                title: l10n.driverMetricTodayTrips,
+                value:
+                    '${workflow.completedCount + workflow.activeDeliveryCount}',
+                icon: Icons.local_shipping_outlined,
+                accentColor: PartnerFlowPalette.primaryEnd,
+                onTap: () => context.go('/driver/orders'),
+              ),
+              CourierMetricTile(
+                key: const Key('driverMetricTile-todayEarnings'),
+                title: l10n.driverMetricTodayEarnings,
+                value: 'QAR 185',
+                icon: Icons.payments_outlined,
+                accentColor: PartnerFlowPalette.success,
+                onTap: () => context.go('/driver/earnings'),
+              ),
+              CourierMetricTile(
+                key: const Key('driverMetricTile-pendingRequests'),
+                title: l10n.driverMetricPendingRequests,
+                value: '${workflow.newRequestCount}',
+                icon: Icons.notifications_active_outlined,
+                accentColor: PartnerFlowPalette.warning,
+                onTap: () => context.go('/driver/orders'),
+              ),
+              CourierMetricTile(
+                key: const Key('driverMetricTile-activeDeliveries'),
+                title: l10n.driverMetricActiveDeliveries,
+                value: '${workflow.activeDeliveryCount}',
+                icon: Icons.route_outlined,
+                accentColor: PartnerFlowPalette.secondaryStart,
+                onTap: () => context.go('/driver/orders'),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 28),
+        CourierReveal(
+          delay: 120,
+          child: CourierSectionTitle(title: l10n.driverQuickActionsTitle),
+        ),
+        const SizedBox(height: 14),
+        CourierReveal(
+          delay: 150,
+          child: Wrap(
+            spacing: 12,
+            runSpacing: 12,
+            children: [
+              _QuickActionChip(
+                key: const Key('driverQuickAction-orders'),
+                label: l10n.driverQuickActionOrders,
+                icon: Icons.shopping_cart_outlined,
+                onTap: () => context.go('/driver/orders'),
+              ),
+              _QuickActionChip(
+                key: const Key('driverQuickAction-earnings'),
+                label: l10n.driverQuickActionEarnings,
+                icon: Icons.payments_outlined,
+                onTap: () => context.go('/driver/earnings'),
+              ),
+              _QuickActionChip(
+                key: const Key('driverQuickAction-profile'),
+                label: l10n.driverQuickActionProfile,
+                icon: Icons.person_outline_rounded,
+                onTap: () => context.go('/driver/profile'),
+              ),
+            ],
+          ),
+        ),
+        if (activeDelivery != null) ...[
+          const SizedBox(height: 28),
+          CourierReveal(
+            delay: 180,
+            child: CourierSectionTitle(
+              title: l10n.driverLiveDeliveryTitle,
+              actionLabel: l10n.driverSeeAll,
+              onActionTap: () => context.go('/driver/orders'),
+            ),
+          ),
+          const SizedBox(height: 16),
+          CourierReveal(
+            delay: 210,
+            child: _ActiveDeliveryCard(delivery: activeDelivery),
+          ),
+        ],
+        const SizedBox(height: 28),
+        CourierReveal(
+          delay: 240,
+          child: CourierSectionTitle(
+            title: l10n.driverNewRequestsTitle,
+            actionLabel: l10n.driverSeeAll,
+            onActionTap: () => context.go('/driver/orders'),
+          ),
+        ),
+        const SizedBox(height: 16),
+        ...[
+          for (final (index, delivery) in newRequests.indexed)
+            Padding(
+              padding: EdgeInsets.only(
+                bottom: index == newRequests.length - 1 ? 0 : 14,
+              ),
+              child: CourierReveal(
+                delay: 270 + (index * 30),
+                child: _DashboardDeliveryCard(delivery: delivery),
+              ),
+            ),
+        ],
+      ],
+    );
+  }
 }
 
-class _DriverDashboardState extends State<DriverDashboard> {
-  bool _isAvailable = true;
+class _AvailabilityHeroCard extends StatelessWidget {
+  const _AvailabilityHeroCard({
+    required this.isAvailable,
+    required this.onToggle,
+  });
+
+  final bool isAvailable;
+  final VoidCallback onToggle;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: OcColors.background,
-      appBar: AppBar(
-        title: const Text('لوحة السائق'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_rounded),
-          onPressed: () => context.go('/roles'),
-        ),
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(OcSpacing.lg),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Availability toggle
-            Container(
-              padding: const EdgeInsets.all(OcSpacing.xl),
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: _isAvailable
-                      ? [OcColors.success, OcColors.success.withValues(alpha: 0.7)]
-                      : [OcColors.textSecondary, OcColors.textSecondary.withValues(alpha: 0.7)],
-                ),
-                borderRadius: BorderRadius.circular(OcRadius.xl),
-              ),
-              child: Row(
-                children: [
-                  Expanded(child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        _isAvailable ? 'متاح للتوصيل' : 'غير متاح',
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          color: OcColors.textOnPrimary, fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        _isAvailable ? 'ستصلك طلبات التوصيل القريبة' : 'لن تتلقى طلبات جديدة',
-                        style: TextStyle(color: OcColors.textOnPrimary.withValues(alpha: 0.8), fontSize: 13),
-                      ),
-                    ],
-                  )),
-                  Switch(
-                    value: _isAvailable,
-                    onChanged: (v) => setState(() => _isAvailable = v),
-                    activeThumbColor: Colors.white,
-                    activeTrackColor: Colors.white24,
-                  ),
+    final l10n = AppLocalizations.of(context)!;
+    final title = isAvailable
+        ? l10n.driverAvailabilityOnTitle
+        : l10n.driverAvailabilityOffTitle;
+    final subtitle = isAvailable
+        ? l10n.driverAvailabilityOnSubtitle
+        : l10n.driverAvailabilityOffSubtitle;
+
+    return Container(
+      padding: const EdgeInsets.all(22),
+      decoration: BoxDecoration(
+        gradient: isAvailable
+            ? PartnerFlowPalette.primaryGradient
+            : const LinearGradient(
+                colors: [
+                  PartnerFlowPalette.primarySolid,
+                  PartnerFlowPalette.textSecondary,
                 ],
               ),
-            ),
-
-            const SizedBox(height: OcSpacing.xl),
-
-            // Stats
-            Row(
+        borderRadius: BorderRadius.circular(30),
+        boxShadow: [
+          BoxShadow(
+            color: PartnerFlowPalette.primaryEnd.withValues(alpha: 0.16),
+            blurRadius: 28,
+            offset: const Offset(0, 14),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(child: _DriverStat(title: 'توصيلات اليوم', value: '5', icon: Icons.local_shipping_rounded)),
-                const SizedBox(width: OcSpacing.md),
-                Expanded(child: _DriverStat(title: 'أرباح اليوم', value: '185 ر.ق', icon: Icons.payments_rounded)),
-                const SizedBox(width: OcSpacing.md),
-                Expanded(child: _DriverStat(title: 'التقييم', value: '4.9', icon: Icons.star_rounded)),
+                Text(
+                  title,
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  subtitle,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    color: Colors.white.withValues(alpha: 0.82),
+                    height: 1.4,
+                  ),
+                ),
               ],
             ),
+          ),
+          const SizedBox(width: 16),
+          _AnimatedAvailabilityToggle(
+            isAvailable: isAvailable,
+            onTap: onToggle,
+          ),
+        ],
+      ),
+    );
+  }
+}
 
-            const SizedBox(height: OcSpacing.xxl),
+class _AnimatedAvailabilityToggle extends StatelessWidget {
+  const _AnimatedAvailabilityToggle({
+    required this.isAvailable,
+    required this.onTap,
+  });
 
-            Text('طلبات التوصيل المعلقة', style: Theme.of(context).textTheme.titleMedium),
-            const SizedBox(height: OcSpacing.md),
+  final bool isAvailable;
+  final VoidCallback onTap;
 
-            _DeliveryCard(
-              shopName: 'متجر الخليج للقطع',
-              workshopName: 'ورشة الاصالة',
-              items: 3,
-              distance: '4.2 كم',
-              fee: '25 ر.ق',
-            ),
-            const SizedBox(height: OcSpacing.sm),
-            _DeliveryCard(
-              shopName: 'قطع السيارات المتحدة',
-              workshopName: 'ورشة النجم',
-              items: 1,
-              distance: '7.8 كم',
-              fee: '35 ر.ق',
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(999),
+      child: AnimatedContainer(
+        duration: courierMotionDuration(context),
+        curve: Curves.easeOutCubic,
+        width: 76,
+        height: 42,
+        padding: const EdgeInsets.all(4),
+        decoration: BoxDecoration(
+          color: Colors.white.withValues(alpha: 0.22),
+          borderRadius: BorderRadius.circular(999),
+          border: Border.all(color: Colors.white.withValues(alpha: 0.28)),
+        ),
+        child: Stack(
+          children: [
+            AnimatedAlign(
+              duration: courierMotionDuration(context),
+              curve: Curves.easeOutCubic,
+              alignment: isAvailable
+                  ? Alignment.centerRight
+                  : Alignment.centerLeft,
+              child: Container(
+                width: 32,
+                height: 32,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  isAvailable ? Icons.check_rounded : Icons.close_rounded,
+                  size: 18,
+                  color: isAvailable
+                      ? PartnerFlowPalette.primaryEnd
+                      : PartnerFlowPalette.textSecondary,
+                ),
+              ),
             ),
           ],
         ),
@@ -107,78 +299,211 @@ class _DriverDashboardState extends State<DriverDashboard> {
   }
 }
 
-class _DriverStat extends StatelessWidget {
-  final String title, value;
+class _QuickActionChip extends StatelessWidget {
+  const _QuickActionChip({
+    super.key,
+    required this.label,
+    required this.icon,
+    required this.onTap,
+  });
+
+  final String label;
   final IconData icon;
-  const _DriverStat({required this.title, required this.value, required this.icon});
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(OcSpacing.md),
-      decoration: BoxDecoration(
-        color: OcColors.surfaceCard,
-        borderRadius: BorderRadius.circular(OcRadius.lg),
-        border: Border.all(color: OcColors.border),
-      ),
-      child: Column(
-        children: [
-          Icon(icon, color: OcColors.primary, size: 22),
-          const SizedBox(height: 6),
-          Text(value, style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w800)),
-          const SizedBox(height: 2),
-          Text(title, style: Theme.of(context).textTheme.labelSmall?.copyWith(color: OcColors.textSecondary), textAlign: TextAlign.center),
-        ],
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(999),
+        child: Ink(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+          decoration: BoxDecoration(
+            color: PartnerFlowPalette.surface,
+            borderRadius: BorderRadius.circular(999),
+            border: Border.all(color: PartnerFlowPalette.borderSubtle),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(icon, size: 20, color: PartnerFlowPalette.primaryEnd),
+              const SizedBox(width: 10),
+              Text(
+                label,
+                style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  fontWeight: FontWeight.w800,
+                  color: PartnerFlowPalette.primaryStart,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
 }
 
-class _DeliveryCard extends StatelessWidget {
-  final String shopName, workshopName, distance, fee;
-  final int items;
-  const _DeliveryCard({required this.shopName, required this.workshopName, required this.items, required this.distance, required this.fee});
+class _ActiveDeliveryCard extends StatelessWidget {
+  const _ActiveDeliveryCard({required this.delivery});
+
+  final CourierDeliveryRecord delivery;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(OcSpacing.lg),
-      decoration: BoxDecoration(
-        color: OcColors.surfaceCard,
-        borderRadius: BorderRadius.circular(OcRadius.lg),
-        border: Border.all(color: OcColors.border),
+    final l10n = AppLocalizations.of(context)!;
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        key: Key('driverActiveDelivery-${delivery.id}'),
+        borderRadius: BorderRadius.circular(28),
+        onTap: () => context.go(courierDeliveryRoute(delivery)),
+        child: CourierSurfaceCard(
+          padding: EdgeInsets.zero,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CourierRemoteImage(
+                url: delivery.heroImageUrl,
+                height: 186,
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(28),
+                ),
+                placeholderIcon: Icons.route_outlined,
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 18, 20, 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            delivery.statusHeadline,
+                            style: Theme.of(context).textTheme.headlineSmall
+                                ?.copyWith(fontWeight: FontWeight.w900),
+                          ),
+                        ),
+                        CourierStatusChip(
+                          label: courierStageLabel(context, delivery.stage),
+                          color: courierStageColor(delivery.stage),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      delivery.statusBody,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: PartnerFlowPalette.textSecondary,
+                        height: 1.45,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CourierMiniStat(
+                            label: l10n.driverPayoutLabel,
+                            value: delivery.payoutLabel,
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: CourierMiniStat(
+                            label: l10n.driverDistanceLabel,
+                            value: delivery.distanceLabel,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
+    );
+  }
+}
+
+class _DashboardDeliveryCard extends StatelessWidget {
+  const _DashboardDeliveryCard({required this.delivery});
+
+  final CourierDeliveryRecord delivery;
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        key: Key('driverDashboardRequest-${delivery.id}'),
+        borderRadius: BorderRadius.circular(26),
+        onTap: () => context.go(courierDeliveryRoute(delivery)),
+        child: CourierSurfaceCard(
+          child: Row(
             children: [
-              const Icon(Icons.store_rounded, size: 16, color: OcColors.secondary),
-              const SizedBox(width: 6),
-              Expanded(child: Text(shopName, style: Theme.of(context).textTheme.titleSmall)),
+              SizedBox(
+                width: 88,
+                height: 88,
+                child: CourierRemoteImage(
+                  url: delivery.heroImageUrl,
+                  height: 88,
+                  borderRadius: const BorderRadius.all(Radius.circular(18)),
+                  placeholderIcon: Icons.inventory_2_outlined,
+                ),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            delivery.shopName,
+                            style: Theme.of(context).textTheme.titleMedium
+                                ?.copyWith(fontWeight: FontWeight.w800),
+                          ),
+                        ),
+                        if (delivery.priorityLabel != null)
+                          CourierStatusChip(
+                            label: delivery.priorityLabel!,
+                            color: PartnerFlowPalette.warning,
+                          ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      delivery.workshopName,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        color: PartnerFlowPalette.textSecondary,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      '${delivery.itemCount} items • ${delivery.distanceLabel}',
+                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        color: PartnerFlowPalette.textSecondary,
+                      ),
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      delivery.payoutLabel,
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                        color: PartnerFlowPalette.primaryEnd,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
-          const SizedBox(height: 6),
-          Row(
-            children: [
-              const Icon(Icons.build_rounded, size: 16, color: OcColors.primary),
-              const SizedBox(width: 6),
-              Expanded(child: Text(workshopName, style: Theme.of(context).textTheme.bodySmall?.copyWith(color: OcColors.textSecondary))),
-            ],
-          ),
-          const SizedBox(height: OcSpacing.md),
-          Row(
-            children: [
-              OcStatusBadge(label: '$items قطع'),
-              const SizedBox(width: OcSpacing.sm),
-              OcStatusBadge(label: distance),
-              const Spacer(),
-              Text(fee, style: Theme.of(context).textTheme.titleMedium?.copyWith(color: OcColors.success, fontWeight: FontWeight.w700)),
-            ],
-          ),
-          const SizedBox(height: OcSpacing.md),
-          SizedBox(width: double.infinity, child: OcButton(label: 'قبول التوصيلة', onPressed: () {}, icon: Icons.check_rounded)),
-        ],
+        ),
       ),
     );
   }

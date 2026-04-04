@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'screens/driver/delivery_flow_screen.dart';
+import 'screens/driver/courier_delivery_flow_screens.dart';
+import 'screens/driver/courier_secondary_screens.dart';
+import 'screens/driver/courier_shared.dart';
 import 'screens/driver/driver_dashboard.dart';
 import 'screens/driver/driver_sign_up_complete_screen.dart';
 import 'screens/driver/driver_sign_up_screen.dart';
@@ -201,11 +203,77 @@ final proRouterProvider = Provider<GoRouter>((ref) {
         path: '/driver/sign-up/complete',
         builder: (_, _) => const DriverSignUpCompleteScreen(),
       ),
-      GoRoute(path: '/driver', builder: (_, _) => const DriverDashboard()),
+      ShellRoute(
+        builder: (context, state, child) =>
+            CourierShellScaffold(location: state.uri.path, child: child),
+        routes: [
+          GoRoute(
+            path: '/driver',
+            pageBuilder: (_, state) =>
+                _shellPage(state: state, child: const DriverDashboard()),
+          ),
+          GoRoute(
+            path: '/driver/orders',
+            pageBuilder: (_, state) =>
+                _shellPage(state: state, child: const DriverOrdersScreen()),
+          ),
+          GoRoute(
+            path: '/driver/orders/:deliveryId',
+            pageBuilder: (_, state) => _shellPage(
+              state: state,
+              child: DriverNewDeliveryRequestScreen(
+                deliveryId: state.pathParameters['deliveryId']!,
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/driver/orders/:deliveryId/navigation',
+            pageBuilder: (_, state) => _shellPage(
+              state: state,
+              child: DriverActiveDeliveryNavigationScreen(
+                deliveryId: state.pathParameters['deliveryId']!,
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/driver/orders/:deliveryId/confirm',
+            pageBuilder: (_, state) => _shellPage(
+              state: state,
+              child: DriverConfirmDeliveryScreen(
+                deliveryId: state.pathParameters['deliveryId']!,
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/driver/orders/:deliveryId/completed',
+            pageBuilder: (_, state) => _shellPage(
+              state: state,
+              child: DriverDeliveryCompletedScreen(
+                deliveryId: state.pathParameters['deliveryId']!,
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/driver/earnings',
+            pageBuilder: (_, state) =>
+                _shellPage(state: state, child: const DriverEarningsScreen()),
+          ),
+          GoRoute(
+            path: '/driver/messages',
+            pageBuilder: (_, state) =>
+                _shellPage(state: state, child: const DriverMessagesScreen()),
+          ),
+          GoRoute(
+            path: '/driver/profile',
+            pageBuilder: (_, state) =>
+                _shellPage(state: state, child: const DriverProfileScreen()),
+          ),
+        ],
+      ),
       GoRoute(
         path: '/driver/delivery/:id',
-        builder: (_, state) =>
-            DeliveryFlowScreen(deliveryId: state.pathParameters['id']!),
+        redirect: (_, state) =>
+            '/driver/orders/${state.pathParameters['id']!}/navigation',
       ),
 
       GoRoute(

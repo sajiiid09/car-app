@@ -2492,6 +2492,564 @@ abstract class AppLocalizations {
   /// **'مكتمل'**
   String get shopStageCompleted;
 
+  /// No description provided for @driverShellDashboardTab.
+  ///
+  /// In ar, this message translates to:
+  /// **'لوحة القيادة'**
+  String get driverShellDashboardTab;
+
+  /// No description provided for @driverShellOrdersTab.
+  ///
+  /// In ar, this message translates to:
+  /// **'الطلبات'**
+  String get driverShellOrdersTab;
+
+  /// No description provided for @driverShellEarningsTab.
+  ///
+  /// In ar, this message translates to:
+  /// **'الأرباح'**
+  String get driverShellEarningsTab;
+
+  /// No description provided for @driverShellMessagesTab.
+  ///
+  /// In ar, this message translates to:
+  /// **'الرسائل'**
+  String get driverShellMessagesTab;
+
+  /// No description provided for @driverShellProfileTab.
+  ///
+  /// In ar, this message translates to:
+  /// **'الملف الشخصي'**
+  String get driverShellProfileTab;
+
+  /// No description provided for @driverDashboardEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'عمليات التوصيل'**
+  String get driverDashboardEyebrow;
+
+  /// No description provided for @driverDashboardTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'لوحة المندوب'**
+  String get driverDashboardTitle;
+
+  /// No description provided for @driverDashboardSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تابع طلبات التوصيل وأرباحك وحالة المهام من واجهة تشغيل واحدة بالهوية الزرقاء الجديدة.'**
+  String get driverDashboardSubtitle;
+
+  /// No description provided for @driverAvailabilityOnTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'متاح للتوزيع'**
+  String get driverAvailabilityOnTitle;
+
+  /// No description provided for @driverAvailabilityOnSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'يمكن إسناد طلبات قطع الغيار القريبة إليك فورًا.'**
+  String get driverAvailabilityOnSubtitle;
+
+  /// No description provided for @driverAvailabilityOffTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'غير متاح الآن'**
+  String get driverAvailabilityOffTitle;
+
+  /// No description provided for @driverAvailabilityOffSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم إيقاف الطلبات الجديدة حتى تعود إلى وضع المتاح.'**
+  String get driverAvailabilityOffSubtitle;
+
+  /// No description provided for @driverMetricTodayTrips.
+  ///
+  /// In ar, this message translates to:
+  /// **'رحلات اليوم'**
+  String get driverMetricTodayTrips;
+
+  /// No description provided for @driverMetricTodayEarnings.
+  ///
+  /// In ar, this message translates to:
+  /// **'أرباح اليوم'**
+  String get driverMetricTodayEarnings;
+
+  /// No description provided for @driverMetricPendingRequests.
+  ///
+  /// In ar, this message translates to:
+  /// **'طلبات معلقة'**
+  String get driverMetricPendingRequests;
+
+  /// No description provided for @driverMetricActiveDeliveries.
+  ///
+  /// In ar, this message translates to:
+  /// **'توصيلات نشطة'**
+  String get driverMetricActiveDeliveries;
+
+  /// No description provided for @driverQuickActionsTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'إجراءات سريعة'**
+  String get driverQuickActionsTitle;
+
+  /// No description provided for @driverQuickActionOrders.
+  ///
+  /// In ar, this message translates to:
+  /// **'فتح الطلبات'**
+  String get driverQuickActionOrders;
+
+  /// No description provided for @driverQuickActionEarnings.
+  ///
+  /// In ar, this message translates to:
+  /// **'عرض الأرباح'**
+  String get driverQuickActionEarnings;
+
+  /// No description provided for @driverQuickActionProfile.
+  ///
+  /// In ar, this message translates to:
+  /// **'فتح الملف الشخصي'**
+  String get driverQuickActionProfile;
+
+  /// No description provided for @driverLiveDeliveryTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'التوصيل الجاري'**
+  String get driverLiveDeliveryTitle;
+
+  /// No description provided for @driverNewRequestsTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'طلبات جديدة'**
+  String get driverNewRequestsTitle;
+
+  /// No description provided for @driverSeeAll.
+  ///
+  /// In ar, this message translates to:
+  /// **'عرض الكل'**
+  String get driverSeeAll;
+
+  /// No description provided for @driverOrdersEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'صف التوصيل'**
+  String get driverOrdersEyebrow;
+
+  /// No description provided for @driverOrdersTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'سجل الطلبات'**
+  String get driverOrdersTitle;
+
+  /// No description provided for @driverOrdersSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'راجع الطلبات الجديدة والمهام الجارية والرحلات المكتملة من قائمة واحدة.'**
+  String get driverOrdersSubtitle;
+
+  /// No description provided for @driverOrdersFilterNew.
+  ///
+  /// In ar, this message translates to:
+  /// **'جديدة'**
+  String get driverOrdersFilterNew;
+
+  /// No description provided for @driverOrdersFilterActive.
+  ///
+  /// In ar, this message translates to:
+  /// **'نشطة'**
+  String get driverOrdersFilterActive;
+
+  /// No description provided for @driverOrdersFilterCompleted.
+  ///
+  /// In ar, this message translates to:
+  /// **'مكتملة'**
+  String get driverOrdersFilterCompleted;
+
+  /// No description provided for @driverOrdersEmpty.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد مهام ضمن هذا التصنيف بعد.'**
+  String get driverOrdersEmpty;
+
+  /// No description provided for @driverEarningsEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'متابعة الأرباح'**
+  String get driverEarningsEyebrow;
+
+  /// No description provided for @driverEarningsTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'الأرباح والمعاملات'**
+  String get driverEarningsTitle;
+
+  /// No description provided for @driverEarningsSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'راجع أرباح اليوم والمدفوعات المعلقة وسجل العمليات المرتبط بالرحلات المكتملة.'**
+  String get driverEarningsSubtitle;
+
+  /// No description provided for @driverEarningsToday.
+  ///
+  /// In ar, this message translates to:
+  /// **'أرباح اليوم'**
+  String get driverEarningsToday;
+
+  /// No description provided for @driverEarningsPending.
+  ///
+  /// In ar, this message translates to:
+  /// **'دفعات معلقة'**
+  String get driverEarningsPending;
+
+  /// No description provided for @driverEarningsThisWeek.
+  ///
+  /// In ar, this message translates to:
+  /// **'هذا الأسبوع'**
+  String get driverEarningsThisWeek;
+
+  /// No description provided for @driverEarningsCompletion.
+  ///
+  /// In ar, this message translates to:
+  /// **'معدل الإنجاز'**
+  String get driverEarningsCompletion;
+
+  /// No description provided for @driverTransactionsTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'المعاملات'**
+  String get driverTransactionsTitle;
+
+  /// No description provided for @driverTransactionPaid.
+  ///
+  /// In ar, this message translates to:
+  /// **'مدفوع'**
+  String get driverTransactionPaid;
+
+  /// No description provided for @driverTransactionProcessing.
+  ///
+  /// In ar, this message translates to:
+  /// **'قيد المعالجة'**
+  String get driverTransactionProcessing;
+
+  /// No description provided for @driverMessagesEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'صندوق المندوب'**
+  String get driverMessagesEyebrow;
+
+  /// No description provided for @driverMessagesTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'الرسائل'**
+  String get driverMessagesTitle;
+
+  /// No description provided for @driverMessagesSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تحديثات التوزيع ورسائل المتاجر والورش تظهر هنا ضمن قائمة موحدة للمندوب.'**
+  String get driverMessagesSubtitle;
+
+  /// No description provided for @driverMessagesSupportTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'دعم التوزيع'**
+  String get driverMessagesSupportTitle;
+
+  /// No description provided for @driverMessagesSupportSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تجميع التحديثات التشغيلية هنا مع إبقاء هذا المسار واجهة فقط في هذه المرحلة.'**
+  String get driverMessagesSupportSubtitle;
+
+  /// No description provided for @driverProfileEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'هوية المندوب'**
+  String get driverProfileEyebrow;
+
+  /// No description provided for @driverProfileTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'الملف الشخصي'**
+  String get driverProfileTitle;
+
+  /// No description provided for @driverProfileSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'راجع نطاق الخدمة ووضع الأرباح والتفاصيل العامة للمندوب داخل OnlyCars.'**
+  String get driverProfileSubtitle;
+
+  /// No description provided for @driverProfileTrips.
+  ///
+  /// In ar, this message translates to:
+  /// **'الرحلات'**
+  String get driverProfileTrips;
+
+  /// No description provided for @driverProfileRating.
+  ///
+  /// In ar, this message translates to:
+  /// **'التقييم'**
+  String get driverProfileRating;
+
+  /// No description provided for @driverProfileCompletion.
+  ///
+  /// In ar, this message translates to:
+  /// **'الإنجاز'**
+  String get driverProfileCompletion;
+
+  /// No description provided for @driverProfileMonthlyPayout.
+  ///
+  /// In ar, this message translates to:
+  /// **'أرباح الشهر'**
+  String get driverProfileMonthlyPayout;
+
+  /// No description provided for @driverProfileContactTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'التواصل'**
+  String get driverProfileContactTitle;
+
+  /// No description provided for @driverProfileCoverageTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'نطاق الخدمة'**
+  String get driverProfileCoverageTitle;
+
+  /// No description provided for @driverProfileVehicleTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'المركبة'**
+  String get driverProfileVehicleTitle;
+
+  /// No description provided for @driverEmailLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'البريد الإلكتروني'**
+  String get driverEmailLabel;
+
+  /// No description provided for @driverRequestEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'طلب توزيع'**
+  String get driverRequestEyebrow;
+
+  /// No description provided for @driverRequestTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'طلب توصيل جديد'**
+  String get driverRequestTitle;
+
+  /// No description provided for @driverRequestSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'راجع تفاصيل الاستلام والتسليم والعائد قبل تثبيت المهمة على حسابك.'**
+  String get driverRequestSubtitle;
+
+  /// No description provided for @driverNavigationEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'المسار الجاري'**
+  String get driverNavigationEyebrow;
+
+  /// No description provided for @driverNavigationTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملاحة التوصيل النشط'**
+  String get driverNavigationTitle;
+
+  /// No description provided for @driverNavigationSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'الملاحة مركزة على المهمة الحالية. حافظ على وقت الوصول وانتقل للتأكيد بعد وصول الشحنة.'**
+  String get driverNavigationSubtitle;
+
+  /// No description provided for @driverConfirmEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'إثبات التسليم'**
+  String get driverConfirmEyebrow;
+
+  /// No description provided for @driverConfirmTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تأكيد التسليم'**
+  String get driverConfirmTitle;
+
+  /// No description provided for @driverConfirmSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تحقق من المستلم وسجّل التسليم النهائي لإغلاق الرحلة وصرف العائد.'**
+  String get driverConfirmSubtitle;
+
+  /// No description provided for @driverCompletedEyebrow.
+  ///
+  /// In ar, this message translates to:
+  /// **'إغلاق الرحلة'**
+  String get driverCompletedEyebrow;
+
+  /// No description provided for @driverCompletedTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم التسليم'**
+  String get driverCompletedTitle;
+
+  /// No description provided for @driverCompletedSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم تأكيد التسليم وأصبحت الرحلة مسجلة ضمن أرباحك.'**
+  String get driverCompletedSubtitle;
+
+  /// No description provided for @driverRequestDetailsTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تفاصيل الطلب'**
+  String get driverRequestDetailsTitle;
+
+  /// No description provided for @driverPickupDetailsTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تفاصيل الاستلام'**
+  String get driverPickupDetailsTitle;
+
+  /// No description provided for @driverDropoffDetailsTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تفاصيل التسليم'**
+  String get driverDropoffDetailsTitle;
+
+  /// No description provided for @driverRecipientTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'المستلم'**
+  String get driverRecipientTitle;
+
+  /// No description provided for @driverTrackingCodeLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'رمز التتبع'**
+  String get driverTrackingCodeLabel;
+
+  /// No description provided for @driverPickupWindowLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'نافذة الاستلام'**
+  String get driverPickupWindowLabel;
+
+  /// No description provided for @driverDropoffWindowLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'نافذة التسليم'**
+  String get driverDropoffWindowLabel;
+
+  /// No description provided for @driverDistanceLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'المسافة'**
+  String get driverDistanceLabel;
+
+  /// No description provided for @driverPayoutLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'العائد'**
+  String get driverPayoutLabel;
+
+  /// No description provided for @driverRecipientLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'اسم المستلم'**
+  String get driverRecipientLabel;
+
+  /// No description provided for @driverNoteLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملاحظة'**
+  String get driverNoteLabel;
+
+  /// No description provided for @driverAcceptDelivery.
+  ///
+  /// In ar, this message translates to:
+  /// **'قبول التوصيل'**
+  String get driverAcceptDelivery;
+
+  /// No description provided for @driverProceedToConfirmation.
+  ///
+  /// In ar, this message translates to:
+  /// **'المتابعة إلى التأكيد'**
+  String get driverProceedToConfirmation;
+
+  /// No description provided for @driverMarkDelivered.
+  ///
+  /// In ar, this message translates to:
+  /// **'تحديد كمكتمل'**
+  String get driverMarkDelivered;
+
+  /// No description provided for @driverBackToOrders.
+  ///
+  /// In ar, this message translates to:
+  /// **'العودة إلى الطلبات'**
+  String get driverBackToOrders;
+
+  /// No description provided for @driverBackToDashboard.
+  ///
+  /// In ar, this message translates to:
+  /// **'العودة إلى اللوحة'**
+  String get driverBackToDashboard;
+
+  /// No description provided for @driverStageNewRequest.
+  ///
+  /// In ar, this message translates to:
+  /// **'طلب جديد'**
+  String get driverStageNewRequest;
+
+  /// No description provided for @driverStageNavigation.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملاحة'**
+  String get driverStageNavigation;
+
+  /// No description provided for @driverStageConfirm.
+  ///
+  /// In ar, this message translates to:
+  /// **'تأكيد'**
+  String get driverStageConfirm;
+
+  /// No description provided for @driverStageCompleted.
+  ///
+  /// In ar, this message translates to:
+  /// **'مكتمل'**
+  String get driverStageCompleted;
+
+  /// No description provided for @driverDeliveryNotFound.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعذر العثور على هذه المهمة.'**
+  String get driverDeliveryNotFound;
+
+  /// No description provided for @driverNavigationChecklistOne.
+  ///
+  /// In ar, this message translates to:
+  /// **'اتبع المسار المعتمد من التوزيع للحفاظ على موعد الورشة.'**
+  String get driverNavigationChecklistOne;
+
+  /// No description provided for @driverNavigationChecklistTwo.
+  ///
+  /// In ar, this message translates to:
+  /// **'اتصل مسبقًا إذا تغيّر وقت الوصول بأكثر من خمس دقائق.'**
+  String get driverNavigationChecklistTwo;
+
+  /// No description provided for @driverNavigationChecklistThree.
+  ///
+  /// In ar, this message translates to:
+  /// **'أبقِ الشحنة مختومة حتى يتحقق المستلم من التسليم.'**
+  String get driverNavigationChecklistThree;
+
+  /// No description provided for @driverConfirmHeroNote.
+  ///
+  /// In ar, this message translates to:
+  /// **'تأكيد المستلم هو الخطوة الأخيرة قبل تحرير العائد.'**
+  String get driverConfirmHeroNote;
+
   /// No description provided for @loading.
   ///
   /// In ar, this message translates to:

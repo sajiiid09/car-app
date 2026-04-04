@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Courier - New Request</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-primary": "#ffb77d",
+              "tertiary-container": "#00b5fc",
+              "on-tertiary-fixed": "#001e2e",
+              "inverse-surface": "#313030",
+              "surface-tint": "#904d00",
+              "inverse-on-surface": "#f3f0ef",
+              "tertiary": "#00658f",
+              "on-secondary-fixed": "#2f1500",
+              "secondary-fixed-dim": "#fdb881",
+              "primary-container": "#ff8c00",
+              "on-secondary-fixed-variant": "#6a3b0f",
+              "on-tertiary-container": "#004360",
+              "tertiary-fixed": "#c7e7ff",
+              "on-background": "#1c1b1b",
+              "primary-fixed": "#ffdcc3",
+              "surface-container-high": "#eae7e7",
+              "surface-variant": "#e5e2e1",
+              "surface-container-lowest": "#ffffff",
+              "on-primary": "#ffffff",
+              "primary": "#904d00",
+              "surface-container": "#f0eded",
+              "outline-variant": "#ddc1ae",
+              "surface-container-low": "#f6f3f2",
+              "secondary-fixed": "#ffdcc3",
+              "surface-dim": "#dcd9d9",
+              "on-secondary": "#ffffff",
+              "on-error": "#ffffff",
+              "background": "#fcf9f8",
+              "on-error-container": "#93000a",
+              "error-container": "#ffdad6",
+              "error": "#ba1a1a",
+              "outline": "#897362",
+              "on-primary-fixed": "#2f1500",
+              "tertiary-fixed-dim": "#85cfff",
+              "surface-bright": "#fcf9f8",
+              "on-surface": "#1c1b1b",
+              "surface-container-highest": "#e5e2e1",
+              "on-tertiary-fixed-variant": "#004c6c",
+              "on-tertiary": "#ffffff",
+              "on-secondary-container": "#78471a",
+              "surface": "#fcf9f8",
+              "primary-fixed-dim": "#ffb77d",
+              "on-surface-variant": "#564334",
+              "secondary-container": "#fdb881",
+              "secondary": "#865224",
+              "on-primary-container": "#623200",
+              "on-primary-fixed-variant": "#6e3900"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-atelier-gradient {
+            background: linear-gradient(135deg, #FF8C00 0%, #904D00 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- TopAppBar -->
+<header class="bg-[#FCF9F8]/80 dark:bg-stone-900/80 backdrop-blur-xl shadow-[0_8px_24px_0px_rgba(28,27,27,0.04)] font-['Manrope'] font-bold tracking-tight text-sm uppercase flex justify-between items-center w-full px-6 py-4 z-50 docked full-width top-0 sticky">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface">menu</span>
+<span class="text-xl font-black text-[#1C1B1B] dark:text-white tracking-tighter">COURIER</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-primary-container rounded-full animate-pulse"></div>
+<span class="text-orange-600 dark:text-orange-400">ONLINE</span>
+</div>
+</header>
+<main class="max-w-xl mx-auto px-4 pt-6 pb-32">
+<!-- Status Header -->
+<div class="mb-8 text-center">
+<span class="inline-block px-4 py-1.5 rounded-full bg-primary-fixed text-on-primary-fixed text-xs font-bold tracking-widest uppercase mb-3">
+                New Request Found
+            </span>
+<h1 class="font-headline text-5xl font-black text-on-surface tracking-tighter">
+                $45.00
+            </h1>
+<p class="font-label text-on-surface-variant text-sm mt-1 uppercase tracking-widest font-semibold">Estimated Payout</p>
+</div>
+<!-- Bento Layout for Request Details -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Map Preview (Full Width Mobile, Spans in Grid) -->
+<div class="md:col-span-2 relative h-64 rounded-xl overflow-hidden shadow-sm surface-container-low group">
+<img class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 transition-all duration-700" data-alt="Modern dark-themed digital map interface showing a blue route path through an urban city grid with pins for pickup and delivery" data-location="Seattle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbDW9aVQc0rParg_KTvcp6kxTaf4cvNpyqMtDefFRAGiXaCr5DKNg6eyz95-4na9wIJZB-Cv-esjH-jY0Jo-hmNJCbF9JyVqHmDbQBf-1aq2Jbm1b028OzYmpEEPY79TO337m31sINA4nUp8ky26f-UeZy4T38Nn658v7vQZ8QRQ91PQMUZRyB1TMQpg6Ts3Om96Gul9MMVIlSVIWH9IAYfz-wPmOA91S_KgubueKSfto43M18jkiI6b5V6MSBzSr4auziAvmZ-Eip"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+<!-- Floating Info over Map -->
+<div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+<div class="bg-surface-container-lowest/90 backdrop-blur-md p-3 rounded-lg shadow-lg flex gap-4">
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter">Distance</span>
+<span class="font-headline font-bold text-lg leading-tight">5.2 km</span>
+</div>
+<div class="w-px h-8 bg-outline-variant/30"></div>
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter">Time</span>
+<span class="font-headline font-bold text-lg leading-tight">18 mins</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Pickup Location Card -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-[0_4px_20px_0px_rgba(0,0,0,0.02)] border-l-4 border-primary">
+<div class="flex items-start gap-4">
+<div class="bg-primary-fixed p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warehouse</span>
+</div>
+<div>
+<p class="font-label text-[10px] text-on-surface-variant font-bold uppercase tracking-widest mb-1">Pickup</p>
+<h3 class="font-headline font-bold text-on-surface leading-snug">Precision Auto Parts Hub</h3>
+<p class="text-xs text-on-surface-variant mt-1">Industrial Zone, Block C</p>
+</div>
+</div>
+</div>
+<!-- Drop-off Location Card -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-[0_4px_20px_0px_rgba(0,0,0,0.02)] border-l-4 border-on-surface">
+<div class="flex items-start gap-4">
+<div class="bg-surface-container-high p-2 rounded-lg text-on-surface">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">garage_home</span>
+</div>
+<div>
+<p class="font-label text-[10px] text-on-surface-variant font-bold uppercase tracking-widest mb-1">Drop-off</p>
+<h3 class="font-headline font-bold text-on-surface leading-snug">Private Workshop • East Side</h3>
+<p class="text-xs text-on-surface-variant mt-1">422 Mechanics Row</p>
+</div>
+</div>
+</div>
+<!-- Package Details (Full Width in Grid) -->
+<div class="md:col-span-2 bg-surface-container-low p-6 rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-5">
+<div class="w-16 h-16 rounded-lg bg-surface-container-lowest overflow-hidden flex items-center justify-center p-2 shadow-inner">
+<img class="w-full h-full object-contain mix-blend-multiply opacity-90" data-alt="Extreme close up of metallic car brake pads resting on a clean surface with industrial aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw0scGpdc-UtcR23WtpdDc3FFzc-Z1W9KABdZklxpMhZVD7-elWyr7eObnsaPMSqD-EiE5gz4dbgHEwPPqNd9SPWfN-n2OiPe-_c6jRCQAokFywAhHt2fRd4orMk5nSnMutTG0m4lBUfJXrvuZzvMf0X8rLT6PTvMznxmDUsn-rxqkPa9Kpivf6cnel38Jg6LH32MXf6fDoEHclMGOAXIF8J8k6hQU_CZpGgLn5auvXEWo_jekbiOd2Si2CJguPPw-AZS0ins5lMQE"/>
+</div>
+<div>
+<h4 class="font-headline font-extrabold text-on-surface">Brake Pads (x2)</h4>
+<div class="flex gap-3 mt-1">
+<span class="flex items-center gap-1 text-xs font-semibold text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">weight</span> 2.4 kg
+                            </span>
+<span class="flex items-center gap-1 text-xs font-semibold text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">box</span> Medium
+                            </span>
+</div>
+</div>
+</div>
+<div class="hidden sm:block">
+<span class="material-symbols-outlined text-outline-variant text-4xl">inventory_2</span>
+</div>
+</div>
+</div>
+<!-- Action Controls -->
+<div class="mt-10 space-y-4">
+<button class="w-full bg-atelier-gradient text-on-primary py-5 rounded-xl font-headline font-bold text-lg shadow-lg active:scale-95 transition-all duration-200">
+                Accept Request
+            </button>
+<button class="w-full py-4 rounded-xl font-headline font-bold text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 duration-200">
+                Decline
+            </button>
+</div>
+</main>
+<!-- Navigation Shell Logic - Active Tab Mapping -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-[#FCF9F8]/90 dark:bg-stone-900/90 backdrop-blur-2xl shadow-[0_-4px_20px_0px_rgba(0,0,0,0.03)] border-t border-stone-200/20 dark:border-stone-800/50 flex justify-around items-center px-4 pt-3 pb-8 md:hidden">
+<a class="flex flex-col items-center justify-center text-orange-600 dark:text-orange-400 transition-all duration-300 transform scale-110" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-['Inter'] font-semibold text-[10px] tracking-wide uppercase mt-1">Tasks</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#564334] dark:text-stone-500 opacity-60 hover:text-orange-500 transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-['Inter'] font-semibold text-[10px] tracking-wide uppercase mt-1">Earnings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#564334] dark:text-stone-500 opacity-60 hover:text-orange-500 transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Inter'] font-semibold text-[10px] tracking-wide uppercase mt-1">Profile</span>
+</a>
+</nav>
+<!-- Desktop Navigation Shell -->
+<div class="hidden md:flex fixed left-0 top-0 h-full w-20 bg-surface-container-low border-r border-outline-variant/10 flex-col items-center py-10 z-[60]">
+<div class="text-primary-container mb-12">
+<span class="material-symbols-outlined text-3xl">electric_car</span>
+</div>
+<div class="flex flex-col gap-10">
+<span class="material-symbols-outlined text-primary cursor-pointer" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">payments</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">person</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">settings</span>
+</div>
+</div>
+</body></html>

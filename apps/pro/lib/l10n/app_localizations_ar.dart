@@ -1249,6 +1249,301 @@ class AppLocalizationsAr extends AppLocalizations {
   String get shopStageCompleted => 'مكتمل';
 
   @override
+  String get driverShellDashboardTab => 'لوحة القيادة';
+
+  @override
+  String get driverShellOrdersTab => 'الطلبات';
+
+  @override
+  String get driverShellEarningsTab => 'الأرباح';
+
+  @override
+  String get driverShellMessagesTab => 'الرسائل';
+
+  @override
+  String get driverShellProfileTab => 'الملف الشخصي';
+
+  @override
+  String get driverDashboardEyebrow => 'عمليات التوصيل';
+
+  @override
+  String get driverDashboardTitle => 'لوحة المندوب';
+
+  @override
+  String get driverDashboardSubtitle =>
+      'تابع طلبات التوصيل وأرباحك وحالة المهام من واجهة تشغيل واحدة بالهوية الزرقاء الجديدة.';
+
+  @override
+  String get driverAvailabilityOnTitle => 'متاح للتوزيع';
+
+  @override
+  String get driverAvailabilityOnSubtitle =>
+      'يمكن إسناد طلبات قطع الغيار القريبة إليك فورًا.';
+
+  @override
+  String get driverAvailabilityOffTitle => 'غير متاح الآن';
+
+  @override
+  String get driverAvailabilityOffSubtitle =>
+      'تم إيقاف الطلبات الجديدة حتى تعود إلى وضع المتاح.';
+
+  @override
+  String get driverMetricTodayTrips => 'رحلات اليوم';
+
+  @override
+  String get driverMetricTodayEarnings => 'أرباح اليوم';
+
+  @override
+  String get driverMetricPendingRequests => 'طلبات معلقة';
+
+  @override
+  String get driverMetricActiveDeliveries => 'توصيلات نشطة';
+
+  @override
+  String get driverQuickActionsTitle => 'إجراءات سريعة';
+
+  @override
+  String get driverQuickActionOrders => 'فتح الطلبات';
+
+  @override
+  String get driverQuickActionEarnings => 'عرض الأرباح';
+
+  @override
+  String get driverQuickActionProfile => 'فتح الملف الشخصي';
+
+  @override
+  String get driverLiveDeliveryTitle => 'التوصيل الجاري';
+
+  @override
+  String get driverNewRequestsTitle => 'طلبات جديدة';
+
+  @override
+  String get driverSeeAll => 'عرض الكل';
+
+  @override
+  String get driverOrdersEyebrow => 'صف التوصيل';
+
+  @override
+  String get driverOrdersTitle => 'سجل الطلبات';
+
+  @override
+  String get driverOrdersSubtitle =>
+      'راجع الطلبات الجديدة والمهام الجارية والرحلات المكتملة من قائمة واحدة.';
+
+  @override
+  String get driverOrdersFilterNew => 'جديدة';
+
+  @override
+  String get driverOrdersFilterActive => 'نشطة';
+
+  @override
+  String get driverOrdersFilterCompleted => 'مكتملة';
+
+  @override
+  String get driverOrdersEmpty => 'لا توجد مهام ضمن هذا التصنيف بعد.';
+
+  @override
+  String get driverEarningsEyebrow => 'متابعة الأرباح';
+
+  @override
+  String get driverEarningsTitle => 'الأرباح والمعاملات';
+
+  @override
+  String get driverEarningsSubtitle =>
+      'راجع أرباح اليوم والمدفوعات المعلقة وسجل العمليات المرتبط بالرحلات المكتملة.';
+
+  @override
+  String get driverEarningsToday => 'أرباح اليوم';
+
+  @override
+  String get driverEarningsPending => 'دفعات معلقة';
+
+  @override
+  String get driverEarningsThisWeek => 'هذا الأسبوع';
+
+  @override
+  String get driverEarningsCompletion => 'معدل الإنجاز';
+
+  @override
+  String get driverTransactionsTitle => 'المعاملات';
+
+  @override
+  String get driverTransactionPaid => 'مدفوع';
+
+  @override
+  String get driverTransactionProcessing => 'قيد المعالجة';
+
+  @override
+  String get driverMessagesEyebrow => 'صندوق المندوب';
+
+  @override
+  String get driverMessagesTitle => 'الرسائل';
+
+  @override
+  String get driverMessagesSubtitle =>
+      'تحديثات التوزيع ورسائل المتاجر والورش تظهر هنا ضمن قائمة موحدة للمندوب.';
+
+  @override
+  String get driverMessagesSupportTitle => 'دعم التوزيع';
+
+  @override
+  String get driverMessagesSupportSubtitle =>
+      'تجميع التحديثات التشغيلية هنا مع إبقاء هذا المسار واجهة فقط في هذه المرحلة.';
+
+  @override
+  String get driverProfileEyebrow => 'هوية المندوب';
+
+  @override
+  String get driverProfileTitle => 'الملف الشخصي';
+
+  @override
+  String get driverProfileSubtitle =>
+      'راجع نطاق الخدمة ووضع الأرباح والتفاصيل العامة للمندوب داخل OnlyCars.';
+
+  @override
+  String get driverProfileTrips => 'الرحلات';
+
+  @override
+  String get driverProfileRating => 'التقييم';
+
+  @override
+  String get driverProfileCompletion => 'الإنجاز';
+
+  @override
+  String get driverProfileMonthlyPayout => 'أرباح الشهر';
+
+  @override
+  String get driverProfileContactTitle => 'التواصل';
+
+  @override
+  String get driverProfileCoverageTitle => 'نطاق الخدمة';
+
+  @override
+  String get driverProfileVehicleTitle => 'المركبة';
+
+  @override
+  String get driverEmailLabel => 'البريد الإلكتروني';
+
+  @override
+  String get driverRequestEyebrow => 'طلب توزيع';
+
+  @override
+  String get driverRequestTitle => 'طلب توصيل جديد';
+
+  @override
+  String get driverRequestSubtitle =>
+      'راجع تفاصيل الاستلام والتسليم والعائد قبل تثبيت المهمة على حسابك.';
+
+  @override
+  String get driverNavigationEyebrow => 'المسار الجاري';
+
+  @override
+  String get driverNavigationTitle => 'ملاحة التوصيل النشط';
+
+  @override
+  String get driverNavigationSubtitle =>
+      'الملاحة مركزة على المهمة الحالية. حافظ على وقت الوصول وانتقل للتأكيد بعد وصول الشحنة.';
+
+  @override
+  String get driverConfirmEyebrow => 'إثبات التسليم';
+
+  @override
+  String get driverConfirmTitle => 'تأكيد التسليم';
+
+  @override
+  String get driverConfirmSubtitle =>
+      'تحقق من المستلم وسجّل التسليم النهائي لإغلاق الرحلة وصرف العائد.';
+
+  @override
+  String get driverCompletedEyebrow => 'إغلاق الرحلة';
+
+  @override
+  String get driverCompletedTitle => 'تم التسليم';
+
+  @override
+  String get driverCompletedSubtitle =>
+      'تم تأكيد التسليم وأصبحت الرحلة مسجلة ضمن أرباحك.';
+
+  @override
+  String get driverRequestDetailsTitle => 'تفاصيل الطلب';
+
+  @override
+  String get driverPickupDetailsTitle => 'تفاصيل الاستلام';
+
+  @override
+  String get driverDropoffDetailsTitle => 'تفاصيل التسليم';
+
+  @override
+  String get driverRecipientTitle => 'المستلم';
+
+  @override
+  String get driverTrackingCodeLabel => 'رمز التتبع';
+
+  @override
+  String get driverPickupWindowLabel => 'نافذة الاستلام';
+
+  @override
+  String get driverDropoffWindowLabel => 'نافذة التسليم';
+
+  @override
+  String get driverDistanceLabel => 'المسافة';
+
+  @override
+  String get driverPayoutLabel => 'العائد';
+
+  @override
+  String get driverRecipientLabel => 'اسم المستلم';
+
+  @override
+  String get driverNoteLabel => 'ملاحظة';
+
+  @override
+  String get driverAcceptDelivery => 'قبول التوصيل';
+
+  @override
+  String get driverProceedToConfirmation => 'المتابعة إلى التأكيد';
+
+  @override
+  String get driverMarkDelivered => 'تحديد كمكتمل';
+
+  @override
+  String get driverBackToOrders => 'العودة إلى الطلبات';
+
+  @override
+  String get driverBackToDashboard => 'العودة إلى اللوحة';
+
+  @override
+  String get driverStageNewRequest => 'طلب جديد';
+
+  @override
+  String get driverStageNavigation => 'ملاحة';
+
+  @override
+  String get driverStageConfirm => 'تأكيد';
+
+  @override
+  String get driverStageCompleted => 'مكتمل';
+
+  @override
+  String get driverDeliveryNotFound => 'تعذر العثور على هذه المهمة.';
+
+  @override
+  String get driverNavigationChecklistOne =>
+      'اتبع المسار المعتمد من التوزيع للحفاظ على موعد الورشة.';
+
+  @override
+  String get driverNavigationChecklistTwo =>
+      'اتصل مسبقًا إذا تغيّر وقت الوصول بأكثر من خمس دقائق.';
+
+  @override
+  String get driverNavigationChecklistThree =>
+      'أبقِ الشحنة مختومة حتى يتحقق المستلم من التسليم.';
+
+  @override
+  String get driverConfirmHeroNote =>
+      'تأكيد المستلم هو الخطوة الأخيرة قبل تحرير العائد.';
+
+  @override
   String get loading => 'جاري التحميل...';
 
   @override

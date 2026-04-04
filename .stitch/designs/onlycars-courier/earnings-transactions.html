@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-primary": "#ffb77d",
+                        "tertiary-container": "#00b5fc",
+                        "on-tertiary-fixed": "#001e2e",
+                        "inverse-surface": "#313030",
+                        "surface-tint": "#904d00",
+                        "inverse-on-surface": "#f3f0ef",
+                        "tertiary": "#00658f",
+                        "on-secondary-fixed": "#2f1500",
+                        "secondary-fixed-dim": "#fdb881",
+                        "primary-container": "#ff8c00",
+                        "on-secondary-fixed-variant": "#6a3b0f",
+                        "on-tertiary-container": "#004360",
+                        "tertiary-fixed": "#c7e7ff",
+                        "on-background": "#1c1b1b",
+                        "primary-fixed": "#ffdcc3",
+                        "surface-container-high": "#eae7e7",
+                        "surface-variant": "#e5e2e1",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "primary": "#904d00",
+                        "surface-container": "#f0eded",
+                        "outline-variant": "#ddc1ae",
+                        "surface-container-low": "#f6f3f2",
+                        "secondary-fixed": "#ffdcc3",
+                        "surface-dim": "#dcd9d9",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "background": "#fcf9f8",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "outline": "#897362",
+                        "on-primary-fixed": "#2f1500",
+                        "tertiary-fixed-dim": "#85cfff",
+                        "surface-bright": "#fcf9f8",
+                        "on-surface": "#1c1b1b",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-tertiary-fixed-variant": "#004c6c",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#78471a",
+                        "surface": "#fcf9f8",
+                        "primary-fixed-dim": "#ffb77d",
+                        "on-surface-variant": "#564334",
+                        "secondary-container": "#fdb881",
+                        "secondary": "#865224",
+                        "on-primary-container": "#623200",
+                        "on-primary-fixed-variant": "#6e3900"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .atelier-gradient {
+            background: linear-gradient(135deg, #FF8C00 0%, #904D00 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 flex justify-between items-center w-full px-6 py-4 bg-[#FCF9F8]/80 dark:bg-stone-900/80 backdrop-blur-xl shadow-[0_8px_24px_0px_rgba(28,27,27,0.04)]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">menu</span>
+<h1 class="text-xl font-black text-[#1C1B1B] dark:text-white tracking-tighter font-headline">COURIER</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-headline font-bold tracking-tight text-sm uppercase text-orange-600 dark:text-orange-400">ONLINE</span>
+</div>
+</header>
+<main class="max-w-xl mx-auto px-6 pt-8 pb-32">
+<!-- Total Earnings Hero Section (Asymmetric Editorial Style) -->
+<section class="mb-10">
+<div class="flex flex-col gap-1">
+<span class="text-on-surface-variant font-label text-xs uppercase tracking-[0.2em]">Aggregate Performance</span>
+<div class="flex items-baseline gap-2">
+<h2 class="text-5xl font-headline font-extrabold tracking-tighter text-on-surface">$2,480.00</h2>
+<span class="text-primary font-bold text-sm">+12.5%</span>
+</div>
+<p class="text-on-surface-variant text-sm mt-1">Total Lifetime Earnings</p>
+</div>
+</section>
+<!-- Bento Grid Stats -->
+<div class="grid grid-cols-2 gap-4 mb-10">
+<!-- Available Balance Card -->
+<div class="col-span-2 md:col-span-1 bg-surface-container-lowest p-6 rounded-xl shadow-[0_4px_20px_0px_rgba(0,0,0,0.02)] relative overflow-hidden group">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-primary mb-3" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<p class="text-on-surface-variant text-xs font-semibold uppercase tracking-wider mb-1">Available to Withdraw</p>
+<h3 class="text-2xl font-headline font-bold text-on-surface">$450.00</h3>
+</div>
+<!-- Subtle Gradient Background Element -->
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-primary-container/5 rounded-full blur-2xl group-hover:bg-primary-container/10 transition-colors"></div>
+</div>
+<!-- This Week Stats Card -->
+<div class="col-span-2 md:col-span-1 bg-surface-container-low p-6 rounded-xl relative overflow-hidden">
+<span class="material-symbols-outlined text-on-surface-variant mb-3">calendar_today</span>
+<p class="text-on-surface-variant text-xs font-semibold uppercase tracking-wider mb-1">Activity This Week</p>
+<div class="flex items-center gap-3">
+<h3 class="text-2xl font-headline font-bold text-on-surface">$1,240.00</h3>
+<div class="px-2 py-0.5 bg-surface-container-high rounded-full text-[10px] font-bold text-on-surface-variant">12 TASKS</div>
+</div>
+</div>
+</div>
+<!-- Call to Action -->
+<div class="mb-12">
+<button class="atelier-gradient w-full py-5 rounded-xl text-on-primary font-headline font-extrabold text-sm uppercase tracking-widest shadow-lg shadow-primary/20 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">payments</span>
+                Withdraw Funds
+            </button>
+</div>
+<!-- Transactions Header -->
+<div class="flex justify-between items-end mb-6">
+<div>
+<h4 class="text-lg font-headline font-bold text-on-surface">Recent Transactions</h4>
+<p class="text-on-surface-variant text-sm">Last 7 days activity</p>
+</div>
+<button class="text-primary text-sm font-bold flex items-center gap-1 hover:opacity-80 transition-opacity">
+                See All <span class="material-symbols-outlined text-xs">arrow_forward</span>
+</button>
+</div>
+<!-- Transaction List (No Dividers, using Surface Hierarchy) -->
+<div class="space-y-4">
+<!-- Transaction Item 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between group transition-all duration-200">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">local_shipping</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-0.5">
+<span class="font-headline font-bold text-on-surface text-sm">Order #1024</span>
+<span class="text-[10px] bg-green-100 text-green-700 px-1.5 py-0.5 rounded font-bold uppercase tracking-tighter">Completed</span>
+</div>
+<p class="text-xs text-on-surface-variant flex items-center gap-1">
+                            Downtown Hub <span class="material-symbols-outlined text-[10px]">arrow_right_alt</span> West Side
+                        </p>
+<p class="text-[10px] text-outline mt-1 font-medium">May 24, 2024 • 14:22</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline font-bold text-on-surface">$45.00</p>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-wider">Earnings</p>
+</div>
+</div>
+<!-- Transaction Item 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between group transition-all duration-200">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">local_shipping</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-0.5">
+<span class="font-headline font-bold text-on-surface text-sm">Order #1021</span>
+<span class="text-[10px] bg-green-100 text-green-700 px-1.5 py-0.5 rounded font-bold uppercase tracking-tighter">Completed</span>
+</div>
+<p class="text-xs text-on-surface-variant flex items-center gap-1">
+                            Central Market <span class="material-symbols-outlined text-[10px]">arrow_right_alt</span> Uptown Apts
+                        </p>
+<p class="text-[10px] text-outline mt-1 font-medium">May 24, 2024 • 11:45</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline font-bold text-on-surface">$38.50</p>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-wider">Earnings</p>
+</div>
+</div>
+<!-- Transaction Item 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between group transition-all duration-200">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">local_shipping</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-0.5">
+<span class="font-headline font-bold text-on-surface text-sm">Order #1019</span>
+<span class="text-[10px] bg-green-100 text-green-700 px-1.5 py-0.5 rounded font-bold uppercase tracking-tighter">Completed</span>
+</div>
+<p class="text-xs text-on-surface-variant flex items-center gap-1">
+                            South Port <span class="material-symbols-outlined text-[10px]">arrow_right_alt</span> East Terminal
+                        </p>
+<p class="text-[10px] text-outline mt-1 font-medium">May 23, 2024 • 18:30</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline font-bold text-on-surface">$52.00</p>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-wider">Earnings</p>
+</div>
+</div>
+</div>
+<!-- Weekly Performance Chart Placeholder -->
+<section class="mt-12">
+<h4 class="text-lg font-headline font-bold text-on-surface mb-6">Earnings Trend</h4>
+<div class="bg-surface-container-low h-48 w-full rounded-2xl flex items-end justify-around px-4 pb-4">
+<div class="w-8 h-[40%] bg-outline-variant/30 rounded-t-lg"></div>
+<div class="w-8 h-[60%] bg-outline-variant/30 rounded-t-lg"></div>
+<div class="w-8 h-[55%] bg-outline-variant/30 rounded-t-lg"></div>
+<div class="w-8 h-[85%] bg-primary-container rounded-t-lg"></div>
+<div class="w-8 h-[45%] bg-outline-variant/30 rounded-t-lg"></div>
+<div class="w-8 h-[70%] bg-outline-variant/30 rounded-t-lg"></div>
+<div class="w-8 h-[30%] bg-outline-variant/30 rounded-t-lg"></div>
+</div>
+<div class="flex justify-around mt-4 text-[10px] font-bold text-outline uppercase tracking-tighter">
+<span>Mon</span><span>Tue</span><span>Wed</span><span class="text-primary">Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-3 pb-8 bg-[#FCF9F8]/90 dark:bg-stone-900/90 backdrop-blur-2xl border-t border-stone-200/20 dark:border-stone-800/50 shadow-[0_-4px_20px_0px_rgba(0,0,0,0.03)] rounded-t-3xl">
+<!-- Tasks -->
+<button class="flex flex-col items-center justify-center text-[#564334] dark:text-stone-500 opacity-60 hover:text-orange-500 transition-colors active:scale-90 duration-150">
+<span class="material-symbols-outlined text-2xl mb-1">inventory_2</span>
+<span class="font-['Inter'] font-semibold text-[10px] tracking-wide uppercase">Tasks</span>
+</button>
+<!-- Earnings (ACTIVE) -->
+<button class="flex flex-col items-center justify-center text-orange-600 dark:text-orange-400 transition-all duration-300 transform scale-110 active:scale-90">
+<span class="material-symbols-outlined text-2xl mb-1" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="font-['Inter'] font-semibold text-[10px] tracking-wide uppercase">Earnings</span>
+</button>
+<!-- Profile -->
+<button class="flex flex-col items-center justify-center text-[#564334] dark:text-stone-500 opacity-60 hover:text-orange-500 transition-colors active:scale-90 duration-150">
+<span class="material-symbols-outlined text-2xl mb-1">person</span>
+<span class="font-['Inter'] font-semibold text-[10px] tracking-wide uppercase">Profile</span>
+</button>
+</nav>
+</body></html>
