@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-primary": "#ffb77d",
+              "tertiary-container": "#00b5fc",
+              "on-tertiary-fixed": "#001e2e",
+              "inverse-surface": "#313030",
+              "surface-tint": "#904d00",
+              "inverse-on-surface": "#f3f0ef",
+              "tertiary": "#00658f",
+              "on-secondary-fixed": "#2f1500",
+              "secondary-fixed-dim": "#fdb881",
+              "primary-container": "#ff8c00",
+              "on-secondary-fixed-variant": "#6a3b0f",
+              "on-tertiary-container": "#004360",
+              "tertiary-fixed": "#c7e7ff",
+              "on-background": "#1c1b1b",
+              "primary-fixed": "#ffdcc3",
+              "surface-container-high": "#eae7e7",
+              "surface-variant": "#e5e2e1",
+              "surface-container-lowest": "#ffffff",
+              "on-primary": "#ffffff",
+              "primary": "#904d00",
+              "surface-container": "#f0eded",
+              "outline-variant": "#ddc1ae",
+              "surface-container-low": "#f6f3f2",
+              "secondary-fixed": "#ffdcc3",
+              "surface-dim": "#dcd9d9",
+              "on-secondary": "#ffffff",
+              "on-error": "#ffffff",
+              "background": "#fcf9f8",
+              "on-error-container": "#93000a",
+              "error-container": "#ffdad6",
+              "error": "#ba1a1a",
+              "outline": "#897362",
+              "on-primary-fixed": "#2f1500",
+              "tertiary-fixed-dim": "#85cfff",
+              "surface-bright": "#fcf9f8",
+              "on-surface": "#1c1b1b",
+              "surface-container-highest": "#e5e2e1",
+              "on-tertiary-fixed-variant": "#004c6c",
+              "on-tertiary": "#ffffff",
+              "on-secondary-container": "#78471a",
+              "surface": "#fcf9f8",
+              "primary-fixed-dim": "#ffb77d",
+              "on-surface-variant": "#564334",
+              "secondary-container": "#fdb881",
+              "secondary": "#865224",
+              "on-primary-container": "#623200",
+              "on-primary-fixed-variant": "#6e3900"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .atelier-gradient {
+        background: linear-gradient(135deg, #FF8C00 0%, #904D00 100%);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar - Suppressed for Transactional Flow as per rules, but showing branding anchor -->
+<header class="bg-[#FCF9F8]/80 backdrop-blur-xl flex justify-between items-center w-full px-6 py-4 z-50 sticky top-0 shadow-[0_8px_24px_0px_rgba(28,27,27,0.04)]">
+<div class="flex items-center gap-2">
+<span class="text-xl font-black text-[#1C1B1B] tracking-tighter font-headline uppercase">COURIER</span>
+</div>
+<div class="flex items-center">
+<span class="font-headline font-bold tracking-tight text-sm uppercase text-orange-600">ONLINE</span>
+</div>
+</header>
+<main class="flex-grow flex flex-col items-center justify-center px-6 py-12 max-w-lg mx-auto w-full">
+<!-- Success Visual Section -->
+<div class="relative mb-10">
+<!-- Decorative Background Glow -->
+<div class="absolute inset-0 bg-primary-container/20 blur-3xl rounded-full scale-150"></div>
+<!-- Success Icon Container -->
+<div class="relative w-32 h-32 rounded-full atelier-gradient flex items-center justify-center shadow-2xl shadow-primary/30 ring-8 ring-background">
+<span class="material-symbols-outlined text-white text-6xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Success Message -->
+<div class="text-center space-y-2 mb-12">
+<h1 class="font-headline text-3xl font-extrabold tracking-tight text-on-surface">Delivery Completed Successfully!</h1>
+<p class="font-label text-on-surface-variant font-medium text-sm tracking-widest uppercase">Order ID: #1024</p>
+</div>
+<!-- Earnings Bento Grid -->
+<div class="w-full grid grid-cols-2 gap-4 mb-16">
+<!-- Current Earning Card -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.02)] border-b-2 border-primary">
+<p class="font-label text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Earning</p>
+<div class="flex items-baseline gap-1">
+<span class="font-headline text-2xl font-extrabold text-primary">+$45.00</span>
+</div>
+</div>
+<!-- Total Today Card -->
+<div class="bg-surface-container-low p-6 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
+<p class="font-label text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Today's Total</p>
+<div class="flex items-baseline gap-1">
+<span class="font-headline text-2xl font-extrabold text-on-surface">$285.50</span>
+</div>
+</div>
+<!-- Stats/Visual Detail (Full Width) -->
+<div class="col-span-2 relative h-32 rounded-xl overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-r from-on-surface to-transparent z-10 opacity-60"></div>
+<img alt="Vehicle Spec" class="absolute inset-0 w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-110" data-alt="Close up of a premium motorcycle engine and chrome exhaust in a dark studio setting with soft cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhQ_HCZS7Xi4RlASPYc70cnHc-sks-V543NKiT8R_OlHrNdvPTfNGez_0HHeJ12bxd7VIklEd9Le_EYHvW-mLFaX0zJfb6RKC3PnknD91WDchVChsX7CPg1tHEPIH0m1IBHvjv4BXjNvlxCfJwL3ysUFQ2J67SmIX5qIYvI6pmB7mjyl_SjEtTnEHu9U4dIYG8IwudO2QjSwHaPsdUhZp2kgqCATQuDKQqp54wHe9-cjX3YMctF1ws0S4IxIugNdGFefjRkl-tEI9A"/>
+<div class="absolute bottom-4 left-6 z-20">
+<p class="font-label text-[10px] text-white/70 uppercase tracking-widest mb-1">Distance Covered</p>
+<p class="font-headline text-xl font-bold text-white">12.4 Miles</p>
+</div>
+</div>
+</div>
+<!-- Call to Actions -->
+<div class="w-full flex flex-col gap-4">
+<button class="atelier-gradient w-full py-4 px-10 rounded-lg text-white font-headline font-bold text-lg shadow-lg shadow-primary/20 active:scale-95 transition-transform duration-200 flex items-center justify-center gap-3">
+<span class="material-symbols-outlined text-xl">assignment</span>
+                Back to Tasks
+            </button>
+<button class="bg-surface-container-high w-full py-4 px-10 rounded-lg text-on-surface font-headline font-bold text-lg active:scale-95 transition-transform duration-200 flex items-center justify-center gap-3">
+<span class="material-symbols-outlined text-xl">payments</span>
+                View Earnings
+            </button>
+</div>
+</main>
+<!-- Navigation Shell Suppressed as per "The Destination Rule" - Success screens are focused journeys -->
+<!-- But keeping a minimal subtle footer area for consistency -->
+<footer class="mt-auto py-8 text-center px-6">
+<p class="font-label text-xs text-on-surface-variant/40 tracking-widest uppercase">Courier Management System v4.2</p>
+</footer>
+</body></html>

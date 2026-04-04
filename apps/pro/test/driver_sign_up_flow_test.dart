@@ -5,7 +5,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:oc_ui/oc_ui.dart';
 import 'package:pro/l10n/app_localizations.dart';
 import 'package:pro/router.dart';
-import 'package:pro/screens/driver/driver_dashboard.dart';
 import 'package:pro/screens/driver/driver_sign_up_complete_screen.dart';
 import 'package:pro/screens/driver/driver_sign_up_state.dart';
 import 'package:pro/screens/shared/partner_flow_widgets.dart';
@@ -272,7 +271,7 @@ void main() {
       await tester.tap(find.byKey(const Key('driverSignUpStartButton')));
       await tester.pumpAndSettle();
 
-      expect(find.byType(DriverDashboard), findsOneWidget);
+      expect(find.byKey(const Key('driverDashboardScreen')), findsOneWidget);
       expect(container.read(driverRegistrationDraftProvider).hasDraft, isFalse);
     });
 

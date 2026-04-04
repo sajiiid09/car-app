@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#00658f",
+              "outline": "#897362",
+              "secondary-container": "#fdb881",
+              "primary-container": "#ff8c00",
+              "secondary-fixed-dim": "#fdb881",
+              "surface-variant": "#e5e2e1",
+              "on-primary": "#ffffff",
+              "tertiary-fixed-dim": "#85cfff",
+              "tertiary-container": "#00b5fc",
+              "on-tertiary-fixed-variant": "#004c6c",
+              "secondary-fixed": "#ffdcc3",
+              "on-secondary": "#ffffff",
+              "error": "#ba1a1a",
+              "on-tertiary-fixed": "#001e2e",
+              "surface-tint": "#904d00",
+              "primary-fixed": "#ffdcc3",
+              "outline-variant": "#ddc1ae",
+              "primary-fixed-dim": "#ffb77d",
+              "background": "#fcf9f8",
+              "inverse-surface": "#313030",
+              "inverse-on-surface": "#f3f0ef",
+              "surface-container-low": "#f6f3f2",
+              "on-secondary-container": "#78471a",
+              "on-secondary-fixed": "#2f1500",
+              "on-tertiary-container": "#004360",
+              "on-surface-variant": "#564334",
+              "on-primary-container": "#623200",
+              "tertiary-fixed": "#c7e7ff",
+              "secondary": "#865224",
+              "surface-container-high": "#eae7e7",
+              "surface-container": "#f0eded",
+              "on-background": "#1c1b1b",
+              "on-secondary-fixed-variant": "#6a3b0f",
+              "on-tertiary": "#ffffff",
+              "surface-dim": "#dcd9d9",
+              "error-container": "#ffdad6",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-fixed-variant": "#6e3900",
+              "surface": "#fcf9f8",
+              "primary": "#904d00",
+              "on-primary-fixed": "#2f1500",
+              "on-error-container": "#93000a",
+              "on-error": "#ffffff",
+              "on-surface": "#1c1b1b",
+              "inverse-primary": "#ffb77d",
+              "surface-container-highest": "#e5e2e1",
+              "surface-bright": "#fcf9f8"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .message-gradient-sent {
+            background: linear-gradient(135deg, #FF8C00 0%, #904D00 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl shadow-sm dark:shadow-none">
+<div class="flex items-center justify-between px-6 h-16 w-full max-w-5xl mx-auto">
+<div class="flex items-center gap-3">
+<button class="active:scale-95 transition-transform hover:opacity-80">
+<span class="material-symbols-outlined text-zinc-500 dark:text-zinc-400">arrow_forward</span>
+</button>
+<div class="flex items-center gap-3">
+<div class="relative">
+<img alt="OnlyCars Admin" class="w-10 h-10 rounded-full object-cover ring-2 ring-primary-container/20" data-alt="portrait of a professional automotive technician in a clean workshop setting, warm natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnt9pptmPWlFZHh2Y9HCXgj8vd6y_7k41__ZxZsgVmSCp0RQxQ9HIpTkT_jjyG6UkVagBYJr-rCF8wTEnLdRT_CQUoyMtBmLDQmfi3Q5hYFRPMzHvfw9VIGLxVyn8sQBN5J8tYbCIPa108QLPvwABUNYltfKds9LX3ScGEIO9W3SE7_yl3QudTBjk-oBYgGvMqnVXfZ0iG6Ii-pS-Ry6Dex40jsByDpSOA6vpd16TA1cWs781YV_-LKyT0md0hUWpn4AFCf7Dsope6"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></span>
+</div>
+<div>
+<h1 class="font-headline font-bold text-base leading-tight text-on-surface">OnlyCars Admin</h1>
+<p class="font-label text-xs text-on-surface-variant">Fleet Manager • Premium Tier</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-zinc-500 dark:text-zinc-400 hover:opacity-80 active:scale-95 transition-all">call</button>
+<button class="material-symbols-outlined text-zinc-500 dark:text-zinc-400 hover:opacity-80 active:scale-95 transition-all">more_vert</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="pt-20 pb-24 px-4 max-w-3xl mx-auto min-h-screen flex flex-col gap-6">
+<!-- Order Reference Card (Bento Style) -->
+<section class="bg-surface-container-lowest rounded-xl p-4 shadow-sm flex items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="side view of a sleek orange modern sports car in a minimalist studio setting with dramatic shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkrEzLcebWK0EEnAbBn6_BBxPch_Rm-u2ew-GJdyhSvnTSLI5m2iXdVIJON6GO94xQPlVGlXPhOOfT-NkeT3ZeZgIHZhiJocRzF6fzIeQvxZxBZIJKXOnzTqUMFmdZmsc6YXi85W3EPfyQ3x9FZBQIvH5EVy4ieBbEbuZZe5FdYrOR8aJ9cFwGWegZWY02-IADeb7qYU-oOoWvkd8KVkf9MEMMuOt8j6CtneMU7sV5v3JfEYoialWUau2gc_YjkXIzr3Gk--qbUHSx"/>
+</div>
+<div>
+<h2 class="font-headline font-bold text-on-surface">طلب رقم #OC-8829</h2>
+<p class="font-label text-sm text-on-surface-variant">صيانة دورية - بورش 911 كاريرا</p>
+</div>
+</div>
+<div class="text-left">
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase font-label">نشط</span>
+</div>
+</section>
+<!-- Message Timeline -->
+<div class="flex flex-col gap-8 flex-1">
+<div class="flex justify-center">
+<span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant bg-surface-container-low px-3 py-1 rounded-full">اليوم</span>
+</div>
+<!-- Recipient Message -->
+<div class="flex flex-col gap-2 items-start max-w-[85%]">
+<div class="bg-surface-container-low text-on-surface p-4 rounded-2xl rounded-tr-none shadow-sm">
+<p class="font-body text-sm leading-relaxed">أهلاً بك في Atelier. لقد استلمنا سيارتك بورش 911 وهي الآن في مرحلة الفحص الأولي. هل تود إضافة أي ملاحظات خاصة بخصوص ناقل الحركة؟</p>
+</div>
+<span class="font-label text-[10px] text-on-surface-variant px-1">10:45 ص</span>
+</div>
+<!-- Sender Message (User) -->
+<div class="flex flex-col gap-2 items-end self-end max-w-[85%]">
+<div class="message-gradient-sent text-white p-4 rounded-2xl rounded-tl-none shadow-lg">
+<p class="font-body text-sm leading-relaxed">شكراً لكم. نعم، لاحظت صوتاً خفيفاً عند التغيير من الترس الثاني إلى الثالث عندما يكون المحرك بارداً.</p>
+</div>
+<div class="flex items-center gap-1 px-1">
+<span class="font-label text-[10px] text-on-surface-variant">10:48 ص</span>
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">done_all</span>
+</div>
+</div>
+<!-- Recipient Image Attachment -->
+<div class="flex flex-col gap-2 items-start max-w-[85%]">
+<div class="bg-surface-container-low p-2 rounded-2xl rounded-tr-none shadow-sm">
+<div class="rounded-xl overflow-hidden mb-3">
+<img class="w-full max-h-60 object-cover" data-alt="macro photo of a high-performance car engine parts being inspected by a hand with black nitrile gloves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGmkwlKXSNrCwYqbvAKCxqoqiehF995Np4ur3XP2gV45m7SFS_f5uRxV-c8KuCFttJrzMVLsB0kCYN7JFr7RpIkwMJsn3ncTS9yzmPmyFUJ36hC11QKr6WG78VLXlt1w9izqupj1-T2oI_2882wCUHZ6DdXN69GwSxzguT_9ANWloz7dCYW9Qy17QtGduS6DPDHbGH4EPlkaaqMyM-IZzJStr1pHGBFKW9n1K9JkLxxN2RDv9Ys7AAEw9LeXQEN3G1S1qfShblG5Tn"/>
+</div>
+<p class="font-body text-sm leading-relaxed px-2 pb-2 text-on-surface">لقد قمنا بتوثيق حالة المحرك. سنقوم بفحص علبة التروس الآن وإعلامكم بالنتائج.</p>
+</div>
+<span class="font-label text-[10px] text-on-surface-variant px-1">11:02 ص</span>
+</div>
+<!-- Sender Quick Action Suggestion -->
+<div class="flex flex-col gap-2 items-end self-end max-w-[85%]">
+<div class="message-gradient-sent text-white p-4 rounded-2xl rounded-tl-none shadow-lg">
+<p class="font-body text-sm leading-relaxed">ممتاز. هل يمكنكم تزويدي بتقدير أولي للتكلفة؟</p>
+</div>
+<div class="flex items-center gap-1 px-1">
+<span class="font-label text-[10px] text-on-surface-variant">11:05 ص</span>
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">done_all</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Chat Input Area -->
+<footer class="fixed bottom-0 w-full bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl border-t border-zinc-100 dark:border-zinc-800 pb-safe z-50">
+<div class="max-w-3xl mx-auto px-4 h-20 flex items-center gap-3">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high transition-colors text-on-surface-variant active:scale-90">
+<span class="material-symbols-outlined">add</span>
+</button>
+<div class="flex-1 relative">
+<input class="w-full h-12 bg-surface-container-low border-none rounded-xl px-4 text-sm font-body focus:ring-2 focus:ring-primary-container transition-all" placeholder="اكتب رسالتك هنا..." type="text"/>
+<button class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">mood</span>
+</button>
+</div>
+<button class="message-gradient-sent w-12 h-12 flex items-center justify-center rounded-xl text-white shadow-md hover:opacity-90 active:scale-90 transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</footer>
+<!-- BottomNavBar (Hidden on desktop if needed, but keeping for Shell consistency) -->
+<div class="hidden lg:flex fixed bottom-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-xl shadow-2xl rounded-full px-8 py-3 items-center gap-8 z-[60] border border-outline-variant/20">
+<div class="flex flex-col items-center justify-center text-zinc-400 font-semibold text-[10px] uppercase tracking-widest font-label hover:text-orange-400 transition-all cursor-pointer">
+<span class="material-symbols-outlined">directions_car</span>
+<span>Market</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-400 font-semibold text-[10px] uppercase tracking-widest font-label hover:text-orange-400 transition-all cursor-pointer">
+<span class="material-symbols-outlined">search</span>
+<span>Search</span>
+</div>
+<div class="flex flex-col items-center justify-center text-orange-600 font-bold text-[10px] uppercase tracking-widest font-label transition-all cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+<span>Chat</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-400 font-semibold text-[10px] uppercase tracking-widest font-label hover:text-orange-400 transition-all cursor-pointer">
+<span class="material-symbols-outlined">local_shipping</span>
+<span>Orders</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-400 font-semibold text-[10px] uppercase tracking-widest font-label hover:text-orange-400 transition-all cursor-pointer">
+<span class="material-symbols-outlined">person</span>
+<span>Profile</span>
+</div>
+</div>
+</body></html>

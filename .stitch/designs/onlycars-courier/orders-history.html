@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Orders - OnlyCars</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#ff8c00",
+              "on-primary-fixed": "#2f1500",
+              "on-surface-variant": "#564334",
+              "outline-variant": "#ddc1ae",
+              "on-primary-container": "#623200",
+              "tertiary": "#00658f",
+              "primary": "#904d00",
+              "error": "#ba1a1a",
+              "secondary-container": "#fdb881",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#313030",
+              "on-tertiary-fixed-variant": "#004c6c",
+              "tertiary-container": "#00b5fc",
+              "primary-fixed": "#ffdcc3",
+              "tertiary-fixed-dim": "#85cfff",
+              "on-secondary-fixed-variant": "#6a3b0f",
+              "secondary": "#865224",
+              "outline": "#897362",
+              "error-container": "#ffdad6",
+              "secondary-fixed-dim": "#fdb881",
+              "surface-container-high": "#eae7e7",
+              "on-primary-fixed-variant": "#6e3900",
+              "on-error-container": "#93000a",
+              "primary-fixed-dim": "#ffb77d",
+              "tertiary-fixed": "#c7e7ff",
+              "on-secondary-container": "#78471a",
+              "surface-tint": "#904d00",
+              "on-secondary": "#ffffff",
+              "surface-container": "#f0eded",
+              "on-tertiary-fixed": "#001e2e",
+              "on-error": "#ffffff",
+              "surface-container-low": "#f6f3f2",
+              "inverse-primary": "#ffb77d",
+              "surface-container-lowest": "#ffffff",
+              "background": "#fcf9f8",
+              "on-background": "#1c1b1b",
+              "on-tertiary": "#ffffff",
+              "on-surface": "#1c1b1b",
+              "surface-dim": "#dcd9d9",
+              "on-secondary-fixed": "#2f1500",
+              "surface": "#fcf9f8",
+              "surface-bright": "#fcf9f8",
+              "surface-variant": "#e5e2e1",
+              "inverse-on-surface": "#f3f0ef",
+              "secondary-fixed": "#ffdcc3",
+              "on-tertiary-container": "#004360",
+              "surface-container-highest": "#e5e2e1"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        display: inline-block;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr;
+      }
+      .atelier-gradient {
+        background: linear-gradient(135deg, #ff8c00 0%, #904d00 100%);
+      }
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body text-on-background min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#FCF9F8]/80 dark:bg-[#1C1B1B]/80 backdrop-blur-md shadow-[0_8px_24px_rgba(28,27,27,0.04)]">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high ring-2 ring-primary-container/20">
+<img alt="User" class="w-full h-full object-cover" data-alt="User profile picture of a young man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-xw80klI3RlEqWbTfiK-uibQT5GezIem_GXGSJpBTW1xuiq_rZjXY0bQ9E20Oznt9EF61Jvc_btZB1DSre8LcU9dGG3ASZeN82ZlgUUUgBNDt2t6arqO6foXsImCafBOyVXjX3wQdSZuvWy-fGse4kqamNa2njH525qyRJiDvYyT3DPxpagNTazwiNuRVrPr0xfv3HUdzuG35yuWlPc9ykBL1P1iBv1N0zGMItfaD75iyA21vtRMWnXMAymtstJdO2Vskdg43ns7N"/>
+</div>
+<h1 class="text-2xl font-black text-[#1C1B1B] dark:text-[#FCF9F8] font-headline tracking-tight">OnlyCars</h1>
+</div>
+<button class="text-[#564334] dark:text-[#A8998D] hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+<div class="bg-[#F6F3F2] dark:bg-[#2A2827] h-[1px] w-full"></div>
+</header>
+<main class="pt-24 px-6 max-w-7xl mx-auto">
+<!-- Tab Navigation -->
+<nav class="flex space-x-2 mb-8 bg-surface-container-low p-1.5 rounded-xl w-fit">
+<button class="px-6 py-2.5 rounded-lg bg-surface-container-lowest text-primary font-bold shadow-sm text-sm transition-all">Active</button>
+<button class="px-6 py-2.5 rounded-lg text-on-surface-variant font-semibold text-sm hover:bg-surface-container-high transition-all">Completed</button>
+<button class="px-6 py-2.5 rounded-lg text-on-surface-variant font-semibold text-sm hover:bg-surface-container-high transition-all">Cancelled</button>
+</nav>
+<!-- Active Orders Section -->
+<section class="space-y-6 mb-12">
+<div class="flex items-center justify-between">
+<h2 class="font-headline text-xl font-extrabold tracking-tight">Active Trackings</h2>
+<span class="text-xs font-bold uppercase tracking-widest text-primary px-3 py-1 bg-primary-container/10 rounded-full">2 items</span>
+</div>
+<!-- Service Booking Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-outline-variant/10 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4">
+<div class="flex items-center gap-1.5 text-[#FF8C00] bg-[#FF8C00]/10 px-3 py-1 rounded-full">
+<span class="w-2 h-2 rounded-full bg-[#FF8C00] animate-pulse"></span>
+<span class="text-[10px] font-bold uppercase tracking-wider">In Progress</span>
+</div>
+</div>
+<div class="flex gap-5 mb-6">
+<div class="w-16 h-16 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl" data-icon="build">build</span>
+</div>
+<div>
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Workshop Service</p>
+<h3 class="font-headline text-lg font-bold">Service Booking at Apex Performance</h3>
+<p class="text-sm text-on-surface-variant">Scheduled for Oct 24, 09:30 AM</p>
+</div>
+</div>
+<!-- Tracking Bar -->
+<div class="space-y-3">
+<div class="flex justify-between text-[11px] font-bold uppercase tracking-tighter text-on-surface-variant">
+<span>Drop off</span>
+<span class="text-primary">Servicing</span>
+<span>Quality Check</span>
+<span>Ready</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-primary-container w-1/4 opacity-30"></div>
+<div class="h-full atelier-gradient w-1/4 rounded-r-full shadow-[0_0_10px_rgba(255,140,0,0.4)]"></div>
+<div class="h-full bg-surface-container flex-1"></div>
+</div>
+</div>
+</div>
+<!-- Parts Order Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-outline-variant/10">
+<div class="flex items-start justify-between mb-6">
+<div class="flex gap-5">
+<div class="w-16 h-16 rounded-xl bg-surface-container overflow-hidden">
+<img alt="Part" class="w-full h-full object-cover" data-alt="High performance ceramic brake disc part" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAF5WXxaB7cwprKWj9wtrIzZfLIJV8wpmcx9pCseP7-lVq9SYzDyfXJUIILo5egNViHakkg5rNBTAKkkl-8-BtNZfZ-bJH3k8q_G5c-Gt5cZhO8tTApYozeVhi3Fjgioq2Jd9j4SMVG5p-sxuy_so6WjkkGk9d3UyW3jAN9cNtUNA9ibW0eKK3IA6nwz0tRsgVmSercSy_zQYHR6mFau2t1wxNUbFsvB3WnQoa5409lkJrcm8VayfEOFt2nHjquRGZOi0XkKx9hIuDk"/>
+</div>
+<div>
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Order #OC-88291</p>
+<h3 class="font-headline text-lg font-bold">Parts Order: Carbon Ceramic Brakes</h3>
+<p class="text-sm text-tertiary font-semibold flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-sm" data-icon="local_shipping">local_shipping</span>
+                                Dispatched via Express Rail
+                            </p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-lg font-black font-headline text-primary">$2,450.00</p>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase">Estimated Oct 22</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 atelier-gradient text-white font-bold py-3 rounded-lg text-sm active:scale-95 transition-transform">Track Package</button>
+<button class="px-4 py-3 bg-surface-container text-on-surface font-bold rounded-lg text-sm active:scale-95 transition-transform">Details</button>
+</div>
+</div>
+</section>
+<!-- Completed Orders Section -->
+<section class="space-y-6">
+<h2 class="font-headline text-xl font-extrabold tracking-tight">Recent History</h2>
+<!-- Bento Grid style for history -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Completed Card 1 -->
+<div class="bg-surface-container-low rounded-2xl p-4 flex gap-4 hover:bg-surface-container transition-colors group">
+<div class="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0">
+<img alt="Car" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A clean white Porsche 911 being detailed" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNr7Mbui9Vi67u1OimYq-p00tsu2eOs7kaHVbHuEnb709ww3AidXeOIILVD8KMebREqgXdI9NUy1jdwkPqHTm0DqH_VS2JbrCGUMCk_cLX5kuFKrVokWK3yKElv0z9yudZdW6zGMY2XkKy-InCJYdHNZAjK_scZ9j5sJjczlc5rMu-dqDCYADjzYSffPijSro0K9z-ychxOdYEc90yrynLy8vW5zXBODbCtkeiy_KXOs91r34khDbncm2k07cXEz-jx9XdItqQlMBV"/>
+</div>
+<div class="flex flex-col justify-between flex-1 py-1">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-sm leading-tight">Full Ceramic Coating Package</h4>
+<span class="text-[10px] text-on-surface-variant font-medium">Oct 12</span>
+</div>
+<div class="flex items-center gap-0.5 mt-1 text-primary-container">
+<span class="material-symbols-outlined text-xs" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xs" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xs" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xs" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xs" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<button class="text-xs font-bold text-primary flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                            Reorder Service
+                            <span class="material-symbols-outlined text-xs" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Completed Card 2 -->
+<div class="bg-surface-container-low rounded-2xl p-4 flex gap-4 hover:bg-surface-container transition-colors group">
+<div class="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0">
+<img alt="Oil" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Synthetic motor oil bottle and car parts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOIZwF8XjLzUM6oGNuQUzdJbMTjm4Jb7flq_YGYMEL454jWSGpYE0j7v8OIhnEZo0NpQPDRFNGn_ogvGzF2NSlyC-zcrK-sTi7FPM-fVdLYuToUIqQwLP98AzP6wBLd7FfikABKZjhJYJuENwL1HOQ90QaXcVbGif-evZj0qepOjIR5ZZQO7ClP4GBrbQr_iyVVTphaEpo2yShLqshc02VfCuOtRSzH86JJ73ItNhrov52bQUxF71rdOXbx6pvJ_qNfNxgH5s6I8jn"/>
+</div>
+<div class="flex flex-col justify-between flex-1 py-1">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-sm leading-tight">Mobil 1 Advanced Full Synthetic</h4>
+<span class="text-[10px] text-on-surface-variant font-medium">Sep 28</span>
+</div>
+<div class="flex items-center gap-0.5 mt-1 text-primary-container">
+<span class="material-symbols-outlined text-xs" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xs" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xs" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xs" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xs" data-icon="star" style="font-variation-settings: 'FILL' 0;">star</span>
+</div>
+</div>
+<button class="text-xs font-bold text-primary flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                            Download Receipt
+                            <span class="material-symbols-outlined text-xs" data-icon="download">download</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-2xl bg-[#FCF9F8]/80 dark:bg-[#1C1B1B]/80 backdrop-blur-md shadow-[0_-8px_24px_rgba(28,27,27,0.04)]">
+<div class="flex justify-around items-center w-full px-4 pb-safe pt-2">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-[#564334] dark:text-[#A8998D] px-4 py-2 hover:text-[#904D00] transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-wider mt-1">Home</span>
+</a>
+<!-- Explore -->
+<a class="flex flex-col items-center justify-center text-[#564334] dark:text-[#A8998D] px-4 py-2 hover:text-[#904D00] transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-wider mt-1">Explore</span>
+</a>
+<!-- Orders (Active) -->
+<a class="flex flex-col items-center justify-center text-[#FF8C00] bg-[#FF8C00]/10 rounded-xl px-4 py-2 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_bag" data-weight="fill" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-wider mt-1">Orders</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-[#564334] dark:text-[#A8998D] px-4 py-2 hover:text-[#904D00] transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-wider mt-1">Profile</span>
+</a>
+</div>
+</nav>
+</body></html>

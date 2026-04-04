@@ -1252,6 +1252,301 @@ class AppLocalizationsEn extends AppLocalizations {
   String get shopStageCompleted => 'Completed';
 
   @override
+  String get driverShellDashboardTab => 'DASHBOARD';
+
+  @override
+  String get driverShellOrdersTab => 'ORDERS';
+
+  @override
+  String get driverShellEarningsTab => 'EARNINGS';
+
+  @override
+  String get driverShellMessagesTab => 'MESSAGES';
+
+  @override
+  String get driverShellProfileTab => 'PROFILE';
+
+  @override
+  String get driverDashboardEyebrow => 'Courier Operations';
+
+  @override
+  String get driverDashboardTitle => 'Courier Dashboard';
+
+  @override
+  String get driverDashboardSubtitle =>
+      'Keep part deliveries on schedule with live request visibility, payout tracking, and a restrained blue courier shell.';
+
+  @override
+  String get driverAvailabilityOnTitle => 'Available for dispatch';
+
+  @override
+  String get driverAvailabilityOnSubtitle =>
+      'Nearby premium part deliveries can be assigned to you immediately.';
+
+  @override
+  String get driverAvailabilityOffTitle => 'Unavailable right now';
+
+  @override
+  String get driverAvailabilityOffSubtitle =>
+      'New delivery requests are paused until you go back online.';
+
+  @override
+  String get driverMetricTodayTrips => 'Today Trips';
+
+  @override
+  String get driverMetricTodayEarnings => 'Today Earnings';
+
+  @override
+  String get driverMetricPendingRequests => 'Pending Requests';
+
+  @override
+  String get driverMetricActiveDeliveries => 'Active Deliveries';
+
+  @override
+  String get driverQuickActionsTitle => 'Quick Actions';
+
+  @override
+  String get driverQuickActionOrders => 'Open Orders';
+
+  @override
+  String get driverQuickActionEarnings => 'View Earnings';
+
+  @override
+  String get driverQuickActionProfile => 'Open Profile';
+
+  @override
+  String get driverLiveDeliveryTitle => 'Live Delivery';
+
+  @override
+  String get driverNewRequestsTitle => 'New Requests';
+
+  @override
+  String get driverSeeAll => 'See All';
+
+  @override
+  String get driverOrdersEyebrow => 'Delivery Queue';
+
+  @override
+  String get driverOrdersTitle => 'Orders History';
+
+  @override
+  String get driverOrdersSubtitle =>
+      'Track fresh dispatches, active handoffs, and completed runs from one courier list.';
+
+  @override
+  String get driverOrdersFilterNew => 'New';
+
+  @override
+  String get driverOrdersFilterActive => 'Active';
+
+  @override
+  String get driverOrdersFilterCompleted => 'Completed';
+
+  @override
+  String get driverOrdersEmpty => 'No deliveries in this filter yet.';
+
+  @override
+  String get driverEarningsEyebrow => 'Payout Visibility';
+
+  @override
+  String get driverEarningsTitle => 'Earnings & Transactions';
+
+  @override
+  String get driverEarningsSubtitle =>
+      'Review today’s courier earnings, pending payouts, and the transaction history tied to completed delivery runs.';
+
+  @override
+  String get driverEarningsToday => 'Today Earnings';
+
+  @override
+  String get driverEarningsPending => 'Pending Payout';
+
+  @override
+  String get driverEarningsThisWeek => 'This Week';
+
+  @override
+  String get driverEarningsCompletion => 'Completion Rate';
+
+  @override
+  String get driverTransactionsTitle => 'Transactions';
+
+  @override
+  String get driverTransactionPaid => 'Paid';
+
+  @override
+  String get driverTransactionProcessing => 'Processing';
+
+  @override
+  String get driverMessagesEyebrow => 'Courier Inbox';
+
+  @override
+  String get driverMessagesTitle => 'Messages';
+
+  @override
+  String get driverMessagesSubtitle =>
+      'Dispatch control, shop updates, and workshop replies stay in one courier thread list.';
+
+  @override
+  String get driverMessagesSupportTitle => 'Dispatch Support';
+
+  @override
+  String get driverMessagesSupportSubtitle =>
+      'Keep operational updates in one place while the courier flow stays UI-first for this pass.';
+
+  @override
+  String get driverProfileEyebrow => 'Courier Identity';
+
+  @override
+  String get driverProfileTitle => 'Courier Profile';
+
+  @override
+  String get driverProfileSubtitle =>
+      'View service coverage, payout posture, and the public courier details shown across OnlyCars dispatch.';
+
+  @override
+  String get driverProfileTrips => 'Trips';
+
+  @override
+  String get driverProfileRating => 'Rating';
+
+  @override
+  String get driverProfileCompletion => 'Completion';
+
+  @override
+  String get driverProfileMonthlyPayout => 'Monthly Payout';
+
+  @override
+  String get driverProfileContactTitle => 'Contact';
+
+  @override
+  String get driverProfileCoverageTitle => 'Coverage';
+
+  @override
+  String get driverProfileVehicleTitle => 'Vehicle';
+
+  @override
+  String get driverEmailLabel => 'Email';
+
+  @override
+  String get driverRequestEyebrow => 'Dispatch Request';
+
+  @override
+  String get driverRequestTitle => 'New Delivery Request';
+
+  @override
+  String get driverRequestSubtitle =>
+      'Review the pickup, dropoff, and payout details before locking the route to your courier account.';
+
+  @override
+  String get driverNavigationEyebrow => 'Active Route';
+
+  @override
+  String get driverNavigationTitle => 'Active Delivery Navigation';
+
+  @override
+  String get driverNavigationSubtitle =>
+      'Navigation is focused on the current handoff. Keep the ETA tight and move to confirmation once the package arrives.';
+
+  @override
+  String get driverConfirmEyebrow => 'Proof Of Delivery';
+
+  @override
+  String get driverConfirmTitle => 'Confirm Delivery';
+
+  @override
+  String get driverConfirmSubtitle =>
+      'Verify the recipient, capture the final handoff, and close the run for payout release.';
+
+  @override
+  String get driverCompletedEyebrow => 'Run Closed';
+
+  @override
+  String get driverCompletedTitle => 'Delivery Completed';
+
+  @override
+  String get driverCompletedSubtitle =>
+      'The handoff is confirmed and this courier run is now reflected in your earnings ledger.';
+
+  @override
+  String get driverRequestDetailsTitle => 'Request Details';
+
+  @override
+  String get driverPickupDetailsTitle => 'Pickup Details';
+
+  @override
+  String get driverDropoffDetailsTitle => 'Dropoff Details';
+
+  @override
+  String get driverRecipientTitle => 'Recipient';
+
+  @override
+  String get driverTrackingCodeLabel => 'Tracking Code';
+
+  @override
+  String get driverPickupWindowLabel => 'Pickup Window';
+
+  @override
+  String get driverDropoffWindowLabel => 'Dropoff Window';
+
+  @override
+  String get driverDistanceLabel => 'Distance';
+
+  @override
+  String get driverPayoutLabel => 'Payout';
+
+  @override
+  String get driverRecipientLabel => 'Recipient';
+
+  @override
+  String get driverNoteLabel => 'Note';
+
+  @override
+  String get driverAcceptDelivery => 'Accept Delivery';
+
+  @override
+  String get driverProceedToConfirmation => 'Proceed to Confirmation';
+
+  @override
+  String get driverMarkDelivered => 'Mark Delivered';
+
+  @override
+  String get driverBackToOrders => 'Back to Orders';
+
+  @override
+  String get driverBackToDashboard => 'Back to Dashboard';
+
+  @override
+  String get driverStageNewRequest => 'New Request';
+
+  @override
+  String get driverStageNavigation => 'Navigation';
+
+  @override
+  String get driverStageConfirm => 'Confirm';
+
+  @override
+  String get driverStageCompleted => 'Completed';
+
+  @override
+  String get driverDeliveryNotFound => 'This delivery could not be found.';
+
+  @override
+  String get driverNavigationChecklistOne =>
+      'Follow the dispatch-preferred route to keep the workshop slot.';
+
+  @override
+  String get driverNavigationChecklistTwo =>
+      'Call ahead if traffic shifts the ETA by more than five minutes.';
+
+  @override
+  String get driverNavigationChecklistThree =>
+      'Keep the parcel sealed until the recipient verifies the handoff.';
+
+  @override
+  String get driverConfirmHeroNote =>
+      'Recipient confirmation is the final step before payout release.';
+
+  @override
   String get loading => 'Loading...';
 
   @override
