@@ -23,6 +23,27 @@
   "addVehicle": "Add Vehicle",
   "diagnosisReport": "Diagnosis Report",
   "chat": "Chat",
+  "chatInboxTitle": "Chats",
+  "chatMessagesSectionLabel": "Messages",
+  "chatFilterAll": "All",
+  "chatFilterUnread": "Unread",
+  "chatYouPrefix": "You",
+  "chatUnreadCount": "{count} new messages",
+  "@chatUnreadCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "chatEmptyTitle": "No chats yet",
+  "chatEmptySubtitle": "Start a conversation from a workshop profile and it will appear here.",
+  "chatLoadError": "Unable to load chats",
+  "chatThreadFallbackTitle": "Chats",
+  "chatNoMessagesYet": "Say hello to start the conversation.",
+  "chatComposerHint": "Write a message",
+  "chatSend": "Send",
+  "chatSendFailed": "Failed to send message",
   "cart": "Cart",
   "checkout": "Checkout",
   "orderTracking": "Order Tracking",

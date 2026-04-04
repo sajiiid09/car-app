@@ -27,6 +27,10 @@ final userProfileProvider = FutureProvider<OcUser?>((ref) async {
   return await service.getProfile();
 });
 
+final currentChatUserIdProvider = Provider<String?>(
+  (_) => OcSupabase.currentUserId,
+);
+
 // ===== USER ROLES =====
 final userRolesProvider = FutureProvider<List<String>>((ref) async {
   final service = ref.read(authServiceProvider);
@@ -74,6 +78,37 @@ final chatRoomsProvider = FutureProvider<List<ChatRoom>>((ref) async {
   return await service.getRooms();
 });
 
+class ChatInboxSummary {
+  const ChatInboxSummary({required this.room, required this.unreadCount});
+
+  final ChatRoom room;
+  final int unreadCount;
+}
+
+final chatInboxProvider = FutureProvider<List<ChatInboxSummary>>((ref) async {
+  final service = ref.read(chatServiceProvider);
+  final rooms = await ref.watch(chatRoomsProvider.future);
+  final unreadCounts = await Future.wait(
+    rooms.map((room) => service.getUnreadCount(room.id)),
+  );
+
+  return [
+    for (final entry in rooms.indexed)
+      ChatInboxSummary(room: entry.$2, unreadCount: unreadCounts[entry.$1]),
+  ];
+});
+
+final chatRoomSummaryProvider =
+    FutureProvider.family<ChatInboxSummary?, String>((ref, roomId) async {
+      final summaries = await ref.watch(chatInboxProvider.future);
+      for (final summary in summaries) {
+        if (summary.room.id == roomId) {
+          return summary;
+        }
+      }
+      return null;
+    });
+
 // ===== NOTIFICATIONS =====
 final notificationsProvider = FutureProvider<List<OcNotification>>((ref) async {
   final service = ref.read(notificationServiceProvider);
@@ -93,31 +128,44 @@ final unreadNotifCountProvider = StreamProvider<int>((ref) {
 });
 
 // ===== DIAGNOSIS REPORTS =====
-final diagnosisReportsProvider = FutureProvider<List<DiagnosisReport>>((ref) async {
+final diagnosisReportsProvider = FutureProvider<List<DiagnosisReport>>((
+  ref,
+) async {
   final service = ref.read(diagnosisServiceProvider);
   return await service.getConsumerReports();
 });
 
 // ===== ORDER STREAM (real-time) =====
-final orderStreamProvider = StreamProvider.family<Order?, String>((ref, orderId) {
+final orderStreamProvider = StreamProvider.family<Order?, String>((
+  ref,
+  orderId,
+) {
   final service = ref.read(orderServiceProvider);
   return service.streamOrder(orderId);
 });
 
 // ===== PARTS (filtered by category) =====
-final partsProvider = FutureProvider.family<List<Part>, String?>((ref, categoryId) async {
+final partsProvider = FutureProvider.family<List<Part>, String?>((
+  ref,
+  categoryId,
+) async {
   final service = ref.read(partsServiceProvider);
   return await service.getParts(categoryId: categoryId);
 });
 
 // ===== PART DETAIL =====
-final partDetailProvider = FutureProvider.family<Part?, String>((ref, partId) async {
+final partDetailProvider = FutureProvider.family<Part?, String>((
+  ref,
+  partId,
+) async {
   final service = ref.read(partsServiceProvider);
   return await service.getPartById(partId);
 });
 
 // ===== FAVORITES =====
-final favoritesProvider = FutureProvider<List<Map<String, dynamic>>>((ref) async {
+final favoritesProvider = FutureProvider<List<Map<String, dynamic>>>((
+  ref,
+) async {
   final service = ref.read(favoritesServiceProvider);
   return await service.getFavorites();
 });
@@ -162,7 +210,10 @@ class CartNotifier extends Notifier<Map<String, CartItem>> {
     final existing = updated[partId];
     if (existing == null) return;
     if (existing.quantity > 1) {
-      updated[partId] = CartItem(part: existing.part, quantity: existing.quantity - 1);
+      updated[partId] = CartItem(
+        part: existing.part,
+        quantity: existing.quantity - 1,
+      );
     } else {
       updated.remove(partId);
     }
@@ -178,13 +229,19 @@ class CartNotifier extends Notifier<Map<String, CartItem>> {
 
   /// Build items list for OrderService.createOrder()
   List<Map<String, dynamic>> toOrderItems() {
-    return state.values.map((ci) => <String, dynamic>{
-      'part_id': ci.part.id,
-      'shop_id': ci.part.shopId,
-      'quantity': ci.quantity,
-      'unit_price': ci.part.price,
-    }).toList();
+    return state.values
+        .map(
+          (ci) => <String, dynamic>{
+            'part_id': ci.part.id,
+            'shop_id': ci.part.shopId,
+            'quantity': ci.quantity,
+            'unit_price': ci.part.price,
+          },
+        )
+        .toList();
   }
 }
 
-final cartProvider = NotifierProvider<CartNotifier, Map<String, CartItem>>(CartNotifier.new);
+final cartProvider = NotifierProvider<CartNotifier, Map<String, CartItem>>(
+  CartNotifier.new,
+);

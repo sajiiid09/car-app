@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pro/l10n/app_localizations.dart';
 
+import '../chat/pro_chat_screens.dart';
+import '../chat/pro_chat_state.dart';
 import '../shared/partner_flow_palette.dart';
 import 'shop_shared.dart';
 import 'shop_workflow_state.dart';
@@ -157,73 +159,9 @@ class ShopMessagesScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final l10n = AppLocalizations.of(context)!;
-    final threads = ref.watch(shopWorkflowProvider).messages;
-
-    return ShopScrollView(
-      children: [
-        const KeyedSubtree(
-          key: Key('shopMessagesScreen'),
-          child: SizedBox.shrink(),
-        ),
-        const ShopReveal(child: ShopTopChrome(showNotification: false)),
-        const SizedBox(height: 24),
-        ShopReveal(
-          delay: 30,
-          child: ShopHeader(
-            eyebrow: l10n.shopMessagesEyebrow,
-            title: l10n.shopMessagesTitle,
-            subtitle: l10n.shopMessagesSubtitle,
-          ),
-        ),
-        const SizedBox(height: 24),
-        ShopReveal(
-          delay: 60,
-          child: ShopSurfaceCard(
-            child: Column(
-              children: [
-                Container(
-                  width: 84,
-                  height: 84,
-                  decoration: BoxDecoration(
-                    color: PartnerFlowPalette.primarySoft,
-                    borderRadius: BorderRadius.circular(28),
-                  ),
-                  child: const Icon(
-                    Icons.forum_outlined,
-                    size: 42,
-                    color: PartnerFlowPalette.primaryEnd,
-                  ),
-                ),
-                const SizedBox(height: 18),
-                Text(
-                  l10n.shopMessagesEmptyTitle,
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                    fontWeight: FontWeight.w900,
-                  ),
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  l10n.shopMessagesEmptySubtitle,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: PartnerFlowPalette.textSecondary,
-                    height: 1.45,
-                  ),
-                ),
-                const SizedBox(height: 20),
-                for (final (index, thread) in threads.indexed)
-                  Padding(
-                    padding: EdgeInsets.only(
-                      bottom: index == threads.length - 1 ? 0 : 12,
-                    ),
-                    child: _MessagePreviewTile(thread: thread),
-                  ),
-              ],
-            ),
-          ),
-        ),
-      ],
+    return const ProChatInboxScreen(
+      role: ProChatRole.shop,
+      screenKey: Key('shopMessagesScreen'),
     );
   }
 }
@@ -567,95 +505,6 @@ class _InventoryListCard extends StatelessWidget {
                 ),
               ],
             ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _MessagePreviewTile extends StatelessWidget {
-  const _MessagePreviewTile({required this.thread});
-
-  final ShopMessagePreview thread;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: PartnerFlowPalette.surfaceSoft,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 42,
-            height: 42,
-            decoration: BoxDecoration(
-              color: PartnerFlowPalette.primarySoft,
-              borderRadius: BorderRadius.circular(14),
-            ),
-            child: const Icon(
-              Icons.mark_chat_unread_outlined,
-              color: PartnerFlowPalette.primaryEnd,
-            ),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  thread.title,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w800),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  thread.subtitle,
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: PartnerFlowPalette.textSecondary,
-                    height: 1.35,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(width: 14),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text(
-                thread.timestamp,
-                style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                  color: PartnerFlowPalette.textSecondary,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              if (thread.unreadCount > 0) ...[
-                const SizedBox(height: 8),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 4,
-                  ),
-                  decoration: BoxDecoration(
-                    color: PartnerFlowPalette.primaryEnd,
-                    borderRadius: BorderRadius.circular(999),
-                  ),
-                  child: Text(
-                    '${thread.unreadCount}',
-                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
-                ),
-              ],
-            ],
           ),
         ],
       ),

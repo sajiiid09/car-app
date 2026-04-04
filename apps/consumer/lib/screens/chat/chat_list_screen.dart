@@ -1,9 +1,10 @@
+import 'package:consumer/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:oc_api/oc_api.dart';
 import 'package:oc_models/oc_models.dart';
 import 'package:oc_ui/oc_ui.dart';
+
 import '../../providers.dart';
 
 class ChatListScreen extends ConsumerStatefulWidget {
@@ -14,80 +15,90 @@ class ChatListScreen extends ConsumerStatefulWidget {
 }
 
 class _ChatListScreenState extends ConsumerState<ChatListScreen> {
-  final _searchCtrl = TextEditingController();
-  String _searchQuery = '';
-
-  @override
-  void dispose() {
-    _searchCtrl.dispose();
-    super.dispose();
-  }
+  OcChatListFilter _selectedFilter = OcChatListFilter.all;
 
   @override
   Widget build(BuildContext context) {
-    final roomsAsync = ref.watch(chatRoomsProvider);
-    final currentUid = OcSupabase.currentUserId;
+    final l10n = AppLocalizations.of(context)!;
+    final inboxAsync = ref.watch(chatInboxProvider);
+    final profile = ref.watch(userProfileProvider).valueOrNull;
 
     return Scaffold(
       backgroundColor: OcColors.background,
       body: SafeArea(
         child: Column(
           children: [
-            // Header
-            Padding(
-              padding: const EdgeInsets.fromLTRB(OcSpacing.lg, OcSpacing.lg, OcSpacing.lg, 0),
-              child: Text('المحادثات', style: Theme.of(context).textTheme.headlineMedium),
+            const KeyedSubtree(
+              key: ValueKey('consumerChatListScreen'),
+              child: SizedBox.shrink(),
             ),
-
-            // Search
-            Padding(
-              padding: const EdgeInsets.all(OcSpacing.lg),
-              child: TextField(
-                controller: _searchCtrl,
-                decoration: const InputDecoration(
-                  hintText: 'ابحث في المحادثات...',
-                  prefixIcon: Icon(Icons.search_rounded),
-                ),
-                onChanged: (v) => setState(() => _searchQuery = v.toLowerCase()),
-              ),
+            OcChatInboxHeader(
+              title: l10n.chatInboxTitle,
+              sectionLabel: l10n.chatMessagesSectionLabel,
+              selectedFilter: _selectedFilter,
+              onFilterSelected: (filter) {
+                setState(() => _selectedFilter = filter);
+              },
+              avatarLabel: profile?.name ?? l10n.profile,
+              avatarImageUrl: profile?.avatarUrl,
+              allFilterLabel: l10n.chatFilterAll,
+              unreadFilterLabel: l10n.chatFilterUnread,
             ),
-
-            // Chat rooms list
             Expanded(
-              child: roomsAsync.when(
-                data: (rooms) {
-                  // Filter by search
-                  final filtered = _searchQuery.isEmpty
-                      ? rooms
-                      : rooms.where((r) {
-                          final name = _getOtherName(r, currentUid);
-                          return name.toLowerCase().contains(_searchQuery);
-                        }).toList();
+              child: inboxAsync.when(
+                data: (summaries) {
+                  final visibleSummaries =
+                      _selectedFilter == OcChatListFilter.unread
+                      ? summaries
+                            .where((summary) => summary.unreadCount > 0)
+                            .toList(growable: false)
+                      : summaries;
 
-                  if (filtered.isEmpty) {
-                    return const OcEmptyState(
-                      icon: Icons.chat_outlined,
-                      message: 'لا توجد محادثات',
+                  if (visibleSummaries.isEmpty) {
+                    return OcChatStateSection(
+                      title: l10n.chatEmptyTitle,
+                      subtitle: l10n.chatEmptySubtitle,
                     );
                   }
 
                   return RefreshIndicator(
-                    onRefresh: () async => ref.invalidate(chatRoomsProvider),
-                    child: ListView.separated(
-                      padding: const EdgeInsets.symmetric(horizontal: OcSpacing.lg),
-                      itemCount: filtered.length,
-                      separatorBuilder: (_, __) => const Divider(height: 1, color: OcColors.border),
-                      itemBuilder: (_, i) => _ChatRoomTile(
-                        room: filtered[i],
-                        currentUid: currentUid ?? '',
-                      ),
+                    onRefresh: () async {
+                      ref.invalidate(chatRoomsProvider);
+                      ref.invalidate(chatInboxProvider);
+                    },
+                    child: ListView.builder(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      padding: const EdgeInsets.only(top: 4, bottom: 24),
+                      itemCount: visibleSummaries.length,
+                      itemBuilder: (context, index) {
+                        final summary = visibleSummaries[index];
+                        final room = summary.room;
+                        return OcChatThreadTile(
+                          key: ValueKey('consumerChatThread-${room.id}'),
+                          title: _participantName(room),
+                          preview: _previewText(l10n: l10n, summary: summary),
+                          timestamp: _formatInboxTime(room.lastMessageAt),
+                          imageUrl: room.otherUser?['avatar_url'] as String?,
+                          unreadCount: summary.unreadCount,
+                          highlightPreview: summary.unreadCount > 0,
+                          onTap: () => context.push('/chat/${room.id}'),
+                        );
+                      },
                     ),
                   );
                 },
                 loading: () => const Center(child: CircularProgressIndicator()),
-                error: (_, __) => OcErrorState(
-                  message: 'تعذر تحميل المحادثات',
-                  onRetry: () => ref.invalidate(chatRoomsProvider),
+                error: (error, stackTrace) => OcChatStateSection(
+                  title: l10n.chatLoadError,
+                  subtitle: l10n.errorGeneric,
+                  icon: Icons.error_outline_rounded,
+                  action: TextButton(
+                    onPressed: () {
+                      ref.invalidate(chatRoomsProvider);
+                      ref.invalidate(chatInboxProvider);
+                    },
+                    child: Text(l10n.retry),
+                  ),
                 ),
               ),
             ),
@@ -97,63 +108,43 @@ class _ChatListScreenState extends ConsumerState<ChatListScreen> {
     );
   }
 
-  String _getOtherName(ChatRoom room, String? uid) {
-    final other = room.otherUser;
-    return other?['name'] ?? 'مستخدم';
-  }
-}
-
-class _ChatRoomTile extends ConsumerWidget {
-  final ChatRoom room;
-  final String currentUid;
-
-  const _ChatRoomTile({required this.room, required this.currentUid});
-
-  String _timeAgo(DateTime? dt) {
-    if (dt == null) return '';
-    final diff = DateTime.now().difference(dt);
-    if (diff.inMinutes < 1) return 'الآن';
-    if (diff.inMinutes < 60) return '${diff.inMinutes}د';
-    if (diff.inHours < 24) return '${diff.inHours}س';
-    if (diff.inDays < 7) return '${diff.inDays}ي';
-    return '${dt.day}/${dt.month}';
+  String _participantName(ChatRoom room) {
+    final otherUser = room.otherUser;
+    final value = otherUser?['name'] as String?;
+    if (value == null || value.trim().isEmpty) {
+      return 'User';
+    }
+    return value.trim();
   }
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final other = room.otherUser;
-    final name = other?['name'] ?? 'مستخدم';
-    final avatarUrl = other?['avatar_url'] as String?;
+  String _previewText({
+    required AppLocalizations l10n,
+    required ChatInboxSummary summary,
+  }) {
+    if (summary.unreadCount > 0) {
+      return l10n.chatUnreadCount(summary.unreadCount);
+    }
+    final text = summary.room.lastMessage?.trim();
+    if (text == null || text.isEmpty) {
+      return l10n.chatNoMessagesYet;
+    }
+    return text;
+  }
 
-    return ListTile(
-      contentPadding: const EdgeInsets.symmetric(vertical: OcSpacing.sm),
-      leading: CircleAvatar(
-        radius: 24,
-        backgroundColor: OcColors.surfaceLight,
-        backgroundImage: avatarUrl != null ? NetworkImage(avatarUrl) : null,
-        child: avatarUrl == null ? const Icon(Icons.person, color: OcColors.textSecondary) : null,
-      ),
-      title: Text(
-        name,
-        style: Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w600),
-      ),
-      subtitle: Text(
-        room.lastMessage ?? 'ابدأ المحادثة...',
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: Theme.of(context).textTheme.bodySmall?.copyWith(color: OcColors.textSecondary),
-      ),
-      trailing: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Text(
-            _timeAgo(room.lastMessageAt),
-            style: Theme.of(context).textTheme.labelSmall?.copyWith(color: OcColors.textSecondary),
-          ),
-        ],
-      ),
-      onTap: () => context.push('/chat/${room.id}'),
-    );
+  String _formatInboxTime(DateTime? value) {
+    if (value == null) {
+      return '';
+    }
+
+    final now = DateTime.now();
+    final local = value.toLocal();
+    final difference = now.difference(local);
+    if (difference.inHours < 24) {
+      final hour = local.hour % 12 == 0 ? 12 : local.hour % 12;
+      final minute = local.minute.toString().padLeft(2, '0');
+      final meridiem = local.hour >= 12 ? 'pm' : 'am';
+      return '$hour:$minute$meridiem';
+    }
+    return '${local.day}/${local.month}';
   }
 }

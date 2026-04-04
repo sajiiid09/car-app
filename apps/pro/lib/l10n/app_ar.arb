@@ -23,6 +23,26 @@
   "incomingOrders": "الطلبات الواردة",
   "profile": "الملف الشخصي",
   "notifications": "الإشعارات",
+  "chatInboxTitle": "المحادثات",
+  "chatMessagesSectionLabel": "الرسائل",
+  "chatFilterAll": "الكل",
+  "chatFilterUnread": "غير المقروءة",
+  "chatYouPrefix": "أنت",
+  "chatUnreadCount": "{count} رسائل جديدة",
+  "@chatUnreadCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "chatEmptyTitle": "لا توجد محادثات بعد",
+  "chatEmptySubtitle": "ستظهر المحادثات الجديدة هنا بمجرد أن يبدأ أحدهم التواصل.",
+  "chatLoadError": "تعذر تحميل المحادثات",
+  "chatThreadFallbackTitle": "المحادثات",
+  "chatNoMessagesYet": "ابدأ برسالة لبدء المحادثة.",
+  "chatComposerHint": "اكتب رسالة",
+  "chatSend": "إرسال",
   "save": "حفظ",
   "selectRolePrompt": "اختر نوع حسابك",
   "workshopRoleTitle": "ورشة",

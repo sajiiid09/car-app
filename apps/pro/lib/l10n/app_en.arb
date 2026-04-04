@@ -23,6 +23,26 @@
   "incomingOrders": "Incoming Orders",
   "profile": "Profile",
   "notifications": "Notifications",
+  "chatInboxTitle": "Chats",
+  "chatMessagesSectionLabel": "Messages",
+  "chatFilterAll": "All",
+  "chatFilterUnread": "Unread",
+  "chatYouPrefix": "You",
+  "chatUnreadCount": "{count} new messages",
+  "@chatUnreadCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "chatEmptyTitle": "No chats yet",
+  "chatEmptySubtitle": "New conversations will appear here as soon as someone reaches out.",
+  "chatLoadError": "Unable to load chats",
+  "chatThreadFallbackTitle": "Chats",
+  "chatNoMessagesYet": "Say hello to start the conversation.",
+  "chatComposerHint": "Write a message",
+  "chatSend": "Send",
   "save": "Save",
   "selectRolePrompt": "Choose your account type",
   "workshopRoleTitle": "Workshop",

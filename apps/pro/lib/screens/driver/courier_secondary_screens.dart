@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pro/l10n/app_localizations.dart';
 
+import '../chat/pro_chat_screens.dart';
+import '../chat/pro_chat_state.dart';
 import '../shared/partner_flow_palette.dart';
 import 'courier_flow_helpers.dart';
 import 'courier_shared.dart';
@@ -267,84 +269,9 @@ class DriverMessagesScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final l10n = AppLocalizations.of(context)!;
-    final threads = ref.watch(courierWorkflowProvider).messages;
-
-    return CourierScrollView(
-      children: [
-        const KeyedSubtree(
-          key: Key('driverMessagesScreen'),
-          child: SizedBox.shrink(),
-        ),
-        const CourierReveal(child: CourierTopChrome(showNotification: false)),
-        const SizedBox(height: 24),
-        CourierReveal(
-          delay: 30,
-          child: CourierHeader(
-            eyebrow: l10n.driverMessagesEyebrow,
-            title: l10n.driverMessagesTitle,
-            subtitle: l10n.driverMessagesSubtitle,
-          ),
-        ),
-        const SizedBox(height: 24),
-        CourierReveal(
-          delay: 60,
-          child: CourierSurfaceCard(
-            child: Row(
-              children: [
-                Container(
-                  width: 74,
-                  height: 74,
-                  decoration: BoxDecoration(
-                    color: PartnerFlowPalette.primarySoft,
-                    borderRadius: BorderRadius.circular(24),
-                  ),
-                  child: const Icon(
-                    Icons.support_agent_rounded,
-                    size: 38,
-                    color: PartnerFlowPalette.primaryEnd,
-                  ),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        l10n.driverMessagesSupportTitle,
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.w900,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        l10n.driverMessagesSupportSubtitle,
-                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          color: PartnerFlowPalette.textSecondary,
-                          height: 1.4,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        const SizedBox(height: 18),
-        ...[
-          for (final (index, thread) in threads.indexed)
-            Padding(
-              padding: EdgeInsets.only(
-                bottom: index == threads.length - 1 ? 0 : 14,
-              ),
-              child: CourierReveal(
-                delay: 90 + (index * 25),
-                child: _MessageTile(thread: thread),
-              ),
-            ),
-        ],
-      ],
+    return const ProChatInboxScreen(
+      role: ProChatRole.driver,
+      screenKey: Key('driverMessagesScreen'),
     );
   }
 }
@@ -798,90 +725,6 @@ class _EarningTile extends StatelessWidget {
                     ? PartnerFlowPalette.success
                     : PartnerFlowPalette.secondaryStart,
               ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _MessageTile extends StatelessWidget {
-  const _MessageTile({required this.thread});
-
-  final CourierMessageThread thread;
-
-  @override
-  Widget build(BuildContext context) {
-    return CourierSurfaceCard(
-      child: Row(
-        children: [
-          Container(
-            width: 56,
-            height: 56,
-            decoration: BoxDecoration(
-              color: PartnerFlowPalette.primarySoft,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: const Icon(
-              Icons.chat_bubble_outline_rounded,
-              color: PartnerFlowPalette.primaryEnd,
-            ),
-          ),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  thread.title,
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.w800,
-                  ),
-                ),
-                const SizedBox(height: 6),
-                Text(
-                  thread.preview,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: PartnerFlowPalette.textSecondary,
-                    height: 1.35,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(width: 12),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text(
-                thread.timestamp,
-                style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                  color: PartnerFlowPalette.textSecondary,
-                ),
-              ),
-              if (thread.unreadCount > 0) ...[
-                const SizedBox(height: 8),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 6,
-                  ),
-                  decoration: BoxDecoration(
-                    color: PartnerFlowPalette.primaryEnd,
-                    borderRadius: BorderRadius.circular(999),
-                  ),
-                  child: Text(
-                    '${thread.unreadCount}',
-                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
-                ),
-              ],
             ],
           ),
         ],

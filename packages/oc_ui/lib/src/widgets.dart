@@ -25,21 +25,40 @@ class OcButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final child = isLoading
         ? const SizedBox(
-            height: 20, width: 20,
-            child: CircularProgressIndicator(strokeWidth: 2, color: OcColors.onAccent),
+            height: 20,
+            width: 20,
+            child: CircularProgressIndicator(
+              strokeWidth: 2,
+              color: OcColors.onAccent,
+            ),
           )
         : Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (icon != null) ...[Icon(icon, size: 20), const SizedBox(width: 8)],
-              Text(label),
+              if (icon != null) ...[
+                Icon(icon, size: 20),
+                const SizedBox(width: 8),
+              ],
+              Flexible(
+                child: Text(
+                  label,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
             ],
           );
 
     if (outlined) {
-      return OutlinedButton(onPressed: isLoading ? null : onPressed, child: child);
+      return OutlinedButton(
+        onPressed: isLoading ? null : onPressed,
+        child: child,
+      );
     }
-    return ElevatedButton(onPressed: isLoading ? null : onPressed, child: child);
+    return ElevatedButton(
+      onPressed: isLoading ? null : onPressed,
+      child: child,
+    );
   }
 }
 
@@ -52,8 +71,11 @@ class OcNavItem {
   final IconData activeIcon;
   final String label;
 
-  const OcNavItem({required this.icon, required this.label, IconData? activeIcon})
-      : activeIcon = activeIcon ?? icon;
+  const OcNavItem({
+    required this.icon,
+    required this.label,
+    IconData? activeIcon,
+  }) : activeIcon = activeIcon ?? icon;
 }
 
 class OcFloatingNavBar extends StatelessWidget {
@@ -162,14 +184,27 @@ class OcSearchBar extends StatelessWidget {
         ),
         child: Row(
           children: [
-            const Icon(Icons.search_rounded, color: OcColors.textMuted, size: 20),
+            const Icon(
+              Icons.search_rounded,
+              color: OcColors.textMuted,
+              size: 20,
+            ),
             const SizedBox(width: OcSpacing.sm),
             Expanded(
               child: readOnly
-                  ? Text(hint, style: const TextStyle(color: OcColors.textMuted, fontSize: 15))
+                  ? Text(
+                      hint,
+                      style: const TextStyle(
+                        color: OcColors.textMuted,
+                        fontSize: 15,
+                      ),
+                    )
                   : TextField(
                       onChanged: onChanged,
-                      style: const TextStyle(fontSize: 15, color: OcColors.textPrimary),
+                      style: const TextStyle(
+                        fontSize: 15,
+                        color: OcColors.textPrimary,
+                      ),
                       decoration: InputDecoration(
                         hintText: hint,
                         border: InputBorder.none,
@@ -274,7 +309,9 @@ class OcCategoryChips extends StatelessWidget {
               decoration: BoxDecoration(
                 color: isActive ? OcColors.chipActive : OcColors.chipInactive,
                 borderRadius: BorderRadius.circular(OcRadius.chip),
-                border: isActive ? null : Border.all(color: OcColors.chipBorder),
+                border: isActive
+                    ? null
+                    : Border.all(color: OcColors.chipBorder),
               ),
               child: Text(
                 categories[i],
@@ -334,11 +371,11 @@ class OcHeroBanner extends StatelessWidget {
                               fit: BoxFit.cover,
                             )
                           : item.imageUrl != null
-                              ? DecorationImage(
-                                  image: NetworkImage(item.imageUrl!),
-                                  fit: BoxFit.cover,
-                                )
-                              : null,
+                          ? DecorationImage(
+                              image: NetworkImage(item.imageUrl!),
+                              fit: BoxFit.cover,
+                            )
+                          : null,
                     ),
                   ),
                   // Gradient overlay
@@ -388,7 +425,10 @@ class OcHeroBanner extends StatelessWidget {
                         if (item.buttonLabel != null) ...[
                           const SizedBox(height: 10),
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 8,
+                            ),
                             decoration: BoxDecoration(
                               color: OcColors.accent,
                               borderRadius: BorderRadius.circular(OcRadius.lg),
@@ -477,25 +517,39 @@ class OcProductCard extends StatelessWidget {
                 color: OcColors.surfaceCard,
                 borderRadius: BorderRadius.circular(OcRadius.card),
                 image: assetPath != null
-                    ? DecorationImage(image: AssetImage(assetPath!), fit: BoxFit.cover)
+                    ? DecorationImage(
+                        image: AssetImage(assetPath!),
+                        fit: BoxFit.cover,
+                      )
                     : imageUrl != null
-                        ? DecorationImage(image: NetworkImage(imageUrl!), fit: BoxFit.cover)
-                        : null,
+                    ? DecorationImage(
+                        image: NetworkImage(imageUrl!),
+                        fit: BoxFit.cover,
+                      )
+                    : null,
               ),
               child: Stack(
                 children: [
                   if (discount != null && discount! > 0)
                     Positioned(
-                      top: 8, left: 8,
+                      top: 8,
+                      left: 8,
                       child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 6,
+                          vertical: 3,
+                        ),
                         decoration: BoxDecoration(
                           color: OcColors.accent,
                           borderRadius: BorderRadius.circular(OcRadius.sm),
                         ),
                         child: Text(
                           '-$discount%',
-                          style: const TextStyle(color: OcColors.onAccent, fontSize: 10, fontWeight: FontWeight.w700),
+                          style: const TextStyle(
+                            color: OcColors.onAccent,
+                            fontSize: 10,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                       ),
                     ),
@@ -515,7 +569,11 @@ class OcProductCard extends StatelessWidget {
               ),
               child: Text(
                 category!,
-                style: const TextStyle(color: OcColors.onAccent, fontSize: 10, fontWeight: FontWeight.w600),
+                style: const TextStyle(
+                  color: OcColors.onAccent,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
 
@@ -523,7 +581,10 @@ class OcProductCard extends StatelessWidget {
           if (stockLeft != null)
             Padding(
               padding: const EdgeInsets.only(top: 2),
-              child: Text('$stockLeft متبقي', style: const TextStyle(color: OcColors.textMuted, fontSize: 11)),
+              child: Text(
+                '$stockLeft متبقي',
+                style: const TextStyle(color: OcColors.textMuted, fontSize: 11),
+              ),
             ),
 
           // Product name
@@ -531,7 +592,12 @@ class OcProductCard extends StatelessWidget {
             padding: const EdgeInsets.only(top: 2),
             child: Text(
               name,
-              style: const TextStyle(color: OcColors.textPrimary, fontSize: 13, fontWeight: FontWeight.w600, height: 1.3),
+              style: const TextStyle(
+                color: OcColors.textPrimary,
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+                height: 1.3,
+              ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
@@ -545,10 +611,23 @@ class OcProductCard extends StatelessWidget {
                 if (rating != null) ...[
                   Icon(Icons.star_rounded, size: 14, color: OcColors.starAmber),
                   const SizedBox(width: 2),
-                  Text(rating!.toStringAsFixed(1), style: const TextStyle(color: OcColors.textSecondary, fontSize: 12)),
+                  Text(
+                    rating!.toStringAsFixed(1),
+                    style: const TextStyle(
+                      color: OcColors.textSecondary,
+                      fontSize: 12,
+                    ),
+                  ),
                   const Spacer(),
                 ],
-                Text(price, style: const TextStyle(color: OcColors.textPrimary, fontSize: 14, fontWeight: FontWeight.w700)),
+                Text(
+                  price,
+                  style: const TextStyle(
+                    color: OcColors.textPrimary,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
                 if (rating == null) const Spacer(),
               ],
             ),
@@ -619,7 +698,11 @@ class OcRating extends StatelessWidget {
           final filled = index < rating.floor();
           final half = index == rating.floor() && rating % 1 >= 0.5;
           return Icon(
-            filled ? Icons.star_rounded : half ? Icons.star_half_rounded : Icons.star_outline_rounded,
+            filled
+                ? Icons.star_rounded
+                : half
+                ? Icons.star_half_rounded
+                : Icons.star_outline_rounded,
             color: OcColors.starAmber,
             size: starSize,
           );
@@ -637,7 +720,10 @@ class OcRating extends StatelessWidget {
           const SizedBox(width: 4),
           Text(
             '($totalReviews)',
-            style: TextStyle(color: OcColors.textSecondary, fontSize: starSize - 4),
+            style: TextStyle(
+              color: OcColors.textSecondary,
+              fontSize: starSize - 4,
+            ),
           ),
         ],
       ],
@@ -663,15 +749,21 @@ class OcBadge extends StatelessWidget {
         child,
         if (count > 0)
           Positioned(
-            right: -6, top: -6,
+            right: -6,
+            top: -6,
             child: Container(
               padding: const EdgeInsets.all(4),
-              decoration: const BoxDecoration(color: OcColors.accent, shape: BoxShape.circle),
+              decoration: const BoxDecoration(
+                color: OcColors.accent,
+                shape: BoxShape.circle,
+              ),
               constraints: const BoxConstraints(minWidth: 18, minHeight: 18),
               child: Text(
                 count > 99 ? '99+' : '$count',
                 style: const TextStyle(
-                  color: OcColors.onAccent, fontSize: 10, fontWeight: FontWeight.bold,
+                  color: OcColors.onAccent,
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -690,7 +782,11 @@ class OcStatusBadge extends StatelessWidget {
   final String label;
   final Color color;
 
-  const OcStatusBadge({super.key, required this.label, this.color = OcColors.info});
+  const OcStatusBadge({
+    super.key,
+    required this.label,
+    this.color = OcColors.info,
+  });
 
   factory OcStatusBadge.fromOrderStatus(String status) {
     final color = switch (status) {
@@ -715,7 +811,11 @@ class OcStatusBadge extends StatelessWidget {
       ),
       child: Text(
         label,
-        style: TextStyle(color: color, fontSize: 11, fontWeight: FontWeight.w600),
+        style: TextStyle(
+          color: color,
+          fontSize: 11,
+          fontWeight: FontWeight.w600,
+        ),
       ),
     );
   }
@@ -734,7 +834,8 @@ class OcShimmerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height, width: width,
+      height: height,
+      width: width,
       decoration: BoxDecoration(
         color: OcColors.surfaceLight,
         borderRadius: BorderRadius.circular(OcRadius.lg),
@@ -773,7 +874,9 @@ class OcEmptyState extends StatelessWidget {
             const SizedBox(height: OcSpacing.lg),
             Text(
               message,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: OcColors.textSecondary),
+              style: Theme.of(
+                context,
+              ).textTheme.bodyLarge?.copyWith(color: OcColors.textSecondary),
               textAlign: TextAlign.center,
             ),
             if (actionLabel != null) ...[
@@ -805,16 +908,26 @@ class OcErrorState extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.error_outline_rounded, size: 64, color: OcColors.error),
+            const Icon(
+              Icons.error_outline_rounded,
+              size: 64,
+              color: OcColors.error,
+            ),
             const SizedBox(height: OcSpacing.lg),
             Text(
               message,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: OcColors.textSecondary),
+              style: Theme.of(
+                context,
+              ).textTheme.bodyLarge?.copyWith(color: OcColors.textSecondary),
               textAlign: TextAlign.center,
             ),
             if (onRetry != null) ...[
               const SizedBox(height: OcSpacing.lg),
-              OcButton(label: 'إعادة المحاولة', onPressed: onRetry, icon: Icons.refresh_rounded),
+              OcButton(
+                label: 'إعادة المحاولة',
+                onPressed: onRetry,
+                icon: Icons.refresh_rounded,
+              ),
             ],
           ],
         ),
@@ -847,7 +960,11 @@ class OcCountdownBadge extends StatelessWidget {
           const SizedBox(width: 4),
           Text(
             time,
-            style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w600),
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ],
       ),
@@ -862,10 +979,13 @@ class OcCountdownBadge extends StatelessWidget {
 /// Standard asset paths for the OnlyCars logo variants.
 class OcLogoAssets {
   OcLogoAssets._();
+
   /// Horizontal logo — icon + "OnlyCars" text on the right (light bg).
   static const horizontal = 'assets/images/logo_horizontal.png';
+
   /// Vertical/stacked logo — icon above "OnlyCars" text (light bg).
   static const vertical = 'assets/images/logo_vertical.png';
+
   /// Dark background variant — icon above "OnlyCars" text.
   static const dark = 'assets/images/logo_dark.png';
 }
@@ -908,7 +1028,9 @@ class OcLogo extends StatelessWidget {
         SizedBox(
           width: size,
           height: size,
-          child: CustomPaint(painter: _LogoPainter(darkBackground: darkBackground)),
+          child: CustomPaint(
+            painter: _LogoPainter(darkBackground: darkBackground),
+          ),
         ),
         if (showText) ...[
           SizedBox(width: size * 0.2),

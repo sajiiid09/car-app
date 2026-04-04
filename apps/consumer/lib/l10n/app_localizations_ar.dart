@@ -78,6 +78,50 @@ class AppLocalizationsAr extends AppLocalizations {
   String get chat => 'المحادثة';
 
   @override
+  String get chatInboxTitle => 'المحادثات';
+
+  @override
+  String get chatMessagesSectionLabel => 'الرسائل';
+
+  @override
+  String get chatFilterAll => 'الكل';
+
+  @override
+  String get chatFilterUnread => 'غير المقروءة';
+
+  @override
+  String get chatYouPrefix => 'أنت';
+
+  @override
+  String chatUnreadCount(int count) {
+    return '$count رسائل جديدة';
+  }
+
+  @override
+  String get chatEmptyTitle => 'لا توجد محادثات بعد';
+
+  @override
+  String get chatEmptySubtitle => 'ابدأ محادثة من ملف الورشة وستظهر هنا.';
+
+  @override
+  String get chatLoadError => 'تعذر تحميل المحادثات';
+
+  @override
+  String get chatThreadFallbackTitle => 'المحادثات';
+
+  @override
+  String get chatNoMessagesYet => 'ابدأ برسالة لبدء المحادثة.';
+
+  @override
+  String get chatComposerHint => 'اكتب رسالة';
+
+  @override
+  String get chatSend => 'إرسال';
+
+  @override
+  String get chatSendFailed => 'تعذر إرسال الرسالة';
+
+  @override
   String get cart => 'السلة';
 
   @override

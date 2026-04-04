@@ -236,6 +236,90 @@ abstract class AppLocalizations {
   /// **'المحادثة'**
   String get chat;
 
+  /// No description provided for @chatInboxTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'المحادثات'**
+  String get chatInboxTitle;
+
+  /// No description provided for @chatMessagesSectionLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'الرسائل'**
+  String get chatMessagesSectionLabel;
+
+  /// No description provided for @chatFilterAll.
+  ///
+  /// In ar, this message translates to:
+  /// **'الكل'**
+  String get chatFilterAll;
+
+  /// No description provided for @chatFilterUnread.
+  ///
+  /// In ar, this message translates to:
+  /// **'غير المقروءة'**
+  String get chatFilterUnread;
+
+  /// No description provided for @chatYouPrefix.
+  ///
+  /// In ar, this message translates to:
+  /// **'أنت'**
+  String get chatYouPrefix;
+
+  /// No description provided for @chatUnreadCount.
+  ///
+  /// In ar, this message translates to:
+  /// **'{count} رسائل جديدة'**
+  String chatUnreadCount(int count);
+
+  /// No description provided for @chatEmptyTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد محادثات بعد'**
+  String get chatEmptyTitle;
+
+  /// No description provided for @chatEmptySubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'ابدأ محادثة من ملف الورشة وستظهر هنا.'**
+  String get chatEmptySubtitle;
+
+  /// No description provided for @chatLoadError.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعذر تحميل المحادثات'**
+  String get chatLoadError;
+
+  /// No description provided for @chatThreadFallbackTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'المحادثات'**
+  String get chatThreadFallbackTitle;
+
+  /// No description provided for @chatNoMessagesYet.
+  ///
+  /// In ar, this message translates to:
+  /// **'ابدأ برسالة لبدء المحادثة.'**
+  String get chatNoMessagesYet;
+
+  /// No description provided for @chatComposerHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'اكتب رسالة'**
+  String get chatComposerHint;
+
+  /// No description provided for @chatSend.
+  ///
+  /// In ar, this message translates to:
+  /// **'إرسال'**
+  String get chatSend;
+
+  /// No description provided for @chatSendFailed.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعذر إرسال الرسالة'**
+  String get chatSendFailed;
+
   /// No description provided for @cart.
   ///
   /// In ar, this message translates to:

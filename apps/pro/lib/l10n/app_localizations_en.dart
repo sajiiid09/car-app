@@ -78,6 +78,48 @@ class AppLocalizationsEn extends AppLocalizations {
   String get notifications => 'Notifications';
 
   @override
+  String get chatInboxTitle => 'Chats';
+
+  @override
+  String get chatMessagesSectionLabel => 'Messages';
+
+  @override
+  String get chatFilterAll => 'All';
+
+  @override
+  String get chatFilterUnread => 'Unread';
+
+  @override
+  String get chatYouPrefix => 'You';
+
+  @override
+  String chatUnreadCount(int count) {
+    return '$count new messages';
+  }
+
+  @override
+  String get chatEmptyTitle => 'No chats yet';
+
+  @override
+  String get chatEmptySubtitle =>
+      'New conversations will appear here as soon as someone reaches out.';
+
+  @override
+  String get chatLoadError => 'Unable to load chats';
+
+  @override
+  String get chatThreadFallbackTitle => 'Chats';
+
+  @override
+  String get chatNoMessagesYet => 'Say hello to start the conversation.';
+
+  @override
+  String get chatComposerHint => 'Write a message';
+
+  @override
+  String get chatSend => 'Send';
+
+  @override
   String get save => 'Save';
 
   @override

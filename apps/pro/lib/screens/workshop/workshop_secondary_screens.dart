@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pro/l10n/app_localizations.dart';
 
+import '../chat/pro_chat_screens.dart';
+import '../chat/pro_chat_state.dart';
 import '../shared/partner_flow_palette.dart';
 import 'workshop_shared.dart';
 import 'workshop_workflow_state.dart';
@@ -11,59 +13,9 @@ class WorkshopMessagesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    return WorkshopScrollView(
-      children: [
-        const WorkshopReveal(child: WorkshopTopChrome()),
-        const SizedBox(height: 24),
-        WorkshopReveal(
-          delay: 30,
-          child: WorkshopHeader(
-            eyebrow: l10n.workshopMessagesEyebrow,
-            title: l10n.workshopMessagesTitle,
-            subtitle: l10n.workshopMessagesSubtitle,
-          ),
-        ),
-        const SizedBox(height: 24),
-        WorkshopReveal(
-          delay: 60,
-          child: WorkshopSurfaceCard(
-            child: Column(
-              children: [
-                Container(
-                  width: 84,
-                  height: 84,
-                  decoration: BoxDecoration(
-                    color: PartnerFlowPalette.primarySoft,
-                    borderRadius: BorderRadius.circular(28),
-                  ),
-                  child: const Icon(
-                    Icons.forum_outlined,
-                    size: 42,
-                    color: PartnerFlowPalette.primaryEnd,
-                  ),
-                ),
-                const SizedBox(height: 18),
-                Text(
-                  l10n.workshopMessagesEmptyTitle,
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                    fontWeight: FontWeight.w900,
-                  ),
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  l10n.workshopMessagesEmptySubtitle,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: PartnerFlowPalette.textSecondary,
-                    height: 1.45,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
+    return const ProChatInboxScreen(
+      role: ProChatRole.workshop,
+      screenKey: Key('workshopMessagesScreen'),
     );
   }
 }
@@ -114,7 +66,9 @@ class WorkshopProfileScreen extends ConsumerWidget {
                           Text(
                             profile.ownerName,
                             style: Theme.of(context).textTheme.titleMedium
-                                ?.copyWith(color: PartnerFlowPalette.textSecondary),
+                                ?.copyWith(
+                                  color: PartnerFlowPalette.textSecondary,
+                                ),
                           ),
                         ],
                       ),
@@ -203,10 +157,7 @@ class WorkshopProfileScreen extends ConsumerWidget {
 }
 
 class _ProfileBlock extends StatelessWidget {
-  const _ProfileBlock({
-    required this.label,
-    required this.items,
-  });
+  const _ProfileBlock({required this.label, required this.items});
 
   final String label;
   final List<String> items;
@@ -234,7 +185,9 @@ class _ProfileBlock extends StatelessWidget {
           const SizedBox(height: 12),
           for (final (index, item) in items.indexed)
             Padding(
-              padding: EdgeInsets.only(bottom: index == items.length - 1 ? 0 : 10),
+              padding: EdgeInsets.only(
+                bottom: index == items.length - 1 ? 0 : 10,
+              ),
               child: Text(
                 item,
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(

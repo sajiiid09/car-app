@@ -8,6 +8,8 @@ import 'screens/driver/courier_shared.dart';
 import 'screens/driver/driver_dashboard.dart';
 import 'screens/driver/driver_sign_up_complete_screen.dart';
 import 'screens/driver/driver_sign_up_screen.dart';
+import 'screens/chat/pro_chat_screens.dart';
+import 'screens/chat/pro_chat_state.dart';
 import 'screens/onboarding/provider_onboarding_screen.dart';
 import 'screens/role_selector_screen.dart';
 import 'screens/shop/shop_dashboard.dart';
@@ -43,6 +45,17 @@ final proRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/workshop/sign-up/complete',
         builder: (_, _) => const WorkshopSignUpCompleteScreen(),
+      ),
+      GoRoute(
+        path: '/workshop/messages/:threadId',
+        pageBuilder: (_, state) => _shellPage(
+          state: state,
+          child: ProChatThreadScreen(
+            role: ProChatRole.workshop,
+            threadId: state.pathParameters['threadId']!,
+            screenKey: const Key('workshopMessageThreadScreen'),
+          ),
+        ),
       ),
 
       ShellRoute(
@@ -203,6 +216,17 @@ final proRouterProvider = Provider<GoRouter>((ref) {
         path: '/driver/sign-up/complete',
         builder: (_, _) => const DriverSignUpCompleteScreen(),
       ),
+      GoRoute(
+        path: '/driver/messages/:threadId',
+        pageBuilder: (_, state) => _shellPage(
+          state: state,
+          child: ProChatThreadScreen(
+            role: ProChatRole.driver,
+            threadId: state.pathParameters['threadId']!,
+            screenKey: const Key('driverMessageThreadScreen'),
+          ),
+        ),
+      ),
       ShellRoute(
         builder: (context, state, child) =>
             CourierShellScaffold(location: state.uri.path, child: child),
@@ -283,6 +307,17 @@ final proRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/shop/sign-up/complete',
         builder: (_, _) => const ShopSignUpCompleteScreen(),
+      ),
+      GoRoute(
+        path: '/shop/messages/:threadId',
+        pageBuilder: (_, state) => _shellPage(
+          state: state,
+          child: ProChatThreadScreen(
+            role: ProChatRole.shop,
+            threadId: state.pathParameters['threadId']!,
+            screenKey: const Key('shopMessageThreadScreen'),
+          ),
+        ),
       ),
       ShellRoute(
         builder: (context, state, child) =>
