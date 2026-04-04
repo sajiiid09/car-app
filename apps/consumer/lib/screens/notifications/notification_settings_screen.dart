@@ -6,10 +6,12 @@ class NotificationSettingsScreen extends StatefulWidget {
   const NotificationSettingsScreen({super.key});
 
   @override
-  State<NotificationSettingsScreen> createState() => _NotificationSettingsScreenState();
+  State<NotificationSettingsScreen> createState() =>
+      _NotificationSettingsScreenState();
 }
 
-class _NotificationSettingsScreenState extends State<NotificationSettingsScreen> {
+class _NotificationSettingsScreenState
+    extends State<NotificationSettingsScreen> {
   bool _orders = true;
   bool _chat = true;
   bool _promos = true;
@@ -24,6 +26,9 @@ class _NotificationSettingsScreenState extends State<NotificationSettingsScreen>
 
   Future<void> _loadPrefs() async {
     final prefs = await SharedPreferences.getInstance();
+    if (!mounted) {
+      return;
+    }
     setState(() {
       _orders = prefs.getBool('notif_orders') ?? true;
       _chat = prefs.getBool('notif_chat') ?? true;
@@ -61,7 +66,10 @@ class _NotificationSettingsScreenState extends State<NotificationSettingsScreen>
                         label: 'تحديثات الطلبات',
                         subtitle: 'حالة الطلب، التوصيل، التأكيد',
                         value: _orders,
-                        onChanged: (v) { setState(() => _orders = v); _save('notif_orders', v); },
+                        onChanged: (value) {
+                          setState(() => _orders = value);
+                          _save('notif_orders', value);
+                        },
                       ),
                       const Divider(height: 1, indent: 52),
                       _NotifToggle(
@@ -69,7 +77,10 @@ class _NotificationSettingsScreenState extends State<NotificationSettingsScreen>
                         label: 'رسائل المحادثة',
                         subtitle: 'رسائل جديدة من الورش والمتاجر',
                         value: _chat,
-                        onChanged: (v) { setState(() => _chat = v); _save('notif_chat', v); },
+                        onChanged: (value) {
+                          setState(() => _chat = value);
+                          _save('notif_chat', value);
+                        },
                       ),
                       const Divider(height: 1, indent: 52),
                       _NotifToggle(
@@ -77,7 +88,10 @@ class _NotificationSettingsScreenState extends State<NotificationSettingsScreen>
                         label: 'العروض والتخفيضات',
                         subtitle: 'عروض خاصة وتخفيضات موسمية',
                         value: _promos,
-                        onChanged: (v) { setState(() => _promos = v); _save('notif_promos', v); },
+                        onChanged: (value) {
+                          setState(() => _promos = value);
+                          _save('notif_promos', value);
+                        },
                       ),
                       const Divider(height: 1, indent: 52),
                       _NotifToggle(
@@ -85,7 +99,10 @@ class _NotificationSettingsScreenState extends State<NotificationSettingsScreen>
                         label: 'تقارير الفحص',
                         subtitle: 'تقارير فحص جديدة من الورشة',
                         value: _diagnosis,
-                        onChanged: (v) { setState(() => _diagnosis = v); _save('notif_diagnosis', v); },
+                        onChanged: (value) {
+                          setState(() => _diagnosis = value);
+                          _save('notif_diagnosis', value);
+                        },
                       ),
                     ],
                   ),
@@ -101,21 +118,36 @@ class _NotifToggle extends StatelessWidget {
   final String label, subtitle;
   final bool value;
   final ValueChanged<bool> onChanged;
-  const _NotifToggle({required this.icon, required this.label, required this.subtitle, required this.value, required this.onChanged});
+  const _NotifToggle({
+    required this.icon,
+    required this.label,
+    required this.subtitle,
+    required this.value,
+    required this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
     return SwitchListTile(
       secondary: Container(
         padding: const EdgeInsets.all(6),
-        decoration: BoxDecoration(color: OcColors.primary.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(OcRadius.sm)),
+        decoration: BoxDecoration(
+          color: OcColors.primary.withValues(alpha: 0.1),
+          borderRadius: BorderRadius.circular(OcRadius.sm),
+        ),
         child: Icon(icon, size: 18, color: OcColors.primary),
       ),
       title: Text(label, style: Theme.of(context).textTheme.bodyMedium),
-      subtitle: Text(subtitle, style: Theme.of(context).textTheme.labelSmall?.copyWith(color: OcColors.textSecondary)),
+      subtitle: Text(
+        subtitle,
+        style: Theme.of(
+          context,
+        ).textTheme.labelSmall?.copyWith(color: OcColors.textSecondary),
+      ),
       value: value,
       onChanged: onChanged,
-      activeColor: OcColors.primary,
+      activeThumbColor: OcColors.primary,
+      activeTrackColor: OcColors.primary.withValues(alpha: 0.35),
     );
   }
 }

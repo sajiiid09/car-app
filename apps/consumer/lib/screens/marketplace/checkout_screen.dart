@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:oc_models/oc_models.dart';
 import 'package:oc_ui/oc_ui.dart';
 import '../../providers.dart';
 
@@ -23,9 +24,9 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
     final cartNotifier = ref.read(cartProvider.notifier);
 
     if (_selectedAddressId == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('اختر عنوان التوصيل')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('اختر عنوان التوصيل')));
       return;
     }
 
@@ -53,9 +54,9 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
     } catch (e) {
       if (!mounted) return;
       setState(() => _isPlacing = false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('فشل إنشاء الطلب: $e')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('فشل إنشاء الطلب: $e')));
     }
   }
 
@@ -79,7 +80,10 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Address selection
-            Text('عنوان التوصيل', style: Theme.of(context).textTheme.titleMedium),
+            Text(
+              'عنوان التوصيل',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
             const SizedBox(height: OcSpacing.md),
 
             addressesAsync.when(
@@ -89,7 +93,9 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
                     onPressed: () => context.push('/addresses'),
                     icon: const Icon(Icons.add_location_rounded),
                     label: const Text('أضف عنوان'),
-                    style: OutlinedButton.styleFrom(minimumSize: const Size(double.infinity, 48)),
+                    style: OutlinedButton.styleFrom(
+                      minimumSize: const Size(double.infinity, 48),
+                    ),
                   );
                 }
 
@@ -100,18 +106,22 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
                 }
 
                 return Column(
-                  children: addresses.map((addr) => RadioListTile<String>(
-                    value: addr.id,
-                    groupValue: _selectedAddressId,
-                    onChanged: (v) => setState(() => _selectedAddressId = v),
-                    title: Text(addr.label),
-                    subtitle: Text([addr.zone, addr.street, addr.building].where((s) => s != null && s.isNotEmpty).join(', ')),
-                    contentPadding: EdgeInsets.zero,
-                  )).toList(),
+                  children: [
+                    for (final address in addresses) ...[
+                      _AddressOption(
+                        address: address,
+                        selected: address.id == _selectedAddressId,
+                        onTap: () {
+                          setState(() => _selectedAddressId = address.id);
+                        },
+                      ),
+                      const SizedBox(height: OcSpacing.sm),
+                    ],
+                  ],
                 );
               },
               loading: () => const Center(child: CircularProgressIndicator()),
-              error: (_, __) => const Text('تعذر تحميل العناوين'),
+              error: (error, stackTrace) => const Text('تعذر تحميل العناوين'),
             ),
 
             const SizedBox(height: OcSpacing.xl),
@@ -130,31 +140,60 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
               child: Column(
                 children: [
                   // Items
-                  ...cart.values.map((ci) => Padding(
-                    padding: const EdgeInsets.only(bottom: OcSpacing.sm),
-                    child: Row(
-                      children: [
-                        Expanded(child: Text('${ci.part.nameAr} × ${ci.quantity}', style: Theme.of(context).textTheme.bodyMedium)),
-                        Text('${(ci.part.price * ci.quantity).toStringAsFixed(0)} ر.ق', style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600)),
-                      ],
+                  ...cart.values.map(
+                    (ci) => Padding(
+                      padding: const EdgeInsets.only(bottom: OcSpacing.sm),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              '${ci.part.nameAr} × ${ci.quantity}',
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                          ),
+                          Text(
+                            '${(ci.part.price * ci.quantity).toStringAsFixed(0)} ر.ق',
+                            style: Theme.of(context).textTheme.bodyMedium
+                                ?.copyWith(fontWeight: FontWeight.w600),
+                          ),
+                        ],
+                      ),
                     ),
-                  )),
+                  ),
 
                   const Divider(height: OcSpacing.xl),
 
-                  _SummaryRow(label: 'إجمالي القطع', value: '${partsTotal.toStringAsFixed(0)} ر.ق'),
+                  _SummaryRow(
+                    label: 'إجمالي القطع',
+                    value: '${partsTotal.toStringAsFixed(0)} ر.ق',
+                  ),
                   const SizedBox(height: OcSpacing.sm),
-                  _SummaryRow(label: 'رسوم التوصيل', value: '${deliveryFee.toStringAsFixed(0)} ر.ق'),
+                  _SummaryRow(
+                    label: 'رسوم التوصيل',
+                    value: '${deliveryFee.toStringAsFixed(0)} ر.ق',
+                  ),
                   const SizedBox(height: OcSpacing.sm),
-                  _SummaryRow(label: 'رسوم المنصة (5%)', value: '${platformFee.toStringAsFixed(0)} ر.ق'),
+                  _SummaryRow(
+                    label: 'رسوم المنصة (5%)',
+                    value: '${platformFee.toStringAsFixed(0)} ر.ق',
+                  ),
 
                   const Divider(height: OcSpacing.xl),
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('الإجمالي', style: Theme.of(context).textTheme.titleMedium),
-                      Text('${grandTotal.toStringAsFixed(0)} ر.ق', style: Theme.of(context).textTheme.titleLarge?.copyWith(color: OcColors.primary, fontWeight: FontWeight.w900)),
+                      Text(
+                        'الإجمالي',
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                      Text(
+                        '${grandTotal.toStringAsFixed(0)} ر.ق',
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          color: OcColors.primary,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
                     ],
                   ),
                 ],
@@ -172,7 +211,7 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
               label: 'الدفع عند الاستلام',
               value: 'cod',
               groupValue: _paymentMethod,
-              onChanged: (v) => setState(() => _paymentMethod = v!),
+              onChanged: (value) => setState(() => _paymentMethod = value),
             ),
             const SizedBox(height: OcSpacing.sm),
             _PaymentOption(
@@ -180,7 +219,7 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
               label: 'بطاقة ائتمان',
               value: 'card',
               groupValue: _paymentMethod,
-              onChanged: (v) => setState(() => _paymentMethod = v!),
+              onChanged: (value) => setState(() => _paymentMethod = value),
               subtitle: 'قريباً',
               enabled: false,
             ),
@@ -206,12 +245,79 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
   }
 }
 
+class _AddressOption extends StatelessWidget {
+  const _AddressOption({
+    required this.address,
+    required this.selected,
+    required this.onTap,
+  });
+
+  final Address address;
+  final bool selected;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final subtitle = [
+      address.zone,
+      address.street,
+      address.building,
+    ].where((segment) => segment != null && segment.isNotEmpty).join(', ');
+
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(OcRadius.md),
+        onTap: onTap,
+        child: Container(
+          padding: const EdgeInsets.all(OcSpacing.lg),
+          decoration: BoxDecoration(
+            color: OcColors.surfaceCard,
+            borderRadius: BorderRadius.circular(OcRadius.md),
+            border: Border.all(
+              color: selected ? OcColors.primary : OcColors.border,
+            ),
+          ),
+          child: Row(
+            children: [
+              Icon(
+                selected
+                    ? Icons.check_circle_rounded
+                    : Icons.radio_button_unchecked_rounded,
+                color: selected ? OcColors.primary : OcColors.textSecondary,
+              ),
+              const SizedBox(width: OcSpacing.md),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(address.label),
+                    if (subtitle.isNotEmpty) ...[
+                      const SizedBox(height: 4),
+                      Text(
+                        subtitle,
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: OcColors.textSecondary,
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class _PaymentOption extends StatelessWidget {
   final IconData icon;
   final String label;
   final String value;
   final String groupValue;
-  final ValueChanged<String?> onChanged;
+  final ValueChanged<String> onChanged;
   final String? subtitle;
   final bool enabled;
 
@@ -227,21 +333,60 @@ class _PaymentOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isSelected = value == groupValue;
+
     return Opacity(
       opacity: enabled ? 1.0 : 0.5,
-      child: Container(
-        decoration: BoxDecoration(
-          color: OcColors.surfaceCard,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
           borderRadius: BorderRadius.circular(OcRadius.md),
-          border: Border.all(color: value == groupValue ? OcColors.primary : OcColors.border),
-        ),
-        child: RadioListTile<String>(
-          value: value,
-          groupValue: groupValue,
-          onChanged: enabled ? onChanged : null,
-          secondary: Icon(icon, color: OcColors.primary),
-          title: Text(label),
-          subtitle: subtitle != null ? Text(subtitle!, style: const TextStyle(fontSize: 12, color: OcColors.textSecondary)) : null,
+          onTap: enabled ? () => onChanged(value) : null,
+          child: Container(
+            padding: const EdgeInsets.all(OcSpacing.lg),
+            decoration: BoxDecoration(
+              color: OcColors.surfaceCard,
+              borderRadius: BorderRadius.circular(OcRadius.md),
+              border: Border.all(
+                color: isSelected ? OcColors.primary : OcColors.border,
+              ),
+            ),
+            child: Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: OcColors.primary.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(OcRadius.sm),
+                  ),
+                  child: Icon(icon, color: OcColors.primary),
+                ),
+                const SizedBox(width: OcSpacing.md),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(label),
+                      if (subtitle != null)
+                        Text(
+                          subtitle!,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: OcColors.textSecondary,
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+                Icon(
+                  isSelected
+                      ? Icons.check_circle_rounded
+                      : Icons.radio_button_unchecked_rounded,
+                  color: isSelected ? OcColors.primary : OcColors.textSecondary,
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
@@ -257,8 +402,18 @@ class _SummaryRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(label, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: OcColors.textSecondary)),
-        Text(value, style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600)),
+        Text(
+          label,
+          style: Theme.of(
+            context,
+          ).textTheme.bodyMedium?.copyWith(color: OcColors.textSecondary),
+        ),
+        Text(
+          value,
+          style: Theme.of(
+            context,
+          ).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
+        ),
       ],
     );
   }

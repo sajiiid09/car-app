@@ -33,11 +33,15 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
       ref.invalidate(userProfileProvider);
 
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('تم حفظ التعديلات')));
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('تم حفظ التعديلات')));
       context.pop();
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('خطأ: $e')));
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('خطأ: $e')));
       }
     } finally {
       if (mounted) setState(() => _isLoading = false);
@@ -77,22 +81,37 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                         CircleAvatar(
                           radius: 50,
                           backgroundColor: OcColors.surfaceLight,
-                          backgroundImage: user?.avatarUrl != null ? NetworkImage(user!.avatarUrl!) : null,
-                          child: user?.avatarUrl == null ? const Icon(Icons.person_rounded, size: 48, color: OcColors.textSecondary) : null,
+                          backgroundImage: user?.avatarUrl != null
+                              ? NetworkImage(user!.avatarUrl!)
+                              : null,
+                          child: user?.avatarUrl == null
+                              ? const Icon(
+                                  Icons.person_rounded,
+                                  size: 48,
+                                  color: OcColors.textSecondary,
+                                )
+                              : null,
                         ),
                         Positioned(
                           bottom: 0,
                           right: 0,
                           child: Container(
                             padding: const EdgeInsets.all(6),
-                            decoration: const BoxDecoration(color: OcColors.primary, shape: BoxShape.circle),
-                            child: const Icon(Icons.camera_alt_rounded, size: 16, color: OcColors.textOnPrimary),
+                            decoration: const BoxDecoration(
+                              color: OcColors.primary,
+                              shape: BoxShape.circle,
+                            ),
+                            child: const Icon(
+                              Icons.camera_alt_rounded,
+                              size: 16,
+                              color: OcColors.textOnPrimary,
+                            ),
                           ),
                         ),
                       ],
                     ),
                     loading: () => const CircularProgressIndicator(),
-                    error: (_, __) => const Icon(Icons.error),
+                    error: (error, stackTrace) => const Icon(Icons.error),
                   ),
                 ),
 
@@ -105,7 +124,9 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                     labelText: 'الاسم',
                     prefixIcon: Icon(Icons.person_outline_rounded),
                   ),
-                  validator: (v) => (v == null || v.trim().length < 2) ? 'أدخل اسمك (حرفين على الأقل)' : null,
+                  validator: (v) => (v == null || v.trim().length < 2)
+                      ? 'أدخل اسمك (حرفين على الأقل)'
+                      : null,
                 ),
 
                 const SizedBox(height: OcSpacing.xl),
@@ -121,7 +142,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                     ),
                   ),
                   loading: () => const SizedBox.shrink(),
-                  error: (_, __) => const SizedBox.shrink(),
+                  error: (error, stackTrace) => const SizedBox.shrink(),
                 ),
 
                 const Spacer(),

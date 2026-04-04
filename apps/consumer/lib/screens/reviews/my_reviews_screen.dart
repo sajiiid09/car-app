@@ -27,9 +27,10 @@ class MyReviewsScreen extends ConsumerWidget {
             child: ListView.separated(
               padding: const EdgeInsets.all(OcSpacing.lg),
               itemCount: reviews.length,
-              separatorBuilder: (_, __) => const SizedBox(height: OcSpacing.md),
-              itemBuilder: (_, i) {
-                final review = reviews[i];
+              separatorBuilder: (context, index) =>
+                  const SizedBox(height: OcSpacing.md),
+              itemBuilder: (context, index) {
+                final review = reviews[index];
                 final workshopName = review.consumer?['name_ar'] ?? 'ورشة';
 
                 return Container(
@@ -51,11 +52,19 @@ class MyReviewsScreen extends ConsumerWidget {
                               color: OcColors.secondary.withValues(alpha: 0.15),
                               borderRadius: BorderRadius.circular(OcRadius.sm),
                             ),
-                            child: const Icon(Icons.build_circle_rounded, color: OcColors.secondary, size: 20),
+                            child: const Icon(
+                              Icons.build_circle_rounded,
+                              color: OcColors.secondary,
+                              size: 20,
+                            ),
                           ),
                           const SizedBox(width: OcSpacing.md),
                           Expanded(
-                            child: Text(workshopName, style: Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w600)),
+                            child: Text(
+                              workshopName,
+                              style: Theme.of(context).textTheme.titleSmall
+                                  ?.copyWith(fontWeight: FontWeight.w600),
+                            ),
                           ),
                         ],
                       ),
@@ -63,25 +72,38 @@ class MyReviewsScreen extends ConsumerWidget {
 
                       // Stars
                       Row(
-                        children: List.generate(5, (si) => Icon(
-                          si < review.rating ? Icons.star_rounded : Icons.star_border_rounded,
-                          color: OcColors.secondary,
-                          size: 22,
-                        )),
+                        children: List.generate(
+                          5,
+                          (si) => Icon(
+                            si < review.rating
+                                ? Icons.star_rounded
+                                : Icons.star_border_rounded,
+                            color: OcColors.secondary,
+                            size: 22,
+                          ),
+                        ),
                       ),
 
                       // Comment
-                      if (review.commentAr != null && review.commentAr!.isNotEmpty) ...[
+                      if (review.commentAr != null &&
+                          review.commentAr!.isNotEmpty) ...[
                         const SizedBox(height: OcSpacing.md),
-                        Text(review.commentAr!, style: Theme.of(context).textTheme.bodyMedium),
+                        Text(
+                          review.commentAr!,
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
                       ],
 
                       const SizedBox(height: OcSpacing.sm),
 
                       // Date
                       Text(
-                        review.createdAt != null ? '${review.createdAt!.day}/${review.createdAt!.month}/${review.createdAt!.year}' : '',
-                        style: Theme.of(context).textTheme.labelSmall?.copyWith(color: OcColors.textSecondary),
+                        review.createdAt != null
+                            ? '${review.createdAt!.day}/${review.createdAt!.month}/${review.createdAt!.year}'
+                            : '',
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          color: OcColors.textSecondary,
+                        ),
                       ),
                     ],
                   ),
@@ -91,7 +113,7 @@ class MyReviewsScreen extends ConsumerWidget {
           );
         },
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (_, __) => OcErrorState(
+        error: (error, stackTrace) => OcErrorState(
           message: 'تعذر تحميل التقييمات',
           onRetry: () => ref.invalidate(myReviewsProvider),
         ),

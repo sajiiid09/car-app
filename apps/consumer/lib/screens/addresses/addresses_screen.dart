@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:oc_models/oc_models.dart';
 import 'package:oc_ui/oc_ui.dart';
 import '../../providers.dart';
@@ -34,9 +33,10 @@ class AddressesScreen extends ConsumerWidget {
             child: ListView.separated(
               padding: const EdgeInsets.all(OcSpacing.lg),
               itemCount: addresses.length,
-              separatorBuilder: (_, __) => const SizedBox(height: OcSpacing.md),
-              itemBuilder: (_, i) => _AddressCard(
-                address: addresses[i],
+              separatorBuilder: (context, index) =>
+                  const SizedBox(height: OcSpacing.md),
+              itemBuilder: (context, index) => _AddressCard(
+                address: addresses[index],
                 onDelete: () async {
                   final confirmed = await showDialog<bool>(
                     context: context,
@@ -44,14 +44,23 @@ class AddressesScreen extends ConsumerWidget {
                       title: const Text('حذف العنوان'),
                       content: const Text('هل تريد حذف هذا العنوان؟'),
                       actions: [
-                        TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('إلغاء')),
-                        TextButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('حذف', style: TextStyle(color: OcColors.error))),
+                        TextButton(
+                          onPressed: () => Navigator.pop(ctx, false),
+                          child: const Text('إلغاء'),
+                        ),
+                        TextButton(
+                          onPressed: () => Navigator.pop(ctx, true),
+                          child: const Text(
+                            'حذف',
+                            style: TextStyle(color: OcColors.error),
+                          ),
+                        ),
                       ],
                     ),
                   );
                   if (confirmed == true) {
                     final service = ref.read(userServiceProvider);
-                    await service.deleteAddress(addresses[i].id);
+                    await service.deleteAddress(addresses[index].id);
                     ref.invalidate(addressesProvider);
                   }
                 },
@@ -60,7 +69,7 @@ class AddressesScreen extends ConsumerWidget {
           );
         },
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (_, __) => OcErrorState(
+        error: (error, stackTrace) => OcErrorState(
           message: 'تعذر تحميل العناوين',
           onRetry: () => ref.invalidate(addressesProvider),
         ),
@@ -78,22 +87,53 @@ class AddressesScreen extends ConsumerWidget {
       context: context,
       isScrollControlled: true,
       backgroundColor: OcColors.surface,
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
       builder: (ctx) => Padding(
-        padding: EdgeInsets.fromLTRB(OcSpacing.xl, OcSpacing.xl, OcSpacing.xl, MediaQuery.of(ctx).viewInsets.bottom + OcSpacing.xl),
+        padding: EdgeInsets.fromLTRB(
+          OcSpacing.xl,
+          OcSpacing.xl,
+          OcSpacing.xl,
+          MediaQuery.of(ctx).viewInsets.bottom + OcSpacing.xl,
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text('إضافة عنوان جديد', style: Theme.of(ctx).textTheme.titleLarge),
             const SizedBox(height: OcSpacing.lg),
-            TextField(controller: labelCtrl, decoration: const InputDecoration(labelText: 'الاسم (مثل: بيت، مكتب)', prefixIcon: Icon(Icons.label_outline))),
+            TextField(
+              controller: labelCtrl,
+              decoration: const InputDecoration(
+                labelText: 'الاسم (مثل: بيت، مكتب)',
+                prefixIcon: Icon(Icons.label_outline),
+              ),
+            ),
             const SizedBox(height: OcSpacing.md),
-            TextField(controller: zoneCtrl, decoration: const InputDecoration(labelText: 'المنطقة', prefixIcon: Icon(Icons.location_city))),
+            TextField(
+              controller: zoneCtrl,
+              decoration: const InputDecoration(
+                labelText: 'المنطقة',
+                prefixIcon: Icon(Icons.location_city),
+              ),
+            ),
             const SizedBox(height: OcSpacing.md),
-            TextField(controller: streetCtrl, decoration: const InputDecoration(labelText: 'الشارع', prefixIcon: Icon(Icons.route))),
+            TextField(
+              controller: streetCtrl,
+              decoration: const InputDecoration(
+                labelText: 'الشارع',
+                prefixIcon: Icon(Icons.route),
+              ),
+            ),
             const SizedBox(height: OcSpacing.md),
-            TextField(controller: buildingCtrl, decoration: const InputDecoration(labelText: 'المبنى', prefixIcon: Icon(Icons.apartment))),
+            TextField(
+              controller: buildingCtrl,
+              decoration: const InputDecoration(
+                labelText: 'المبنى',
+                prefixIcon: Icon(Icons.apartment),
+              ),
+            ),
             const SizedBox(height: OcSpacing.xl),
             OcButton(
               label: 'حفظ العنوان',
@@ -125,16 +165,20 @@ class _AddressCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final subtitle = [address.zone, address.street, address.building]
-        .where((s) => s != null && s.isNotEmpty)
-        .join(', ');
+    final subtitle = [
+      address.zone,
+      address.street,
+      address.building,
+    ].where((s) => s != null && s.isNotEmpty).join(', ');
 
     return Container(
       padding: const EdgeInsets.all(OcSpacing.lg),
       decoration: BoxDecoration(
         color: OcColors.surfaceCard,
         borderRadius: BorderRadius.circular(OcRadius.lg),
-        border: Border.all(color: address.isDefault ? OcColors.primary : OcColors.border),
+        border: Border.all(
+          color: address.isDefault ? OcColors.primary : OcColors.border,
+        ),
       ),
       child: Row(
         children: [
@@ -144,7 +188,10 @@ class _AddressCard extends StatelessWidget {
               color: OcColors.primary.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(OcRadius.md),
             ),
-            child: const Icon(Icons.location_on_rounded, color: OcColors.primary),
+            child: const Icon(
+              Icons.location_on_rounded,
+              color: OcColors.primary,
+            ),
           ),
           const SizedBox(width: OcSpacing.md),
           Expanded(
@@ -153,7 +200,12 @@ class _AddressCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Text(address.label, style: Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w600)),
+                    Text(
+                      address.label,
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                     if (address.isDefault) ...[
                       const SizedBox(width: OcSpacing.sm),
                       OcStatusBadge(label: 'افتراضي', color: OcColors.primary),
@@ -162,12 +214,24 @@ class _AddressCard extends StatelessWidget {
                 ),
                 if (subtitle.isNotEmpty) ...[
                   const SizedBox(height: 4),
-                  Text(subtitle, style: Theme.of(context).textTheme.bodySmall?.copyWith(color: OcColors.textSecondary)),
+                  Text(
+                    subtitle,
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: OcColors.textSecondary,
+                    ),
+                  ),
                 ],
               ],
             ),
           ),
-          IconButton(icon: const Icon(Icons.delete_outline, color: OcColors.error, size: 20), onPressed: onDelete),
+          IconButton(
+            icon: const Icon(
+              Icons.delete_outline,
+              color: OcColors.error,
+              size: 20,
+            ),
+            onPressed: onDelete,
+          ),
         ],
       ),
     );

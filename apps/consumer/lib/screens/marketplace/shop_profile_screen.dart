@@ -1,27 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:oc_api/oc_api.dart';
 import 'package:oc_models/oc_models.dart';
 import 'package:oc_ui/oc_ui.dart';
 import '../../providers.dart';
-
-final shopDetailProvider =
-    FutureProvider.family<Map<String, dynamic>?, String>((ref, shopId) async {
-  final client = OcSupabase.client;
-  final data = await client
-      .from('shop_profiles')
-      .select()
-      .eq('id', shopId)
-      .maybeSingle();
-  return data;
-});
-
-final shopPartsProvider =
-    FutureProvider.family<List<Part>, String>((ref, shopId) async {
-  final service = ref.read(partsServiceProvider);
-  return await service.getPartsByShopId(shopId);
-});
+import 'shop_profile_providers.dart';
 
 class ShopProfileScreen extends ConsumerWidget {
   final String shopId;
@@ -36,12 +19,17 @@ class ShopProfileScreen extends ConsumerWidget {
       backgroundColor: OcColors.background,
       body: shopAsync.when(
         data: (shop) {
-          if (shop == null) return const OcErrorState(message: 'المتجر غير موجود');
+          if (shop == null) {
+            return const OcErrorState(message: 'المتجر غير موجود');
+          }
 
           final name = shop['name_ar'] ?? 'متجر';
           final rating = (shop['avg_rating'] as num?)?.toDouble() ?? 0;
           final totalProducts = (shop['total_products'] as num?)?.toInt() ?? 0;
-          final location = [shop['zone'], shop['city']].where((s) => s != null && s.toString().isNotEmpty).join(', ');
+          final location = [
+            shop['zone'],
+            shop['city'],
+          ].where((s) => s != null && s.toString().isNotEmpty).join(', ');
           final brands = (shop['brands'] as List?)?.cast<String>() ?? [];
 
           return CustomScrollView(
@@ -53,8 +41,15 @@ class ShopProfileScreen extends ConsumerWidget {
                 leading: IconButton(
                   icon: Container(
                     padding: const EdgeInsets.all(8),
-                    decoration: const BoxDecoration(color: Colors.black38, shape: BoxShape.circle),
-                    child: const Icon(Icons.arrow_back_ios_rounded, size: 18, color: Colors.white),
+                    decoration: const BoxDecoration(
+                      color: Colors.black38,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.arrow_back_ios_rounded,
+                      size: 18,
+                      color: Colors.white,
+                    ),
                   ),
                   onPressed: () => context.pop(),
                 ),
@@ -67,13 +62,25 @@ class ShopProfileScreen extends ConsumerWidget {
                           gradient: LinearGradient(
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
-                            colors: [OcColors.primary, OcColors.primary.withValues(alpha: 0.5)],
+                            colors: [
+                              OcColors.primary,
+                              OcColors.primary.withValues(alpha: 0.5),
+                            ],
                           ),
                         ),
                         child: Center(
                           child: shop['logo_url'] != null
-                              ? Image.network(shop['logo_url'], width: 80, height: 80, fit: BoxFit.cover)
-                              : const Icon(Icons.store_rounded, size: 64, color: Colors.white54),
+                              ? Image.network(
+                                  shop['logo_url'],
+                                  width: 80,
+                                  height: 80,
+                                  fit: BoxFit.cover,
+                                )
+                              : const Icon(
+                                  Icons.store_rounded,
+                                  size: 64,
+                                  color: Colors.white54,
+                                ),
                         ),
                       ),
                       const DecoratedBox(
@@ -97,18 +104,38 @@ class ShopProfileScreen extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // Name + rating
-                      Text(name, style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w700)),
+                      Text(
+                        name,
+                        style: Theme.of(context).textTheme.headlineSmall
+                            ?.copyWith(fontWeight: FontWeight.w700),
+                      ),
                       const SizedBox(height: OcSpacing.sm),
                       Row(
                         children: [
-                          const Icon(Icons.star_rounded, size: 18, color: OcColors.starAmber),
+                          const Icon(
+                            Icons.star_rounded,
+                            size: 18,
+                            color: OcColors.starAmber,
+                          ),
                           const SizedBox(width: 4),
-                          Text(rating.toStringAsFixed(1), style: Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700)),
+                          Text(
+                            rating.toStringAsFixed(1),
+                            style: Theme.of(context).textTheme.titleSmall
+                                ?.copyWith(fontWeight: FontWeight.w700),
+                          ),
                           if (location.isNotEmpty) ...[
                             const Spacer(),
-                            Icon(Icons.location_on_outlined, size: 16, color: OcColors.textDarkSecondary),
+                            Icon(
+                              Icons.location_on_outlined,
+                              size: 16,
+                              color: OcColors.textDarkSecondary,
+                            ),
                             const SizedBox(width: 4),
-                            Text(location, style: Theme.of(context).textTheme.bodySmall?.copyWith(color: OcColors.textDarkSecondary)),
+                            Text(
+                              location,
+                              style: Theme.of(context).textTheme.bodySmall
+                                  ?.copyWith(color: OcColors.textDarkSecondary),
+                            ),
                           ],
                         ],
                       ),
@@ -120,9 +147,15 @@ class ShopProfileScreen extends ConsumerWidget {
                         children: [
                           _ShopStat(label: 'المنتجات', value: '$totalProducts'),
                           const SizedBox(width: OcSpacing.md),
-                          _ShopStat(label: 'التقييم', value: rating.toStringAsFixed(1)),
+                          _ShopStat(
+                            label: 'التقييم',
+                            value: rating.toStringAsFixed(1),
+                          ),
                           const SizedBox(width: OcSpacing.md),
-                          _ShopStat(label: 'العلامات', value: '${brands.length}'),
+                          _ShopStat(
+                            label: 'العلامات',
+                            value: '${brands.length}',
+                          ),
                         ],
                       ),
 
@@ -130,12 +163,17 @@ class ShopProfileScreen extends ConsumerWidget {
 
                       // Brands
                       if (brands.isNotEmpty) ...[
-                        Text('العلامات التجارية', style: Theme.of(context).textTheme.titleLarge),
+                        Text(
+                          'العلامات التجارية',
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
                         const SizedBox(height: OcSpacing.md),
                         Wrap(
                           spacing: 8,
                           runSpacing: 8,
-                          children: brands.map((b) => OcChip(label: b)).toList(),
+                          children: brands
+                              .map((b) => OcChip(label: b))
+                              .toList(),
                         ),
                         const SizedBox(height: OcSpacing.xxl),
                       ],
@@ -143,12 +181,20 @@ class ShopProfileScreen extends ConsumerWidget {
                       // Products header
                       Row(
                         children: [
-                          Text('المنتجات', style: Theme.of(context).textTheme.titleLarge),
+                          Text(
+                            'المنتجات',
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
                           const Spacer(),
                           partsAsync.when(
-                            data: (parts) => Text('${parts.length} منتج', style: Theme.of(context).textTheme.bodySmall?.copyWith(color: OcColors.textSecondary)),
+                            data: (parts) => Text(
+                              '${parts.length} منتج',
+                              style: Theme.of(context).textTheme.bodySmall
+                                  ?.copyWith(color: OcColors.textSecondary),
+                            ),
                             loading: () => const SizedBox.shrink(),
-                            error: (_, __) => const SizedBox.shrink(),
+                            error: (error, stackTrace) =>
+                                const SizedBox.shrink(),
                           ),
                         ],
                       ),
@@ -165,22 +211,31 @@ class ShopProfileScreen extends ConsumerWidget {
                     return const SliverToBoxAdapter(
                       child: Padding(
                         padding: EdgeInsets.all(OcSpacing.xl),
-                        child: OcEmptyState(icon: Icons.inventory_2_outlined, message: 'لا توجد منتجات'),
+                        child: OcEmptyState(
+                          icon: Icons.inventory_2_outlined,
+                          message: 'لا توجد منتجات',
+                        ),
                       ),
                     );
                   }
                   return SliverList(
                     delegate: SliverChildBuilderDelegate(
                       (_, i) => Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: OcSpacing.xl, vertical: OcSpacing.xs),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: OcSpacing.xl,
+                          vertical: OcSpacing.xs,
+                        ),
                         child: _ProductTile(part: parts[i]),
                       ),
                       childCount: parts.length,
                     ),
                   );
                 },
-                loading: () => const SliverToBoxAdapter(child: Center(child: CircularProgressIndicator())),
-                error: (_, __) => const SliverToBoxAdapter(child: SizedBox.shrink()),
+                loading: () => const SliverToBoxAdapter(
+                  child: Center(child: CircularProgressIndicator()),
+                ),
+                error: (error, stackTrace) =>
+                    const SliverToBoxAdapter(child: SizedBox.shrink()),
               ),
 
               const SliverPadding(padding: EdgeInsets.only(bottom: 80)),
@@ -188,7 +243,10 @@ class ShopProfileScreen extends ConsumerWidget {
           );
         },
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (_, __) => OcErrorState(message: 'تعذر تحميل المتجر', onRetry: () => ref.invalidate(shopDetailProvider(shopId))),
+        error: (error, stackTrace) => OcErrorState(
+          message: 'تعذر تحميل المتجر',
+          onRetry: () => ref.invalidate(shopDetailProvider(shopId)),
+        ),
       ),
     );
   }
@@ -210,9 +268,19 @@ class _ShopStat extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Text(value, style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800)),
+            Text(
+              value,
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800),
+            ),
             const SizedBox(height: 2),
-            Text(label, style: Theme.of(context).textTheme.labelSmall?.copyWith(color: OcColors.textSecondary)),
+            Text(
+              label,
+              style: Theme.of(
+                context,
+              ).textTheme.labelSmall?.copyWith(color: OcColors.textSecondary),
+            ),
           ],
         ),
       ),
@@ -226,7 +294,9 @@ class _ProductTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final imageUrl = part.imageUrls.isNotEmpty ? part.imageUrls.first : null;
+    final String? imageUrl = part.imageUrls.isNotEmpty
+        ? part.imageUrls.first
+        : null;
 
     return GestureDetector(
       onTap: () => context.push('/part/${part.id}'),
@@ -246,20 +316,36 @@ class _ProductTile extends ConsumerWidget {
               decoration: BoxDecoration(
                 color: OcColors.surfaceLight,
                 borderRadius: BorderRadius.circular(OcRadius.md),
-                image: imageUrl != null ? DecorationImage(image: NetworkImage(imageUrl), fit: BoxFit.cover) : null,
+                image: imageUrl != null
+                    ? DecorationImage(
+                        image: NetworkImage(imageUrl),
+                        fit: BoxFit.cover,
+                      )
+                    : null,
               ),
-              child: imageUrl == null ? const Icon(Icons.image_outlined, color: OcColors.textSecondary, size: 24) : null,
+              child: imageUrl == null
+                  ? const Icon(
+                      Icons.image_outlined,
+                      color: OcColors.textSecondary,
+                      size: 24,
+                    )
+                  : null,
             ),
             const SizedBox(width: OcSpacing.md),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(part.nameAr, style: Theme.of(context).textTheme.titleSmall),
+                  Text(
+                    part.nameAr,
+                    style: Theme.of(context).textTheme.titleSmall,
+                  ),
                   const SizedBox(height: 2),
                   Text(
-                    part.condition ?? '',
-                    style: Theme.of(context).textTheme.labelSmall?.copyWith(color: OcColors.textSecondary),
+                    part.condition,
+                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                      color: OcColors.textSecondary,
+                    ),
                   ),
                 ],
               ),
@@ -269,7 +355,10 @@ class _ProductTile extends ConsumerWidget {
               children: [
                 Text(
                   '${part.price.toStringAsFixed(0)} ر.ق',
-                  style: Theme.of(context).textTheme.titleSmall?.copyWith(color: OcColors.primary, fontWeight: FontWeight.w700),
+                  style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                    color: OcColors.primary,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
                 const SizedBox(height: 4),
                 GestureDetector(
@@ -281,8 +370,15 @@ class _ProductTile extends ConsumerWidget {
                   },
                   child: Container(
                     padding: const EdgeInsets.all(4),
-                    decoration: BoxDecoration(color: OcColors.primary, borderRadius: BorderRadius.circular(OcRadius.sm)),
-                    child: const Icon(Icons.add_shopping_cart, size: 14, color: OcColors.onAccent),
+                    decoration: BoxDecoration(
+                      color: OcColors.primary,
+                      borderRadius: BorderRadius.circular(OcRadius.sm),
+                    ),
+                    child: const Icon(
+                      Icons.add_shopping_cart,
+                      size: 14,
+                      color: OcColors.onAccent,
+                    ),
                   ),
                 ),
               ],

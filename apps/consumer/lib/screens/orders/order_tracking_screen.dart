@@ -1,34 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:oc_api/oc_api.dart';
-import 'package:oc_models/oc_models.dart';
 import 'package:oc_ui/oc_ui.dart';
 import '../../providers.dart';
-
-final orderDetailProvider =
-    FutureProvider.family<Order?, String>((ref, id) async {
-  final service = ref.read(orderServiceProvider);
-  return await service.getOrderById(id);
-});
-
-final orderStatusLogProvider =
-    FutureProvider.family<List<OrderStatusLog>, String>((ref, orderId) async {
-  final service = ref.read(orderServiceProvider);
-  return await service.getStatusLog(orderId);
-});
+import 'order_tracking_providers.dart';
 
 class OrderTrackingScreen extends ConsumerWidget {
   final String orderId;
   const OrderTrackingScreen({super.key, required this.orderId});
 
   static const _statusFlow = [
-    {'key': 'pending', 'label': 'في الانتظار', 'icon': Icons.hourglass_top_rounded},
+    {
+      'key': 'pending',
+      'label': 'في الانتظار',
+      'icon': Icons.hourglass_top_rounded,
+    },
     {'key': 'confirmed', 'label': 'مؤكد', 'icon': Icons.check_circle_outline},
-    {'key': 'preparing', 'label': 'قيد التجهيز', 'icon': Icons.inventory_outlined},
-    {'key': 'ready', 'label': 'جاهز للإستلام', 'icon': Icons.local_shipping_outlined},
+    {
+      'key': 'preparing',
+      'label': 'قيد التجهيز',
+      'icon': Icons.inventory_outlined,
+    },
+    {
+      'key': 'ready',
+      'label': 'جاهز للإستلام',
+      'icon': Icons.local_shipping_outlined,
+    },
     {'key': 'picked_up', 'label': 'تم الاستلام', 'icon': Icons.delivery_dining},
-    {'key': 'delivered', 'label': 'تم التوصيل', 'icon': Icons.where_to_vote_rounded},
+    {
+      'key': 'delivered',
+      'label': 'تم التوصيل',
+      'icon': Icons.where_to_vote_rounded,
+    },
     {'key': 'completed', 'label': 'مكتمل', 'icon': Icons.done_all_rounded},
   ];
 
@@ -48,10 +51,14 @@ class OrderTrackingScreen extends ConsumerWidget {
       ),
       body: orderAsync.when(
         data: (order) {
-          if (order == null) return const OcErrorState(message: 'الطلب غير موجود');
+          if (order == null) {
+            return const OcErrorState(message: 'الطلب غير موجود');
+          }
 
           final currentStatus = order.status;
-          final currentIndex = _statusFlow.indexWhere((s) => s['key'] == currentStatus);
+          final currentIndex = _statusFlow.indexWhere(
+            (s) => s['key'] == currentStatus,
+          );
           final effectiveIndex = currentIndex >= 0 ? currentIndex : 0;
 
           final workshop = order.workshop;
@@ -72,8 +79,14 @@ class OrderTrackingScreen extends ConsumerWidget {
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: currentStatus == 'cancelled'
-                            ? [OcColors.error, OcColors.error.withValues(alpha: 0.7)]
-                            : [OcColors.primary, OcColors.primary.withValues(alpha: 0.7)],
+                            ? [
+                                OcColors.error,
+                                OcColors.error.withValues(alpha: 0.7),
+                              ]
+                            : [
+                                OcColors.primary,
+                                OcColors.primary.withValues(alpha: 0.7),
+                              ],
                       ),
                       borderRadius: BorderRadius.circular(OcRadius.xl),
                     ),
@@ -91,7 +104,8 @@ class OrderTrackingScreen extends ConsumerWidget {
                           currentStatus == 'cancelled'
                               ? 'ملغي'
                               : _statusFlow[effectiveIndex]['label'] as String,
-                          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                          style: Theme.of(context).textTheme.headlineSmall
+                              ?.copyWith(
                                 color: OcColors.onAccent,
                                 fontWeight: FontWeight.w700,
                               ),
@@ -120,21 +134,31 @@ class OrderTrackingScreen extends ConsumerWidget {
                                   height: 24,
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: isCompleted ? OcColors.primary : OcColors.surfaceLight,
+                                    color: isCompleted
+                                        ? OcColors.primary
+                                        : OcColors.surfaceLight,
                                     border: Border.all(
-                                      color: isCompleted ? OcColors.primary : OcColors.border,
+                                      color: isCompleted
+                                          ? OcColors.primary
+                                          : OcColors.border,
                                       width: 2,
                                     ),
                                   ),
                                   child: isCompleted
-                                      ? const Icon(Icons.check, size: 14, color: OcColors.onAccent)
+                                      ? const Icon(
+                                          Icons.check,
+                                          size: 14,
+                                          color: OcColors.onAccent,
+                                        )
                                       : null,
                                 ),
                                 if (i < _statusFlow.length - 1)
                                   Container(
                                     width: 2,
                                     height: 40,
-                                    color: isCompleted ? OcColors.primary : OcColors.border,
+                                    color: isCompleted
+                                        ? OcColors.primary
+                                        : OcColors.border,
                                   ),
                               ],
                             ),
@@ -144,9 +168,14 @@ class OrderTrackingScreen extends ConsumerWidget {
                                 padding: const EdgeInsets.only(top: 2),
                                 child: Text(
                                   _statusFlow[i]['label'] as String,
-                                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                        fontWeight: isCurrent ? FontWeight.w700 : FontWeight.w400,
-                                        color: isCompleted ? OcColors.textPrimary : OcColors.textSecondary,
+                                  style: Theme.of(context).textTheme.bodyLarge
+                                      ?.copyWith(
+                                        fontWeight: isCurrent
+                                            ? FontWeight.w700
+                                            : FontWeight.w400,
+                                        color: isCompleted
+                                            ? OcColors.textPrimary
+                                            : OcColors.textSecondary,
                                       ),
                                 ),
                               ),
@@ -159,7 +188,10 @@ class OrderTrackingScreen extends ConsumerWidget {
                   const SizedBox(height: OcSpacing.xxl),
 
                   // Order details
-                  Text('تفاصيل الطلب', style: Theme.of(context).textTheme.titleLarge),
+                  Text(
+                    'تفاصيل الطلب',
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
                   const SizedBox(height: OcSpacing.md),
                   _InfoCard(
                     icon: Icons.build_rounded,
@@ -181,22 +213,35 @@ class OrderTrackingScreen extends ConsumerWidget {
                     ),
                     child: Column(
                       children: [
-                        _PriceRow(label: 'تكلفة القطع', value: '${order.partsTotal.toStringAsFixed(0)} ر.ق'),
+                        _PriceRow(
+                          label: 'تكلفة القطع',
+                          value: '${order.partsTotal.toStringAsFixed(0)} ر.ق',
+                        ),
                         const SizedBox(height: OcSpacing.sm),
-                        _PriceRow(label: 'التوصيل', value: '${order.deliveryFee.toStringAsFixed(0)} ر.ق'),
+                        _PriceRow(
+                          label: 'التوصيل',
+                          value: '${order.deliveryFee.toStringAsFixed(0)} ر.ق',
+                        ),
                         const SizedBox(height: OcSpacing.sm),
-                        _PriceRow(label: 'رسوم المنصة', value: '${order.platformFee.toStringAsFixed(0)} ر.ق'),
+                        _PriceRow(
+                          label: 'رسوم المنصة',
+                          value: '${order.platformFee.toStringAsFixed(0)} ر.ق',
+                        ),
                         const Divider(height: OcSpacing.xl),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('الإجمالي', style: Theme.of(context).textTheme.titleMedium),
+                            Text(
+                              'الإجمالي',
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
                             Text(
                               '${order.total.toStringAsFixed(0)} ر.ق',
-                              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                color: OcColors.primary,
-                                fontWeight: FontWeight.w900,
-                              ),
+                              style: Theme.of(context).textTheme.titleLarge
+                                  ?.copyWith(
+                                    color: OcColors.primary,
+                                    fontWeight: FontWeight.w900,
+                                  ),
                             ),
                           ],
                         ),
@@ -224,15 +269,25 @@ class OrderTrackingScreen extends ConsumerWidget {
                           context: context,
                           builder: (_) => AlertDialog(
                             title: const Text('إلغاء الطلب'),
-                            content: const Text('هل أنت متأكد من إلغاء هذا الطلب؟'),
+                            content: const Text(
+                              'هل أنت متأكد من إلغاء هذا الطلب؟',
+                            ),
                             actions: [
-                              TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('لا')),
-                              TextButton(onPressed: () => Navigator.pop(context, true), child: const Text('نعم، إلغاء')),
+                              TextButton(
+                                onPressed: () => Navigator.pop(context, false),
+                                child: const Text('لا'),
+                              ),
+                              TextButton(
+                                onPressed: () => Navigator.pop(context, true),
+                                child: const Text('نعم، إلغاء'),
+                              ),
                             ],
                           ),
                         );
                         if (confirmed == true) {
-                          await ref.read(orderServiceProvider).updateStatus(orderId, 'cancelled');
+                          await ref
+                              .read(orderServiceProvider)
+                              .updateStatus(orderId, 'cancelled');
                           ref.invalidate(orderDetailProvider(orderId));
                           ref.invalidate(myOrdersProvider);
                         }
@@ -244,7 +299,7 @@ class OrderTrackingScreen extends ConsumerWidget {
           );
         },
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (_, __) => OcErrorState(
+        error: (error, stackTrace) => OcErrorState(
           message: 'تعذر تحميل الطلب',
           onRetry: () => ref.invalidate(orderDetailProvider(orderId)),
         ),
@@ -257,7 +312,12 @@ class _InfoCard extends StatelessWidget {
   final IconData icon;
   final String title, subtitle;
   final VoidCallback? onTap;
-  const _InfoCard({required this.icon, required this.title, required this.subtitle, this.onTap});
+  const _InfoCard({
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -287,11 +347,20 @@ class _InfoCard extends StatelessWidget {
                 children: [
                   Text(title, style: Theme.of(context).textTheme.titleSmall),
                   const SizedBox(height: 2),
-                  Text(subtitle, style: Theme.of(context).textTheme.bodySmall?.copyWith(color: OcColors.textDarkSecondary)),
+                  Text(
+                    subtitle,
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: OcColors.textDarkSecondary,
+                    ),
+                  ),
                 ],
               ),
             ),
-            if (onTap != null) const Icon(Icons.chevron_left_rounded, color: OcColors.textSecondary),
+            if (onTap != null)
+              const Icon(
+                Icons.chevron_left_rounded,
+                color: OcColors.textSecondary,
+              ),
           ],
         ),
       ),
@@ -308,7 +377,12 @@ class _PriceRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(label, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: OcColors.textDarkSecondary)),
+        Text(
+          label,
+          style: Theme.of(
+            context,
+          ).textTheme.bodyMedium?.copyWith(color: OcColors.textDarkSecondary),
+        ),
         Text(value, style: Theme.of(context).textTheme.bodyMedium),
       ],
     );

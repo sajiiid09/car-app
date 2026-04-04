@@ -32,9 +32,9 @@ class CartScreen extends ConsumerWidget {
             icon: const Icon(Icons.delete_outline),
             onPressed: () {
               cartNotifier.clear();
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('تم تفريغ السلة')),
-              );
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(const SnackBar(content: Text('تم تفريغ السلة')));
             },
           ),
         ],
@@ -45,9 +45,10 @@ class CartScreen extends ConsumerWidget {
             child: ListView.separated(
               padding: const EdgeInsets.all(OcSpacing.lg),
               itemCount: cart.length,
-              separatorBuilder: (_, __) => const SizedBox(height: OcSpacing.md),
-              itemBuilder: (_, i) {
-                final entry = cart.entries.elementAt(i);
+              separatorBuilder: (context, index) =>
+                  const SizedBox(height: OcSpacing.md),
+              itemBuilder: (context, index) {
+                final entry = cart.entries.elementAt(index);
                 final ci = entry.value;
                 return _CartItemCard(
                   cartItem: ci,
@@ -74,13 +75,16 @@ class CartScreen extends ConsumerWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('الإجمالي', style: Theme.of(context).textTheme.titleMedium),
+                      Text(
+                        'الإجمالي',
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
                       Text(
                         '${cartNotifier.totalPrice.toStringAsFixed(0)} ر.ق',
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              color: OcColors.primary,
-                              fontWeight: FontWeight.w800,
-                            ),
+                          color: OcColors.primary,
+                          fontWeight: FontWeight.w800,
+                        ),
                       ),
                     ],
                   ),
@@ -138,11 +142,17 @@ class _CartItemCard extends StatelessWidget {
               color: OcColors.surfaceLight,
               borderRadius: BorderRadius.circular(OcRadius.md),
               image: imageUrl != null
-                  ? DecorationImage(image: NetworkImage(imageUrl), fit: BoxFit.cover)
+                  ? DecorationImage(
+                      image: NetworkImage(imageUrl),
+                      fit: BoxFit.cover,
+                    )
                   : null,
             ),
             child: imageUrl == null
-                ? const Icon(Icons.image_outlined, color: OcColors.textSecondary)
+                ? const Icon(
+                    Icons.image_outlined,
+                    color: OcColors.textSecondary,
+                  )
                 : null,
           ),
           const SizedBox(width: OcSpacing.md),
@@ -162,9 +172,9 @@ class _CartItemCard extends StatelessWidget {
                 Text(
                   '${part.price.toStringAsFixed(0)} ر.ق',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: OcColors.secondary,
-                        fontWeight: FontWeight.w600,
-                      ),
+                    color: OcColors.secondary,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ],
             ),
@@ -182,16 +192,24 @@ class _CartItemCard extends StatelessWidget {
                 IconButton(
                   icon: const Icon(Icons.remove, size: 18),
                   onPressed: onRemove,
-                  constraints: const BoxConstraints(minWidth: 36, minHeight: 36),
+                  constraints: const BoxConstraints(
+                    minWidth: 36,
+                    minHeight: 36,
+                  ),
                 ),
                 Text(
                   '${cartItem.quantity}',
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
                 IconButton(
                   icon: const Icon(Icons.add, size: 18),
                   onPressed: onAdd,
-                  constraints: const BoxConstraints(minWidth: 36, minHeight: 36),
+                  constraints: const BoxConstraints(
+                    minWidth: 36,
+                    minHeight: 36,
+                  ),
                 ),
               ],
             ),

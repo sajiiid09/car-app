@@ -1,16 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:oc_api/oc_api.dart';
-import 'package:oc_models/oc_models.dart';
 import 'package:oc_ui/oc_ui.dart';
 import '../../providers.dart';
-
-final diagnosisDetailProvider =
-    FutureProvider.family<DiagnosisReport?, String>((ref, id) async {
-  final service = ref.read(diagnosisServiceProvider);
-  return await service.getReportById(id);
-});
+import 'diagnosis_providers.dart';
 
 class DiagnosisReportScreen extends ConsumerWidget {
   final String reportId;
@@ -24,11 +17,16 @@ class DiagnosisReportScreen extends ConsumerWidget {
       backgroundColor: OcColors.background,
       appBar: AppBar(
         title: const Text('تقرير الفحص'),
-        leading: IconButton(icon: const Icon(Icons.arrow_back_ios_rounded), onPressed: () => context.pop()),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_rounded),
+          onPressed: () => context.pop(),
+        ),
       ),
       body: reportAsync.when(
         data: (report) {
-          if (report == null) return const OcErrorState(message: 'التقرير غير موجود');
+          if (report == null) {
+            return const OcErrorState(message: 'التقرير غير موجود');
+          }
 
           final workshopName = report.workshop?['name_ar'] ?? 'ورشة';
           final vehicle = report.vehicle;
@@ -38,12 +36,9 @@ class DiagnosisReportScreen extends ConsumerWidget {
           final vehiclePlate = vehicle?['plate_number'] ?? '';
           final diagnosisParts = report.parts ?? [];
 
-          // Calculate parts cost estimate
-          double partsEstimate = 0;
-          // Note: DiagnosisPart doesn't have price, just names + quantities
-
           return RefreshIndicator(
-            onRefresh: () async => ref.invalidate(diagnosisDetailProvider(reportId)),
+            onRefresh: () async =>
+                ref.invalidate(diagnosisDetailProvider(reportId)),
             child: SingleChildScrollView(
               physics: const AlwaysScrollableScrollPhysics(),
               padding: const EdgeInsets.all(OcSpacing.xl),
@@ -55,25 +50,35 @@ class DiagnosisReportScreen extends ConsumerWidget {
                     width: double.infinity,
                     padding: const EdgeInsets.all(OcSpacing.xl),
                     decoration: BoxDecoration(
-                      gradient: const LinearGradient(colors: [OcColors.primary, OcColors.primaryDark]),
+                      gradient: const LinearGradient(
+                        colors: [OcColors.primary, OcColors.primaryDark],
+                      ),
                       borderRadius: BorderRadius.circular(OcRadius.xl),
                     ),
                     child: Column(
                       children: [
-                        const Icon(Icons.assignment_outlined, size: 40, color: OcColors.onAccent),
+                        const Icon(
+                          Icons.assignment_outlined,
+                          size: 40,
+                          color: OcColors.onAccent,
+                        ),
                         const SizedBox(height: OcSpacing.md),
                         Text(
                           'تقرير فحص #${reportId.substring(0, 6)}',
-                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            color: OcColors.onAccent,
-                            fontWeight: FontWeight.w700,
-                          ),
+                          style: Theme.of(context).textTheme.titleLarge
+                              ?.copyWith(
+                                color: OcColors.onAccent,
+                                fontWeight: FontWeight.w700,
+                              ),
                         ),
                         const SizedBox(height: 4),
                         if (report.createdAt != null)
                           Text(
                             '${report.createdAt!.day}/${report.createdAt!.month}/${report.createdAt!.year}',
-                            style: const TextStyle(color: Colors.white70, fontSize: 13),
+                            style: const TextStyle(
+                              color: Colors.white70,
+                              fontSize: 13,
+                            ),
                           ),
                         const SizedBox(height: OcSpacing.sm),
                         OcStatusBadge(
@@ -87,49 +92,82 @@ class DiagnosisReportScreen extends ConsumerWidget {
                   const SizedBox(height: OcSpacing.xxl),
 
                   // Workshop
-                  _SectionCard(title: 'الورشة', icon: Icons.build_rounded, children: [
-                    Padding(
-                      padding: const EdgeInsets.all(OcSpacing.lg),
-                      child: GestureDetector(
-                        onTap: () => context.push('/workshop/${report.workshopId}'),
-                        child: Row(
-                          children: [
-                            CircleAvatar(
-                              radius: 18,
-                              backgroundColor: OcColors.primary.withValues(alpha: 0.15),
-                              child: const Icon(Icons.build_rounded, size: 16, color: OcColors.primary),
-                            ),
-                            const SizedBox(width: OcSpacing.md),
-                            Expanded(child: Text(workshopName, style: Theme.of(context).textTheme.titleSmall)),
-                            const Icon(Icons.chevron_left_rounded, size: 20, color: OcColors.textSecondary),
-                          ],
+                  _SectionCard(
+                    title: 'الورشة',
+                    icon: Icons.build_rounded,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(OcSpacing.lg),
+                        child: GestureDetector(
+                          onTap: () =>
+                              context.push('/workshop/${report.workshopId}'),
+                          child: Row(
+                            children: [
+                              CircleAvatar(
+                                radius: 18,
+                                backgroundColor: OcColors.primary.withValues(
+                                  alpha: 0.15,
+                                ),
+                                child: const Icon(
+                                  Icons.build_rounded,
+                                  size: 16,
+                                  color: OcColors.primary,
+                                ),
+                              ),
+                              const SizedBox(width: OcSpacing.md),
+                              Expanded(
+                                child: Text(
+                                  workshopName,
+                                  style: Theme.of(context).textTheme.titleSmall,
+                                ),
+                              ),
+                              const Icon(
+                                Icons.chevron_left_rounded,
+                                size: 20,
+                                color: OcColors.textSecondary,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ]),
+                    ],
+                  ),
 
                   const SizedBox(height: OcSpacing.lg),
 
                   // Vehicle
                   if (vehicle != null)
-                    _SectionCard(title: 'السيارة', icon: Icons.directions_car_rounded, children: [
-                      _DetailRow(label: 'الشركة/الموديل', value: '$vehicleMake $vehicleModel $vehicleYear'),
-                      if (vehiclePlate.isNotEmpty)
-                        _DetailRow(label: 'رقم اللوحة', value: vehiclePlate),
-                    ]),
+                    _SectionCard(
+                      title: 'السيارة',
+                      icon: Icons.directions_car_rounded,
+                      children: [
+                        _DetailRow(
+                          label: 'الشركة/الموديل',
+                          value: '$vehicleMake $vehicleModel $vehicleYear',
+                        ),
+                        if (vehiclePlate.isNotEmpty)
+                          _DetailRow(label: 'رقم اللوحة', value: vehiclePlate),
+                      ],
+                    ),
 
                   const SizedBox(height: OcSpacing.lg),
 
                   // Issue description
-                  _SectionCard(title: 'المشكلة', icon: Icons.report_problem_outlined, children: [
-                    Padding(
-                      padding: const EdgeInsets.all(OcSpacing.lg),
-                      child: Text(
-                        report.issueDescriptionAr,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(height: 1.6),
+                  _SectionCard(
+                    title: 'المشكلة',
+                    icon: Icons.report_problem_outlined,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(OcSpacing.lg),
+                        child: Text(
+                          report.issueDescriptionAr,
+                          style: Theme.of(
+                            context,
+                          ).textTheme.bodyMedium?.copyWith(height: 1.6),
+                        ),
                       ),
-                    ),
-                  ]),
+                    ],
+                  ),
 
                   const SizedBox(height: OcSpacing.lg),
 
@@ -138,29 +176,37 @@ class DiagnosisReportScreen extends ConsumerWidget {
                     _SectionCard(
                       title: 'القطع المطلوبة (${diagnosisParts.length})',
                       icon: Icons.inventory_2_outlined,
-                      children: diagnosisParts.map((p) => _PartRow(
-                        name: p.partNameAr,
-                        qty: p.quantity,
-                        partNumber: p.partNumber,
-                      )).toList(),
+                      children: diagnosisParts
+                          .map(
+                            (p) => _PartRow(
+                              name: p.partNameAr,
+                              qty: p.quantity,
+                              partNumber: p.partNumber,
+                            ),
+                          )
+                          .toList(),
                     ),
 
                   const SizedBox(height: OcSpacing.lg),
 
                   // Photos
                   if (report.photoUrls.isNotEmpty) ...[
-                    Text('صور الفحص', style: Theme.of(context).textTheme.titleLarge),
+                    Text(
+                      'صور الفحص',
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
                     const SizedBox(height: OcSpacing.md),
                     SizedBox(
                       height: 120,
                       child: ListView.separated(
                         scrollDirection: Axis.horizontal,
                         itemCount: report.photoUrls.length,
-                        separatorBuilder: (_, __) => const SizedBox(width: OcSpacing.sm),
-                        itemBuilder: (_, i) => ClipRRect(
+                        separatorBuilder: (context, index) =>
+                            const SizedBox(width: OcSpacing.sm),
+                        itemBuilder: (context, index) => ClipRRect(
                           borderRadius: BorderRadius.circular(OcRadius.md),
                           child: Image.network(
-                            report.photoUrls[i],
+                            report.photoUrls[index],
                             width: 160,
                             height: 120,
                             fit: BoxFit.cover,
@@ -183,7 +229,11 @@ class DiagnosisReportScreen extends ConsumerWidget {
                       ),
                       child: Column(
                         children: [
-                          _DetailRow(label: 'تكلفة العمالة (تقديري)', value: '${report.laborQuote!.toStringAsFixed(0)} ر.ق'),
+                          _DetailRow(
+                            label: 'تكلفة العمالة (تقديري)',
+                            value:
+                                '${report.laborQuote!.toStringAsFixed(0)} ر.ق',
+                          ),
                         ],
                       ),
                     ),
@@ -205,17 +255,23 @@ class DiagnosisReportScreen extends ConsumerWidget {
                         Expanded(
                           child: OutlinedButton.icon(
                             onPressed: () async {
-                              await ref.read(diagnosisServiceProvider).updateReportStatus(reportId, 'approved');
+                              await ref
+                                  .read(diagnosisServiceProvider)
+                                  .updateReportStatus(reportId, 'approved');
                               ref.invalidate(diagnosisDetailProvider(reportId));
                               if (context.mounted) {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(content: Text('تمت الموافقة على التقرير ✓')),
+                                  const SnackBar(
+                                    content: Text('تمت الموافقة على التقرير ✓'),
+                                  ),
                                 );
                               }
                             },
                             icon: const Icon(Icons.check_circle_rounded),
                             label: const Text('موافقة'),
-                            style: OutlinedButton.styleFrom(minimumSize: const Size(0, 48)),
+                            style: OutlinedButton.styleFrom(
+                              minimumSize: const Size(0, 48),
+                            ),
                           ),
                         ),
                       ],
@@ -227,7 +283,7 @@ class DiagnosisReportScreen extends ConsumerWidget {
           );
         },
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (_, __) => OcErrorState(
+        error: (error, stackTrace) => OcErrorState(
           message: 'تعذر تحميل التقرير',
           onRetry: () => ref.invalidate(diagnosisDetailProvider(reportId)),
         ),
@@ -236,19 +292,23 @@ class DiagnosisReportScreen extends ConsumerWidget {
   }
 
   String _statusLabel(String status) => switch (status) {
-        'draft' => 'مسودة',
-        'sent' => 'مرسل',
-        'approved' => 'تمت الموافقة',
-        'rejected' => 'مرفوض',
-        _ => status,
-      };
+    'draft' => 'مسودة',
+    'sent' => 'مرسل',
+    'approved' => 'تمت الموافقة',
+    'rejected' => 'مرفوض',
+    _ => status,
+  };
 }
 
 class _SectionCard extends StatelessWidget {
   final String title;
   final IconData icon;
   final List<Widget> children;
-  const _SectionCard({required this.title, required this.icon, required this.children});
+  const _SectionCard({
+    required this.title,
+    required this.icon,
+    required this.children,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -263,11 +323,18 @@ class _SectionCard extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(OcSpacing.lg),
-            child: Row(children: [
-              Icon(icon, size: 20, color: OcColors.primary),
-              const SizedBox(width: OcSpacing.sm),
-              Text(title, style: Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w600)),
-            ]),
+            child: Row(
+              children: [
+                Icon(icon, size: 20, color: OcColors.primary),
+                const SizedBox(width: OcSpacing.sm),
+                Text(
+                  title,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w600),
+                ),
+              ],
+            ),
           ),
           const Divider(height: 1, color: OcColors.border),
           ...children,
@@ -284,12 +351,25 @@ class _DetailRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: OcSpacing.lg, vertical: OcSpacing.sm),
+      padding: const EdgeInsets.symmetric(
+        horizontal: OcSpacing.lg,
+        vertical: OcSpacing.sm,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(label, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: OcColors.textDarkSecondary)),
-          Text(value, style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600)),
+          Text(
+            label,
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(color: OcColors.textDarkSecondary),
+          ),
+          Text(
+            value,
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
+          ),
         ],
       ),
     );
@@ -305,7 +385,10 @@ class _PartRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: OcSpacing.lg, vertical: OcSpacing.sm),
+      padding: const EdgeInsets.symmetric(
+        horizontal: OcSpacing.lg,
+        vertical: OcSpacing.sm,
+      ),
       child: Row(
         children: [
           Expanded(
@@ -314,11 +397,21 @@ class _PartRow extends StatelessWidget {
               children: [
                 Text(name, style: Theme.of(context).textTheme.bodyMedium),
                 if (partNumber != null && partNumber!.isNotEmpty)
-                  Text(partNumber!, style: Theme.of(context).textTheme.labelSmall?.copyWith(color: OcColors.textSecondary)),
+                  Text(
+                    partNumber!,
+                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                      color: OcColors.textSecondary,
+                    ),
+                  ),
               ],
             ),
           ),
-          Text('×$qty', style: Theme.of(context).textTheme.bodySmall?.copyWith(color: OcColors.textDarkSecondary)),
+          Text(
+            '×$qty',
+            style: Theme.of(
+              context,
+            ).textTheme.bodySmall?.copyWith(color: OcColors.textDarkSecondary),
+          ),
         ],
       ),
     );
